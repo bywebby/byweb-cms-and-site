@@ -10,6 +10,8 @@ use App\Models\admin\Type;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
 
 
 class PostController extends Controller {
@@ -73,7 +75,7 @@ class PostController extends Controller {
         //берем с запроса форма только поля
         $data = $request->only($this->fields);
 
-        $data['slug'] = str_slug($data['slug']);
+        $data['slug'] = Str::slug($data['slug'],'-');
 
         $nameFolder = Category::find($data['category_id'])->title;
 
@@ -81,7 +83,7 @@ class PostController extends Controller {
 
 
         //загрузка изображения
-        $data['thumbnail'] = $this->uploadImage($request, str_slug($nameFolder));
+        $data['thumbnail'] = $this->uploadImage($request, Str::slug($nameFolder,'-'));
 
         Post::create($data);
 
@@ -123,7 +125,11 @@ class PostController extends Controller {
         $this->error404($id);
         //берем с запроса формы только поля
         $data = $request->only($this->fields);
-        $data['slug'] = str_slug($data['slug']);
+
+//        Str::slug('Laravel 5 Framework', '-');
+
+//        $data['slug'] = str_slug($data['slug']);
+        $data['slug'] = Str::slug($data['slug'], '-');
 
         $post = Post::find($id);
 
@@ -133,7 +139,7 @@ class PostController extends Controller {
 
         //Проверяем пришло ли изображение
 
-    $data['thumbnail'] = $this->uploadImage($request, str_slug($post->category->title), $post->thumbnail);
+    $data['thumbnail'] = $this->uploadImage($request,Str::slug($post->category->title,'-'), $post->thumbnail);
 
 
 //        не удалять картинк из базы если она не прислана формой
