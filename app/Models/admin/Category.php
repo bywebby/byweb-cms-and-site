@@ -2,7 +2,7 @@
 
 namespace App\Models\admin;
 
-use App\models\admin\Post;
+use App\Models\admin\Post;
 use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model {

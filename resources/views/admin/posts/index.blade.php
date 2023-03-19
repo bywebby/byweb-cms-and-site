@@ -22,7 +22,13 @@
                                     Создать статью
                                 </a>
 
+
+
                                 @if (count($posts))
+
+
+
+
                                     <div class="table-responsive">
                                         <table class="table table-bordered table-hover text-nowrap">
                                             <thead>
@@ -37,6 +43,7 @@
                                             </thead>
                                             <tbody>
                                             @foreach($posts as $k => $post)
+
                                                 <tr>
 
 {{--                                                    <td>{{ $post->id }}</td>--}}
@@ -51,15 +58,13 @@
 
 
 
-                                                    <td><a href="{{ route('posts.edit', ['posts' => $post->id])}}">{{ $post->title }} </a></td>
+                                                    <td><a href="{{ route('posts.edit', ['post' => $post->id])}}">{{ $post->title }} </a></td>
                                                     <td>{{ $post->slug }}</td>
                                                     <td>{{ $post->category->title }}</td>
                                                     <td>{{ $post->type->title }}</td>
                                                     <td>
-{{--                                                        <a href="{{ route('posts.edit', ['posts' => $post->id]) }}" class="btn btn-info btn-sm float-left mr-1" title="Изменить пост">--}}
-{{--                                                            <i class="fas fa-pencil-alt"></i>--}}
-{{--                                                        </a>--}}
-                                                        <form action="{{ route('posts.destroy', ['posts' => $post->id]) }}" method="post" class="float-left">
+
+                                                        <form action="{{ route('posts.destroy', ['post' => $post->id]) }}" method="post" class="float-left">
 
                                                             @csrf
                                                             @method('DELETE')

@@ -12,7 +12,6 @@ use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\TypeController;
 use App\Http\Controllers\Front\HomeController;
-
 //Очистка кеша
 Route::get('/clear', function () {
     Artisan::call('cache:clear');
@@ -23,7 +22,7 @@ Route::get('/clear', function () {
 });
 
 //адимн панель
-    Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
+    Route::group(['prefix' => 'admin'], function () {
 //    главная админ панель
     Route::get('/', [PostController::class, 'index'])->name('admin.index');
 

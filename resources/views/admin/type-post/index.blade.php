@@ -60,11 +60,11 @@
 
                                                     <td>
 
-                                                        <a href="{{ route('types-posts.edit', ['type-posts' => $type->id]) }}" class="btn btn-info btn-sm float-left mr-1" title="Изменить тип статьи">
+                                                        <a href="{{ route('types-posts.edit', ['types_post' => $type->id]) }}" class="btn btn-info btn-sm float-left mr-1" title="Изменить тип статьи">
                                                             <i class="fas fa-pencil-alt"></i>
                                                         </a>
 
-                                                        <form action="{{ route('types-posts.destroy', ['type-posts' => $type->id]) }}" method="post" class="float-left">
+                                                        <form action="{{ route('types-posts.destroy', ['types_post' => $type->id]) }}" method="post" class="float-left">
 
                                                             @csrf
                                                             @method('DELETE')
