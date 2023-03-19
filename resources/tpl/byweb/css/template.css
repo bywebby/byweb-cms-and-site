@@ -1,0 +1,175 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 16px;
+    font-family: Arial;
+    min-width:320px;
+}
+
+.cont {
+    width:100%;
+    max-width:950px;
+    position: relative;
+    display: block;
+}
+
+.row{
+    width:100%;
+    margin: 0 auto;
+    position: relative;
+    display: block;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.black {
+    background: #2f343a;
+    color:#fff;
+}
+
+a {
+    color: #fe7676;
+}
+
+.item-4{
+    box-sizing: border-box;
+    flex-basis:calc(100%/4);
+}
+
+.item-3{
+    box-sizing: border-box;
+    flex-basis: calc(100%/3);
+    padding: 7px;
+}
+
+.top {
+    padding:5px;
+    text-align: center;
+    position: relative;
+    display: block;
+}
+
+.top strong {
+    color: #fe7676;
+}
+
+.flex2-div{
+    box-sizing: border-box;
+    width:calc(100%/2);
+    text-align:center;
+    padding:50px;
+}
+
+@media only screen and (max-width: 650px) {
+
+    .item{
+        width:calc(100%/2);
+    }
+
+    .item-3 {
+        flex-basis: 100%;
+    }
+
+    .item-4 {
+        flex-basis: 50%;
+    }
+
+    .flex2-div{
+        flex-basis:calc(100%);
+        background: #777;
+
+    }
+}
+
+
+@media only screen and (max-width: 320px) {
+
+    .item{
+        width:calc(100%);
+    }
+
+    .item-4 {
+        flex-basis: 100%;
+    }
+}
+
+
+#slider {
+
+    height: 100vh;
+    background: url('../img/bg-slider.jpg') top center;
+    background-size: cover;
+    position: relative;
+    display: block;
+    min-height:300px;
+
+
+}
+
+
+#slider-item {
+    display:flex;
+    height: 100vh;
+    align-items: center;
+    padding-left: 10%;
+    width:40%;
+    min-height: 300px;
+
+
+
+}
+
+
+#slider-item h1 {
+    font-size: 3rem;
+    padding-bottom:10px;
+}
+
+
+#slider-item p {
+    color: #076ad0;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+
+.block {
+    position: relative;
+    display: block;
+
+
+}
+
+
+.polosa {
+    text-align:center;
+}
+
+
+
+
+
+
+.green {
+
+    background: #5fa6aa;
+    color: #FFF;
+}
+
+.py-30 {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+
+.px-10 {
+    padding-left: 10px;
+    padding-right: 10px;
+}
