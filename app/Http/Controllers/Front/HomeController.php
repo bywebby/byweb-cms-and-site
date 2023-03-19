@@ -16,12 +16,21 @@ class HomeController extends Controller {
         $request->path() == '/' ? $slug = 'sozdanie-saytov' : $slug = $request->path();
         //dd($slug);
 //определяем id категории согласно слагу
-        $cat = Category::query()->where('slug', $slug)->firstOrFail();
+        $cat = Category::where('slug', $slug)->first();
+
+//        404 ошибка
+       self::errorPage($cat);
 
         //берем через связь
         $data = $cat->posts()->get();
          //dd($data);
             return view('byweb.home', compact('data'));
     }
+
+
+    private static function errorPage($cat){
+        if(!$cat) return abort(404,'Ошибка 404 - страница не существует!');
+    }
+
 
 }
