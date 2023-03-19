@@ -7,6 +7,8 @@ use App\Http\Requests\Category\UpdateCategory;
 use App\Models\admin\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
 
 class CategoryController extends Controller {
 
@@ -34,7 +36,7 @@ class CategoryController extends Controller {
 
         $data = $request->only(['title', 'slug', 'meta_title', 'meta_desc']);
         //перевод в транслит
-        $data['slug']=str_slug($data['slug']);
+        $data['slug']= Str::slug($data['slug'],'-');
 
         Category::create($data);
 
@@ -61,7 +63,7 @@ class CategoryController extends Controller {
         $data = $request->only(['title', 'slug', 'meta_title', 'meta_desc']);
 
         //перевод в транслит
-        $data['slug']=str_slug($data['slug']);
+        $data['slug'] = Str::slug($data['slug'],'-');
 
           if($request->input('save') == 'Отмена')   {
               return redirect()->route('categories.index');
