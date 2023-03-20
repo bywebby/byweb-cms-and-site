@@ -195,11 +195,20 @@ class PostController extends Controller {
     private function uploadImage(StorePost $request, $nameFolder, $imageDel = null) {
 
 
+
+
         if ($request->hasFile('thumbnail')) {
+
+
 
             //создаем оригинальное имя файла
             $nameFile = $request->file('thumbnail')->getClientOriginalName();
+
+
+
             $fullNameImg = "images/{$nameFolder}/{$nameFile}";
+
+
 
             if($fullNameImg != $imageDel) {
 
@@ -209,6 +218,7 @@ class PostController extends Controller {
                    Storage::delete($imageDel);
                }
 
+//                dd($request->file('thumbnail')->storeAs("images/{$nameFolder}",$nameFile));
                 //возвращает в базу строку и записывает файл
                return $request->file('thumbnail')->storeAs("images/{$nameFolder}",$nameFile);
 
