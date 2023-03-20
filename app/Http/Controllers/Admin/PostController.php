@@ -136,23 +136,15 @@ class PostController extends Controller {
         if($request->input('save') == 'Отмена')   {
             return redirect()->route('posts.index');
         }
-
         //Проверяем пришло ли изображение
-
-    $data['thumbnail'] = $this->uploadImage($request,Str::slug($post->category->title,'-'), $post->thumbnail);
-
+        $data['thumbnail'] = $this->uploadImage($request, Str::slug($post->category->title,'-'), $post->thumbnail);
 
 //        не удалять картинк из базы если она не прислана формой
-        if($data["thumbnail"] == null) {
+        if ($data["thumbnail"] == null) {
             $data["thumbnail"] = $post->thumbnail;
         }
-
-
-
-
         //обновляем запись
         $post->update($data);
-
         if ($request->input('save') == 'Сохранить и закрыть') {
             return redirect()->route('posts.index')->with('success',('Пост обновлен'));
         }
@@ -194,33 +186,24 @@ class PostController extends Controller {
     //загрузка изображений
     private function uploadImage(StorePost $request, $nameFolder, $imageDel = null) {
 
-
-
-
         if ($request->hasFile('thumbnail')) {
-
-
 
             //создаем оригинальное имя файла
             $nameFile = $request->file('thumbnail')->getClientOriginalName();
 
-
-
             $fullNameImg = "images/{$nameFolder}/{$nameFile}";
 
-
-
             if($fullNameImg != $imageDel) {
-
                //$image - это путь к файлу в базе
                if ($imageDel) {
                    //удаляем старый файл
-                   Storage::delete($imageDel);
+
+                   Storage::disk('uploads')->delete($imageDel);
                }
 
-//                dd($request->file('thumbnail')->storeAs("images/{$nameFolder}",$nameFile));
-                //возвращает в базу строку и записывает файл
-               return $request->file('thumbnail')->storeAs("images/{$nameFolder}",$nameFile);
+
+                //записывает файл
+               return $request->file('thumbnail')->storeAs("images/{$nameFolder}", $nameFile, ['disk' => 'uploads']);
 
            }
             $request->session()->flash('danger', 'Изображение не обновлено, т.к. с таким именем уже существует');
@@ -240,7 +223,7 @@ class PostController extends Controller {
         //удаляем изображения с хостинга
 
 
-        Storage::delete($post->thumbnail);
+        Storage::disk('uploads')->delete($post->thumbnail);
 
         $data['thumbnail'] = null;
         $post->update($data);

@@ -97,6 +97,8 @@
                                             @if ($post->thumbnail)
                                                 <div>
                                                     <img src="{{ asset("uploads/$post->thumbnail") }}" width="500">
+
+
                                                 </div>
 
                                                 <a href="{{ route('posts.edit.delImg', ['id' => $post->id]) }}" onclick="return confirm('Подтвердите удаление')">Удалить изображение</a>
