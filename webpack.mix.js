@@ -20,6 +20,8 @@ const mix = require('laravel-mix');
 //npm run watch - автоматическое отслеживание изменений в css
 mix.styles([
     'resources/tpl/byweb/css/template.css',
+    'resources/tpl/byweb/css/nav-menu.css',
+    'resources/tpl/byweb/css/slider.css',
 ], 'public/tpl/byweb/css/template.css');
 
 mix.copyDirectory('resources/tpl/byweb/img','public/tpl/byweb/img');

@@ -14,7 +14,7 @@ class HomeController extends Controller {
 
 //по категории находим контент в зависимости от слага
         $request->path() == '/' ? $slug = 'sozdanie-saytov' : $slug = $request->path();
-        //dd($slug);
+//        dd($request->path());
 //определяем id категории согласно слагу
         $cat = Category::where('slug', $slug)->first();
 

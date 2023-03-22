@@ -1,13 +1,16 @@
-
-{{--                        <img class="slide-img" src="{{ asset('uploads/'.$item->thumbnail ) }}" alt="">--}}
-
-
-
 <div class="row" id='slider'>
-    <div id='slider-item'>
-        <div class='block'>
+
+
+
+        <div class="slider-img">
+            <img src="{{asset('uploads/'.$item->thumbnail)}}" alt="">
+        </div>
+
+        <div class='slider-txt'>
             <h1>{{$item->title}}</h1>
             {!! $item->content !!}
         </div>
-    </div>
+
+
+
 </div>
