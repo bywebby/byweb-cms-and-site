@@ -57,8 +57,27 @@
         <script>
 
             if( document.querySelector( '#content' )) {
-                ClassicEditor
-                    .create( document.querySelector( '#content' ) )
+                ClassicEditor.create( document.querySelector( '#content' ), {
+                        toolbar: [
+                            'heading',
+                            '|',
+                            'bold',
+                            'italic',
+                            'link',
+                            'bulletedList',
+                            'numberedList',
+                            '|',
+                            // 'outdent',
+                            // 'indent',
+                            '|',
+                            // 'blockQuote',
+                            // 'imageUpload',
+                            'insertTable',
+                            'mediaEmbed',
+                            // 'codeBlock',
+                            'CKFinder'
+                        ]
+                    } )
                     .catch( error => {
                         console.error( error );
                     } );

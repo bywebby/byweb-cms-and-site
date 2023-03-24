@@ -1,0 +1,144 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 16px;
+    font-family: 'Roboto', Arial, sans-serif;
+    min-width: 320px;
+    background: $body-bg;
+}
+h1, h2, h3 {
+
+    font-size: 1.5rem;
+    padding-bottom: 15px;
+    font-weight: 900;
+
+}
+
+p {
+    line-height: 1.7rem;
+}
+
+.btn {
+    color:#FFF;
+    text-decoration: none;
+    background: $black;
+    border: 1px solid #FFF;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.container {
+    position: relative;
+    max-width: 1490px;
+    margin: 0 auto;
+    //border: 1px solid #777;
+    padding: 0 25px;
+}
+
+.row {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.black {
+    background: $black;
+    color: #fff;
+}
+
+a {
+    color: #fe7676;
+}
+
+.item-4 {
+    box-sizing: border-box;
+    flex-basis: calc(100% / 4);
+}
+
+.item-3 {
+    box-sizing: border-box;
+    flex-basis: calc(100% / 3);
+    padding: 7px;
+}
+
+.flex2-div {
+    box-sizing: border-box;
+    width: calc(100% / 2);
+    text-align: center;
+    padding: 50px;
+}
+
+.block {
+    position: relative;
+    display: block;
+    z-index:1;
+}
+
+.polosa {
+    text-align: center;
+}
+
+.green {
+    background: #5fa6aa;
+    color: #FFF;
+}
+
+.py-30 {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.px-10 {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.error {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    color: red;
+    background-color: #f2f2f2;
+    padding: 50px;
+}
+
+@media only screen and (max-width: 650px) {
+
+    .item {
+        width: calc(100% / 2);
+    }
+
+    .item-4 {
+        flex-basis: 50%;
+    }
+
+    .flex2-div {
+        flex-basis: calc(100%);
+        background: #777;
+
+    }
+}
+
+@media only screen and (max-width: 320px) {
+
+    .item {
+        width: calc(100%);
+    }
+
+    .item-4 {
+        flex-basis: 100%;
+    }
+}
+
+
+
+

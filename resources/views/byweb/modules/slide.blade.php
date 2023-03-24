@@ -1,16 +1,22 @@
-<div class="row" id='slider'>
+<div id='slider'>
+
+    <div @if($item->thumbnail) class='slider-img' style="background: url('{!! asset('uploads/'.$item->thumbnail)  !!}') no-repeat; background-size: cover;"@endif>
 
 
+    <div class="container ">
 
-        <div class="slider-img">
-            <img src="{{asset('uploads/'.$item->thumbnail)}}" alt="">
+
+        <div class='slider-item'>
+            <div class='slider-item-txt'>
+                 <h1>{{$item->title}}</h1>
+                    {!! $item->content !!}
+            </div>
         </div>
 
-        <div class='slider-txt'>
-            <h1>{{$item->title}}</h1>
-            {!! $item->content !!}
-        </div>
-
+    </div>
+    </div>
 
 
 </div>
+
+

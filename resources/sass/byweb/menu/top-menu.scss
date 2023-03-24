@@ -1,0 +1,41 @@
+.top {
+    padding: 0 5px;
+    text-align: center;
+    position: relative;
+    display: block;
+
+    strong {
+        color: #fe7676;
+    }
+}
+
+.top-menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+
+.top-menu-item {
+    box-sizing: border-box;
+
+    padding: 7px;
+
+    &:nth-child(even) {
+        flex-basis: calc(100% / 2);
+    }
+
+    @media screen and (max-width: 1000px) {
+        flex-basis: calc(100% / 3);
+        &:nth-child(even) {
+            flex-basis: calc(100% / 3);
+        }
+    }
+
+    @media screen and (max-width: 650px) {
+        flex-basis: 100%;
+        &:nth-child(even) {
+            flex-basis: calc(100%);
+        }
+    }
+}
