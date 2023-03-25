@@ -18,15 +18,16 @@
 
 <body>
 
-
-        {{-- выводим топ-панель --}}
-        @include('byweb.html.layouts.sup-top')
-        {{-- Выводим меню --}}
-        @include('byweb.html.layouts.menu')
-        {{-- вывыодим слайдер --}}
-        @yield('slider')
+<header>
+    {{-- выводим топ-панель --}}
+    @include('byweb.html.layouts.sup-top')
+    {{-- Выводим меню --}}
+    @include('byweb.html.layouts.menu')
+    {{-- вывыодим слайдер --}}
+    @yield('slider')
         {{-- вывыодим полосу --}}
         @yield('polosa')
+</header>
 
         {{-- верхний контент --}}
         @yield('top-contents')
@@ -42,10 +43,32 @@
 
 
 
+<script>
+    //залипание меню
+    window.onscroll = function() {
+        myFixMenu("#nav");
+
+    }
+
+
+    function myFixMenu(myclass = '') {
+
+        let navbar = document.querySelector(myclass);
+        let sticky = navbar.offsetTop;
+
+        if (window.pageYOffset > sticky) {
+
+            //console.log(window.pageYOffset);
+            // console.log(sticky);
+            navbar.classList.add("sticky")
+        } else {
+            navbar.classList.remove("sticky");
+        }
+    }
+</script>
 
 
 
 
-
- </body>
+</body>
 </html>

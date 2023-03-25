@@ -1,7 +1,7 @@
 <div id='slider'>
 
     <div @if($item->thumbnail) class='slider-img' style="background: url('{!! asset('uploads/'.$item->thumbnail)  !!}') no-repeat; background-size: cover;"@endif>
-
+    </div>
 
     <div class="container ">
 
@@ -14,7 +14,7 @@
         </div>
 
     </div>
-    </div>
+
 
 
 </div>

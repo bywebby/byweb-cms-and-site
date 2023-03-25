@@ -1,6 +1,5 @@
 #slider {
-    height: calc(100vh - 30px - 69px);
-    //display: none;
+    height: 100vh;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -11,30 +10,36 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    flex-width: wrap;
+    flex-wrap: wrap;
 }
 
 .slider-img {
     position: absolute;
     width: 100%;
-    height: calc(100vh - 30px - 69px);
+    height: 100vh;
     background: $blue;
     background: linear-gradient(0deg, rgba(115,195,232,1) 0%, rgba(255,255,255,1) 100%);
     background-size: cover;
 
+    @media screen and (max-width: 750px)  {
+        opacity: 0.3;
+    }
+
 }
 
 .slider-item {
-
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    //height: 500px;
-    //min-height: 500px;
-    height: calc(100vh - 30px - 69px);
-    flex-grow: 1;
+    height: 100vh;
+    //flex-grow: 1;
     justify-content: center;
-    //align-self: center;
+    width: 1490px;
+    min-height: 330px;
+
+    @media screen and (max-width: 750px) {
+        width: 100%;
+    }
 
 }
 
@@ -42,21 +47,42 @@
 
     display: flex;
     flex-flow: column;
-    //height: 100%;
     width: 40%;
-    //align-self: center;
     justify-content: center;
 
-    //z-index: 100;
+    @media screen and (max-width: 1350px) {
+        width: 30%;
+    }
+
+
+    @media screen and (max-width: 850px) {
+        width: 20%;
+    }
+
+    @media screen and (max-width: 750px) {
+        width: 100%;
+        text-align: center;
+    }
+
+
 
     h1 {
-        font-size: 3rem;
+        font-size: 2.5rem;
         padding-bottom: 10px;
         z-index: 100;
+
+        @media screen and (max-width: 1450px) {
+            font-size: 2rem;
+        }
+
+        @media screen and (max-width: 960px) {
+            font-size: 1.5rem;
+        }
+
     }
 
     h3 {
-        padding: 15px 0 0 0;
+        padding: 5px 0 0 0;
         color: #b64545;
     }
 
@@ -64,12 +90,19 @@
         padding: 0;
         color: #b64545;
         text-decoration: none;
+
+        @media screen and (max-width: 1000px) {
+
+            font-size:1.2rem;
+
+        }
+
     }
 
     p {
         color: #076ad0;
         font-weight: bold;
-        font-size: 1.1rem;
+        //font-size: 1.1rem;
         z-index: 100;
     }
 

@@ -9,9 +9,15 @@ import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold.js';
 import CKFinder from '@ckeditor/ckeditor5-ckfinder/src/ckfinder.js';
 import CKFinderUploadAdapter from '@ckeditor/ckeditor5-adapter-ckfinder/src/uploadadapter.js';
 import CloudServices from '@ckeditor/ckeditor5-cloud-services/src/cloudservices.js';
+import Code from '@ckeditor/ckeditor5-basic-styles/src/code.js';
 import CodeBlock from '@ckeditor/ckeditor5-code-block/src/codeblock.js';
 import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials.js';
+import FontBackgroundColor from '@ckeditor/ckeditor5-font/src/fontbackgroundcolor.js';
+import FontColor from '@ckeditor/ckeditor5-font/src/fontcolor.js';
+import FontSize from '@ckeditor/ckeditor5-font/src/fontsize.js';
+import GeneralHtmlSupport from '@ckeditor/ckeditor5-html-support/src/generalhtmlsupport.js';
 import Heading from '@ckeditor/ckeditor5-heading/src/heading.js';
+import HtmlEmbed from '@ckeditor/ckeditor5-html-embed/src/htmlembed.js';
 import Image from '@ckeditor/ckeditor5-image/src/image.js';
 import ImageCaption from '@ckeditor/ckeditor5-image/src/imagecaption.js';
 import ImageStyle from '@ckeditor/ckeditor5-image/src/imagestyle.js';
@@ -24,6 +30,7 @@ import List from '@ckeditor/ckeditor5-list/src/list.js';
 import MediaEmbed from '@ckeditor/ckeditor5-media-embed/src/mediaembed.js';
 import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph.js';
 import PasteFromOffice from '@ckeditor/ckeditor5-paste-from-office/src/pastefromoffice.js';
+import SourceEditing from '@ckeditor/ckeditor5-source-editing/src/sourceediting.js';
 import Table from '@ckeditor/ckeditor5-table/src/table.js';
 import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar.js';
 import TextTransformation from '@ckeditor/ckeditor5-typing/src/texttransformation.js';
@@ -38,9 +45,15 @@ Editor.builtinPlugins = [
 	CKFinder,
 	CKFinderUploadAdapter,
 	CloudServices,
+	Code,
 	CodeBlock,
 	Essentials,
+	FontBackgroundColor,
+	FontColor,
+	FontSize,
+	GeneralHtmlSupport,
 	Heading,
+	HtmlEmbed,
 	Image,
 	ImageCaption,
 	ImageStyle,
@@ -53,6 +66,7 @@ Editor.builtinPlugins = [
 	MediaEmbed,
 	Paragraph,
 	PasteFromOffice,
+	SourceEditing,
 	Table,
 	TableToolbar,
 	TextTransformation
@@ -60,6 +74,7 @@ Editor.builtinPlugins = [
 
 // Editor configuration.
 Editor.defaultConfig = {
+
 	toolbar: {
 		items: [
 			'heading',
@@ -67,17 +82,27 @@ Editor.defaultConfig = {
 			'bold',
 			'italic',
 			'link',
+			'blockQuote',
+			'|',
+			'fontSize',
+			'fontColor',
+			'fontBackgroundColor',
+			'|',
 			'bulletedList',
 			'numberedList',
 			'|',
-			'outdent',
-			'indent',
-			'|',
-			'blockQuote',
-			'imageUpload',
-			'insertTable',
 			'mediaEmbed',
+			'|',
+			'undo',
+			'redo',
+			'|',
+			'insertTable',
+			'|',
+			'code',
 			'codeBlock',
+			'sourceEditing',
+			'htmlEmbed',
+			'|',
 			'CKFinder'
 		]
 	},

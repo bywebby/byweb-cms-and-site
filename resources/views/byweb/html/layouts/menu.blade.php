@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" id="nav">
     <div class="container">
         <div class="nav">
             <div id="logo">

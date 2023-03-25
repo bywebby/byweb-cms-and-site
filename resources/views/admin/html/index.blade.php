@@ -56,28 +56,44 @@
 
         <script>
 
+            // import SourceEditing from '@ckeditor/ckeditor5-source-editing/src/sourceediting.js';
+
             if( document.querySelector( '#content' )) {
+
                 ClassicEditor.create( document.querySelector( '#content' ), {
-                        toolbar: [
+
+                    toolbar: [
                             'heading',
                             '|',
                             'bold',
                             'italic',
                             'link',
+                            'blockQuote',
+                            '|',
+                            'fontSize',
+                            'fontColor',
+                            'fontBackgroundColor',
+                            '|',
                             'bulletedList',
                             'numberedList',
                             '|',
-                            // 'outdent',
-                            // 'indent',
-                            '|',
-                            // 'blockQuote',
-                            // 'imageUpload',
-                            'insertTable',
                             'mediaEmbed',
-                            // 'codeBlock',
+                            '|',
+                            'undo',
+                            'redo',
+                            '|',
+                            'insertTable',
+                            '|',
+                            'code',
+                            'codeBlock',
+                            'sourceEditing',
+                            'htmlEmbed',
+                            '|',
                             'CKFinder'
                         ]
-                    } )
+
+                    }
+                     )
                     .catch( error => {
                         console.error( error );
                     } );
