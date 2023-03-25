@@ -1,0 +1,54 @@
+.btn, .btn-slider {
+
+    display: inline-block;
+    position: relative;
+    color: $white;
+    border: 1px solid $white;
+    border-radius: 10px;
+    padding: 10px 15px;
+
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0), 0 2px 2px 0 rgba(0, 0, 0, 0), 0 2px 2px 0 rgba(0, 0, 0, 0), 0 7px 10px 0 rgba(0, 0, 0, 0.1), 0 1px 1px 0 rgba(0, 0, 0, 0), 0 1px 1px 0 rgba(0, 0, 0, 0);
+    overflow: hidden;
+
+}
+
+.btn {
+    background: $pink-light;
+    text-transform: uppercase;
+    font-weight: normal;
+    &:hover {
+        background: $black;
+    }
+}
+
+.btn-slider {
+    background: $black;
+    font-weight: bold;
+    &:hover {
+        background: $pink;
+    }
+
+    &::before {
+        position: absolute;
+        background-color: rgba(255, 255, 255, 0.6);
+        height: 100%;
+        left: 0;
+        top: 0;
+        transform: translateX(-4em) skewX(-45deg);
+        width: 2.5em;
+        content: "";
+        filter: blur(10px);
+        animation: move-light 3.5s infinite;
+        z-index: 1000;
+    }
+}
+
+//анимационный блик на кнопке
+@keyframes move-light {
+    0% {
+        transform: translateX(-4em) skewX(-45deg);
+    }
+    100% {
+        transform: translateX(100em) skewX(-45deg);
+    }
+}

@@ -5,7 +5,8 @@
     display: block;
 
     strong {
-        color: #fe7676;
+        color: $pink;
+        font-weight: normal;
     }
 }
 
@@ -25,7 +26,7 @@
         flex-basis: calc(100% / 2);
     }
 
-    @media screen and (max-width: 1000px) {
+    @media screen and (max-width: 1110px) {
         flex-basis: calc(100% / 3);
         &:nth-child(even) {
             flex-basis: calc(100% / 3);

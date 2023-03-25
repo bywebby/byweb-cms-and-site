@@ -1,0 +1,23 @@
+.content-top {
+
+}
+.content-top-item{
+    display: flex;
+    justify-content: space-between;
+}
+
+.content-top-item {
+    figure {
+
+        flex-basis: 20%;
+    }
+    img {
+        max-width: 460px;
+    }
+}
+
+.content-top-item-txt {
+
+    flex-basis: 80%;
+
+}

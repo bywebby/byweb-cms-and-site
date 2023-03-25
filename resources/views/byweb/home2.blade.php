@@ -24,7 +24,7 @@
 
         {{-- модуль гланый текст --}}
             @section('top-contents')
-                @include('byweb.modules.contents.content-1')
+                @include('byweb.html.layouts.contents.content-1')
             @endsection
 
         {{-- модуль почему мы --}}
@@ -44,16 +44,16 @@
 
         {{-- модуль текст под ценами  --}}
             @section('content-2')
-                @include('byweb.modules.contents.content-2')
+                @include('byweb.html.layouts.contents.content-2')
             @endsection
 
         {{-- модуль как заказать  --}}
             @section('content-3')
-                @include('byweb.modules.contents.content-3')
+                @include('byweb.html.layouts.contents.content-3')
             @endsection
 
         {{-- модуль отзывы  --}}
             @section('content-4')
-                @include('byweb.modules.contents.content-4')
+                @include('byweb.html.layouts.contents.content-4')
             @endsection
 {{-- позиции модулей конец --}}

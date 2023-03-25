@@ -13,6 +13,7 @@
     <meta name="description" content="@yield('description')" />
 	<link href="{{ URL::current() }}" rel="canonical" />
 	<link href="{{ asset("tpl/byweb/css/template.css") }}" rel="stylesheet" type="text/css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
 </head>
 
@@ -39,11 +40,13 @@
 
 
 
-{{--<script src="{{ asset('tpl/byweb/js/mod_icemegamenu/menu.js') }}" type="text/javascript"></script>--}}
+<script src="{{ asset('tpl/byweb/js/aos.js') }}" type="text/javascript"></script>
 
 
 
 <script>
+    //инициализация aos
+    AOS.init();
     //залипание меню
     window.onscroll = function() {
         myFixMenu("#nav");

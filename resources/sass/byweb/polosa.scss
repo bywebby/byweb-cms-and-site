@@ -1,0 +1,57 @@
+.polosa {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    color: $white;
+}
+
+.polosa-item {
+    box-sizing: border-box;
+    flex-basis: calc(100% / 4);
+    padding: 20px 7px;
+
+    h2, h3 {
+        font-size: 1rem;
+        text-transform: uppercase;
+        color: $white;
+    }
+
+
+
+
+//четные
+    &:nth-child(even) {
+        background: $purple-dark;
+    }
+//нечетные
+    &:nth-child(odd) {
+        background: $orange;
+    }
+    //первый элемент
+    &:first-child {
+        background: $green-dark;
+    }
+    //последний элемент
+    &:last-child {
+        background: $brown;
+    }
+
+    &:hover {
+
+        background: $pink;
+
+    }
+
+    @media screen and (max-width: 650px) {
+        flex-basis: 50%;
+    }
+
+    @media screen and (max-width: 320px) {
+        flex-basis: 100%;
+    }
+
+
+}
+
+

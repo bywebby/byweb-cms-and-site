@@ -49,5 +49,11 @@ mix.scripts([
 
 ], 'public/tpl/admin/dist/js/tpl-scripts.js')
 
+//подключаем js frontend
+mix.scripts([
+    'resources/tpl/byweb/js/aos.js',
+
+], 'public/tpl/byweb/js/aos.js')
+
 mix.copyDirectory('resources/tpl/admin/plugins/fontawesome-free/webfonts','public/tpl/admin/dist/webfonts');
 mix.copyDirectory('resources/tpl/admin/img', 'public/tpl/admin/dist/img');

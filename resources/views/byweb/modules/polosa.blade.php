@@ -1,8 +1,8 @@
-<section class="row polosa">
-    <div class='flex'>
+<section class="row ">
+    <div class='polosa'>
 @foreach($items as $item)
-            <div class='item-4 green py-30 px-10'>
-                <p><strong>{{ $item->title }}</strong></p>
+            <div class='polosa-item'>
+                <h2>{{ $item->title }}</h2>
                 {!! $item->content !!}
             </div>
 @endforeach

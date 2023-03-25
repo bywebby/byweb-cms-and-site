@@ -10,19 +10,28 @@
 
 @foreach($data as $k => $item)
 
-    @switch($item->type_id)
+{{--    {{ dump($item->type->title) }}--}}
+
+    @switch($item->type->title)
     {{--    тип контента слайдер--}}
-        @case(1)
+        @case('Слайдер')
             @section('slider')
                 @include('byweb.modules.slide', ['item' => $item])
             @endsection
         @break
-    {{--    тип контента верхняя панель--}}
-        @case(2)
+    {{--    тип контента верхняя панель top-menu--}}
+        @case('Полоса')
             @php
             /** @var $item */
+// Добавляем в массив все item из типа контнета полоса
                 $itemsPolosa[] = $item;
             @endphp
+        @break
+        {{--    тип контента главная статья--}}
+        @case('Главная статья')
+            @section('top-contents')
+                @include('byweb.html.layouts.contents.content-1', ['item' => $item])
+            @endsection
         @break
 
     @endswitch
