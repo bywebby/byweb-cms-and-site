@@ -84,11 +84,12 @@
                                 <p>Типы статей</p>
                             </a>
                         </li>
-
-
                     </ul>
-
                 </li>
+
+
+                @include('admin.html.layouts.menu.modules')
+
                 <li class="nav-item">
                     <a href="../widgets.html" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>

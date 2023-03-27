@@ -19,7 +19,7 @@
                                     </div>
                                     <!-- /.card-header -->
                                     <!-- form start -->
-                                    <form method="post" action=" {{ route('types-posts.update',['type' => $type->id]) }}">
+                                    <form method="post" action=" {{ route('types-posts.update',['types_post' => $type->id]) }}">
 
                                         @csrf
                                         @method('PUT')

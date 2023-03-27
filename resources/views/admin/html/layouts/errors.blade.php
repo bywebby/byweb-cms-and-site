@@ -31,9 +31,9 @@
                     @endif
 
                         @if( session('danger') )
-                            <div class="alert alert-danger">
+                            <p class="alert-danger p-2 text-center text-uppercase">
                                 {!!  session('danger')  !!}
-                            </div>
+                            </p>
                         @endif
 
 

@@ -17,6 +17,12 @@ class Type extends Model
 
     }
 
+    public function modules() {
+
+        return $this->hasMany(Module::class);
+
+    }
+
 
 
 }

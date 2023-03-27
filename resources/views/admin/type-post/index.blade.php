@@ -83,7 +83,7 @@
                                         </table>
                                     </div>
                                 @else
-                                    <p>Категорий пока нет...</p>
+                                    <p class="alert-danger p-2 text-center text-uppercase">Типы статей еще не созданы...</p>
                                 @endif
                             </div>
                             <!-- /.card-body -->

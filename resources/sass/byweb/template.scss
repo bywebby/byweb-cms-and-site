@@ -63,6 +63,7 @@ p {
 }
 
 .flex {
+    box-sizing: border-box;
     display: flex;
     flex-wrap: wrap;
 }
@@ -76,7 +77,15 @@ a {
     color: $pink-light;
 }
 
+.item-1 {
+    box-sizing: border-box;
+    flex-basis: 100%;
+}
 
+.item-2 {
+    box-sizing: border-box;
+    flex-basis: 50%;
+}
 
 .item-4 {
     box-sizing: border-box;
@@ -110,6 +119,13 @@ a {
 
 .py-30 {
     padding: 30px 0;
+}
+pt-30 {
+    padding-top: 30px;
+}
+
+.pb-30 {
+    padding-bottom: 30px;
 }
 
 .py-50 {padding: 50px 0;}

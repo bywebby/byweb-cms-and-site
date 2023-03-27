@@ -24,10 +24,10 @@ class UpdateCategory extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|min:10|max:255',
-            'slug' =>  'required|min:10|max:255',
-            'meta_title' => 'required|min:10|max:255',
-            'meta_desc' => 'required|min:10|max:255',
+            'title' => 'required|min:3|max:255',
+            'slug' =>  'required|min:3|max:255',
+            'meta_title' => 'required|min:3|max:255',
+            'meta_desc' => 'required|min:3|max:255',
         ];
     }
 }

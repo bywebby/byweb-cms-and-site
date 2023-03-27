@@ -1,37 +1,18 @@
 const mix = require('laravel-mix');
 
-/*
- |--------------------------------------------------------------------------
- | Mix Asset Management
- |--------------------------------------------------------------------------
- |
- | Mix provides a clean, fluent API for defining some Webpack build steps
- | for your Laravel application. By default, we are compiling the Sass
- | file for the application as well as bundling up all the JS files.
- |
- */
-
 // mix.js('resources/js/app.js', 'public/js')
 //     .sass('resources/sass/app.scss', 'public/tpl/byweb/css/template.css');
 
+mix.sass('resources/sass/app.scss', 'public/tpl/byweb/css/template.css')
+    // подключаем стайлы aos анимации с ноды, js не заработал подключил ниде просто с оф сайта
+    .sass('node_modules/aos/src/sass/aos.scss', 'public/tpl/byweb/css');
 
-mix.sass('resources/sass/app.scss', 'public/tpl/byweb/css/template.css');
+// подключаем js frontend
+mix.scripts([
+    'resources/tpl/byweb/js/aos.js',
+], 'public/tpl/byweb/js/aos.js')
 
-//подключаем css для генерации фроненда cmd
-// mix.styles([
-//     'resources/tpl/byweb/css/template.css',
-//     'resources/tpl/byweb/css/nav-menu.css',
-//     'resources/tpl/byweb/css/slider.css',
-// ], 'public/tpl/byweb/css/template.css');
-
-// mix.copyDirectory('resources/tpl/byweb/img','public/tpl/byweb/img');
-
-//подключаем js
-// mix.scripts([
-// 'resources/tpl/byweb/js/jquery.min.js',
-// ], 'public/tpl/byweb/js/tpl-scripts.js')
-
-//подключаем админку
+//подключаем стайлы админки
 mix.styles([
 
     'resources/tpl/admin/plugins/fontawesome-free/css/all.css',
@@ -47,13 +28,13 @@ mix.scripts([
     'resources/tpl/admin/js/adminlte.js',
     'resources/tpl/admin/js/demo.js'
 
-], 'public/tpl/admin/dist/js/tpl-scripts.js')
+], 'public/tpl/admin/dist/js/tpl-scripts.js');
 
-//подключаем js frontend
-mix.scripts([
-    'resources/tpl/byweb/js/aos.js',
-
-], 'public/tpl/byweb/js/aos.js')
-
+//копируем файлы из директорий
 mix.copyDirectory('resources/tpl/admin/plugins/fontawesome-free/webfonts','public/tpl/admin/dist/webfonts');
 mix.copyDirectory('resources/tpl/admin/img', 'public/tpl/admin/dist/img');
+
+//frontednd design
+mix.copyDirectory('resources/tpl/byweb/img', 'public/tpl/byweb/img');
+mix.copyDirectory('resources/tpl/byweb/webfonts', 'public/tpl/byweb/webfonts');
+mix.scripts(['resources/tpl/byweb/css/all.css'], 'public/tpl/byweb/css/all.css');

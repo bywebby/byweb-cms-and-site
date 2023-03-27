@@ -38,11 +38,28 @@
 
 @endforeach
 
-    {{-- модуль полоса --}}
+{{-- модуль полоса --}}
+@if(isset($itemsPolosa))
                 @section('polosa')
                     @include('byweb.modules.polosa', ['items' => $itemsPolosa])
                 @endsection
+@endif
 {{-- конец модуль полоса --}}
+
+{{-- модули --}}
+@if(isset($modules))
+    @foreach($modules as $module)
+{{--        {{ dd($module->types->title) }}--}}
+        @switch($module->types->title)
+            @case('Почему мы')
+                    @section('why-us')
+                        @include('byweb.modules.why-us', ['item' => $module, 'data' => $data])
+                    @endsection
+                @break
+        @endswitch
+    @endforeach
+@endif
+{{-- конец модули --}}
 
 
 

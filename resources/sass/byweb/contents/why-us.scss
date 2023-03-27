@@ -1,0 +1,16 @@
+.why-us {
+    background: url("/tpl/byweb/img/why-us.jpg");
+
+    a {
+        color: $indigo;
+        font-weight: bold;
+        &:hover {
+            color: $red;
+        }
+    }
+}
+
+.why-us-item-header h3 {
+    font-size: 1.5rem;
+    font-weight: normal;
+}

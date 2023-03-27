@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\TypeController;
 use App\Http\Controllers\Front\HomeController;
+use App\Http\Controllers\Admin\ModuleController;
 //Очистка кеша
 Route::get('/clear', function () {
     Artisan::call('cache:clear');
@@ -36,6 +37,9 @@ Route::get('/clear', function () {
     Route::resource('posts',PostController::class);
 //удаление изображения с поста
     Route::get('posts/{id}/edit/delImg', [PostController::class, 'delImg'])->name('posts.edit.delImg');
+
+
+    Route::resource('modules', ModuleController::class);
 });
 
 

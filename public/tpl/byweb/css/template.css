@@ -75,6 +75,7 @@ p {
 }
 
 .flex {
+  box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
 }
@@ -86,6 +87,16 @@ p {
 
 a {
   color: #fb9898;
+}
+
+.item-1 {
+  box-sizing: border-box;
+  flex-basis: 100%;
+}
+
+.item-2 {
+  box-sizing: border-box;
+  flex-basis: 50%;
 }
 
 .item-4 {
@@ -119,6 +130,14 @@ a {
 
 .py-30 {
   padding: 30px 0;
+}
+
+pt-30 {
+  padding-top: 30px;
+}
+
+.pb-30 {
+  padding-bottom: 30px;
 }
 
 .py-50 {
@@ -603,5 +622,23 @@ a {
 
 .content-top-item-txt {
   flex-basis: 80%;
+}
+
+.why-us {
+  background: url("/tpl/byweb/img/why-us.jpg");
+}
+
+.why-us a {
+  color: #076ad0;
+  font-weight: bold;
+}
+
+.why-us a:hover {
+  color: #ff3841;
+}
+
+.why-us-item-header h3 {
+  font-size: 1.5rem;
+  font-weight: normal;
 }
 

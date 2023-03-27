@@ -1,6 +1,8 @@
 {
     "/tpl/byweb/css/template.css": "/tpl/byweb/css/template.css",
+    "/tpl/byweb/css/aos.css": "/tpl/byweb/css/aos.css",
+    "/tpl/byweb/js/aos.js": "/tpl/byweb/js/aos.js",
     "/tpl/admin/dist/css/template.css": "/tpl/admin/dist/css/template.css",
     "/tpl/admin/dist/js/tpl-scripts.js": "/tpl/admin/dist/js/tpl-scripts.js",
-    "/tpl/byweb/js/aos.js": "/tpl/byweb/js/aos.js"
+    "/tpl/byweb/css/all.css": "/tpl/byweb/css/all.css"
 }
