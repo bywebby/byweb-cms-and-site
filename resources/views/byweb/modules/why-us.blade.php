@@ -19,17 +19,23 @@
                 @if($module->types->id == $item->type_id)
 
                     <div class="item-2">
-                        <div class="why-us-item-header">
-                            <h3 >{{ $item->title }}</h3>
+
+
+                        <div class="why-us-icons">
+                            <div class="why-us-item-icon">
+
+                                {!! $item->description !!}
+
+                            </div>
+{{--                            data-aos="fade-up-right" data-aos-delay="500" data-aos-once="false"--}}
+                            <div class="why-us-item-txt" >
+                                <h3>{{ $item->title }}</h3>
+                                {!! $item->content !!}
+                            </div>
                         </div>
 
 
-                        <div class="why-us-desc-item">
-                            {{ $item->description }}
-                        </div>
-                        <div class="why-us-cont-item" data-aos="fade-up-right" data-aos-delay="500" data-aos-once="false">
-                            {!! $item->content !!}
-                        </div>
+
                     </div>
 
 
@@ -43,7 +49,6 @@
 </div>
 
 
-<i class="fa-brands fa-facebook"></i>
 
 
 

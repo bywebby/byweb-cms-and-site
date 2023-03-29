@@ -85,6 +85,12 @@ a {
 .item-2 {
     box-sizing: border-box;
     flex-basis: 50%;
+
+    @media screen and (max-width:720px){
+        flex-basis: 100%;
+    }
+
+
 }
 
 .item-4 {

@@ -99,6 +99,12 @@ a {
   flex-basis: 50%;
 }
 
+@media screen and (max-width: 720px) {
+  .item-2 {
+    flex-basis: 100%;
+  }
+}
+
 .item-4 {
   box-sizing: border-box;
   flex-basis: 25%;
@@ -340,6 +346,12 @@ pt-30 {
   padding: 0 20px;
 }
 
+@media screen and (max-width: 820px) {
+  .nav-menu {
+    padding: 0;
+  }
+}
+
 .menu-list {
   display: flex;
   flex-wrap: wrap;
@@ -575,6 +587,15 @@ pt-30 {
   color: #FFF;
 }
 
+.polosa-item .polosa-item-i {
+  padding-bottom: 15px;
+  font-size: 3rem;
+}
+
+.polosa-item .polosa-item-i a {
+  color: #FFF;
+}
+
 .polosa-item:nth-child(even) {
   background: #423550;
 }
@@ -595,13 +616,13 @@ pt-30 {
   background: #fe7676;
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 820px) {
   .polosa-item {
     flex-basis: 50%;
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 420px) {
   .polosa-item {
     flex-basis: 100%;
   }
@@ -612,16 +633,46 @@ pt-30 {
   justify-content: space-between;
 }
 
+@media screen and (max-width: 820px) {
+  .content-top-item {
+    flex-wrap: wrap;
+  }
+}
+
 .content-top-item figure {
   flex-basis: 20%;
+}
+
+@media screen and (max-width: 820px) {
+  .content-top-item figure {
+    flex-basis: 100%;
+    text-align: center;
+    padding-bottom: 20px;
+  }
 }
 
 .content-top-item img {
   max-width: 460px;
 }
 
+@media screen and (max-width: 820px) {
+  .content-top-item img {
+    width: 100%;
+  }
+}
+
 .content-top-item-txt {
   flex-basis: 80%;
+}
+
+@media screen and (max-width: 820px) {
+  .content-top-item-txt {
+    flex-basis: 100%;
+  }
+
+  .content-top-item-txt h2 {
+    text-align: center;
+  }
 }
 
 .why-us {
@@ -637,8 +688,39 @@ pt-30 {
   color: #ff3841;
 }
 
-.why-us-item-header h3 {
+.why-us-items .item-2 h3 {
   font-size: 1.5rem;
   font-weight: normal;
+  padding-bottom: 10px;
+}
+
+.why-us-icons {
+  display: flex;
+  margin: 10px 0;
+}
+
+.why-us-item-icon {
+  display: flex;
+  box-sizing: border-box;
+  color: #fe7676;
+  padding: 60px;
+  background: #faf6f1;
+  border-radius: 1000px;
+  height: 130px;
+  width: 130px;
+  border: 1px solid #fe7676;
+  margin: 0 15px;
+  text-align: center;
+  justify-content: center;
+}
+
+.why-us-item-icon i {
+  box-sizing: border-box;
+  align-self: center;
+  font-size: 54px;
+}
+
+.why-us-item-txt {
+  width: calc(100% - 130px);
 }
 
