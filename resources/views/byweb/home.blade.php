@@ -34,6 +34,14 @@
             @endsection
         @break
 
+        @case('Галерея')
+        @php
+            /** @var $item */
+        // Добавляем в массив все item из типа контнета полоса
+                $itemsGallery[] = $item;
+        @endphp
+        @break
+
     @endswitch
 
 @endforeach
@@ -60,6 +68,14 @@
     @endforeach
 @endif
 {{-- конец модули --}}
+
+{{-- модуль полоса --}}
+@if( isset($itemsGallery) )
+    @section('gallery')
+        @include('byweb.modules.gallery', ['items' => $itemsGallery])
+    @endsection
+@endif
+{{-- конец модуль полоса --}}
 
 
 

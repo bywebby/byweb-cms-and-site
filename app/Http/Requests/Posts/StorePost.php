@@ -27,7 +27,7 @@ class StorePost extends FormRequest
         //валидация постов
         return [
             'title' => 'required|min:5|max:255',
-            'slug' =>  'required|min:10|max:255',
+            'slug' =>  'required|min:3|max:255',
             'description' =>  'nullable',
             'type_id' =>  'required|integer',
             'content' =>  'required',
