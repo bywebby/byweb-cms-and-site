@@ -21,6 +21,9 @@
 
 <body>
 
+
+<div id="app">
+
 <header>
     {{-- выводим топ-панель --}}
     @include('byweb.html.layouts.sup-top')
@@ -40,17 +43,13 @@
         @yield('gallery')
 
 
-
-
-
-
-
+</div>
 
 <script src="{{ asset('tpl/byweb/js/aos.js') }}" type="text/javascript"></script>
+<script src="{{ asset('tpl/byweb/js/app.js') }}" type="text/javascript"></script>
 
 
-
-<script>
+<script type="text/javascript">
     //инициализация aos
     AOS.init();
     //залипание меню
@@ -59,7 +58,6 @@
 
     }
 
-
     function myFixMenu(myclass = '') {
 
         let navbar = document.querySelector(myclass);
@@ -67,17 +65,13 @@
 
         if (window.pageYOffset > sticky) {
 
-            //console.log(window.pageYOffset);
-            // console.log(sticky);
             navbar.classList.add("sticky")
         } else {
             navbar.classList.remove("sticky");
         }
     }
+
 </script>
-
-
-
 
 </body>
 </html>

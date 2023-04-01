@@ -38,7 +38,7 @@
         @php
             /** @var $item */
         // Добавляем в массив все item из типа контнета полоса
-                $itemsGallery[] = $item;
+                $itemsGallery[] = ['title' => $item->title, 'desc' => $item->description, 'img' => $item->thumbnail];
         @endphp
         @break
 
@@ -72,10 +72,13 @@
 {{-- модуль полоса --}}
 @if( isset($itemsGallery) )
     @section('gallery')
-        @include('byweb.modules.gallery', ['items' => $itemsGallery])
+        @include('byweb.modules.gallery', ['items' => json_encode($itemsGallery)])
     @endsection
 @endif
 {{-- конец модуль полоса --}}
+
+
+{{--{{dd(json_encode($itemsGallery)}}--}}
 
 
 
