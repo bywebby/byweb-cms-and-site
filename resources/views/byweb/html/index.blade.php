@@ -41,7 +41,8 @@
         @yield('why-us')
         {{--галерея--}}
         @yield('gallery')
-
+        {{--    цены --}}
+        @yield('ceny')
 
 </div>
 

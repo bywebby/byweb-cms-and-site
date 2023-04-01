@@ -6,8 +6,18 @@
 
 .gallery-item {
     box-sizing: border-box;
-    flex-basis: calc(100%/5);
+    flex-basis: calc(100%/6);
     border: 1px solid gold;
+
+    @media screen and (max-width: 1350px) {
+        flex-basis: calc(100%/3);
+    }
+    @media screen and (max-width: 590px) {
+        flex-basis: calc(100%/2);
+    }
+    @media screen and (max-width: 420px) {
+        flex-basis: calc(100%);
+    }
 }
 
 .gallery-item-img {
@@ -75,3 +85,5 @@
     margin: 0 auto;
     padding: 30px;
 }
+
+

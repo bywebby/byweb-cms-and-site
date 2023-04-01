@@ -661,8 +661,23 @@ pt-30 {
 
 .gallery-item {
   box-sizing: border-box;
-  flex-basis: 20%;
+  flex-basis: 16.6666666667%;
   border: 1px solid gold;
+}
+@media screen and (max-width: 1350px) {
+  .gallery-item {
+    flex-basis: 33.3333333333%;
+  }
+}
+@media screen and (max-width: 590px) {
+  .gallery-item {
+    flex-basis: 50%;
+  }
+}
+@media screen and (max-width: 420px) {
+  .gallery-item {
+    flex-basis: 100%;
+  }
 }
 
 .gallery-item-img {

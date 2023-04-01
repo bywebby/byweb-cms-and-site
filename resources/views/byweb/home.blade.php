@@ -35,11 +35,20 @@
         @break
 
         @case('Галерея')
-        @php
-            /** @var $item */
-        // Добавляем в массив все item из типа контнета полоса
-                $itemsGallery[] = ['title' => $item->title, 'desc' => $item->description, 'img' => $item->thumbnail];
-        @endphp
+            @php
+                /** @var $item */
+            // Добавляем в массив все item из типа контнета полоса
+                   // $itemsGallery[] = ['title' => $item->title, 'desc' => $item->description, 'img' => $item->thumbnail];
+                    $itemsGallery[] = $item->toArray();
+            @endphp
+        @break
+
+        @case('Цены')
+            @php
+                /** @var $item */
+            // Добавляем в массив все item из типа контнета цены
+                    $itemsCeny[] = $item->toArray();
+            @endphp
         @break
 
     @endswitch
@@ -72,13 +81,22 @@
 {{-- модуль полоса --}}
 @if( isset($itemsGallery) )
     @section('gallery')
-        @include('byweb.modules.gallery', ['items' => json_encode($itemsGallery)])
+{{--        json для передачи в компонет vue --}}
+        <byweb-gallery items="{{json_encode($itemsGallery)}}"></byweb-gallery>
     @endsection
 @endif
 {{-- конец модуль полоса --}}
 
+{{-- модуль полоса --}}
+@if( isset($itemsCeny) )
+@section('ceny')
+    {{--        json для передачи в компонет vue --}}
+    <byweb-ceny items="{{json_encode($itemsCeny)}}"></byweb-ceny>
+@endsection
+@endif
+{{-- конец модуль полоса --}}
 
-{{--{{dd(json_encode($itemsGallery)}}--}}
+{{--{{dd( $itemsGallery,  $itemsGallery2)}}--}}
 
 
 
