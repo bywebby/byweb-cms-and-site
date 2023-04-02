@@ -14,7 +14,7 @@ class Category extends Model {
 //отношение одна категория ко многим постам
     public function posts() {
 
-        return $this->hasMany(Post::class);
+        return $this->hasMany(Post::class,'category_id');
 
     }
 

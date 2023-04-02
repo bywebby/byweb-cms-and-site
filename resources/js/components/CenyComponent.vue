@@ -8,9 +8,6 @@
 
         <div class="ceny-descprice" v-html="item.content">
 
-
-
-
 <!--            <label><input type="checkbox" value="50" name="pay1_2" class="pay" checked="">Создание дизайна</label><br>-->
 <!--            <label><input type="checkbox" value="30" name="pay1_3" class="pay" checked="">Наполнение</label><br>-->
 

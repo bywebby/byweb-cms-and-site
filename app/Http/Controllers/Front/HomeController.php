@@ -7,6 +7,7 @@ use App\Models\admin\Module;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\admin\Post;
+use function PHPUnit\Framework\isEmpty;
 
 class HomeController extends Controller {
 
@@ -26,8 +27,11 @@ class HomeController extends Controller {
 
         //берем через связь
         $data = $cat->posts()->get();
-//        dd($modules, $data);
-         //dd($data);
+//dd($data);
+        //проверяем на пустоту посты
+        self::chekEmtyPost($data);
+
+
             return view('byweb.home', compact('data', 'modules'));
     }
 
@@ -35,6 +39,12 @@ class HomeController extends Controller {
     private static function errorPage($cat){
 //        dd($cat);
         if(!$cat || $cat = null) return abort(404,'Ошибка 404 - страница не существует!');
+    }
+
+//если пусто уведомления, что нужно дабавить посты
+    private static function chekEmtyPost($data) {
+        if($data->isEmpty()) return abort(404,'Добавьте посты в административной части!');
+
     }
 
 
