@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class CalcTitle extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['title'];
+
+
 }

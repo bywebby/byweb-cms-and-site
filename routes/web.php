@@ -13,6 +13,8 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\TypeController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Admin\ModuleController;
+use App\Http\Controllers\Admin\Calc\TitleController;
+use App\Http\Controllers\Admin\Calc\ClassController;
 //Очистка кеша
 Route::get('/clear', function () {
     Artisan::call('cache:clear');
@@ -37,9 +39,19 @@ Route::get('/clear', function () {
     Route::resource('posts',PostController::class);
 //удаление изображения с поста
     Route::get('posts/{id}/edit/delImg', [PostController::class, 'delImg'])->name('posts.edit.delImg');
-
-
+//модули фронта для группировки контента
     Route::resource('modules', ModuleController::class);
+
+//компонент колькулятора
+    Route::prefix('calc')->name('calc.')->group(function () {
+            Route::resource('title', TitleController::class);
+            Route::resource('class',ClassController::class);
+    });
+
+
+
+
+
 });
 
 
