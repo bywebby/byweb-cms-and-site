@@ -1,11 +1,8 @@
 @extends('admin.html.index')
-@section('title','Справочник услуг')
-
+@section('title','Справочник классов')
 
 @section('content')
     <div class="content-wrapper">
-
-
 
         <!-- Main content -->
         <section class="content">
@@ -15,30 +12,28 @@
                         <div class="card">
 
                             <div class="card-header">
-                                <h3 class="card-title">Справочник услуг</h3>
+                                <h3 class="card-title">Справочник классов</h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-
-{{--                                <a href="{{ route('calc.title.create') }}" class="btn btn-primary mb-3">--}}
-{{--                                    Создать категорию--}}
+{{--                                <a href="{{ route('calc.class.create') }}" class="btn btn-primary mb-3">--}}
+{{--                                    Создать класс--}}
 {{--                                </a>--}}
+                                <x-btn-create route="calc.class.create" title="Создать класс"></x-btn-create>
 
-                                <x-btn-create route="calc.title.create" title="Создать категорию"></x-btn-create>
-
-                                @if (count($categories))
+                                @if (count($data))
                                     <div class="table-responsive">
                                         <table class="table table-bordered table-hover text-nowrap">
                                             <thead>
                                             <tr>
                                                 <th style="width: 30px">№</th>
-                                                <th>Наименование категории</th>
+                                                <th>Наименование класса</th>
                                                 <th>Управление категориями</th>
                                             </tr>
                                             </thead>
                                             <tbody>
 
-                                            @foreach($categories as $k => $category)
+                                            @foreach($data as $k => $item)
                                                 <tr>
 
                                                     {{--считает количество элементов--}}
@@ -49,15 +44,15 @@
                                                     @endif
                                                     {{--конец подсчета количество элементов--}}
                                                     <td>
-                                                        <a href="{{route('calc.title.edit', ['title' => $category->id])}}">{{ $category->title }}</a>
+                                                        <a href="{{route('calc.class.edit', ['class' => $item->id])}}">{{ $item->title }}</a>
                                                     </td>
 
                                                     <td>
-                                                        <a href="{{ route('calc.title.edit', ['title' => $category->id]) }}" class="btn btn-info btn-sm float-left mr-1" title="Изменить категорию">
+                                                        <a href="{{ route('calc.class.edit', ['class' => $item->id]) }}" class="btn btn-info btn-sm float-left mr-1" title="Изменить класс">
                                                             <i class="fas fa-pencil-alt"></i>
                                                         </a>
 
-                                                        <form action="{{ route('calc.title.destroy', ['title' => $category->id]) }}" method="post" class="float-left">
+                                                        <form action="{{ route('calc.class.destroy', ['class' => $item->id]) }}" method="post" class="float-left">
 
                                                             @csrf
                                                             @method('DELETE')
@@ -76,22 +71,22 @@
                                         </table>
                                     </div>
                                 @else
-                                    <p>Категорий пока нет...</p>
+                                    <p>Классов пока нет...</p>
                                 @endif
                             </div>
-                            <!-- /.card-body -->
+
                             <div class="card-footer clearfix">
-                                {{ $categories->links() }}
+                                {{ $data->links() }}
                             </div>
                         </div>
-                        <!-- /.card -->
+
 
                     </div>
-                    <!-- /.col -->
+
                 </div>
-                <!-- /.row -->
-            </div><!-- /.container-fluid -->
+
+            </div>
         </section>
-        <!-- /.content -->
+
     </div>
 @endsection

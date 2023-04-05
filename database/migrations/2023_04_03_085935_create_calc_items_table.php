@@ -25,7 +25,7 @@ class CreateCalcItemsTable extends Migration
             $table->foreignIdFor(\App\Models\admin\calc\CalcModule::class)->constrained('calc_modules');
             //класс joomla, wp, bitrix ... справочник иконок
 //            $table->integer('calc_class_id')->unsigned()->default(0);
-            $table->foreignIdFor(\App\Models\admin\calc\CalcClass::class)->constrained('calc_classes');
+            $table->foreignIdFor(\App\Models\admin\calc\CalcClasses::class)->constrained('calc_classes');
             //radio chekbox правочник
 //            $table->integer('calc_type_id')->unsigned();
             $table->foreignIdFor(\App\Models\admin\calc\CalcType::class)->constrained('calc_types');

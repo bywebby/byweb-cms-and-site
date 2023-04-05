@@ -68,33 +68,28 @@ class TitleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $title
      * @return \Illuminate\Http\Response
      */
     public function edit($title)
     {
-
         $data = CalcTitle::findOrFail($title);
-
         return view('admin.calc.title.edit', compact('data'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  int  $title
      * @return \Illuminate\Http\Response
      */
     public function update(StoreTitle $request, $title)
     {
         $data = $request->only(['title']);
-
-        //$title = id in DB
-        CalcTitle::findOrFail($title)->update($data);
-
+        //$title - это id in DB, title в ресурсном контроллере параметр
+        CalcTitle::findOrFail($title);
+        CalcTitle::update($data);
         return redirect()->route('calc.title.edit', ['title' => $title])->with('success','Категоря обновлена');
-
     }
 
     /**
@@ -110,7 +105,7 @@ class TitleController extends Controller
         CalcTitle::destroy($id);
 
         return redirect()->route('calc.title.index')->with('success', 'Категоря удалена');
-        
+
 
     }
 }

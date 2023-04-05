@@ -14,7 +14,8 @@ use App\Http\Controllers\Admin\TypeController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Admin\ModuleController;
 use App\Http\Controllers\Admin\Calc\TitleController;
-use App\Http\Controllers\Admin\Calc\ClassController;
+use App\Http\Controllers\Admin\Calc\ClassesController;
+use App\Http\Controllers\Admin\Calc\TypesController;
 //Очистка кеша
 Route::get('/clear', function () {
     Artisan::call('cache:clear');
@@ -45,12 +46,9 @@ Route::get('/clear', function () {
 //компонент колькулятора
     Route::prefix('calc')->name('calc.')->group(function () {
             Route::resource('title', TitleController::class);
-            Route::resource('class',ClassController::class);
+            Route::resource('class',ClassesController::class);
+            Route::resource('types', TypesController::class);
     });
-
-
-
-
 
 });
 

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Calc;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ClassController extends Controller
+class TypesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,7 +24,7 @@ class ClassController extends Controller
      */
     public function create()
     {
-       return view('admin.calc.class.create');
+        return view('admin.calc.types.create');
     }
 
     /**
