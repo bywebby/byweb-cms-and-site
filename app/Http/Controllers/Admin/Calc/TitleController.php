@@ -87,8 +87,11 @@ class TitleController extends Controller
     {
         $data = $request->only(['title']);
         //$title - это id in DB, title в ресурсном контроллере параметр
-        CalcTitle::findOrFail($title);
-        CalcTitle::update($data);
+        $cat = CalcTitle::findOrFail($title);
+
+
+
+        $cat::where(['id' => $title])->update($data);
         return redirect()->route('calc.title.edit', ['title' => $title])->with('success','Категоря обновлена');
     }
 

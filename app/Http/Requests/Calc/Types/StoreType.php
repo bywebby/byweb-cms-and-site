@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Types;
+namespace App\Http\Requests\Calc\Types;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -23,10 +23,8 @@ class StoreType extends FormRequest
      */
     public function rules()
     {
-        //валидация
         return [
-            'title' => 'required|unique:calc_types|min:2|max:255',
-
+            ['title' => 'required|unique:calc_types|min:2|max:255'],
         ];
     }
 }
