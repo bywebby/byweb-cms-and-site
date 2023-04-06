@@ -25,6 +25,8 @@
 
                                         <x-select-field title="Выберите тип поля" name="title" :datatype="['checkbox', 'radio']" />
 
+
+
                                         <div class="card-footer">
                                             <button type="submit" class="btn btn-primary">Сохранить</button>
                                         </div>

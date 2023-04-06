@@ -8,6 +8,10 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Blade;
 
+//для глобальных переменных в автозагрузку и подключения сквозной переменной
+use App\Models\admin\Category;
+use App\Models\admin\Post;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -34,6 +38,11 @@ class AppServiceProvider extends ServiceProvider
         Blade::component('btn-create', Create::class);
         //Регистрация select для формы
         Blade::component('select-field', Select::class);
+
+
+        //глобальная переменная - подсчет категорий и постов
+        view()->share('countCategory', Category::all()->count());
+        view()->share('countPost', Post::all()->count());
 
     }
 }

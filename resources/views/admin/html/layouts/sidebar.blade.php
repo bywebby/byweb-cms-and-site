@@ -22,73 +22,17 @@
         </div>
 
         <!-- Sidebar Menu -->
+
+{{--    {{dd($key1)}}--}}
+
+
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <!-- Add icons to the links using the .nav-icon class
-                     with font-awesome or any other icon font library -->
 
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-copy"></i>
-                        <p>
-                            Категории
-                            <i class="fas fa-angle-left right"></i>
-                            <span class="badge badge-info right">6</span>
-                        </p>
-                    </a>
-
-                    <ul class="nav nav-treeview">
-
-                        <li class="nav-item">
-                            <a href="{{ route('categories.index') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Все категории</p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="{{ route('categories.create') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Создать</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
-                        <p>
-                           Статьи
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ route('posts.index') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Все статьи</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('posts.create') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Создать</p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="{{ route('types-posts.index') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Типы статей</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-
+                @include('admin.html.layouts.menu.categories')
+                @include('admin.html.layouts.menu.posts')
                 @include('admin.html.layouts.menu.modules')
+                @include('admin.html.layouts.menu.calc')
 
                 <li class="nav-item">
                     <a href="../widgets.html" class="nav-link">
@@ -230,7 +174,7 @@
                     </ul>
                 </li>
 
-                @include('admin.html.layouts.menu.calc')
+
 
 
                 <li class="nav-header">EXAMPLES</li>
@@ -359,135 +303,7 @@
                         </li>
                     </ul>
                 </li>
-{{--                <li class="nav-item menu-open">--}}
-{{--                    <a href="#" class="nav-link active">--}}
-{{--                        <i class="nav-icon far fa-plus-square"></i>--}}
-{{--                        <p>--}}
-{{--                            Extras--}}
-{{--                            <i class="fas fa-angle-left right"></i>--}}
-{{--                        </p>--}}
-{{--                    </a>--}}
-{{--                    <ul class="nav nav-treeview">--}}
-{{--                        <li class="nav-item">--}}
-{{--                            <a href="#" class="nav-link">--}}
-{{--                                <i class="far fa-circle nav-icon"></i>--}}
-{{--                                <p>--}}
-{{--                                    Login & Register v1--}}
-{{--                                    <i class="fas fa-angle-left right"></i>--}}
-{{--                                </p>--}}
-{{--                            </a>--}}
-{{--                            <ul class="nav nav-treeview">--}}
-{{--                                <li class="nav-item">--}}
-{{--                                    <a href="../examples/login.html" class="nav-link">--}}
-{{--                                        <i class="far fa-circle nav-icon"></i>--}}
-{{--                                        <p>Login v1</p>--}}
-{{--                                    </a>--}}
-{{--                                </li>--}}
-{{--                                <li class="nav-item">--}}
-{{--                                    <a href="../examples/register.html" class="nav-link">--}}
-{{--                                        <i class="far fa-circle nav-icon"></i>--}}
-{{--                                        <p>Register v1</p>--}}
-{{--                                    </a>--}}
-{{--                                </li>--}}
-{{--                                <li class="nav-item">--}}
-{{--                                    <a href="../examples/forgot-password.html" class="nav-link">--}}
-{{--                                        <i class="far fa-circle nav-icon"></i>--}}
-{{--                                        <p>Forgot Password v1</p>--}}
-{{--                                    </a>--}}
-{{--                                </li>--}}
-{{--                                <li class="nav-item">--}}
-{{--                                    <a href="../examples/recover-password.html" class="nav-link">--}}
-{{--                                        <i class="far fa-circle nav-icon"></i>--}}
-{{--                                        <p>Recover Password v1</p>--}}
-{{--                                    </a>--}}
-{{--                                </li>--}}
-{{--                            </ul>--}}
-{{--                        </li>--}}
-{{--                        <li class="nav-item">--}}
-{{--                            <a href="#" class="nav-link">--}}
-{{--                                <i class="far fa-circle nav-icon"></i>--}}
-{{--                                <p>--}}
-{{--                                    Login & Register v2--}}
-{{--                                    <i class="fas fa-angle-left right"></i>--}}
-{{--                                </p>--}}
-{{--                            </a>--}}
-{{--                            <ul class="nav nav-treeview">--}}
-{{--                                <li class="nav-item">--}}
-{{--                                    <a href="../examples/login-v2.html" class="nav-link">--}}
-{{--                                        <i class="far fa-circle nav-icon"></i>--}}
-{{--                                        <p>Login v2</p>--}}
-{{--                                    </a>--}}
-{{--                                </li>--}}
-{{--                                <li class="nav-item">--}}
-{{--                                    <a href="../examples/register-v2.html" class="nav-link">--}}
-{{--                                        <i class="far fa-circle nav-icon"></i>--}}
-{{--                                        <p>Register v2</p>--}}
-{{--                                    </a>--}}
-{{--                                </li>--}}
-{{--                                <li class="nav-item">--}}
-{{--                                    <a href="../examples/forgot-password-v2.html" class="nav-link">--}}
-{{--                                        <i class="far fa-circle nav-icon"></i>--}}
-{{--                                        <p>Forgot Password v2</p>--}}
-{{--                                    </a>--}}
-{{--                                </li>--}}
-{{--                                <li class="nav-item">--}}
-{{--                                    <a href="../examples/recover-password-v2.html" class="nav-link">--}}
-{{--                                        <i class="far fa-circle nav-icon"></i>--}}
-{{--                                        <p>Recover Password v2</p>--}}
-{{--                                    </a>--}}
-{{--                                </li>--}}
-{{--                            </ul>--}}
-{{--                        </li>--}}
-{{--                        <li class="nav-item">--}}
-{{--                            <a href="../examples/lockscreen.html" class="nav-link">--}}
-{{--                                <i class="far fa-circle nav-icon"></i>--}}
-{{--                                <p>Lockscreen</p>--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
-{{--                        <li class="nav-item">--}}
-{{--                            <a href="../examples/legacy-user-menu.html" class="nav-link">--}}
-{{--                                <i class="far fa-circle nav-icon"></i>--}}
-{{--                                <p>Legacy User Menu</p>--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
-{{--                        <li class="nav-item">--}}
-{{--                            <a href="../examples/language-menu.html" class="nav-link">--}}
-{{--                                <i class="far fa-circle nav-icon"></i>--}}
-{{--                                <p>Language Menu</p>--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
-{{--                        <li class="nav-item">--}}
-{{--                            <a href="../examples/404.html" class="nav-link">--}}
-{{--                                <i class="far fa-circle nav-icon"></i>--}}
-{{--                                <p>Error 404</p>--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
-{{--                        <li class="nav-item">--}}
-{{--                            <a href="../examples/500.html" class="nav-link">--}}
-{{--                                <i class="far fa-circle nav-icon"></i>--}}
-{{--                                <p>Error 500</p>--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
-{{--                        <li class="nav-item">--}}
-{{--                            <a href="../examples/pace.html" class="nav-link">--}}
-{{--                                <i class="far fa-circle nav-icon"></i>--}}
-{{--                                <p>Pace</p>--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
-{{--                        <li class="nav-item">--}}
-{{--                            <a href="../examples/blank.html" class="nav-link active">--}}
-{{--                                <i class="far fa-circle nav-icon"></i>--}}
-{{--                                <p>Blank Page</p>--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
-{{--                        <li class="nav-item">--}}
-{{--                            <a href="../../starter.html" class="nav-link">--}}
-{{--                                <i class="far fa-circle nav-icon"></i>--}}
-{{--                                <p>Starter Page</p>--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
-{{--                    </ul>--}}
-{{--                </li>--}}
+
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-search"></i>
