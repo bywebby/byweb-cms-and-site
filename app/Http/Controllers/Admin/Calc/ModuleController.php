@@ -10,6 +10,13 @@ use App\Models\admin\calc\CalcModule;
 
 class ModuleController extends Controller
 {
+    public $fieldsData = [
+                            'title',
+                            'description',
+                            'category_id'
+                        ];
+
+
     /**
      * Display a listing of the resource.
      *
@@ -22,7 +29,7 @@ class ModuleController extends Controller
             'num' => $request->get('page')
         ];
 
-        $data = CalcModule::query()->paginate($page['step']);
+        $data = CalcModule::with('category')->paginate($page['step']);
 
 
 
@@ -53,11 +60,7 @@ class ModuleController extends Controller
      */
     public function store(StoreModuleCalc $request)
     {
-       $data = $request->only([
-            'title',
-            'description',
-            'category_id'
-        ]);
+       $data = $request->only($this->fieldsData);
        CalcModule::create($data);
        return redirect()->route('calc.modules.index')->with('success','Модуль добавлен');;
 
@@ -88,15 +91,17 @@ class ModuleController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param StoreModuleCalc $request
+     * @param int $module
      */
-    public function update(Request $request, $id)
+    public function update(StoreModuleCalc $request, int $module)
     {
-        //
+        $data = $request->only($this->fieldsData);
+
+        CalcModule::findOrFail($module)->update($data);
+
+        return redirect()->route('calc.modules.index')->with('success', 'Модуль обновлен');
+
     }
 
     /**

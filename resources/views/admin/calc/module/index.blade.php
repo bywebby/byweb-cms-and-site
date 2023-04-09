@@ -23,6 +23,7 @@
                                             <tr>
                                                 <th style="width: 30px">№</th>
                                                 <th>Наименование модуля</th>
+                                                <th>Категория модуля</th>
                                                 <th>Управление модулями</th>
                                             </tr>
                                             </thead>
@@ -40,6 +41,10 @@
                                                     {{--конец подсчета количество элементов--}}
                                                     <td>
                                                         <a href="{{route('calc.modules.edit', ['module' => $item->id])}}">{{ $item->title }}</a>
+                                                    </td>
+
+                                                    <td>
+                                                        {{ $item->category->title }}
                                                     </td>
 
                                                     <td>

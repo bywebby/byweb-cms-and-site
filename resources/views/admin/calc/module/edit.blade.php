@@ -30,6 +30,8 @@
 
 {{--                                            {{dd($data)}}--}}
 
+{{--                                            mydata сравнивает значение из базы для update, чтобы выделить текущей селект если есть в базе--}}
+
                                             <x-select-category title="Выберите категорию" name="category_id" :datacategory="$category" :mydata="$data" />
 
                                         </div>
