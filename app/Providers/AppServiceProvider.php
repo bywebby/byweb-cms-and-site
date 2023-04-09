@@ -4,6 +4,10 @@ namespace App\Providers;
 
 use App\View\Components\Admin\Buttons\Create;
 use App\View\Components\Admin\FormFields\Select;
+use App\View\Components\Admin\FormFields\SelectCategory;
+use App\View\Components\Admin\FormFields\Input;
+use App\View\Components\Admin\FormFields\TextAreaPost;
+
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Blade;
@@ -38,7 +42,9 @@ class AppServiceProvider extends ServiceProvider
         Blade::component('btn-create', Create::class);
         //Регистрация select для формы
         Blade::component('select-field', Select::class);
-
+        Blade::component('select-category', SelectCategory::class);
+        Blade::component('input', Input::class);
+        Blade::component('textarea', TextAreaPost::class);
 
         //глобальная переменная - подсчет категорий и постов
         view()->share('countCategory', Category::all()->count());

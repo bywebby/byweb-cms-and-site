@@ -60,25 +60,28 @@
                                                 @enderror
                                             </div>
 
-                                            <div class="form-group">
-                                                <label for="category_id">Выберите категорию</label>
-                                                <select name="category_id" class="form-control @error('category_id') is-valid @enderror" id="category_id">
-                                                    @foreach($categories as $k => $v)
-                                                        <option value="{{$k}}" @if ($k == $post->category_id) selected @endif>{{$v}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
+{{--                                            <div class="form-group">--}}
+{{--                                                <label for="category_id">Выберите категорию</label>--}}
+{{--                                                <select name="category_id" class="form-control @error('category_id') is-valid @enderror" id="category_id">--}}
+{{--                                                    @foreach($categories as $k => $v)--}}
+{{--                                                        <option value="{{$k}}" @if ($k == $post->category_id) selected @endif>{{$v}}</option>--}}
+{{--                                                    @endforeach--}}
+{{--                                                </select>--}}
+{{--                                            </div>--}}
 
-                                            <div class="form-group">
-                                                <label for="type_id">Типы поста</label>
-                                                <select name="type_id" class="form-control @error('type_id') is-valid @enderror" id="category_id">
+                                            <x-select-category title="Выберите категорию" name="category_id" :datacategory="$categories" :mydata="$post" />
+                                            <x-select-category title="Типы поста" name="type_id" :datacategory="$types" :mydata="$post" />
 
-                                                    @foreach($types as $k => $v)
-                                                        <option value="{{$k}}" @if ($k == $post->type_id) selected @endif>{{$v}}</option>
-                                                    @endforeach
+{{--                                            <div class="form-group">--}}
+{{--                                                <label for="type_id">Типы поста</label>--}}
+{{--                                                <select name="type_id" class="form-control @error('type_id') is-valid @enderror" id="type_id">--}}
 
-                                                </select>
-                                            </div>
+{{--                                                    @foreach($types as $k => $v)--}}
+{{--                                                        <option value="{{$k}}" @if ($k == $post->type_id) selected @endif>{{$v}}</option>--}}
+{{--                                                    @endforeach--}}
+
+{{--                                                </select>--}}
+{{--                                            </div>--}}
 
                                             <div class="form-group">
                                                 <label for="thumbnail">Картинка поста</label>

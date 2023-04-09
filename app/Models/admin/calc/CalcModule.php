@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class CalcModule extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'title',
+        'description',
+        'category_id'
+    ];
 }

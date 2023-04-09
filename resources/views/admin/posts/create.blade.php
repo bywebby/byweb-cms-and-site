@@ -25,36 +25,44 @@
 
                                         <div class="card-body">
 
-                                            <div class="form-group">
-                                                <label for="title">Заголовок поста</label>
-                                                <input type="text" name="title" class="form-control @error('title') is-valid @enderror" placeholder="Заголовок поста" value="{{ old('title') }}">
-                                            </div>
+{{--                                            <div class="form-group">--}}
+{{--                                                <label for="title">Заголовок поста</label>--}}
+{{--                                                <input type="text" name="title" class="form-control @error('title') is-valid @enderror" placeholder="Заголовок поста" value="{{ old('title') }}">--}}
+{{--                                            </div>--}}
 
-                                            <div class="form-group">
-                                                <label for="slug">Алиас поста</label>
-                                                <input type="text" name="slug" class="form-control @error('slug') is-valid @enderror" placeholder="Алиас поста" value="{{ old('slug') }}">
-                                            </div>
+                                            <x-input label='Заголовок поста' name="title" />
 
+{{--                                            <div class="form-group">--}}
+{{--                                                <label for="slug">Алиас поста</label>--}}
+{{--                                                <input type="text" name="slug" class="form-control @error('slug') is-valid @enderror" placeholder="Алиас поста" value="{{ old('slug') }}">--}}
+{{--                                            </div>--}}
 
+                                            <x-input label='Алиас поста' name="slug" />
 
-                                            <div class="form-group">
-                                                <label for="description">Краткое описание</label>
-                                                <textarea name="description" id="description" class="form-control @error('description') is-valid @enderror" placeholder="Краткое описание" rows="3">{{ old('description') }}</textarea>
-                                            </div>
+                                            <x-textarea label="Краткое описание"  name="description" rows="3"/>
 
-                                            <div class="form-group">
-                                                <label for="content">Текст поста</label>
-                                                <textarea name="content" id="content" class="form-control @error('content') is-valid @enderror" placeholder="Текст поста" rows="10">{{ old('content') }}</textarea>
-                                            </div>
+{{--                                            <div class="form-group">--}}
+{{--                                                <label for="description">Краткое описание</label>--}}
+{{--                                                <textarea name="description" id="description" class="form-control @error('description') is-valid @enderror" placeholder="Краткое описание" rows="3">{{ old('description') }}</textarea>--}}
+{{--                                            </div>--}}
 
-                                            <div class="form-group">
-                                                <label for="category_id">Выберите категорию</label>
-                                                <select name="category_id" class="form-control @error('category_id') is-valid @enderror" id="category_id">
-                                                    @foreach($categories as $k => $v)
-                                                        <option value="{{$k}}">{{$v}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
+                                            <x-textarea label="Текст поста"  name="content" />
+
+{{--                                            <div class="form-group">--}}
+{{--                                                <label for="content">Текст поста</label>--}}
+{{--                                                <textarea name="content" id="content" class="form-control @error('content') is-valid @enderror" placeholder="Текст поста" rows="10">{{ old('content') }}</textarea>--}}
+{{--                                            </div>--}}
+
+{{--                                            <div class="form-group">--}}
+{{--                                                <label for="category_id">Выберите категорию</label>--}}
+{{--                                                <select name="category_id" class="form-control @error('category_id') is-valid @enderror" id="category_id">--}}
+{{--                                                    @foreach($categories as $k => $v)--}}
+{{--                                                        <option value="{{$k}}">{{$v}}</option>--}}
+{{--                                                    @endforeach--}}
+{{--                                                </select>--}}
+{{--                                            </div>--}}
+
+                                            <x-select-category title="Выберите категорию" name="category_id" :datacategory="$categories" />
 
                                             <div class="form-group">
                                                 <label for="type_id">Типы поста</label>
