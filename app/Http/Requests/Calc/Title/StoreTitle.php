@@ -25,6 +25,8 @@ class StoreTitle extends FormRequest
     {
         return [
             'title' => 'required|unique:calc_titles|min:2|max:255',
+            'calc_classes_id' => 'required|min:1|integer',
+            'calc_type_id'  => 'required|min:1|integer',
         ];
     }
 }

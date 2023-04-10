@@ -9,7 +9,7 @@ class CalcTitle extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title'];
+    protected $fillable = ['title','calc_classes_id','calc_type_id'];
 
 
 }

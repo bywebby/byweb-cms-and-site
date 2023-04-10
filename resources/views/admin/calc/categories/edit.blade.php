@@ -1,5 +1,5 @@
 @extends('admin.html.index')
-@section('title','Создать категорию калькулятора')
+@section('title','Изменить категорию калькулятора')
 @section('content')
     <div class="content-wrapper">
         <section class="content">
@@ -10,15 +10,16 @@
                             <div class="card-body">
                                 <div class="card card-primary">
                                     <div class="card-header">
-                                        <h3 class="card-title">Создать категорию калькулятора</h3>
+                                        <h3 class="card-title">Изменить категорию калькулятора</h3>
                                     </div>
-                                    <form method="post" action=" {{ route('calc.category.store') }}">
+                                    <form method="post" action=" {{ route('calc.category.update', ['category' => $data->id]) }}">
                                         @csrf
+                                        @method('PUT')
 
-                                        <div class="p-3">
-                                            <x-input label='Заголовок категории' name="title"/>
+                                        <div class="card-body">
+                                            <x-input label='Заголовок категории' name="title" :myData="$data"/>
                                             <x-select-category title="Выберите класс" name="calc_classes_id"
-                                                               :datacategory="$calcClasses"/>
+                                                               :datacategory="$calcClasses" :mydata="$data" />
                                         </div>
 
                                         <div class="card-footer">

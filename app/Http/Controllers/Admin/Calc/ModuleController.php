@@ -93,15 +93,13 @@ class ModuleController extends Controller
     /**
      * @param StoreModuleCalc $request
      * @param int $module
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(StoreModuleCalc $request, int $module)
     {
         $data = $request->only($this->fieldsData);
-
         CalcModule::findOrFail($module)->update($data);
-
         return redirect()->route('calc.modules.index')->with('success', 'Модуль обновлен');
-
     }
 
     /**

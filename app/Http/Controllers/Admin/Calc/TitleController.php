@@ -3,12 +3,18 @@
 namespace App\Http\Controllers\Admin\Calc;
 
 use App\Http\Controllers\Controller;
+
+use App\Models\admin\calc\CalcClasses;
 use Illuminate\Http\Request;
 use App\Http\Requests\Calc\Title\StoreTitle;
 use App\Models\admin\calc\CalcTitle;
+use App\Models\admin\calc\CalcCategory;
+use App\Models\admin\calc\CalcType;
 
 class TitleController extends Controller
 {
+    public $fields = ['title','calc_classes_id','calc_type_id'];
+
     /**
      * Display a listing of the resource.
      *
@@ -16,8 +22,6 @@ class TitleController extends Controller
      */
     public function index(Request $request)
     {
-
-//        dd('5');
         $page = [
             'step' => 10, //шаг пагинации
             'num' => $request->get('page')
@@ -36,7 +40,9 @@ class TitleController extends Controller
      */
     public function create()
     {
-       return view('admin.calc.title.create');
+        $calcClasses = CalcClasses::pluck('title','id');
+        $calcTypes = CalcType::pluck('title','id');
+        return view('admin.calc.title.create', compact('calcClasses','calcTypes'));
     }
 
     /**
@@ -47,10 +53,8 @@ class TitleController extends Controller
      */
     public function store(StoreTitle $request)
     {
-        $data = $request->only(['title']);
-
+        $data = $request->only($this->fields);
         CalcTitle::create($data);
-
         return redirect()->route('calc.title.index')->with('success','Категоря добавлена');
     }
 
@@ -74,7 +78,9 @@ class TitleController extends Controller
     public function edit($title)
     {
         $data = CalcTitle::findOrFail($title);
-        return view('admin.calc.title.edit', compact('data'));
+        $calcClasses = CalcClasses::pluck('title','id');
+        $calcTypes = CalcType::pluck('title','id');
+        return view('admin.calc.title.edit', compact('data','calcClasses', 'calcTypes'));
     }
 
     /**

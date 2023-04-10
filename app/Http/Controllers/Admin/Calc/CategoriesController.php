@@ -6,16 +6,16 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\Calc\StoreCategory;
 use App\Models\admin\calc\CalcCategory;
+use App\Models\admin\calc\CalcClasses;
+
 
 class CategoriesController extends Controller
 {
-
-    public $fields = ['title'];
+    public $fields = ['title', 'calc_classes_id'];
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index(Request $request)
     {
@@ -23,21 +23,17 @@ class CategoriesController extends Controller
             'step' => 10, //шаг пагинации
             'num' => $request->get('page')
         ];
-
         $data = CalcCategory::paginate($page['step']);
-//        dd($data);
-
-        return view('admin.calc.categories.index', compact('data','page'));
+        return view('admin.calc.categories.index', compact('data', 'page'));
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function create()
     {
-        return view('admin.calc.categories.create');
+        $calcClasses = CalcClasses::pluck('title', 'id');
+        return view('admin.calc.categories.create', compact('calcClasses'));
     }
 
     /**
@@ -48,53 +44,44 @@ class CategoriesController extends Controller
     {
         $data = $request->only($this->fields);
         CalcCategory::create($data);
-        return redirect()->route('calc.category.index')->with('success','категория сохранена');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        return redirect()->route('calc.category.index')->with('success', 'категория сохранена');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
+        $data = CalcCategory::findOrFail($id);
+        //категории калькулятора
+        $calcClasses = CalcClasses::pluck('title', 'id');
+        return view('admin.calc.categories.edit', compact('data', 'calcClasses'));
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param StoreCategory $request
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(StoreCategory $request, int $id)
     {
-        //
+        $data = $request->only($this->fields);
+        CalcCategory::findOrFail($id)->update($data);
+        return redirect()->route('calc.category.edit', ['category' => $id])->with('success', 'Категория обновлена');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(int $id)
     {
-        CalcCategory::findOrFail($id);
-        CalcCategory::destroy($id);
+        CalcCategory::findOrFail($id)->destroy($id);
         return redirect()->route('calc.category.index')->with('success', 'Категория удалена');
     }
 }

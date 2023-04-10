@@ -17,13 +17,13 @@
 
                                         <div class="card-body">
                                             <div class="form-group">
-                                                <label for="title">Заголовок категории</label>
+                                                <label for="title">Заголовок класса</label>
                                                 <input type="text" name="title" class="form-control @error('title') is-valid @enderror" placeholder="Заголовок категории" value="{{ old('title') }}">
                                             </div>
                                         </div>
 
                                         <div class="form-group mx-4">
-                                            <label for="description">Текст поста</label>
+                                            <label for="description">Код класса</label>
                                             <textarea name="description" id="description" class="form-control @error('description') is-valid @enderror" placeholder="Текст поста" rows="10">{{ old('description') }}</textarea>
                                         </div>
 

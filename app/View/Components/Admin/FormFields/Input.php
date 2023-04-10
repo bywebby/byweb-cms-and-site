@@ -9,16 +9,18 @@ class Input extends Component
     public $name;
     public $type;
     public $label;
+    public $myData;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($name, $label = 'Заголовок поля', $type = 'text')
+    public function __construct($name, $label = 'Заголовок поля', $type = 'text', $myData = [])
     {
         $this->label = $label;;
         $this->name = $name;
         $this->type = $type;
+        $this->myData = $myData;
     }
 
     /**

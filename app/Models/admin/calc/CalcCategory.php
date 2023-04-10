@@ -9,5 +9,5 @@ class CalcCategory extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title'];
+    protected $fillable = ['title', 'calc_classes_id'];
 }
