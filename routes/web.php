@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\Calc\TitleController;
 use App\Http\Controllers\Admin\Calc\ClassesController;
 use App\Http\Controllers\Admin\Calc\TypesController;
 use App\Http\Controllers\Admin\Calc\ModuleController as CalcModule;
+use App\Http\Controllers\Admin\Calc\CategoriesController;
 //Очистка кеша
 Route::get('/clear', function () {
     Artisan::call('cache:clear');
@@ -50,6 +51,7 @@ Route::get('/clear', function () {
             Route::resource('class',ClassesController::class);
             Route::resource('types', TypesController::class);
             Route::resource('modules', CalcModule::class);
+            Route::resource('category', CategoriesController::class);
 
     });
 

@@ -10,21 +10,17 @@ use App\Models\admin\calc\CalcClasses;
 class ClassesController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index(Request $request)
     {
-
+//пагинация
         $page = [
             'step' => 10, //шаг пагинации
             'num' => $request->get('page')
         ];
-
         $data = CalcClasses::query()->paginate($page['step']);
-
-
         return view('admin.calc.class.index', compact('data', 'page'));
     }
 
@@ -67,32 +63,26 @@ class ClassesController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $class
-     * @return \Illuminate\Http\Response
+     * @param int $class
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function edit($class)
+    public function edit(int $class)
     {
         $data = CalcClasses::findOrFail($class);
         return view('admin.calc.class.edit', compact('data'));
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param StoreClasses $request
+     * @param int $class
+     * @param CalcClasses $db
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(StoreClasses $request, $class)
+    public function update(StoreClasses $request, int $class)
     {
         $data = $request->only(['title', 'description']);
-        CalcClasses::findOrFail($class);
-        CalcClasses::update($data);
-
+        CalcClasses::findOrFail($class)->update($data);
         return redirect()->route('calc.class.index')->with('success','Класс обновлен');
-
     }
 
     /**
