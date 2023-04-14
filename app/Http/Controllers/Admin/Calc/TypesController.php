@@ -71,9 +71,9 @@ class TypesController extends Controller
     public function edit($type)
     {
 
-        $data = CalcType::findOrFAIL($type);
-
-        return view('admin.calc.types.edit', compact('data', 'type'));
+//        $data = CalcType::findOrFAIL($type);
+//
+//        return view('admin.calc.types.edit', compact('data'));
     }
 
     /**
@@ -85,26 +85,18 @@ class TypesController extends Controller
      */
     public function update(StoreType $request, $type)
     {
-        $data = $request->only('title');
-
-//        $valid = CalcType::where('title', $data['title'])->get();
+//        $data = $request->only('title');
 //
 //
-//dd($valid->isEmpty());
+//        $myType = CalcType::findOrFail($type);
 //
-//        if(!$valid->isEmpty()) {
-//            return redirect()->route('calc.types.edit', ['type' => $type])->with('danger','Такое поле уже существует');
+//        if($myType->title != $data['title']) {
+//            $myType::where(['id' => $type])->update($data );
+//        } else {
+//            return redirect()->route('calc.types.edit', ['type' => $type])->with('danger','Значение типа поля как и старое');
 //        }
-
-        $myType = CalcType::findOrFail($type);
-
-        if($myType->title != $data['title']) {
-            $myType::where(['id' => $type])->update($data );
-        } else {
-            return redirect()->route('calc.types.edit', ['type' => $type])->with('danger','Значение типа поля как и старое');
-        }
-
-        return redirect()->route('calc.types.edit', ['type' => $type])->with('success','Тип обновлен');
+//
+//        return redirect()->route('calc.types.edit', ['type' => $type])->with('success','Тип обновлен');
     }
 
     /**

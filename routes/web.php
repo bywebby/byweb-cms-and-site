@@ -1,11 +1,4 @@
 <?php
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-*/
-//возвращает вьюшку и именнованная ссылка home {{home}} для подстановки во вьюшку
-
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\PostController;
@@ -18,6 +11,8 @@ use App\Http\Controllers\Admin\Calc\ClassesController;
 use App\Http\Controllers\Admin\Calc\TypesController;
 use App\Http\Controllers\Admin\Calc\ModuleController as CalcModule;
 use App\Http\Controllers\Admin\Calc\CategoriesController;
+use App\Http\Controllers\Admin\Calc\ItemsController;
+
 //Очистка кеша
 Route::get('/clear', function () {
     Artisan::call('cache:clear');
@@ -46,14 +41,14 @@ Route::get('/clear', function () {
     Route::resource('modules', ModuleController::class);
 
 //компонент колькулятора
-    Route::prefix('calc')->name('calc.')->group(function () {
+        Route::prefix('calc')->name('calc.')->group(function () {
             Route::resource('title', TitleController::class);
-            Route::resource('class',ClassesController::class);
+            Route::resource('class', ClassesController::class);
             Route::resource('types', TypesController::class);
             Route::resource('modules', CalcModule::class);
             Route::resource('category', CategoriesController::class);
-
-    });
+            Route::resource('item', ItemsController::class);
+        });
 
 });
 

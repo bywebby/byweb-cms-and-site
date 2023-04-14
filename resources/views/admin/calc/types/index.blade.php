@@ -17,9 +17,7 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-
                                 <x-btn-create route="calc.types.create" title="Создать тип" />
-
                                 @if (count($types))
                                     <div class="table-responsive">
                                         <table class="table table-bordered table-hover text-nowrap">
@@ -27,29 +25,28 @@
                                             <tr>
                                                 <th style="width: 30px">№</th>
                                                 <th>Наименование типа</th>
-                                                <th>Управление категориями</th>
+                                                <th>Управление типами</th>
                                             </tr>
                                             </thead>
                                             <tbody>
 
                                             @foreach($types as $k => $type)
                                                 <tr>
-
-                                                    {{--считает количество элементов--}}
-                                                    @if($page['num'] == 1 || $page['num'] == null)
-                                                        <td>{{ ++$k }}</td>
-                                                    @else
-                                                        <td>{{ (++$k)+($page['num']-1)*$page['step'] }}</td>
-                                                    @endif
-                                                    {{--конец подсчета количество элементов--}}
+                                                    {{--нумерует количества записей --}}
                                                     <td>
-                                                        <a href="{{route('calc.types.edit', ['type' => $type->id])}}">{{ $type->title }}</a>
+                                                        @include('admin.html.layouts.table.count-item',['page'=> $page])
+                                                    </td>
+                                                    {{-- конец нумерации количества записей--}}
+                                                    <td>
+{{--                                                        <a href="{{route('calc.types.edit', ['type' => $type->id])}}">--}}
+                                                            {{ $type->title }}
+{{--                                                        </a>--}}
                                                     </td>
 
                                                     <td>
-                                                        <a href="{{ route('calc.types.edit', ['type' => $type->id]) }}" class="btn btn-info btn-sm float-left mr-1" title="Изменить тип">
-                                                            <i class="fas fa-pencil-alt"></i>
-                                                        </a>
+{{--                                                        <a href="{{ route('calc.types.edit', ['type' => $type->id]) }}" class="btn btn-info btn-sm float-left mr-1" title="Изменить тип">--}}
+{{--                                                            <i class="fas fa-pencil-alt"></i>--}}
+{{--                                                        </a>--}}
 
                                                         <form action="{{ route('calc.types.destroy', ['type' => $type->id]) }}" method="post" class="float-left">
 

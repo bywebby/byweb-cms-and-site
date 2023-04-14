@@ -64,6 +64,10 @@ class TypeController extends Controller
     public function edit($id) {
         if(Type::find($id)) {
             $type = Type::find($id);
+
+
+
+
             return view('admin.type-post.edit',compact('type'));
         }
     }

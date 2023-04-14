@@ -15,20 +15,14 @@
                                     <form method="post" action=" {{ route('calc.types.store') }}">
                                         @csrf
 
-{{--                                        <div class="form-group">--}}
-{{--                                            <label for="title">Выберите тип поля</label>--}}
-{{--                                            <select name="title" class="form-control @error('title') is-valid @enderror" id="title">--}}
-{{--                                                    <option value="checkbox">checkbox</option>--}}
-{{--                                                    <option value="checkbox">radio</option>--}}
-{{--                                            </select>--}}
-{{--                                        </div>--}}
 
-                                        <x-select-field title="Выберите тип поля" name="title" :datatype="['checkbox', 'radio']" />
+                                        <div class="card-body">
+{{--                                        <x-select-field title="Выберите тип поля" name="title" :datatype="['checkbox', 'radio','Без типа']" />--}}
+                                            <x-input title="Создать тип поля" name="title" />
 
-
-
-                                        <div class="card-footer">
-                                            <button type="submit" class="btn btn-primary">Сохранить</button>
+                                            <div class="card-footer">
+                                                <button type="submit" class="btn btn-primary">Сохранить</button>
+                                            </div>
                                         </div>
                                     </form>
                                 </div>

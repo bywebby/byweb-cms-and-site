@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\View\Components\Admin\Buttons\Create;
+use App\View\Components\Admin\Buttons\BtnRoute;
 use App\View\Components\Admin\FormFields\Select;
 use App\View\Components\Admin\FormFields\SelectCategory;
 use App\View\Components\Admin\FormFields\Input;
@@ -25,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+
     }
 
     /**
@@ -45,6 +46,7 @@ class AppServiceProvider extends ServiceProvider
         Blade::component('select-category', SelectCategory::class);
         Blade::component('input', Input::class);
         Blade::component('textarea', TextAreaPost::class);
+        Blade::component('btn',BtnRoute::class);
 
         //глобальная переменная - подсчет категорий и постов
         view()->share('countCategory', Category::all()->count());

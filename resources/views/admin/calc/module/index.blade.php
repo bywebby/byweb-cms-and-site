@@ -31,14 +31,11 @@
 
                                             @foreach($data as $k => $item)
                                                 <tr>
-
-                                                    {{--считает количество элементов--}}
-                                                    @if($page['num'] == 1 || $page['num'] == null)
-                                                        <td>{{ ++$k }}</td>
-                                                    @else
-                                                        <td>{{ (++$k)+($page['num']-1)*$page['step'] }}</td>
-                                                    @endif
-                                                    {{--конец подсчета количество элементов--}}
+                                                    {{--нумерует количества записей --}}
+                                                    <td>
+                                                        @include('admin.html.layouts.table.count-item',['page'=> $page])
+                                                    </td>
+                                                    {{-- конец нумерации количества записей--}}
                                                     <td>
                                                         <a href="{{route('calc.modules.edit', ['module' => $item->id])}}">{{ $item->title }}</a>
                                                     </td>

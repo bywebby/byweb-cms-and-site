@@ -18,22 +18,21 @@
                                         @method('PUT')
 
                                         <div class="card-body">
-{{--                                            <div class="form-group">--}}
-{{--                                                <label for="title">Заголовок категории</label>--}}
-{{--                                                <input type="text" name="title" class="form-control @error('title') is-valid @enderror" placeholder="Заголовок категории" value="{{ old('title', $data->title) }}">--}}
-{{--                                            </div>--}}
 
-                                            <x-input label='Заголовок составной части услуги' name="title" :myData="$data" />
+{{--                                            {{dd($data)}}--}}
+
+                                            <x-input label='Заголовок подвида услуги' name="title" :myData="$data" />
+
                                             <x-select-category title="Выберите класс" name="calc_classes_id"
-                                                               :datacategory="$calcClasses" :myData="$data" />
+                                                               :datacategory="$calcClasses" :mydata="$data" />
+
                                             <x-select-category title="Выберите тип поля" name="calc_type_id"
-                                                               :datacategory="$calcTypes" :myData="$data"/>
-
-
+                                                               :datacategory="$calcTypes" :mydata="$data"/>
 
                                         </div>
                                         <div class="card-footer">
                                             <button type="submit" class="btn btn-primary">Сохранить</button>
+                                            <x-btn route="calc.title.index" title="Все подвиды" btnClass="btn btn-danger mx-1"/>
                                         </div>
                                     </form>
                                 </div>

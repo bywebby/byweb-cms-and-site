@@ -10,17 +10,21 @@ class TextAreaPost extends Component
     public $label;
     public $name;
     public $rows;
+    public $myData;
 
     /**
-     * Create a new component instance.
-     *
-     * @return void
+     * TextAreaPost constructor.
+     * @param $label
+     * @param $name
+     * @param array $myData
+     * @param int $rows
      */
-    public function __construct($label, $name, $rows = 3)
+    public function __construct($label, $name, $myData = [], $rows = 3)
     {
        $this->label = $label;
        $this->name = $name;
        $this->rows = $rows;
+       $this->myData = $myData;
     }
 
     /**

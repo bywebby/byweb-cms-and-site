@@ -29,13 +29,10 @@
                                             @foreach($data as $k => $item)
                                                 <tr>
 
-                                                    {{--считает количество элементов--}}
-                                                    @if($page['num'] == 1 || $page['num'] == null)
-                                                        <td>{{ ++$k }}</td>
-                                                    @else
-                                                        <td>{{ (++$k)+($page['num']-1)*$page['step'] }}</td>
-                                                    @endif
-                                                    {{--конец подсчета количество элементов--}}
+                                                    <td>
+                                                        @include('admin.html.layouts.table.count-item',['page'=> $page])
+                                                    </td>
+
                                                     <td>
                                                         <a href="{{route('calc.category.edit', ['category' => $item->id])}}">{{ $item->title }}</a>
                                                     </td>

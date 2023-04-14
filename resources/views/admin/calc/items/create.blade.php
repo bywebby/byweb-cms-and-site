@@ -1,5 +1,5 @@
 @extends('admin.html.index')
-@section('title','Создать модуль калькулятора')
+@section('title','Создать блок калькулятора')
 @section('content')
     <div class="content-wrapper">
         <section class="content">
@@ -10,16 +10,26 @@
                             <div class="card-body">
                                 <div class="card card-primary">
                                     <div class="card-header">
-                                        <h3 class="card-title">Создать модуль калькулятора</h3>
+                                        <h3 class="card-title">Создать блок калькулятора</h3>
                                     </div>
-                                    <form method="post" action=" {{ route('calc.modules.store') }}">
+                                    <form method="post" action=" {{ route('calc.item.store') }}">
                                         @csrf
 
                                         <div class="card-body">
-                                            <x-input label='Заголовок' name="title"/>
-                                            <x-textarea label="Краткое описание модуля" name="description"/>
-                                            <x-select-category title="Выберите категорию" name="category_id"
-                                                               :datacategory="$category"/>
+
+                                            <x-select-category title="Выберите подвид услуг" name="calc_title_id"
+                                                               :datacategory="$calcTitles" />
+
+                                            <x-input label='Цена' name="price" />
+
+                                            <x-textarea label='Описание' name="description" />
+
+                                            <x-select-category title="Выберите модуль" name="calc_module_id"
+                                                               :datacategory="$calcModules"/>
+
+                                            <x-select-category title="Выберите категорию" name="calc_category_id"
+                                                               :datacategory="$calcCategories"/>
+
                                         </div>
 
                                         <div class="card-footer">

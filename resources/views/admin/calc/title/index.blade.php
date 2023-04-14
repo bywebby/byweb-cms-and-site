@@ -1,12 +1,8 @@
 @extends('admin.html.index')
-@section('title','Справочник услуг')
-
+@section('title','Справочник подвидов услуг')
 
 @section('content')
     <div class="content-wrapper">
-
-
-
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
@@ -15,16 +11,12 @@
                         <div class="card">
 
                             <div class="card-header">
-                                <h3 class="card-title">Справочник услуг</h3>
+                                <h3 class="card-title">Справочник подвидов услуг</h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
 
-{{--                                <a href="{{ route('calc.title.create') }}" class="btn btn-primary mb-3">--}}
-{{--                                    Создать категорию--}}
-{{--                                </a>--}}
-
-                                <x-btn-create route="calc.title.create" title="Создать категорию"></x-btn-create>
+                                <x-btn-create route="calc.title.create" title="Создать подвид"></x-btn-create>
 
                                 @if (count($categories))
                                     <div class="table-responsive">
@@ -40,14 +32,11 @@
 
                                             @foreach($categories as $k => $category)
                                                 <tr>
-
-                                                    {{--считает количество элементов--}}
-                                                    @if($page['num'] == 1 || $page['num'] == null)
-                                                        <td>{{ ++$k }}</td>
-                                                    @else
-                                                        <td>{{ (++$k)+($page['num']-1)*$page['step'] }}</td>
-                                                    @endif
-                                                    {{--конец подсчета количество элементов--}}
+                                                    {{--нумерует количества записей --}}
+                                                    <td>
+                                                        @include('admin.html.layouts.table.count-item',['page'=> $page])
+                                                    </td>
+                                                    {{-- конец нумерации количества записей--}}
                                                     <td>
                                                         <a href="{{route('calc.title.edit', ['title' => $category->id])}}">{{ $category->title }}</a>
                                                     </td>

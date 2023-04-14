@@ -55,7 +55,7 @@ class TitleController extends Controller
     {
         $data = $request->only($this->fields);
         CalcTitle::create($data);
-        return redirect()->route('calc.title.index')->with('success','Категоря добавлена');
+        return redirect()->route('calc.title.index')->with('success','Подвид услуги добавлен');
     }
 
     /**
@@ -98,7 +98,7 @@ class TitleController extends Controller
 
 
         $cat::where(['id' => $title])->update($data);
-        return redirect()->route('calc.title.edit', ['title' => $title])->with('success','Категоря обновлена');
+        return redirect()->route('calc.title.edit', ['title' => $title])->with('success','Подвид услуги обновлен');
     }
 
     /**
@@ -113,7 +113,7 @@ class TitleController extends Controller
 
         CalcTitle::destroy($id);
 
-        return redirect()->route('calc.title.index')->with('success', 'Категоря удалена');
+        return redirect()->route('calc.title.index')->with('success', 'Подвид услуги удален');
 
 
     }
