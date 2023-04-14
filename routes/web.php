@@ -55,8 +55,8 @@ Route::get('/clear', function () {
 
 //клиентская часть
 Route::group(['namespace' => 'Front'],function () {
-    Route::get('/{slug?}', [HomeController::class,'index'])->name('home');
-    Route::get('/{slug?}/{slug2?}', [HomeController::class,'index'])->name('home1');
+//    Route::get('/{slug?}', [HomeController::class,'index'])->name('home');
+    Route::get('/{slug?}/{slug2?}', [HomeController::class,'index'])->name('home');
 
 
 

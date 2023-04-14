@@ -43,13 +43,7 @@
             @endphp
         @break
 
-        @case('Цены')
-            @php
-                /** @var $item */
-            // Добавляем в массив все item из типа контнета цены
-                    $itemsCeny[] = $item->toArray();
-            @endphp
-        @break
+
 
     @endswitch
 
@@ -88,10 +82,12 @@
 {{-- конец модуль полоса --}}
 
 {{-- модуль полоса --}}
-@if( isset($itemsCeny) )
+@if( !empty($calcItems))
 @section('ceny')
-    {{--        json для передачи в компонет vue --}}
-    <byweb-ceny items="{{json_encode($itemsCeny)}}"></byweb-ceny>
+
+
+{{--   {{dd($calcItems)}}--}}
+
 @endsection
 @endif
 {{-- конец модуль полоса --}}
