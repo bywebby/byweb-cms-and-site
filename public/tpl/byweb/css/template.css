@@ -730,3 +730,84 @@ pt-30 {
   margin: 0 auto;
   padding: 30px;
 }
+
+.calc h2 {
+  text-align: center;
+  color: #444;
+}
+
+.calc-desc {
+  text-align: center;
+  color: #444;
+  padding-bottom: 10px;
+}
+
+.calc-descprice {
+  display: flex;
+  flex-wrap: wrap;
+  height: 155px;
+  overflow-y: auto !important;
+  margin: 0 auto 18px;
+  padding: 22px 30px;
+  font-size: 1rem;
+  color: #076ad0;
+  text-align: left;
+  background: #f6f8fa;
+  scrollbar-color: #f95a5a #2e3339;
+}
+.calc-descprice label {
+  flex-direction: column;
+  padding-left: 20px;
+  width: 100%;
+}
+.calc-descprice .hr {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin: 10px 0;
+  padding: 10px 0;
+  color: #fe7676;
+  border-top: 1px solid #eee;
+  text-align: center;
+}
+
+.calc-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.calc-item {
+  flex-basis: 25%;
+  box-sizing: border-box;
+  padding-top: 5px;
+}
+.calc-item h4 {
+  color: #FFF;
+  text-transform: uppercase;
+  margin: 0;
+  padding: 30px 18px 25px;
+  text-align: center;
+  background-color: #fe7676;
+  background: linear-gradient(0deg, rgb(245, 117, 117) 0%, rgb(255, 193, 193) 100%);
+}
+.calc-item h4:hover {
+  background: #2f343a;
+}
+
+input[type=file], input[type=image], input[type=submit], input[type=reset], input[type=button], input[type=radio], input[type=checkbox] {
+  width: auto;
+}
+
+input[type=radio] {
+  margin: 0px 7px 0 2px !important;
+  line-height: normal;
+}
+
+input[type=checkbox] {
+  margin: 0px 7px 0 2px !important;
+  line-height: normal;
+}
+
+label, select, button, input[type=button], input[type=reset], input[type=submit], input[type=radio], input[type=checkbox] {
+  cursor: pointer;
+}

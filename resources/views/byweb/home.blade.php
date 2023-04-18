@@ -81,18 +81,15 @@
 @endif
 {{-- конец модуль полоса --}}
 
-{{-- модуль полоса --}}
+{{-- модуль цены --}}
 @if( !empty($calcItems))
-@section('ceny')
-
-
-{{--   {{dd($calcItems)}}--}}
-
-@endsection
+    @section('ceny')
+        @include('byweb.modules.ceny', ['calcItems' => $calcItems])
+    @endsection
 @endif
-{{-- конец модуль полоса --}}
+{{-- конец модуля цены --}}
 
-{{--{{dd( $itemsGallery,  $itemsGallery2)}}--}}
+
 
 
 

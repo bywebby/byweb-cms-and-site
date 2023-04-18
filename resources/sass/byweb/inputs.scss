@@ -1,0 +1,16 @@
+input[type="file"], input[type="image"], input[type="submit"], input[type="reset"], input[type="button"], input[type="radio"], input[type="checkbox"] {
+    width: auto;
+}
+
+input[type="radio"] {
+    margin: 0px 7px 0 2px !important;
+    line-height: normal;
+}
+input[type="checkbox"] {
+    margin: 0px 7px 0 2px !important;
+    line-height: normal;
+}
+
+label, select, button, input[type="button"], input[type="reset"], input[type="submit"], input[type="radio"], input[type="checkbox"] {
+    cursor: pointer;
+}

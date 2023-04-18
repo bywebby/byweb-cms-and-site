@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\DB;
 
 use App\Models\admin\Post;
 use function PHPUnit\Framework\isEmpty;
+use App\Http\Controllers\Front\Modules\Calc;
 
 class HomeController extends Controller
 {
@@ -30,27 +31,33 @@ class HomeController extends Controller
 //проверяет существует ли категория если нет 404-ошибка
         self::errorPage($cat);
 
-//  берем данные модулей
+        //  берем данные модулей
         $modules = Module::where('category_id', $cat->id)->with('types')->get();
 
         //берем через связь
         $data = $cat->posts()->get();
-//dd($data);
+
         //проверяем на пустоту посты
         self::chekEmtyPost($data);
 
+//        $getCalcCat = CalcCategory::pluck('title');
+//        //получаем данные калькулятора
+//        $calcItems = $this->getCalcItems($getCalcCat);
 
-//получаем данные калькулятора
-        $calcItems = $this->getCalcItems($cat);
 
+        $getCalcCat = new CalcCategory();
+        $calcItems = new CalcItem();
+        $calcItems = new Calc($getCalcCat, $calcItems);
+        $calcItems = $calcItems->getCalcItems();
 
         return view('byweb.home', compact('data', 'modules', 'calcItems'));
     }
 
 
+
+
     private static function errorPage($cat)
     {
-//        dd($cat);
         if (!$cat || $cat = null) return abort(404, 'Ошибка 404 - страница не существует!');
     }
 
@@ -61,44 +68,6 @@ class HomeController extends Controller
     }
 
 
-    private function getCalcItems(Category $cat)
-    {
-        $calcItems = CalcItem::with('calcTitle', 'calcModule', 'calcCategory')->get();
-
-        if (!$calcItems->isEmpty()) {
-
-            $myGroupe = [
-                'module-title' => $calcItems[0]->calcModule->title,
-                'module-desc' => $calcItems[0]->calcModule->description
-            ];
-
-
-            $getCalcCatagories = CalcCategory::pluck('title');
-
-            foreach ($getCalcCatagories as $k => $calcCatagory) {
-                foreach ($calcItems as $i => $calcItem) {
-
-                    if ($calcCatagory == $calcItem->calcCategory->title) {
-
-                        $myGroupe[$calcCatagory][$k][$i] = [
-                            'title' => $calcItem->calcTitle->title,
-                            'price' => $calcItem->price,
-                            'class' => $calcItem->calcTitle->calcClasse()->get()[0]->title,
-                            'type' => $calcItem->calcTitle->calcType()->get()[0]->title
-                        ];
-                    }
-
-                }
-            }
-
-        } else {
-            return $myGroupe = [];
-        }
-
-        dd($myGroupe);
-        return $myGroupe;
-
-    }
 
 
 }

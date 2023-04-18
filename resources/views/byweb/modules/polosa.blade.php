@@ -1,4 +1,4 @@
-<section class="row ">
+<section class="row">
     <div class='polosa'>
 @foreach($items as $item)
 
