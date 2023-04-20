@@ -25,7 +25,7 @@
                                                     <i class="{{$item['class']}}"></i>
                                                 @endif
 
-                                                <input type="{{$item['type']}}" value="{{$item['price']}}">
+                                                <input type="{{$item['type']}}" value="{{$item['price']}}" {{$item['checked'] ? 'checked' : ''}}>
 
                                                 {{$item['title']}}
 

@@ -45,7 +45,9 @@ class Calc
                             'title' => $calcItem->calcTitle->title,
                             'price' => $calcItem->price,
                             'class' => $calcItem->calcTitle->calcClasse()->get()[0]->title,
-                            'type' => $calcItem->calcTitle->calcType()->get()[0]->title
+                            'type' => $calcItem->calcTitle->calcType()->get()[0]->title,
+                            'status' => $calcItem->status,
+                            'checked' =>$calcItem->checked,
                         ];
                     }
 
