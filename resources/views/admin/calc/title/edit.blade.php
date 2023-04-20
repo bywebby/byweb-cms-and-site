@@ -19,7 +19,6 @@
 
                                         <div class="card-body">
 
-{{--                                            {{dd($data)}}--}}
 
                                             <x-input label='Заголовок подвида услуги' name="title" :myData="$data" />
 

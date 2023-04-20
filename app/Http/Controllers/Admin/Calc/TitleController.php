@@ -91,7 +91,7 @@ class TitleController extends Controller
      */
     public function update(StoreTitle $request, $title)
     {
-        $data = $request->only(['title']);
+        $data = $request->only($this->fields);
         //$title - это id in DB, title в ресурсном контроллере параметр
         $cat = CalcTitle::findOrFail($title);
 

@@ -6,18 +6,14 @@
 
 
 
-
-
         @if (!empty($mydata))
-                 <option value="{{$k}}" @if ($k == $mydata->$name) selected @endif>{{$v}}</option>
+                 <option value="{{$k}}" {{$k == $mydata->$name ? 'selected' : ''}}>{{$v}}</option>
             @else
                 <option value="{{$k}}">{{$v}}</option>
         @endif
         @endforeach
     </select>
 
-
-{{--   {{dd(!empty($mydata))}}--}}
 
 
 </div>
