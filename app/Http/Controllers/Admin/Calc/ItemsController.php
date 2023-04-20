@@ -19,6 +19,8 @@ class ItemsController extends Controller
         'description',
         'calc_module_id',
         'calc_category_id',
+        'checked',
+        'status'
     ];
 
 
@@ -61,6 +63,9 @@ class ItemsController extends Controller
     {
         $data = $request->only($this->fields);
 
+        isset($data['status']) ? $data['status'] = 1 : $data['status'] = 0;
+        isset($data['checked']) ? $data['checked'] = 1 : $data['checked'] = 0;
+
         CalcItem::create($data);
 
         return redirect()->route('calc.item.index')->with('success', 'Блок сохранен');
@@ -88,12 +93,10 @@ class ItemsController extends Controller
      */
     public function edit($id)
     {
-
         $calcTitles = CalcTitle::pluck('title', 'id');
         $calcModules =  CalcModule::pluck('title', 'id');
         $calcCategories = CalcCategory::pluck('title', 'id');
         $data = CalcItem::findOrFail($id);
-
 
         return view('admin.calc.items.edit', compact('data','calcTitles','calcModules','calcCategories'));
     }
@@ -106,6 +109,11 @@ class ItemsController extends Controller
     public function update(StoreItem $request, int $id)
     {
         $data = $request->only($this->fields);
+
+        isset($data['status']) ? $data['status'] = 1 : $data['status'] = 0;
+        isset($data['checked']) ? $data['checked'] = 1 : $data['checked'] = 0;
+//        dd($data);
+
         CalcItem::findOrFail($id)->update($data);
         return redirect()->route('calc.item.edit',['item'=>$id])->with('success','Блок обновлен');
     }

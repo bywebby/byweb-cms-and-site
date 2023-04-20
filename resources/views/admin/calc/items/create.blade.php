@@ -30,6 +30,10 @@
                                             <x-select-category title="Выберите категорию" name="calc_category_id"
                                                                :datacategory="$calcCategories"/>
 
+                                            <x-input-checked name="checked" label="Укажите выбран или не выбран подвид в статус checked"  />
+                                            <x-input-checked name="status" label="Укажите статус опубликован или нет" />
+
+
                                         </div>
 
                                         <div class="card-footer">

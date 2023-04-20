@@ -8,6 +8,7 @@ use App\View\Components\Admin\FormFields\Select;
 use App\View\Components\Admin\FormFields\SelectCategory;
 use App\View\Components\Admin\FormFields\Input;
 use App\View\Components\Admin\FormFields\TextAreaPost;
+use App\View\Components\Admin\Formfields\InputChecked;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
@@ -47,6 +48,7 @@ class AppServiceProvider extends ServiceProvider
         Blade::component('input', Input::class);
         Blade::component('textarea', TextAreaPost::class);
         Blade::component('btn',BtnRoute::class);
+        Blade::component('input-checked', InputChecked::class);
 
         //глобальная переменная - подсчет категорий и постов
         view()->share('countCategory', Category::all()->count());

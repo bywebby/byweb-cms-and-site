@@ -30,6 +30,9 @@
                                                                :datacategory="$calcModules" :mydata="$data" />
                                             <x-select-category title="Выберите категорию" name="calc_category_id"
                                                                :datacategory="$calcCategories" :mydata="$data" />
+
+                                            <x-input-checked name="checked" label="Укажите выбран или не выбран подвид в статус checked" :checked="$data" />
+                                            <x-input-checked name="status" label="Укажите статус опубликован или нет" :checked="$data" />
                                         </div>
 
                                         <div class="card-footer">

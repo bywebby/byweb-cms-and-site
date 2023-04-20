@@ -1,7 +1,6 @@
 @extends('admin.html.index')
 @section('title','Все блоки')
 
-
 @section('content')
     <div class="content-wrapper">
         <section class="content">
@@ -38,7 +37,7 @@
                                                     </td>
                                                     {{-- конец нумерации количества записей--}}
 
-                                                    <td>
+                                                    <td {!!  $item->status == 0 ? 'class="bg-danger" title="Подвид не опубликован"' : ''!!}>
                                                         <a href="{{route('calc.item.edit', ['item' => $item->id])}}">{{ $item->calcTitle->title }}</a>
                                                     </td>
 

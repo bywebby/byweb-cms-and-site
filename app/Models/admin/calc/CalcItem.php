@@ -18,6 +18,8 @@ class CalcItem extends Model
         'description',
         'calc_module_id',
         'calc_category_id',
+        'checked',
+        'status'
     ];
 
 
