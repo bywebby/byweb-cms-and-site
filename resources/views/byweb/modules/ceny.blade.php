@@ -33,17 +33,10 @@
                                     @endforeach
                                 </div>
                             @endif
-                            <div id="pay_price{{$id}}" class="calc-price"> <small>BYN</small></div>
+                            <div id="pay_price{{$id}}" class="calc-price"> 1234 <small>BYN</small></div>
                         @endforeach
-
-
-
-
-
                     </div>
-
                 @endif
-
             @endforeach
         </div>
     </div>

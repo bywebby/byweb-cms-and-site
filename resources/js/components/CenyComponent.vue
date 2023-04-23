@@ -1,40 +1,39 @@
 <template>
-<div class="ceny">
-    <div class="ceny-item" v-for="(item, k) in JSON.parse(items)">
+    <section class="row">
+        <div class="calc">
+            <!--заголовок модуля -->
+            <h2>{{ items['module-title'] }}</h2>
+        </div>
+        <!--описание модуля -->
+        <div class="calc-desc">
+            {{ items["module-desc"] }}
+        </div>
 
-        <a :href="item.description">
-            <h4>{{item.title}}</h4>
-        </a>
+        <div class="calc-row">
+            <div class="calc-item" v-for="(item, k) in items" v-if="typeof item === 'object'">
+                <h4>{{ k }}</h4>
+                <div class="calc-descprice" v-for="(i, id) in item">
+<!--https://ru.vuejs.org/v2/guide/forms.html-->
+                    <label v-for="j in i" v-if="j.price != 0">
+                        <!--если иконка не пуста - выводим ее-->
+                        <i v-if="j.class != ''" :class="j.class"></i>
+                        <input :type="j.type" :value="j.price" :checked="myChecked(j.checked)" :name="inputType(j.type, id)" v-model="myCount">
+                        {{j.title }}: {{ j.price }} BYN
+                    </label>
 
-        <div class="ceny-descprice" v-html="item.content">
+                    <label v-else>
+                        <span class="hr">{{ j.title }}</span>
+                    </label>
 
-<!--            <label><input type="checkbox" value="50" name="pay1_2" class="pay" checked="">Создание дизайна</label><br>-->
-<!--            <label><input type="checkbox" value="30" name="pay1_3" class="pay" checked="">Наполнение</label><br>-->
+                </div>
 
-<!--            <hr>-->
-<!--            <p><b>Установка и настройка системы управления CMS:</b></p>-->
-<!--            <label><i class="joomla"></i><input type="radio" value="150" name="pay1_1" class="pay" checked="">Joomla</label><br>-->
-<!--            <label><i class="wp"></i><input type="radio" value="190" name="pay1_1" class="pay">WordPress</label><br>-->
-<!--            <label><i class="bitrix"></i><input type="radio" value="900" name="pay1_1" class="pay">1c-Битрикс</label><br>-->
-<!--            <label><i class="laravel"></i><input type="radio" value="1200" name="pay1_1" class="pay">Фреймворк Laravel</label><br>-->
-<!--            <label><i class="php"></i><input type="radio" value="1700" name="pay1_1" class="pay">Нативный PHP</label>-->
+                <div  class="calc-price"> {{ myCount }} <small>BYN</small></div>
 
-<!--            <hr>-->
-<!--            <p><b>Веб-сервер:</b></p>-->
-<!--            <label><input type="checkbox" value="12.7" name="pay1_5" class="pay">Доменное имя</label><br>-->
-<!--            <label><input type="checkbox" value="3" name="pay1_6" class="pay">Хостинг на месяц</label>-->
+            </div>
+
 
         </div>
-        <div data-aos="fade-up-right" class="price" id="pay_price"></div>
-    </div>
-</div>
-
-
-
-
-
-
-
+    </section>
 
 
 </template>
@@ -42,7 +41,34 @@
 <script>
 export default {
     name: "CenyComponent",
-    props: ['items']
+    //входной json
+    props: ['calcitems'],
+    data() {
+        return {
+            myCount: []
+        }
+    },
+    methods: {
+        debug: function (myVar) {
+            console.log(myVar);
+        },
+        //определяет выделен = 1 или нет = 0
+        myChecked: function (myVar) {
+            return myVar ? 'cheked' : '';
+        },
+        //если тип инпута radio то дает ему name для группировки выбора
+        inputType: function (myVar, id) {
+            return myVar == 'radio' ? 'pay_'+id : '';
+        }
+    },
+    computed: {
+        //распарсивается json
+        items: function () {
+            return JSON.parse(this.calcitems);
+        },
+
+    }
+
 }
 </script>
 

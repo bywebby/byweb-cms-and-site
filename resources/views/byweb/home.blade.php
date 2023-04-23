@@ -84,7 +84,10 @@
 {{-- модуль цены --}}
 @if( !empty($calcItems))
     @section('ceny')
-        @include('byweb.modules.ceny', ['calcItems' => $calcItems])
+{{--        @include('byweb.modules.ceny', ['calcItems' => $calcItems])--}}
+{{--vue компонент калькулятора--}}
+        <byweb-ceny calcitems="{{json_encode($calcItems)}}"></byweb-ceny>
+
     @endsection
 @endif
 {{-- конец модуля цены --}}

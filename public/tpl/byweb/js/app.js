@@ -5314,7 +5314,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "CenyComponent",
-  props: ['items']
+  //входной json
+  props: ['calcitems'],
+  data: function data() {
+    return {
+      myCount: []
+    };
+  },
+  methods: {
+    debug: function debug(myVar) {
+      console.log(myVar);
+    },
+    //определяет выделен = 1 или нет = 0
+    myChecked: function myChecked(myVar) {
+      return myVar ? 'cheked' : '';
+    },
+    //если тип инпута radio то дает ему name для группировки выбора
+    inputType: function inputType(myVar, id) {
+      return myVar == 'radio' ? 'pay_' + id : '';
+    }
+  },
+  computed: {
+    //распарсивается json
+    items: function items() {
+      return JSON.parse(this.calcitems);
+    }
+  }
 });
 
 /***/ }),
@@ -5429,31 +5454,112 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* binding */ render),
 /* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
 /* harmony export */ });
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "ceny"
-  }, _vm._l(JSON.parse(_vm.items), function (item, k) {
-    return _c("div", {
-      staticClass: "ceny-item"
-    }, [_c("a", {
-      attrs: {
-        href: item.description
-      }
-    }, [_c("h4", [_vm._v(_vm._s(item.title))])]), _vm._v(" "), _c("div", {
-      staticClass: "ceny-descprice",
-      domProps: {
-        innerHTML: _vm._s(item.content)
-      }
+  return _c("section", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "calc"
+  }, [_c("h2", [_vm._v(_vm._s(_vm.items["module-title"]))])]), _vm._v(" "), _c("div", {
+    staticClass: "calc-desc"
+  }, [_vm._v("\n            " + _vm._s(_vm.items["module-desc"]) + "\n        ")]), _vm._v(" "), _c("div", {
+    staticClass: "calc-row"
+  }, _vm._l(_vm.items, function (item, k) {
+    return _typeof(item) === "object" ? _c("div", {
+      staticClass: "calc-item"
+    }, [_c("h4", [_vm._v(_vm._s(k))]), _vm._v(" "), _vm._l(item, function (i, id) {
+      return _c("div", {
+        staticClass: "calc-descprice"
+      }, _vm._l(i, function (j) {
+        return j.price != 0 ? _c("label", [j["class"] != "" ? _c("i", {
+          "class": j["class"]
+        }) : _vm._e(), _vm._v(" "), j.type === "checkbox" ? _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.myCount,
+            expression: "myCount"
+          }],
+          attrs: {
+            name: _vm.inputType(j.type, id),
+            type: "checkbox"
+          },
+          domProps: _defineProperty({
+            value: j.price,
+            checked: _vm.myChecked(j.checked)
+          }, "checked", Array.isArray(_vm.myCount) ? _vm._i(_vm.myCount, j.price) > -1 : _vm.myCount),
+          on: {
+            change: function change($event) {
+              var $$a = _vm.myCount,
+                $$el = $event.target,
+                $$c = $$el.checked ? true : false;
+              if (Array.isArray($$a)) {
+                var $$v = j.price,
+                  $$i = _vm._i($$a, $$v);
+                if ($$el.checked) {
+                  $$i < 0 && (_vm.myCount = $$a.concat([$$v]));
+                } else {
+                  $$i > -1 && (_vm.myCount = $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+                }
+              } else {
+                _vm.myCount = $$c;
+              }
+            }
+          }
+        }) : j.type === "radio" ? _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.myCount,
+            expression: "myCount"
+          }],
+          attrs: {
+            name: _vm.inputType(j.type, id),
+            type: "radio"
+          },
+          domProps: _defineProperty({
+            value: j.price,
+            checked: _vm.myChecked(j.checked)
+          }, "checked", _vm._q(_vm.myCount, j.price)),
+          on: {
+            change: function change($event) {
+              _vm.myCount = j.price;
+            }
+          }
+        }) : _c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.myCount,
+            expression: "myCount"
+          }],
+          attrs: {
+            name: _vm.inputType(j.type, id),
+            type: j.type
+          },
+          domProps: _defineProperty({
+            value: j.price,
+            checked: _vm.myChecked(j.checked)
+          }, "value", _vm.myCount),
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+              _vm.myCount = $event.target.value;
+            }
+          }
+        }), _vm._v("\n                        " + _vm._s(j.title) + ": " + _vm._s(j.price) + " BYN\n                    ")]) : _c("label", [_c("span", {
+          staticClass: "hr"
+        }, [_vm._v(_vm._s(j.title))])]);
+      }), 0);
     }), _vm._v(" "), _c("div", {
-      staticClass: "price",
-      attrs: {
-        "data-aos": "fade-up-right",
-        id: "pay_price"
-      }
-    })]);
-  }), 0);
+      staticClass: "calc-price"
+    }, [_vm._v(" " + _vm._s(_vm.myCount) + " "), _c("small", [_vm._v("BYN")])])], 2) : _vm._e();
+  }), 0)]);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -5550,10 +5656,6 @@ window.Vue = (__webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-
-// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('byweb-gallery', (__webpack_require__(/*! ./components/GalleryComponent.vue */ "./resources/js/components/GalleryComponent.vue")["default"]));
 Vue.component('byweb-ceny', (__webpack_require__(/*! ./components/CenyComponent.vue */ "./resources/js/components/CenyComponent.vue")["default"]));
 /**

@@ -817,8 +817,9 @@ pt-30 {
 .calc-price {
   background: #6dd4b2;
   text-align: center;
-  padding: 30px;
+  padding: 15px;
   color: #FFF;
+  font-size: 1.8rem;
 }
 
 input[type=file], input[type=image], input[type=submit], input[type=reset], input[type=button], input[type=radio], input[type=checkbox] {
@@ -859,33 +860,33 @@ label, select, button, input[type=button], input[type=reset], input[type=submit]
 }
 
 .woo, .woo-cms {
-  background-position: 0px -142px;
+  background-position: 0 -142px;
 }
 
 .vm, .vm-cms {
-  background-position: 0px -121px;
+  background-position: 0 -121px;
 }
 
 .joomla, .joomla-cms {
-  background-position: 0px 0px;
+  background-position: 0;
 }
 
 .wp, .wp-cms {
-  background-position: 0px -20px;
+  background-position: 0 -20px;
 }
 
 .bitrix, .bitrix-cms {
-  background-position: 0px -39px;
+  background-position: 0 -39px;
 }
 
 .laravel, .laravel-cms {
-  background-position: 0px -79px;
+  background-position: 0 -79px;
 }
 
 .php, .php-cms {
-  background-position: 0px -100px;
+  background-position: 0 -100px;
 }
 
 .opencart, .opencart-cms {
-  background-position: 0px -59px;
+  background-position: 0 -59px;
 }
