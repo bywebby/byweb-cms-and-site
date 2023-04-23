@@ -744,10 +744,11 @@ pt-30 {
 
 .calc-descprice {
   display: flex;
+  box-sizing: border-box;
   flex-wrap: wrap;
-  height: 155px;
+  height: 200px;
   overflow-y: auto !important;
-  margin: 0 auto 18px;
+  margin: 0 auto;
   padding: 22px 30px;
   font-size: 1rem;
   color: #076ad0;
@@ -762,7 +763,7 @@ pt-30 {
 }
 .calc-descprice .hr {
   display: block;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: bold;
   margin: 10px 0;
   padding: 10px 0;
@@ -773,17 +774,36 @@ pt-30 {
 
 .calc-row {
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
+  box-sizing: border-box;
 }
 
 .calc-item {
-  flex-basis: 25%;
   box-sizing: border-box;
+  width: 24.5%;
   padding-top: 5px;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+.calc-item:last-child {
+  margin-right: 0px;
+}
+@media screen and (max-width: 1497px) {
+  .calc-item {
+    width: 32%;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .calc-item {
+    width: 49%;
+    margin-right: 0px;
+  }
 }
 .calc-item h4 {
   color: #FFF;
   text-transform: uppercase;
+  font-weight: normal;
   margin: 0;
   padding: 30px 18px 25px;
   text-align: center;
@@ -792,6 +812,13 @@ pt-30 {
 }
 .calc-item h4:hover {
   background: #2f343a;
+}
+
+.calc-price {
+  background: #6dd4b2;
+  text-align: center;
+  padding: 30px;
+  color: #FFF;
 }
 
 input[type=file], input[type=image], input[type=submit], input[type=reset], input[type=button], input[type=radio], input[type=checkbox] {
@@ -810,4 +837,55 @@ input[type=checkbox] {
 
 label, select, button, input[type=button], input[type=reset], input[type=submit], input[type=radio], input[type=checkbox] {
   cursor: pointer;
+}
+
+.joomla, .wp, .bitrix, .laravel, .opencart, .php, .vm, .woo {
+  float: left;
+  padding-left: 25px;
+  background: url("/tpl/byweb/img/cms.png") no-repeat;
+  height: 20px !important;
+  width: 0px;
+  margin-top: 3px;
+  background-size: 20px;
+}
+
+.joomla-cms, .wp-cms, .bitrix-cms, .laravel-cms, .opencart-cms, .php-cms, .vm-cms, .woo-cms {
+  padding-left: 25px;
+  background: url("/tpl/byweb/img/cms.png") no-repeat;
+  height: 20px !important;
+  width: 0px;
+  margin-top: 3px;
+  background-size: 20px;
+}
+
+.woo, .woo-cms {
+  background-position: 0px -142px;
+}
+
+.vm, .vm-cms {
+  background-position: 0px -121px;
+}
+
+.joomla, .joomla-cms {
+  background-position: 0px 0px;
+}
+
+.wp, .wp-cms {
+  background-position: 0px -20px;
+}
+
+.bitrix, .bitrix-cms {
+  background-position: 0px -39px;
+}
+
+.laravel, .laravel-cms {
+  background-position: 0px -79px;
+}
+
+.php, .php-cms {
+  background-position: 0px -100px;
+}
+
+.opencart, .opencart-cms {
+  background-position: 0px -59px;
 }

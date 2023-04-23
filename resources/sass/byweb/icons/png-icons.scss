@@ -1,0 +1,49 @@
+.joomla, .wp, .bitrix, .laravel, .opencart, .php,.vm, .woo {
+    float: left;
+    padding-left:25px;
+    background: url("/tpl/byweb/img/cms.png") no-repeat;
+    height: 20px !important;
+    width: 0px;
+    margin-top: 3px;
+    background-size: 20px;
+}
+
+.joomla-cms, .wp-cms, .bitrix-cms, .laravel-cms, .opencart-cms, .php-cms,.vm-cms, .woo-cms {
+    padding-left: 25px;
+    background: url("/tpl/byweb/img/cms.png") no-repeat;
+    height: 20px !important;
+    width: 0px;
+    margin-top: 3px;
+    background-size: 20px;
+}
+
+.woo, .woo-cms {
+    background-position: 0px -142px;
+}
+
+.vm, .vm-cms {
+    background-position: 0px -121px;
+}
+.joomla, .joomla-cms {
+    background-position: 0px 0px;
+}
+
+.wp, .wp-cms {
+    background-position: 0px -20px;
+}
+
+.bitrix, .bitrix-cms {
+    background-position: 0px -39px;
+}
+
+.laravel, .laravel-cms {
+    background-position: 0px -79px;
+}
+
+.php, .php-cms {
+    background-position: 0px -100px;
+}
+
+.opencart, .opencart-cms {
+    background-position: 0px -59px;
+}

@@ -48,7 +48,7 @@ mix.scripts([
 mix.copyDirectory('resources/tpl/admin/plugins/fontawesome-free/webfonts','public/tpl/admin/dist/webfonts');
 mix.copyDirectory('resources/tpl/admin/img', 'public/tpl/admin/dist/img');
 
-//frontednd design
+//frontend design
 mix.copyDirectory('resources/tpl/byweb/img', 'public/tpl/byweb/img');
 mix.copyDirectory('resources/tpl/byweb/webfonts', 'public/tpl/byweb/webfonts');
 mix.scripts(['resources/tpl/byweb/css/all.css'], 'public/tpl/byweb/css/all.css');
