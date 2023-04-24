@@ -5318,12 +5318,33 @@ __webpack_require__.r(__webpack_exports__);
   props: ['calcitems'],
   data: function data() {
     return {
-      myCount: []
+      //число item-ов в строке
+      totalPrice: []
     };
   },
   methods: {
     debug: function debug(myVar) {
       console.log(myVar);
+    },
+    sumItem: function sumItem(item) {
+      for (var id in item) {
+        var price = 0;
+        for (var i in item[id]) {
+          if (item[id][i].checked) {
+            price += item[id][i].price;
+            this.totalPrice[id] = price;
+          }
+        }
+      }
+      return this.totalPrice;
+    },
+    myPrice: function myPrice(item) {
+      var countEl = this.sumItem(item).length - 1;
+      if (countEl < 0) {
+        return 0;
+      } else {
+        return this.sumItem(item)[countEl];
+      }
     },
     //определяет выделен = 1 или нет = 0
     myChecked: function myChecked(myVar) {
@@ -5454,9 +5475,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* binding */ render),
 /* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
 /* harmony export */ });
-function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
-function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 var render = function render() {
   var _vm = this,
@@ -5467,7 +5485,7 @@ var render = function render() {
     staticClass: "calc"
   }, [_c("h2", [_vm._v(_vm._s(_vm.items["module-title"]))])]), _vm._v(" "), _c("div", {
     staticClass: "calc-desc"
-  }, [_vm._v("\n            " + _vm._s(_vm.items["module-desc"]) + "\n        ")]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n        " + _vm._s(_vm.items["module-desc"]) + "\n    ")]), _vm._v(" "), _c("div", {
     staticClass: "calc-row"
   }, _vm._l(_vm.items, function (item, k) {
     return _typeof(item) === "object" ? _c("div", {
@@ -5478,87 +5496,22 @@ var render = function render() {
       }, _vm._l(i, function (j) {
         return j.price != 0 ? _c("label", [j["class"] != "" ? _c("i", {
           "class": j["class"]
-        }) : _vm._e(), _vm._v(" "), j.type === "checkbox" ? _c("input", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.myCount,
-            expression: "myCount"
-          }],
+        }) : _vm._e(), _vm._v(" "), _c("input", {
           attrs: {
-            name: _vm.inputType(j.type, id),
-            type: "checkbox"
+            type: j.type,
+            name: _vm.inputType(j.type, id)
           },
-          domProps: _defineProperty({
+          domProps: {
             value: j.price,
             checked: _vm.myChecked(j.checked)
-          }, "checked", Array.isArray(_vm.myCount) ? _vm._i(_vm.myCount, j.price) > -1 : _vm.myCount),
-          on: {
-            change: function change($event) {
-              var $$a = _vm.myCount,
-                $$el = $event.target,
-                $$c = $$el.checked ? true : false;
-              if (Array.isArray($$a)) {
-                var $$v = j.price,
-                  $$i = _vm._i($$a, $$v);
-                if ($$el.checked) {
-                  $$i < 0 && (_vm.myCount = $$a.concat([$$v]));
-                } else {
-                  $$i > -1 && (_vm.myCount = $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
-                }
-              } else {
-                _vm.myCount = $$c;
-              }
-            }
           }
-        }) : j.type === "radio" ? _c("input", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.myCount,
-            expression: "myCount"
-          }],
-          attrs: {
-            name: _vm.inputType(j.type, id),
-            type: "radio"
-          },
-          domProps: _defineProperty({
-            value: j.price,
-            checked: _vm.myChecked(j.checked)
-          }, "checked", _vm._q(_vm.myCount, j.price)),
-          on: {
-            change: function change($event) {
-              _vm.myCount = j.price;
-            }
-          }
-        }) : _c("input", {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: _vm.myCount,
-            expression: "myCount"
-          }],
-          attrs: {
-            name: _vm.inputType(j.type, id),
-            type: j.type
-          },
-          domProps: _defineProperty({
-            value: j.price,
-            checked: _vm.myChecked(j.checked)
-          }, "value", _vm.myCount),
-          on: {
-            input: function input($event) {
-              if ($event.target.composing) return;
-              _vm.myCount = $event.target.value;
-            }
-          }
-        }), _vm._v("\n                        " + _vm._s(j.title) + ": " + _vm._s(j.price) + " BYN\n                    ")]) : _c("label", [_c("span", {
+        }), _vm._v("\n                    " + _vm._s(j.title) + ": " + _vm._s(j.price) + " BYN\n                ")]) : _c("label", [_c("span", {
           staticClass: "hr"
         }, [_vm._v(_vm._s(j.title))])]);
       }), 0);
     }), _vm._v(" "), _c("div", {
       staticClass: "calc-price"
-    }, [_vm._v(" " + _vm._s(_vm.myCount) + " "), _c("small", [_vm._v("BYN")])])], 2) : _vm._e();
+    }, [_vm._v(_vm._s(_vm.myPrice(item)) + " "), _c("small", [_vm._v("BYN")])])], 2) : _vm._e();
   }), 0)]);
 };
 var staticRenderFns = [];
