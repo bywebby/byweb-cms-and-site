@@ -17,7 +17,7 @@ window.Vue = require('vue').default;
  */
 
 Vue.component('byweb-gallery', require('./components/GalleryComponent.vue').default);
-Vue.component('byweb-ceny', require('./components/CenyComponent.vue').default);
+Vue.component('byweb-ceny', require('./components/modules/calc/CenyComponent.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

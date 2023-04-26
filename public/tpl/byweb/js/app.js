@@ -5301,70 +5301,6 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/CenyComponent.vue?vue&type=script&lang=js&":
-/*!********************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/CenyComponent.vue?vue&type=script&lang=js& ***!
-  \********************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "CenyComponent",
-  //входной json
-  props: ['calcitems'],
-  data: function data() {
-    return {
-      //число item-ов в строке
-      totalPrice: []
-    };
-  },
-  methods: {
-    debug: function debug(myVar) {
-      console.log(myVar);
-    },
-    sumItem: function sumItem(item) {
-      for (var id in item) {
-        var price = 0;
-        for (var i in item[id]) {
-          if (item[id][i].checked) {
-            price += item[id][i].price;
-            this.totalPrice[id] = price;
-          }
-        }
-      }
-      return this.totalPrice;
-    },
-    myPrice: function myPrice(item) {
-      var countEl = this.sumItem(item).length - 1;
-      if (countEl < 0) {
-        return 0;
-      } else {
-        return this.sumItem(item)[countEl];
-      }
-    },
-    //определяет выделен = 1 или нет = 0
-    myChecked: function myChecked(myVar) {
-      return myVar ? 'cheked' : '';
-    },
-    //если тип инпута radio то дает ему name для группировки выбора
-    inputType: function inputType(myVar, id) {
-      return myVar == 'radio' ? 'pay_' + id : '';
-    }
-  },
-  computed: {
-    //распарсивается json
-    items: function items() {
-      return JSON.parse(this.calcitems);
-    }
-  }
-});
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/GalleryComponent.vue?vue&type=script&lang=js&":
 /*!***********************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/GalleryComponent.vue?vue&type=script&lang=js& ***!
@@ -5463,60 +5399,133 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/CenyComponent.vue?vue&type=template&id=1458f975&scoped=true&":
-/*!*******************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/CenyComponent.vue?vue&type=template&id=1458f975&scoped=true& ***!
-  \*******************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/modules/calc/CalcItemComponent.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/modules/calc/CalcItemComponent.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* binding */ render),
-/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
-var render = function render() {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("section", {
-    staticClass: "row"
-  }, [_c("div", {
-    staticClass: "calc"
-  }, [_c("h2", [_vm._v(_vm._s(_vm.items["module-title"]))])]), _vm._v(" "), _c("div", {
-    staticClass: "calc-desc"
-  }, [_vm._v("\n        " + _vm._s(_vm.items["module-desc"]) + "\n    ")]), _vm._v(" "), _c("div", {
-    staticClass: "calc-row"
-  }, _vm._l(_vm.items, function (item, k) {
-    return _typeof(item) === "object" ? _c("div", {
-      staticClass: "calc-item"
-    }, [_c("h4", [_vm._v(_vm._s(k))]), _vm._v(" "), _vm._l(item, function (i, id) {
-      return _c("div", {
-        staticClass: "calc-descprice"
-      }, _vm._l(i, function (j) {
-        return j.price != 0 ? _c("label", [j["class"] != "" ? _c("i", {
-          "class": j["class"]
-        }) : _vm._e(), _vm._v(" "), _c("input", {
-          attrs: {
-            type: j.type,
-            name: _vm.inputType(j.type, id)
-          },
-          domProps: {
-            value: j.price,
-            checked: _vm.myChecked(j.checked)
-          }
-        }), _vm._v("\n                    " + _vm._s(j.title) + ": " + _vm._s(j.price) + " BYN\n                ")]) : _c("label", [_c("span", {
-          staticClass: "hr"
-        }, [_vm._v(_vm._s(j.title))])]);
-      }), 0);
-    }), _vm._v(" "), _c("div", {
-      staticClass: "calc-price"
-    }, [_vm._v(_vm._s(_vm.myPrice(item)) + " "), _c("small", [_vm._v("BYN")])])], 2) : _vm._e();
-  }), 0)]);
-};
-var staticRenderFns = [];
-render._withStripped = true;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "CalcItemComponent",
+  //входные данные
+  props: ['item', 'titleKey'],
+  data: function data() {
+    return {
+      calcCheckedData: [],
+      calcRadioData: null,
+      calcRes: 0
+    };
+  },
+  methods: {
+    debug: function debug(myVar) {
+      console.log(myVar);
+    },
+    //если тип инпута radio то дает ему name для группировки выбора
+    inputName: function inputName(myVar, id, kitem) {
+      return myVar == 'radio' ? 'pay_' + id : 'pay_' + id + '_' + kitem;
+    },
+    //формирует id input
+    idName: function idName(myVar, id, kitem) {
+      return myVar == 'radio' ? 'radio_' + id + '_' + kitem : 'checkbox_' + id + '_' + kitem;
+    }
+  },
+  computed: {
+    //считает динамически результат
+    calcResult: function calcResult() {
+      // this.debug(this.calcCheckedData)
 
+      //провереям есть данные в массиве
+      if (this.calcCheckedData.length != 0) {
+        var sum = 0;
+        // суммирует элементы массива
+        this.calcCheckedData.map(function (i) {
+          return sum += i;
+        });
+        this.calcRes = sum;
+      } else {
+        this.calcRes = 0;
+      }
+
+      //если выделены радио, то он их суммирует
+      if (this.calcRadioData != null) {
+        this.calcRes += this.calcRadioData;
+      }
+      // this.debug(this.calcRadioData);
+      return this.calcRes;
+    },
+    myCheckedCheckbox: function myCheckedCheckbox() {
+      for (var _i = 0, _Object$values = Object.values(this.item); _i < _Object$values.length; _i++) {
+        var i = _Object$values[_i];
+        for (var kitem in i) {
+          // this.debug(kitem);
+          if (i[kitem].price != 0 && i[kitem].type == 'checkbox' && i[kitem].checked == 1 && i[kitem].status == 1) {
+            //получаем все checkbox, где не равны 0
+            this.calcCheckedData[kitem] = i[kitem].price;
+          }
+        }
+      }
+      return this.calcCheckedData;
+    },
+    myCheckedRadio: function myCheckedRadio() {
+      for (var _i2 = 0, _Object$values2 = Object.values(this.item); _i2 < _Object$values2.length; _i2++) {
+        var i = _Object$values2[_i2];
+        for (var kitem in i) {
+          if (i[kitem].price != 0 && i[kitem].type == 'radio' && i[kitem].checked == 1 && i[kitem].status == 1) {
+            //получаем все checkbox, где не равны 0
+            // this.debug(i[kitem].title);
+            // this.debug(i[kitem].price);
+            this.calcRadioData = i[kitem].price;
+          }
+        }
+      }
+
+      // this.debug(this.calcRadioDataData);
+
+      return this.calcRadioDataData;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/modules/calc/CenyComponent.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/modules/calc/CenyComponent.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _CalcItemComponent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CalcItemComponent */ "./resources/js/components/modules/calc/CalcItemComponent.vue");
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "CenyComponent",
+  components: {
+    calcItem: _CalcItemComponent__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  //входной json
+  props: ['calcitems'],
+  computed: {
+    //распарсивается json
+    items: function items() {
+      return JSON.parse(this.calcitems);
+    },
+    getModuleTitle: function getModuleTitle() {
+      return this.items['module-title'];
+    },
+    getModuleDesc: function getModuleDesc() {
+      return this.items["module-desc"];
+    }
+  }
+});
 
 /***/ }),
 
@@ -5586,6 +5595,245 @@ render._withStripped = true;
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/modules/calc/CalcItemComponent.vue?vue&type=template&id=1867448e&scoped=true&":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/modules/calc/CalcItemComponent.vue?vue&type=template&id=1867448e&scoped=true& ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+var render = function render() {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", [_c("h4", [_vm._v(_vm._s(_vm.titleKey))]), _vm._v(" "), _vm._l(_vm.item, function (i, id) {
+    return _c("div", {
+      staticClass: "calc-descprice"
+    }, _vm._l(i, function (j, kitem) {
+      return j.price != 0 ? _c("label", {
+        attrs: {
+          "for": _vm.idName(j.type, id, kitem)
+        }
+      }, [j["class"] != "" && j.status == 1 ? _c("i", {
+        "class": j["class"]
+      }) : _vm._e(), _vm._v(" "), j.type === "checkbox" && j.type == "checkbox" && j.status == 1 ? _c("input", {
+        directives: [{
+          name: "model",
+          rawName: "v-model",
+          value: _vm.calcCheckedData,
+          expression: "calcCheckedData"
+        }],
+        attrs: {
+          name: _vm.inputName(j.type, id, kitem),
+          id: _vm.idName(j.type, id, kitem),
+          type: "checkbox"
+        },
+        domProps: {
+          value: j.price,
+          checked: Array.isArray(_vm.calcCheckedData) ? _vm._i(_vm.calcCheckedData, j.price) > -1 : _vm.calcCheckedData
+        },
+        on: {
+          change: function change($event) {
+            var $$a = _vm.calcCheckedData,
+              $$el = $event.target,
+              $$c = $$el.checked ? true : false;
+            if (Array.isArray($$a)) {
+              var $$v = j.price,
+                $$i = _vm._i($$a, $$v);
+              if ($$el.checked) {
+                $$i < 0 && (_vm.calcCheckedData = $$a.concat([$$v]));
+              } else {
+                $$i > -1 && (_vm.calcCheckedData = $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+              }
+            } else {
+              _vm.calcCheckedData = $$c;
+            }
+          }
+        }
+      }) : j.type === "radio" && j.type == "checkbox" && j.status == 1 ? _c("input", {
+        directives: [{
+          name: "model",
+          rawName: "v-model",
+          value: _vm.calcCheckedData,
+          expression: "calcCheckedData"
+        }],
+        attrs: {
+          name: _vm.inputName(j.type, id, kitem),
+          id: _vm.idName(j.type, id, kitem),
+          type: "radio"
+        },
+        domProps: {
+          value: j.price,
+          checked: _vm._q(_vm.calcCheckedData, j.price)
+        },
+        on: {
+          change: function change($event) {
+            _vm.calcCheckedData = j.price;
+          }
+        }
+      }) : j.type == "checkbox" && j.status == 1 ? _c("input", {
+        directives: [{
+          name: "model",
+          rawName: "v-model",
+          value: _vm.calcCheckedData,
+          expression: "calcCheckedData"
+        }],
+        attrs: {
+          name: _vm.inputName(j.type, id, kitem),
+          id: _vm.idName(j.type, id, kitem),
+          type: j.type
+        },
+        domProps: _defineProperty({
+          value: j.price
+        }, "value", _vm.calcCheckedData),
+        on: {
+          input: function input($event) {
+            if ($event.target.composing) return;
+            _vm.calcCheckedData = $event.target.value;
+          }
+        }
+      }) : j.type == "radio" && j.status == 1 ? j.type === "checkbox" ? _c("input", {
+        directives: [{
+          name: "model",
+          rawName: "v-model",
+          value: _vm.calcRadioData,
+          expression: "calcRadioData"
+        }],
+        attrs: {
+          data: _vm.myCheckedRadio,
+          name: _vm.inputName(j.type, id, kitem),
+          id: _vm.idName(j.type, id, kitem),
+          type: "checkbox"
+        },
+        domProps: {
+          value: j.price,
+          checked: Array.isArray(_vm.calcRadioData) ? _vm._i(_vm.calcRadioData, j.price) > -1 : _vm.calcRadioData
+        },
+        on: {
+          change: function change($event) {
+            var $$a = _vm.calcRadioData,
+              $$el = $event.target,
+              $$c = $$el.checked ? true : false;
+            if (Array.isArray($$a)) {
+              var $$v = j.price,
+                $$i = _vm._i($$a, $$v);
+              if ($$el.checked) {
+                $$i < 0 && (_vm.calcRadioData = $$a.concat([$$v]));
+              } else {
+                $$i > -1 && (_vm.calcRadioData = $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+              }
+            } else {
+              _vm.calcRadioData = $$c;
+            }
+          }
+        }
+      }) : j.type === "radio" ? _c("input", {
+        directives: [{
+          name: "model",
+          rawName: "v-model",
+          value: _vm.calcRadioData,
+          expression: "calcRadioData"
+        }],
+        attrs: {
+          data: _vm.myCheckedRadio,
+          name: _vm.inputName(j.type, id, kitem),
+          id: _vm.idName(j.type, id, kitem),
+          type: "radio"
+        },
+        domProps: {
+          value: j.price,
+          checked: _vm._q(_vm.calcRadioData, j.price)
+        },
+        on: {
+          change: function change($event) {
+            _vm.calcRadioData = j.price;
+          }
+        }
+      }) : _c("input", {
+        directives: [{
+          name: "model",
+          rawName: "v-model",
+          value: _vm.calcRadioData,
+          expression: "calcRadioData"
+        }],
+        attrs: {
+          data: _vm.myCheckedRadio,
+          name: _vm.inputName(j.type, id, kitem),
+          id: _vm.idName(j.type, id, kitem),
+          type: j.type
+        },
+        domProps: _defineProperty({
+          value: j.price
+        }, "value", _vm.calcRadioData),
+        on: {
+          input: function input($event) {
+            if ($event.target.composing) return;
+            _vm.calcRadioData = $event.target.value;
+          }
+        }
+      }) : _vm._e(), _vm._v(" "), j.status == 1 ? _c("span", [_vm._v(_vm._s(j.title) + ": " + _vm._s(j.price) + " BYN")]) : _vm._e()]) : _c("label", [_c("span", {
+        staticClass: "hr"
+      }, [_vm._v(_vm._s(j.title))])]);
+    }), 0);
+  }), _vm._v(" "), _c("div", {
+    staticClass: "calc-price"
+  }, [_vm._v("\n        " + _vm._s(_vm.calcResult) + " "), _c("small", [_vm._v("BYN")])])], 2);
+};
+var staticRenderFns = [];
+render._withStripped = true;
+
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/modules/calc/CenyComponent.vue?vue&type=template&id=48191e89&scoped=true&":
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/modules/calc/CenyComponent.vue?vue&type=template&id=48191e89&scoped=true& ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+var render = function render() {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("section", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "calc"
+  }, [_c("h2", [_vm._v("\n            " + _vm._s(_vm.getModuleTitle) + "\n        ")])]), _vm._v(" "), _c("div", {
+    staticClass: "calc-desc"
+  }, [_vm._v("\n        " + _vm._s(_vm.getModuleDesc) + "\n    ")]), _vm._v(" "), _c("div", {
+    staticClass: "calc-row"
+  }, _vm._l(_vm.items, function (item, titleKey) {
+    return _typeof(item) === "object" ? _c("div", {
+      staticClass: "calc-item"
+    }, [_c("calcItem", {
+      attrs: {
+        item: item,
+        titleKey: titleKey
+      }
+    })], 1) : _vm._e();
+  }), 0)]);
+};
+var staticRenderFns = [];
+render._withStripped = true;
+
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -5610,7 +5858,7 @@ window.Vue = (__webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js
  */
 
 Vue.component('byweb-gallery', (__webpack_require__(/*! ./components/GalleryComponent.vue */ "./resources/js/components/GalleryComponent.vue")["default"]));
-Vue.component('byweb-ceny', (__webpack_require__(/*! ./components/CenyComponent.vue */ "./resources/js/components/CenyComponent.vue")["default"]));
+Vue.component('byweb-ceny', (__webpack_require__(/*! ./components/modules/calc/CenyComponent.vue */ "./resources/js/components/modules/calc/CenyComponent.vue")["default"]));
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -28733,45 +28981,6 @@ module.exports = function (list, options) {
 
 /***/ }),
 
-/***/ "./resources/js/components/CenyComponent.vue":
-/*!***************************************************!*\
-  !*** ./resources/js/components/CenyComponent.vue ***!
-  \***************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _CenyComponent_vue_vue_type_template_id_1458f975_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CenyComponent.vue?vue&type=template&id=1458f975&scoped=true& */ "./resources/js/components/CenyComponent.vue?vue&type=template&id=1458f975&scoped=true&");
-/* harmony import */ var _CenyComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CenyComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/CenyComponent.vue?vue&type=script&lang=js&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-;
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _CenyComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _CenyComponent_vue_vue_type_template_id_1458f975_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
-  _CenyComponent_vue_vue_type_template_id_1458f975_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
-  false,
-  null,
-  "1458f975",
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/CenyComponent.vue"
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
-
-/***/ }),
-
 /***/ "./resources/js/components/GalleryComponent.vue":
 /*!******************************************************!*\
   !*** ./resources/js/components/GalleryComponent.vue ***!
@@ -28813,10 +29022,10 @@ component.options.__file = "resources/js/components/GalleryComponent.vue"
 
 /***/ }),
 
-/***/ "./resources/js/components/CenyComponent.vue?vue&type=script&lang=js&":
-/*!****************************************************************************!*\
-  !*** ./resources/js/components/CenyComponent.vue?vue&type=script&lang=js& ***!
-  \****************************************************************************/
+/***/ "./resources/js/components/modules/calc/CalcItemComponent.vue":
+/*!********************************************************************!*\
+  !*** ./resources/js/components/modules/calc/CalcItemComponent.vue ***!
+  \********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -28824,8 +29033,70 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CenyComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./CenyComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/CenyComponent.vue?vue&type=script&lang=js&");
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CenyComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _CalcItemComponent_vue_vue_type_template_id_1867448e_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CalcItemComponent.vue?vue&type=template&id=1867448e&scoped=true& */ "./resources/js/components/modules/calc/CalcItemComponent.vue?vue&type=template&id=1867448e&scoped=true&");
+/* harmony import */ var _CalcItemComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CalcItemComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/modules/calc/CalcItemComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _CalcItemComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CalcItemComponent_vue_vue_type_template_id_1867448e_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+  _CalcItemComponent_vue_vue_type_template_id_1867448e_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  "1867448e",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/modules/calc/CalcItemComponent.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/modules/calc/CenyComponent.vue":
+/*!****************************************************************!*\
+  !*** ./resources/js/components/modules/calc/CenyComponent.vue ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _CenyComponent_vue_vue_type_template_id_48191e89_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CenyComponent.vue?vue&type=template&id=48191e89&scoped=true& */ "./resources/js/components/modules/calc/CenyComponent.vue?vue&type=template&id=48191e89&scoped=true&");
+/* harmony import */ var _CenyComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CenyComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/modules/calc/CenyComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _CenyComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CenyComponent_vue_vue_type_template_id_48191e89_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+  _CenyComponent_vue_vue_type_template_id_48191e89_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  "48191e89",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/modules/calc/CenyComponent.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
 /***/ }),
 
@@ -28845,20 +29116,35 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/CenyComponent.vue?vue&type=template&id=1458f975&scoped=true&":
-/*!**********************************************************************************************!*\
-  !*** ./resources/js/components/CenyComponent.vue?vue&type=template&id=1458f975&scoped=true& ***!
-  \**********************************************************************************************/
+/***/ "./resources/js/components/modules/calc/CalcItemComponent.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/components/modules/calc/CalcItemComponent.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CenyComponent_vue_vue_type_template_id_1458f975_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
-/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CenyComponent_vue_vue_type_template_id_1458f975_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CenyComponent_vue_vue_type_template_id_1458f975_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./CenyComponent.vue?vue&type=template&id=1458f975&scoped=true& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/CenyComponent.vue?vue&type=template&id=1458f975&scoped=true&");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CalcItemComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./CalcItemComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/modules/calc/CalcItemComponent.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CalcItemComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
+/***/ }),
+
+/***/ "./resources/js/components/modules/calc/CenyComponent.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/components/modules/calc/CenyComponent.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CenyComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./CenyComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/modules/calc/CenyComponent.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CenyComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
@@ -28875,6 +29161,40 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_GalleryComponent_vue_vue_type_template_id_a13cd294_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_GalleryComponent_vue_vue_type_template_id_a13cd294_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./GalleryComponent.vue?vue&type=template&id=a13cd294&scoped=true& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/GalleryComponent.vue?vue&type=template&id=a13cd294&scoped=true&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/modules/calc/CalcItemComponent.vue?vue&type=template&id=1867448e&scoped=true&":
+/*!***************************************************************************************************************!*\
+  !*** ./resources/js/components/modules/calc/CalcItemComponent.vue?vue&type=template&id=1867448e&scoped=true& ***!
+  \***************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CalcItemComponent_vue_vue_type_template_id_1867448e_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CalcItemComponent_vue_vue_type_template_id_1867448e_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CalcItemComponent_vue_vue_type_template_id_1867448e_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./CalcItemComponent.vue?vue&type=template&id=1867448e&scoped=true& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/modules/calc/CalcItemComponent.vue?vue&type=template&id=1867448e&scoped=true&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/modules/calc/CenyComponent.vue?vue&type=template&id=48191e89&scoped=true&":
+/*!***********************************************************************************************************!*\
+  !*** ./resources/js/components/modules/calc/CenyComponent.vue?vue&type=template&id=48191e89&scoped=true& ***!
+  \***********************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CenyComponent_vue_vue_type_template_id_48191e89_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CenyComponent_vue_vue_type_template_id_48191e89_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CenyComponent_vue_vue_type_template_id_48191e89_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./CenyComponent.vue?vue&type=template&id=48191e89&scoped=true& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/modules/calc/CenyComponent.vue?vue&type=template&id=48191e89&scoped=true&");
 
 
 /***/ }),
