@@ -5418,7 +5418,9 @@ __webpack_require__.r(__webpack_exports__);
     return {
       calcCheckedData: [],
       calcRadioData: null,
-      calcRes: 0
+      calcRes: 0,
+      //определяет дефолтные значения стоят или динамические
+      defStatus: true
     };
   },
   methods: {
@@ -5432,13 +5434,16 @@ __webpack_require__.r(__webpack_exports__);
     //формирует id input
     idName: function idName(myVar, id, kitem) {
       return myVar == 'radio' ? 'radio_' + id + '_' + kitem : 'checkbox_' + id + '_' + kitem;
+    },
+    delMyDef: function delMyDef(event) {
+      if (event) {
+        return this.defStatus = false;
+      }
     }
   },
   computed: {
     //считает динамически результат
     calcResult: function calcResult() {
-      // this.debug(this.calcCheckedData)
-
       //провереям есть данные в массиве
       if (this.calcCheckedData.length != 0) {
         var sum = 0;
@@ -5450,26 +5455,31 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         this.calcRes = 0;
       }
-
       //если выделены радио, то он их суммирует
       if (this.calcRadioData != null) {
+        // this.debug(this.calcRadioData);
         this.calcRes += this.calcRadioData;
       }
       // this.debug(this.calcRadioData);
       return this.calcRes;
     },
-    myCheckedCheckbox: function myCheckedCheckbox() {
-      for (var _i = 0, _Object$values = Object.values(this.item); _i < _Object$values.length; _i++) {
-        var i = _Object$values[_i];
-        for (var kitem in i) {
-          // this.debug(kitem);
-          if (i[kitem].price != 0 && i[kitem].type == 'checkbox' && i[kitem].checked == 1 && i[kitem].status == 1) {
-            //получаем все checkbox, где не равны 0
-            this.calcCheckedData[kitem] = i[kitem].price;
+    myDefCheckedCheckbox: function myDefCheckedCheckbox() {
+      //если дефолтное состояние, то берем значения из базы данных админки, что прилетели в json
+      if (this.defStatus) {
+        for (var _i = 0, _Object$values = Object.values(this.item); _i < _Object$values.length; _i++) {
+          var i = _Object$values[_i];
+          for (var kitem in i) {
+            if (i[kitem].price != 0 && i[kitem].type == 'checkbox' && i[kitem].checked == 1 && i[kitem].status == 1) {
+              //получаем все checkbox, где цены не равны 0 и опубликованы
+              this.calcCheckedData[kitem] = i[kitem].price;
+            }
           }
         }
+        return this.calcCheckedData;
+      } else if (!this.defStatus) {
+        //если имеются клики по чекбоксам, то сбразываем дефолтное состояния калькулятора через пустой массив
+        return this.calcCheckedData = [];
       }
-      return this.calcCheckedData;
     },
     myCheckedRadio: function myCheckedRadio() {
       for (var _i2 = 0, _Object$values2 = Object.values(this.item); _i2 < _Object$values2.length; _i2++) {
@@ -5477,14 +5487,12 @@ __webpack_require__.r(__webpack_exports__);
         for (var kitem in i) {
           if (i[kitem].price != 0 && i[kitem].type == 'radio' && i[kitem].checked == 1 && i[kitem].status == 1) {
             //получаем все checkbox, где не равны 0
-            // this.debug(i[kitem].title);
-            // this.debug(i[kitem].price);
             this.calcRadioData = i[kitem].price;
           }
         }
       }
-
-      // this.debug(this.calcRadioDataData);
+      // this.debug(this.calcCheckedData);
+      // this.debug(this.calcRadioData);
 
       return this.calcRadioDataData;
     }
@@ -5632,6 +5640,7 @@ var render = function render() {
           expression: "calcCheckedData"
         }],
         attrs: {
+          data: _vm.myDefCheckedCheckbox,
           name: _vm.inputName(j.type, id, kitem),
           id: _vm.idName(j.type, id, kitem),
           type: "checkbox"
@@ -5641,6 +5650,9 @@ var render = function render() {
           checked: Array.isArray(_vm.calcCheckedData) ? _vm._i(_vm.calcCheckedData, j.price) > -1 : _vm.calcCheckedData
         },
         on: {
+          click: function click($event) {
+            return _vm.delMyDef($event);
+          },
           change: function change($event) {
             var $$a = _vm.calcCheckedData,
               $$el = $event.target,
@@ -5666,6 +5678,7 @@ var render = function render() {
           expression: "calcCheckedData"
         }],
         attrs: {
+          data: _vm.myDefCheckedCheckbox,
           name: _vm.inputName(j.type, id, kitem),
           id: _vm.idName(j.type, id, kitem),
           type: "radio"
@@ -5675,6 +5688,9 @@ var render = function render() {
           checked: _vm._q(_vm.calcCheckedData, j.price)
         },
         on: {
+          click: function click($event) {
+            return _vm.delMyDef($event);
+          },
           change: function change($event) {
             _vm.calcCheckedData = j.price;
           }
@@ -5687,6 +5703,7 @@ var render = function render() {
           expression: "calcCheckedData"
         }],
         attrs: {
+          data: _vm.myDefCheckedCheckbox,
           name: _vm.inputName(j.type, id, kitem),
           id: _vm.idName(j.type, id, kitem),
           type: j.type
@@ -5695,6 +5712,9 @@ var render = function render() {
           value: j.price
         }, "value", _vm.calcCheckedData),
         on: {
+          click: function click($event) {
+            return _vm.delMyDef($event);
+          },
           input: function input($event) {
             if ($event.target.composing) return;
             _vm.calcCheckedData = $event.target.value;

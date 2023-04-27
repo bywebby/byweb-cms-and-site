@@ -6,21 +6,21 @@
                 <!--если иконка не пуста - выводим ее-->
                 <i v-if="(j.class != '') && (j.status == 1)" :class="j.class"></i>
 
-                <input v-if="(j.type == 'checkbox') && (j.status == 1)"
-
+                <input v-if="(j.type == 'checkbox') && (j.status == 1)" @click="delMyDef($event)"
+                       :data="myDefCheckedCheckbox"
                        :type="j.type"
                        :name="inputName(j.type, id, kitem)"
                        :id="idName(j.type, id, kitem)"
-                       v-bind:value="j.price"
+                       :value="j.price"
                        v-model="calcCheckedData"
                 >
                 <!-- этот инпут нужен для корректной работы radio, к сожалению через v-model radio с checkbox по-разному ведут -->
                 <input v-else-if="j.type == 'radio' && (j.status == 1)"
-                        :data="myCheckedRadio"
+                       :data="myCheckedRadio"
                        :type="j.type"
                        :name="inputName(j.type, id, kitem)"
                        :id="idName(j.type, id, kitem)"
-                       v-bind:value="j.price"
+                       :value="j.price"
                        v-model="calcRadioData"
                 >
                 <span v-if="j.status == 1">{{ j.title }}: {{ j.price }} BYN</span>
@@ -49,6 +49,10 @@ export default {
         calcCheckedData: [],
         calcRadioData: null,
         calcRes: 0,
+        //определяет дефолтные значения стоят или динамические
+        defStatus: true,
+
+
     }),
     methods: {
         debug: function (myVar) {
@@ -62,15 +66,20 @@ export default {
         idName(myVar, id, kitem) {
             return myVar == 'radio' ? 'radio_' + id + '_' + kitem : 'checkbox_' + id + '_' + kitem;
         },
+        delMyDef(event) {
 
+            if (event) {
+               return this.defStatus = false;
+
+            }
+
+        }
     },
+
 
     computed: {
 //считает динамически результат
         calcResult: function () {
-
-            // this.debug(this.calcCheckedData)
-
             //провереям есть данные в массиве
             if (this.calcCheckedData.length != 0) {
                 let sum = 0;
@@ -80,39 +89,44 @@ export default {
             } else {
                 this.calcRes = 0;
             }
-
             //если выделены радио, то он их суммирует
             if (this.calcRadioData != null) {
+
+                // this.debug(this.calcRadioData);
                 this.calcRes += this.calcRadioData;
             }
             // this.debug(this.calcRadioData);
             return this.calcRes;
         },
-        myCheckedCheckbox: function () {
-            for (let i of Object.values(this.item)) {
-                for (let kitem in i) {
-                    // this.debug(kitem);
-                    if (i[kitem].price != 0 && i[kitem].type == 'checkbox' && i[kitem].checked == 1 && i[kitem].status == 1) {
-                        //получаем все checkbox, где не равны 0
-                        this.calcCheckedData[kitem] = i[kitem].price;
+        myDefCheckedCheckbox: function () {
+//если дефолтное состояние, то берем значения из базы данных админки, что прилетели в json
+            if (this.defStatus) {
+                for (let i of Object.values(this.item)) {
+                    for (let kitem in i) {
+                        if (i[kitem].price != 0 && i[kitem].type == 'checkbox' && i[kitem].checked == 1 && i[kitem].status == 1) {
+                            //получаем все checkbox, где цены не равны 0 и опубликованы
+                            this.calcCheckedData[kitem] = i[kitem].price;
+                        }
                     }
                 }
+                return this.calcCheckedData;
+            } else if (!this.defStatus) {
+                //если имеются клики по чекбоксам, то сбразываем дефолтное состояния калькулятора через пустой массив
+                return this.calcCheckedData = [];
             }
-            return this.calcCheckedData;
+
         },
         myCheckedRadio: function () {
             for (let i of Object.values(this.item)) {
                 for (let kitem in i) {
                     if (i[kitem].price != 0 && i[kitem].type == 'radio' && i[kitem].checked == 1 && i[kitem].status == 1) {
                         //получаем все checkbox, где не равны 0
-                        // this.debug(i[kitem].title);
-                        // this.debug(i[kitem].price);
                         this.calcRadioData = i[kitem].price;
                     }
                 }
             }
-
-            // this.debug(this.calcRadioDataData);
+            // this.debug(this.calcCheckedData);
+            // this.debug(this.calcRadioData);
 
             return this.calcRadioDataData;
         }
