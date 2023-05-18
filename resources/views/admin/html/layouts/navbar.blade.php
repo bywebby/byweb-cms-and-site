@@ -127,6 +127,13 @@
                 <i class="fas fa-expand-arrows-alt"></i>
             </a>
         </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/" target="_blank" title="посмотреть сайт">
+                <i class="fas fa-eye"></i>
+            </a>
+        </li>
+
         <li class="nav-item">
             <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
                 <b>Привет: {{auth()->user()->name}}</b>
