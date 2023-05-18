@@ -17,6 +17,9 @@
 <!-- Site wrapper -->
 <div class="wrapper">
 
+
+{{--    {{dd(auth()->check())}}--}}
+
     @include('admin.html.layouts.navbar')
     @include('admin.html.layouts.sidebar')
 

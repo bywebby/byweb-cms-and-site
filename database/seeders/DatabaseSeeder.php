@@ -14,5 +14,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // User::factory(10)->create();
+        //добавляем seeder в автозагрузку консольной команды запуска seeder
+        $this->call(UserCreate::class);
     }
 }

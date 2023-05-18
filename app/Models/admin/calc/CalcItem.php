@@ -15,7 +15,6 @@ class CalcItem extends Model
     protected $fillable = [
         'calc_title_id',
         'price',
-        'description',
         'calc_module_id',
         'calc_category_id',
         'checked',

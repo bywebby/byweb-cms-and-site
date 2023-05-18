@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3307
--- Время создания: Апр 20 2023 г., 15:02
+-- Время создания: Май 18 2023 г., 11:24
 -- Версия сервера: 5.6.47
 -- Версия PHP: 7.4.5
 
@@ -57,7 +57,6 @@ INSERT INTO `calc_categories` (`id`, `title`, `created_at`, `updated_at`, `calc_
 
 CREATE TABLE `calc_classes` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
@@ -67,11 +66,15 @@ CREATE TABLE `calc_classes` (
 -- Дамп данных таблицы `calc_classes`
 --
 
-INSERT INTO `calc_classes` (`id`, `description`, `created_at`, `updated_at`, `title`) VALUES
-(2, 'btn1', '2023-04-05 13:38:52', '2023-04-18 10:59:25', 'btn1'),
-(3, 'cms-joomla', '2023-04-10 10:28:44', '2023-04-10 10:28:44', 'cms-joomla'),
-(4, 'Без класса', '2023-04-14 04:59:30', '2023-04-14 04:59:30', 'Без класса'),
-(5, 'opencart', '2023-04-14 06:32:19', '2023-04-14 06:32:19', 'opencart');
+INSERT INTO `calc_classes` (`id`, `created_at`, `updated_at`, `title`) VALUES
+(2, '2023-04-05 13:38:52', '2023-04-18 10:59:25', 'btn1'),
+(3, '2023-04-10 10:28:44', '2023-04-29 05:29:37', 'joomla'),
+(4, '2023-04-14 04:59:30', '2023-04-14 04:59:30', 'Без класса'),
+(5, '2023-04-14 06:32:19', '2023-04-21 10:50:19', 'opencart'),
+(6, '2023-04-21 11:02:55', '2023-04-21 11:02:55', 'wp'),
+(7, '2023-04-29 05:34:41', '2023-04-29 05:34:41', 'bitrix'),
+(8, '2023-04-29 05:43:59', '2023-04-29 05:47:11', 'laravel'),
+(10, '2023-04-29 05:47:36', '2023-04-29 05:47:36', 'php');
 
 -- --------------------------------------------------------
 
@@ -83,23 +86,36 @@ CREATE TABLE `calc_items` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `calc_title_id` bigint(20) UNSIGNED NOT NULL,
   `price` double(8,2) UNSIGNED NOT NULL DEFAULT '0.00',
-  `description` text COLLATE utf8mb4_unicode_ci,
   `calc_module_id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `calc_category_id` bigint(20) UNSIGNED NOT NULL
+  `calc_category_id` bigint(20) UNSIGNED NOT NULL,
+  `checked` tinyint(4) NOT NULL DEFAULT '0',
+  `status` tinyint(4) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Дамп данных таблицы `calc_items`
 --
 
-INSERT INTO `calc_items` (`id`, `calc_title_id`, `price`, `description`, `calc_module_id`, `created_at`, `updated_at`, `calc_category_id`) VALUES
-(2, 2, 50.00, '435345', 5, '2023-04-14 04:52:59', '2023-04-14 05:30:02', 3),
-(3, 3, 90.00, NULL, 5, '2023-04-14 05:29:55', '2023-04-14 05:29:55', 3),
-(4, 4, 0.00, NULL, 5, '2023-04-14 06:58:22', '2023-04-14 06:58:22', 3),
-(5, 7, 400.00, NULL, 5, '2023-04-14 07:13:06', '2023-04-14 07:13:06', 3),
-(6, 2, 500.00, NULL, 5, '2023-04-14 12:31:37', '2023-04-14 12:31:37', 5);
+INSERT INTO `calc_items` (`id`, `calc_title_id`, `price`, `calc_module_id`, `created_at`, `updated_at`, `calc_category_id`, `checked`, `status`) VALUES
+(2, 2, 50.00, 5, '2023-04-14 04:52:59', '2023-04-20 10:07:39', 3, 1, 1),
+(3, 3, 90.00, 5, '2023-04-14 05:29:55', '2023-04-27 08:43:31', 3, 0, 1),
+(4, 4, 0.00, 5, '2023-04-14 06:58:22', '2023-04-14 06:58:22', 3, 0, 1),
+(5, 7, 400.00, 5, '2023-04-14 07:13:06', '2023-04-27 11:24:53', 3, 1, 1),
+(6, 2, 390.00, 5, '2023-04-14 12:31:37', '2023-04-24 06:42:49', 5, 1, 1),
+(8, 7, 500.00, 5, '2023-04-20 10:18:29', '2023-04-27 10:21:00', 2, 1, 1),
+(9, 2, 500.00, 5, '2023-04-20 10:29:30', '2023-04-20 10:29:30', 6, 1, 1),
+(10, 8, 500.00, 5, '2023-04-21 11:04:21', '2023-04-27 11:25:23', 3, 0, 1),
+(11, 3, 391.00, 5, '2023-04-29 05:22:14', '2023-04-29 05:27:42', 5, 0, 1),
+(12, 9, 130.00, 5, '2023-04-29 05:25:12', '2023-04-29 05:25:12', 5, 1, 1),
+(13, 8, 150.00, 5, '2023-04-29 05:28:59', '2023-04-29 05:28:59', 5, 0, 1),
+(14, 10, 700.00, 5, '2023-04-29 05:35:26', '2023-04-29 05:35:26', 5, 0, 1),
+(15, 11, 1500.00, 5, '2023-04-29 05:46:02', '2023-04-29 05:46:02', 5, 0, 1),
+(16, 12, 2500.00, 5, '2023-04-29 06:01:00', '2023-04-29 06:01:49', 5, 0, 1),
+(17, 13, 0.00, 5, '2023-04-29 06:11:22', '2023-04-29 06:11:22', 5, 0, 1),
+(18, 14, 34.00, 5, '2023-04-29 06:13:50', '2023-04-29 06:13:50', 5, 0, 1),
+(19, 15, 12.00, 5, '2023-04-29 06:14:12', '2023-04-29 06:14:12', 5, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -144,10 +160,18 @@ CREATE TABLE `calc_titles` (
 --
 
 INSERT INTO `calc_titles` (`id`, `title`, `created_at`, `updated_at`, `calc_classes_id`, `calc_type_id`) VALUES
-(2, 'Верстка дизайна', '2023-04-10 14:35:52', '2023-04-14 04:59:13', 2, 16),
+(2, 'Верстка дизайна', '2023-04-10 14:35:52', '2023-04-29 05:32:28', 4, 20),
 (3, 'Наполнение', '2023-04-14 05:01:08', '2023-04-14 05:01:08', 4, 20),
 (4, 'Установка и настройка системы управления CMS:', '2023-04-14 06:29:37', '2023-04-14 06:46:00', 4, 21),
-(7, 'OpenCart ocStore', '2023-04-14 07:12:45', '2023-04-14 07:12:45', 5, 16);
+(7, 'OpenCart ocStore', '2023-04-14 07:12:45', '2023-04-14 07:12:45', 5, 16),
+(8, 'WordPress', '2023-04-21 11:03:19', '2023-04-21 11:03:19', 6, 16),
+(9, 'Joomla', '2023-04-29 05:24:29', '2023-04-29 05:26:06', 3, 16),
+(10, '1с-Битрикс', '2023-04-29 05:33:45', '2023-04-29 05:36:16', 7, 16),
+(11, 'Фреймворк Laravel', '2023-04-29 05:45:26', '2023-04-29 05:45:26', 8, 16),
+(12, 'Нативный php', '2023-04-29 05:48:39', '2023-04-29 05:48:39', 10, 16),
+(13, 'Веб-сервер', '2023-04-29 06:10:57', '2023-04-29 06:13:09', 4, 20),
+(14, 'Доменное имя', '2023-04-29 06:12:40', '2023-04-29 06:12:40', 4, 20),
+(15, 'Хостинг на месяц', '2023-04-29 06:12:58', '2023-04-29 06:12:58', 4, 20);
 
 -- --------------------------------------------------------
 
@@ -244,7 +268,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (14, '2023_04_10_111555_create_calc_categories_table', 3),
 (15, '2023_04_10_131713_add_class_id_to_calc_categories', 4),
 (16, '2023_04_10_170911_add_class_id_adn_type_id_to_calc_titles', 5),
-(17, '2023_04_11_152003_correct_fields_to_calc_items', 6);
+(17, '2023_04_11_152003_correct_fields_to_calc_items', 6),
+(18, '2023_04_20_090036_add_cheked_to_calc_items', 7),
+(19, '2023_04_29_084000_del_field_description_to_calc_classes', 8),
+(20, '2023_04_29_090405_del_fields_description_to_calc_items', 9);
 
 -- --------------------------------------------------------
 
@@ -478,13 +505,13 @@ ALTER TABLE `calc_categories`
 -- AUTO_INCREMENT для таблицы `calc_classes`
 --
 ALTER TABLE `calc_classes`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT для таблицы `calc_items`
 --
 ALTER TABLE `calc_items`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT для таблицы `calc_modules`
@@ -496,7 +523,7 @@ ALTER TABLE `calc_modules`
 -- AUTO_INCREMENT для таблицы `calc_titles`
 --
 ALTER TABLE `calc_titles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT для таблицы `calc_types`
@@ -520,7 +547,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT для таблицы `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT для таблицы `modules`

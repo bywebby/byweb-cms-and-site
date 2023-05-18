@@ -129,14 +129,17 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                <i class="fas fa-th-large"></i>
+                <b>Привет: {{auth()->user()->name}}</b>
             </a>
         </li>
+
         <li class="nav-item">
-            <a class="nav-link" data-slide="true" href="{{route('home')}}" role="button" target="_blank">
-                <i class="fas fa-eye"></i>
-            </a>
+            <form method="post" action="{{route('admin.logout')}}">
+                @csrf
+                <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-door-open fa-fw"></i> Выйти</button>
+            </form>
         </li>
+
     </ul>
 </nav>
 <!-- /.navbar -->

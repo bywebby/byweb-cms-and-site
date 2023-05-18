@@ -25,7 +25,7 @@
                                             <x-select-category title="Выберите подвид услуг" name="calc_title_id"
                                                                :datacategory="$calcTitles" :mydata="$data" />
                                             <x-input label='Цена' name="price" :myData="$data" />
-                                            <x-textarea label='Описание' name="description" :myData="$data" />
+{{--                                            <x-textarea label='Описание' name="description" :myData="$data" />--}}
                                             <x-select-category title="Выберите модуль" name="calc_module_id"
                                                                :datacategory="$calcModules" :mydata="$data" />
                                             <x-select-category title="Выберите категорию" name="calc_category_id"

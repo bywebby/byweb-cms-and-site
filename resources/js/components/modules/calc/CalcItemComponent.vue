@@ -6,6 +6,7 @@
                 <!--если иконка не пуста - выводим ее-->
                 <i v-if="(j.class != '') && (j.status == 1)" :class="j.class"></i>
 
+<!--                :data забиндил, чтобы подсветить выбранные данне из базы, поскольку с v-model почему-то :checked не работает видимо из-за связывания с v-model массивом-->
                 <input v-if="(j.type == 'checkbox') && (j.status == 1)" @click="delMyDef($event)"
                        :data="myDefCheckedCheckbox"
                        :type="j.type"

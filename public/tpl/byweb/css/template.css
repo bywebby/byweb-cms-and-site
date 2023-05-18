@@ -867,7 +867,7 @@ label, select, button, input[type=button], input[type=reset], input[type=submit]
   background-position: 0 -121px;
 }
 
-.joomla, .joomla-cms {
+.joomla-cms {
   background-position: 0;
 }
 

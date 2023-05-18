@@ -16,12 +16,13 @@ class ItemsController extends Controller
     public $fields = [
         'calc_title_id',
         'price',
-        'description',
         'calc_module_id',
         'calc_category_id',
         'checked',
         'status'
     ];
+
+    private $page = '20';
 
 
     /**
@@ -32,7 +33,7 @@ class ItemsController extends Controller
     public function index(Request $request)
     {
         $page = [
-            'step' => 10, //шаг пагинации
+            'step' => $this->page, //шаг пагинации
             'num' => $request->get('page')
         ];
 

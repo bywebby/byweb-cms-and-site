@@ -23,10 +23,10 @@
                                             </div>
                                         </div>
 
-                                        <div class="form-group mx-4">
-                                            <label for="description">Код класса</label>
-                                            <textarea name="description" id="description" class="form-control @error('description') is-valid @enderror" placeholder="Текст поста" rows="10">{{ old('description', $data->description) }}</textarea>
-                                        </div>
+{{--                                        <div class="form-group mx-4">--}}
+{{--                                            <label for="description">Код класса</label>--}}
+{{--                                            <textarea name="description" id="description" class="form-control @error('description') is-valid @enderror" placeholder="Текст поста" rows="10">{{ old('description', $data->description) }}</textarea>--}}
+{{--                                        </div>--}}
 
                                         <div class="card-footer">
                                             <button type="submit" class="btn btn-primary">Сохранить</button>

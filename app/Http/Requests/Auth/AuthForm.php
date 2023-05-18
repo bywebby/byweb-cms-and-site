@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Calc\Classes;
+namespace App\Http\Requests\Auth;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreClasses extends FormRequest
+class AuthForm extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,8 @@ class StoreClasses extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|unique:calc_classes|min:2|max:255',
+            'email' => 'required|email|min:1|max:50',
+            'password' => 'required|min:3|max:50'
         ];
     }
 }

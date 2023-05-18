@@ -19,7 +19,7 @@
 
 {{--успешное добавление записи--}}
 
-    @if (session()->has('success') || session()->has('danger'))
+    @if (session()->has('success') || session()->has('danger') || session()->has('error'))
          <div class="container">
             <div class="row">
                 <div class="col12">
@@ -33,6 +33,12 @@
                         @if( session('danger') )
                             <p class="alert-danger p-2 text-center text-uppercase">
                                 {!!  session('danger')  !!}
+                            </p>
+                        @endif
+
+                        @if( session('error') )
+                            <p class="alert-danger p-2 text-center text-uppercase">
+                                {!!  session('error')  !!}
                             </p>
                         @endif
 

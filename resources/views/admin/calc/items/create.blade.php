@@ -22,7 +22,7 @@
 
                                             <x-input label='Цена' name="price" />
 
-                                            <x-textarea label='Описание' name="description" />
+{{--                                            <x-textarea label='Описание' name="description" />--}}
 
                                             <x-select-category title="Выберите модуль" name="calc_module_id"
                                                                :datacategory="$calcModules"/>
@@ -30,7 +30,8 @@
                                             <x-select-category title="Выберите категорию" name="calc_category_id"
                                                                :datacategory="$calcCategories"/>
 
-                                            <x-input-checked name="checked" label="Укажите выбран или не выбран подвид в статус checked"  />
+                                            <x-input-checked name="checked" label="Укажите выбран или не выбран подвид в статус checked"  checked="0"/>
+
                                             <x-input-checked name="status" label="Укажите статус опубликован или нет" />
 
 

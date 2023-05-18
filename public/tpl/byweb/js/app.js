@@ -5805,7 +5805,7 @@ var render = function render() {
     }), 0);
   }), _vm._v(" "), _c("div", {
     staticClass: "calc-price"
-  }, [_vm._v("\n        " + _vm._s(_vm.calcResult) + " "), _c("small", [_vm._v("BYN")])])], 2);
+  }, [_vm._v("\n            " + _vm._s(_vm.calcResult) + " "), _c("small", [_vm._v("BYN")])])], 2);
 };
 var staticRenderFns = [];
 render._withStripped = true;
