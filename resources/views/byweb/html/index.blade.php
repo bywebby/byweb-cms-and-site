@@ -24,7 +24,7 @@
 
 <div id="app">
 
-    <header>
+
         {{-- выводим топ-панель --}}
         @include('byweb.html.layouts.sup-top')
         {{-- Выводим меню --}}
@@ -33,7 +33,7 @@
         @yield('slider')
         {{-- вывыодим полосу --}}
         @yield('polosa')
-    </header>
+
 
     {{-- верхний контент --}}
     @yield('top-contents')
@@ -49,6 +49,8 @@
     @yield('before-reviews')
     {{--   блок с отзывами  --}}
     @yield('reviews')
+    {{--   подвал сайта  --}}
+    @yield('footer')
 
 
 </div>

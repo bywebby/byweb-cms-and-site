@@ -131,8 +131,12 @@ a {
   padding: 30px 0;
 }
 
-pt-30 {
+.pt-30 {
   padding-top: 30px;
+}
+
+.pt-50 {
+  padding-top: 50px;
 }
 
 .pb-30 {
@@ -981,6 +985,10 @@ ul[id=review-list] li:first-of-type {
   cursor: pointer;
   color: #fe7676;
   font-size: 1.5rem;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
 }
 
 .caroufredsel_prev {
@@ -991,4 +999,15 @@ ul[id=review-list] li:first-of-type {
 .caroufredsel_next {
   right: 0;
   margin-right: 20px;
+}
+
+#footer {
+  background: #2f343a;
+}
+#footer h2 {
+  color: #FFF;
+}
+
+.footer-desc {
+  color: #888;
 }

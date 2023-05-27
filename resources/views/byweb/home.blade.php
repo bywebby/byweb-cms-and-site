@@ -60,6 +60,12 @@
             @endsection
         @break
 
+            @case('Заголовок подвала')
+            @section('footer')
+                @include('byweb.modules.footer', ['item' => $item])
+            @endsection
+        @break
+
     @endswitch
 
 @endforeach
@@ -67,7 +73,6 @@
 
 
 {{-- модули со многими статьями--}}
-
 {{-- модуль полоса --}}
     @if(isset($itemsPolosa))
         @section('polosa')
@@ -97,8 +102,6 @@
             @break
 
             @case('Отзывы')
-{{--                @section('reviews')--}}
-{{--                    @include('byweb.modules.reviews', ['item' => $module, 'data' => $data])--}}
                     @php
                         /** @var $module
                         *  @var $data
@@ -113,8 +116,9 @@
                                     }
                                 }
                     @endphp
-{{--                @endsection--}}
             @break
+
+
 
         @endswitch
     @endforeach
@@ -155,6 +159,8 @@
     @endif
 @endif
 {{--ENDD VUE компоненты--}}
+
+
 
 
 
