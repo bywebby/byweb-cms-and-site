@@ -6,10 +6,10 @@
                             <img :src="'uploads/' + item.thumbnail" :alt="item.title">
                         <div class="gallery-item-txt">
                                 <div class="gallery-item-header">
-                                    <a :href="item.description" rel="nofollow">{{ item.title }}</a>
+                                    <a :href="item.description" rel="nofollow" target="_blank">{{ item.title }}</a>
                                 </div>
                                 <div class="gallery-item-link">
-                                    <a :href="item.description" rel="nofollow"><i class="fa-solid fa-link"></i></a>
+                                    <a :href="item.description" rel="nofollow" target="_blank"><i class="fa-solid fa-link"></i></a>
                                 </div>
                         </div>
                     </div>

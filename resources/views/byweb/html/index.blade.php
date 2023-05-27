@@ -4,17 +4,17 @@
 <head>
 
 
-	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-	<title>@yield('title')</title>
-    <meta name="description" content="@yield('description')" />
-	<link href="{{ URL::current() }}" rel="canonical" />
-	<link href="{{ asset("tpl/byweb/css/template.css") }}" rel="stylesheet" type="text/css" />
-    <link href="{{  asset("tpl/byweb/css/aos.css") }}" rel="stylesheet" type="text/css" />
-    <link href="{{  asset("tpl/byweb/css/all.css") }}" rel="stylesheet" type="text/css" />
+    <title>@yield('title')</title>
+    <meta name="description" content="@yield('description')"/>
+    <link href="{{ URL::current() }}" rel="canonical"/>
+    <link href="{{ asset("tpl/byweb/css/template.css") }}" rel="stylesheet" type="text/css"/>
+    <link href="{{  asset("tpl/byweb/css/aos.css") }}" rel="stylesheet" type="text/css"/>
+    <link href="{{  asset("tpl/byweb/css/all.css") }}" rel="stylesheet" type="text/css"/>
 
 
 </head>
@@ -24,25 +24,32 @@
 
 <div id="app">
 
-<header>
-    {{-- выводим топ-панель --}}
-    @include('byweb.html.layouts.sup-top')
-    {{-- Выводим меню --}}
-    @include('byweb.html.layouts.menu')
-    {{-- вывыодим слайдер --}}
-    @yield('slider')
+    <header>
+        {{-- выводим топ-панель --}}
+        @include('byweb.html.layouts.sup-top')
+        {{-- Выводим меню --}}
+        @include('byweb.html.layouts.menu')
+        {{-- вывыодим слайдер --}}
+        @yield('slider')
         {{-- вывыодим полосу --}}
         @yield('polosa')
-</header>
+    </header>
 
-        {{-- верхний контент --}}
-        @yield('top-contents')
-        {{--почему мы--}}
-        @yield('why-us')
-        {{--галерея--}}
-        @yield('gallery')
-        {{--    цены --}}
-        @yield('ceny')
+    {{-- верхний контент --}}
+    @yield('top-contents')
+    {{--почему мы--}}
+    @yield('why-us')
+    {{--галерея--}}
+    @yield('gallery')
+    {{--    цены --}}
+    @yield('ceny')
+    {{--   блок под ценами --}}
+    @yield('under-price')
+    {{--   блок над отзывами  --}}
+    @yield('before-reviews')
+    {{--   блок с отзывами  --}}
+    @yield('reviews')
+
 
 </div>
 
@@ -54,7 +61,7 @@
     //инициализация aos
     AOS.init();
     //залипание меню
-    window.onscroll = function() {
+    window.onscroll = function () {
         myFixMenu("#nav");
 
     }

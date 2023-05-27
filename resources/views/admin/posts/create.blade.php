@@ -92,7 +92,10 @@
                                         <!-- /.card-body -->
 
                                         {{-- Кнопки поста --}}
-                                        @include('admin.html.layouts.forms.buttons')
+                                        <div class="card-footer">
+                                            <input type="submit" name='save' class="btn btn-primary" value="Сохранить и закрыть">
+                                        </div>
+
 
 
                                     </form>

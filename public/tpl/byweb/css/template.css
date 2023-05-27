@@ -481,7 +481,7 @@ pt-30 {
   }
 }
 .slider-item-txt h1 {
-  font-size: 2.5rem;
+  font-size: 2.3rem;
   padding-bottom: 10px;
   z-index: 100;
 }
@@ -498,6 +498,7 @@ pt-30 {
 .slider-item-txt h3 {
   padding: 5px 0 0 0;
   color: #b64545;
+  font-weight: normal;
 }
 .slider-item-txt h3 > a {
   padding: 0;
@@ -564,6 +565,15 @@ pt-30 {
   .polosa-item {
     flex-basis: 100%;
   }
+}
+
+.content-top strong {
+  color: #fe7676;
+}
+.content-top h3 {
+  padding-top: 15px;
+  text-align: center;
+  font-weight: normal;
 }
 
 .content-top-item {
@@ -781,7 +791,7 @@ pt-30 {
 
 .calc-item {
   box-sizing: border-box;
-  width: 24.5%;
+  width: calc(25% - 10px);
   padding-top: 5px;
   margin-right: 10px;
   margin-top: 10px;
@@ -889,4 +899,96 @@ label, select, button, input[type=button], input[type=reset], input[type=submit]
 
 .opencart, .opencart-cms {
   background-position: 0 -59px;
+}
+
+.how-we-work {
+  background: #f6f8fa;
+}
+
+.how-we-work-desc {
+  margin: 0 auto;
+  width: 75%;
+}
+
+.how-we-work-item {
+  box-sizing: border-box;
+  flex-basis: 33.3333333333%;
+  padding: 7px;
+}
+@media only screen and (max-width: 900px) {
+  .how-we-work-item {
+    flex-basis: 50%;
+  }
+}
+@media only screen and (max-width: 620px) {
+  .how-we-work-item {
+    flex-basis: 100%;
+    text-align: center;
+  }
+}
+.how-we-work-item h3 {
+  font-weight: normal;
+}
+.how-we-work-item img {
+  border: 2px solid #FFF;
+  border-radius: 500px;
+}
+
+.reviews {
+  background: url("/tpl/byweb/img/reviews.jpg");
+  color: #444;
+}
+
+.review-header {
+  font-weight: bold;
+  color: #fe7676;
+  text-transform: uppercase;
+  padding-top: 10px;
+  font-size: 0.9em;
+}
+
+.reviews-img {
+  border: 2px solid #fe7676;
+  border-radius: 500px;
+  margin-bottom: 10px;
+  box-shadow: 0.3rem 0.3rem 1rem rgba(23, 26, 15, 0.31);
+  -webkit-box-shadow: 0.3rem 0.3rem 1rem rgba(23, 26, 15, 0.31);
+  -moz-box-shadow: 0.3rem 0.3rem 1rem rgba(23, 26, 15, 0.31);
+}
+
+.reviews-items .item-1 h3 {
+  font-size: 1.5rem;
+  font-weight: normal;
+  padding-bottom: 10px;
+}
+
+.reviews-item-txt {
+  width: calc(100% - 300px);
+  margin: 0 auto;
+}
+
+ul[id=review-list] li {
+  display: none;
+  list-style-type: none;
+}
+ul[id=review-list] li:first-of-type {
+  display: block;
+}
+
+.caroufredsel_prev, .caroufredsel_next {
+  position: absolute;
+  padding-top: 80px;
+  cursor: pointer;
+  color: #fe7676;
+  font-size: 1.5rem;
+}
+
+.caroufredsel_prev {
+  left: 0;
+  margin-left: 20px;
+}
+
+.caroufredsel_next {
+  right: 0;
+  margin-right: 20px;
 }

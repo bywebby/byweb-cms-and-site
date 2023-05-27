@@ -1,49 +1,41 @@
-.why-us {
-    background: url("/tpl/byweb/img/why-us.jpg");
+.how-we-work {
+   background: $gray2;
+}
 
-    a {
-        color: $indigo;
-        font-weight: bold;
-        &:hover {
-            color: $red;
-        }
+.how-we-work-desc {
+    margin: 0 auto;
+    width: 75%;
+}
+
+.how-we-work-item  {
+
+    box-sizing: border-box;
+    flex-basis: calc(100% / 3);
+    padding: 7px;
+
+
+    @media only screen and (max-width: 900px) {
+        flex-basis: calc(100% / 2);
+}
+
+    @media only screen and (max-width: 620px) {
+        flex-basis: calc(100% / 1);
+        text-align: center;
     }
-}
 
-.why-us-items .item-2 h3 {
-    font-size: 1.5rem;
-    font-weight: normal;
-    padding-bottom: 10px;
 
-}
+    h3 {
+        font-weight: normal;
+    }
 
-.why-us-icons {
-    display: flex;
-    margin: 10px 0;
-}
+    img {
+        border: 2px solid $white;
+        border-radius: 500px;
+    }
 
-.why-us-item-icon {
-    display: flex;
-    box-sizing: border-box;
-    color: $pink;
-    padding: 60px;
-    background: $body-bg;
-    border-radius:1000px;
-    height: 130px;
-    width: 130px;
-    border: 1px solid $pink;
-    margin: 0 15px;
-    text-align: center;
-    justify-content: center;
+
+
+
 
 }
 
-.why-us-item-icon i {
-    box-sizing: border-box;
-    align-self: center;
-    font-size: 54px;
-}
-
-.why-us-item-txt {
-    width: calc(100% - 130px);
-}

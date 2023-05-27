@@ -7,7 +7,7 @@
             </h2>
         </div>
         <!--описание модуля -->
-        <div class="calc-desc">
+        <div v-if="getModuleDesc" class="calc-desc">
             {{getModuleDesc}}
         </div>
 
@@ -29,7 +29,9 @@ export default {
         calcItem
     },
     //входной json
-    props: ['calcitems'],
+    props: [
+        'calcitems',
+    ],
     computed: {
         //распарсивается json
         items: function () {

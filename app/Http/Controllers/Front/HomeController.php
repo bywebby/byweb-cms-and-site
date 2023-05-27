@@ -28,6 +28,8 @@ class HomeController extends Controller
 //определяем id категории согласно слагу
         $cat = Category::where('slug', $slug)->first();
 
+//dd($cat->id);
+
 //проверяет существует ли категория если нет 404-ошибка
         self::errorPage($cat);
 
@@ -40,15 +42,12 @@ class HomeController extends Controller
         //проверяем на пустоту посты
         self::chekEmtyPost($data);
 
-//        $getCalcCat = CalcCategory::pluck('title');
+
 //        //получаем данные калькулятора
-//        $calcItems = $this->getCalcItems($getCalcCat);
-
-
         $getCalcCat = new CalcCategory();
         $calcItems = new CalcItem();
         $calcItems = new Calc($getCalcCat, $calcItems);
-        $calcItems = $calcItems->getCalcItems();
+        $calcItems = $calcItems->getCalcItems($cat->id);
 
         return view('byweb.home', compact('data', 'modules', 'calcItems'));
     }

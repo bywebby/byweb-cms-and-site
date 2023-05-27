@@ -92,7 +92,7 @@ class TypeController extends Controller
         if ($request->input('save') == 'Сохранить и закрыть') {
             return redirect()->route('types-posts.index')->with('success','Тип статьи обновлен');
         }
-        return redirect()->route('types-posts.edit',['type' => $type->id])->with('success','Тип статьи обновлен');
+        return redirect()->route('types-posts.edit',['types_post' => $type->id])->with('success','Тип статьи обновлен');
     }
 
     /**

@@ -1,3 +1,12 @@
 .ck-editor__editable_inline {
     min-height: 300px;
 }
+
+/*Убирает большие левые стрелки*/
+.w-5.h-5 {
+    display: none;
+}
+/*Делает отсуп текста по пагинации*/
+.text-sm.text-gray-700.leading-5 {
+    margin-top: 20px;
+}
