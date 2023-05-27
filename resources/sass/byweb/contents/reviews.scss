@@ -1,0 +1,49 @@
+.why-us {
+    background: url("/tpl/byweb/img/why-us.jpg");
+
+    a {
+        color: $indigo;
+        font-weight: bold;
+        &:hover {
+            color: $red;
+        }
+    }
+}
+
+.why-us-items .item-2 h3 {
+    font-size: 1.5rem;
+    font-weight: normal;
+    padding-bottom: 10px;
+
+}
+
+.why-us-icons {
+    display: flex;
+    margin: 10px 0;
+}
+
+.why-us-item-icon {
+    display: flex;
+    box-sizing: border-box;
+    color: $pink;
+    padding: 60px;
+    background: $body-bg;
+    border-radius:1000px;
+    height: 130px;
+    width: 130px;
+    border: 1px solid $pink;
+    margin: 0 15px;
+    text-align: center;
+    justify-content: center;
+
+}
+
+.why-us-item-icon i {
+    box-sizing: border-box;
+    align-self: center;
+    font-size: 54px;
+}
+
+.why-us-item-txt {
+    width: calc(100% - 130px);
+}
