@@ -60,10 +60,10 @@
             @endsection
         @break
 
-            @case('Заголовок подвала')
-            @section('footer')
-                @include('byweb.modules.footer', ['item' => $item])
-            @endsection
+            @case("Заголовок подвала")
+                @section('footer')
+                    @include('byweb.modules.footer', ['item' => $item])
+                @endsection
         @break
 
     @endswitch

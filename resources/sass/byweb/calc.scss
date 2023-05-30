@@ -67,11 +67,11 @@
 
     @media screen and (max-width:1000px) {
         width: calc(98%/2);
-
         margin-right: 0px;
-        //&:nth-child {
-        //    margin-right: 0px;
-        //}
+    }
+
+    @media screen and (max-width:700px) {
+        width: 100%;
     }
 
     h4 {

@@ -22,11 +22,14 @@
 
 
                         <div class="why-us-icons">
+
+                            @if(isset($item->description))
                             <div class="why-us-item-icon">
 
-                                {!! $item->description !!}
+                                <i class="{{$item->description}}"></i>
 
                             </div>
+                            @endif
 {{--                            data-aos="fade-up-right" data-aos-delay="500" data-aos-once="false"--}}
                             <div class="why-us-item-txt" >
                                 <h3>{{ $item->title }}</h3>

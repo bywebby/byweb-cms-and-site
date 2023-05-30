@@ -5890,7 +5890,11 @@ var render = function render() {
     _c = _vm._self._c;
   return _c("section", {
     staticClass: "row"
-  }, [_c("div", {
+  }, [_c("a", {
+    attrs: {
+      id: "cena"
+    }
+  }), _vm._v(" "), _c("div", {
     staticClass: "calc"
   }, [_c("h2", [_vm._v("\n            " + _vm._s(_vm.getModuleTitle) + "\n        ")])]), _vm._v(" "), _vm.getModuleDesc ? _c("div", {
     staticClass: "calc-desc"
@@ -5933,7 +5937,7 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "container"
   }, [_c("div", {
-    staticClass: "reviews-desc center pb-30"
+    staticClass: "reviews-desc center"
   }, [_c("div", {
     staticClass: "reviews-header"
   }, [_c("h2", [_vm._v(_vm._s(_vm.getModules[0].title))])]), _vm._v(" "), _vm.modules[0].desc ? _c("div", {

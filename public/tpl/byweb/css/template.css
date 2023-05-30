@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap);
+@charset "UTF-8";
 * {
   margin: 0;
   padding: 0;
@@ -814,6 +815,11 @@ a {
     margin-right: 0px;
   }
 }
+@media screen and (max-width: 700px) {
+  .calc-item {
+    width: 100%;
+  }
+}
 .calc-item h4 {
   color: #FFF;
   text-transform: uppercase;
@@ -905,6 +911,12 @@ label, select, button, input[type=button], input[type=reset], input[type=submit]
   background-position: 0 -59px;
 }
 
+#telegram {
+  height: 25px;
+  width: 25px;
+  vertical-align: middle;
+}
+
 .how-we-work {
   background: #f6f8fa;
 }
@@ -970,7 +982,18 @@ label, select, button, input[type=button], input[type=reset], input[type=submit]
   width: calc(100% - 300px);
   margin: 0 auto;
 }
+@media screen and (max-width: 980px) {
+  .reviews-item-txt {
+    width: calc(100% - 50px);
+  }
+}
+@media screen and (max-width: 500px) {
+  .reviews-item-txt {
+    width: 100%;
+  }
+}
 
+/*отображать только первый элеент в списке*/
 ul[id=review-list] li {
   display: none;
   list-style-type: none;
@@ -979,12 +1002,14 @@ ul[id=review-list] li:first-of-type {
   display: block;
 }
 
+/*кнопки вперед назад начало */
 .caroufredsel_prev, .caroufredsel_next {
   position: absolute;
   padding-top: 80px;
   cursor: pointer;
   color: #fe7676;
   font-size: 1.5rem;
+  /*убираем выделение кнопок*/
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -1001,6 +1026,7 @@ ul[id=review-list] li:first-of-type {
   margin-right: 20px;
 }
 
+/*кнопки вперед назад конец */
 #footer {
   background: #2f343a;
 }
@@ -1010,4 +1036,128 @@ ul[id=review-list] li:first-of-type {
 
 .footer-desc {
   color: #888;
+}
+
+#footer-first-photo {
+  padding-right: 10px;
+}
+
+#footer-ceo, #footer-qr {
+  height: 150px;
+  box-shadow: 1.3rem 1.3rem 2.4rem rgba(152, 39, 245, 0.29);
+  -webkit-box-shadow: 1.3rem 1.3rem 2.4rem rgba(152, 39, 245, 0.29);
+  -moz-box-shadow: 1.3rem 1.3rem 2.4rem rgba(152, 39, 245, 0.29);
+  transition: box-shadow 1s;
+}
+#footer-ceo:hover, #footer-qr:hover {
+  box-shadow: 1.3rem 1.3rem 2rem rgba(39, 245, 226, 0.3);
+  -webkit-box-shadow: 1.3rem 1.3rem 2rem rgba(39, 245, 226, 0.3);
+  -moz-box-shadow: 1.3rem 1.3rem 2rem rgba(39, 245, 226, 0.3);
+}
+
+#footer-ceo {
+  border: 3px solid #FFF;
+  border-radius: 100px;
+  filter: sepia(50%);
+}
+#footer-ceo:hover {
+  filter: sepia(0%);
+}
+
+#footer-phone a {
+  color: #FFF;
+}
+#footer-phone a:hover {
+  color: #f6f8fa;
+}
+
+.footer-phone {
+  position: relative;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #FFF;
+  margin: 0 auto;
+}
+.footer-phone h3 {
+  font-size: 1rem;
+  color: #fe7676;
+  text-transform: uppercase;
+}
+.footer-phone a {
+  color: #FFF;
+}
+.footer-phone a:hover {
+  color: #f6f8fa;
+}
+
+.input {
+  display: inline;
+  box-sizing: border-box;
+}
+.input input {
+  height: 50px;
+  width: 26.6666666667%;
+}
+@media screen and (max-width: 740px) {
+  .input input {
+    width: 90%;
+  }
+}
+
+.input input, .textarea textarea {
+  box-sizing: border-box;
+  border-radius: 7px;
+  margin: 7px;
+  padding: 20px;
+  font-size: 1rem;
+  background: #faf6f1;
+  outline: 0 !important;
+}
+.input input:focus, .textarea textarea:focus {
+  color: red;
+  border: 2px solid #fe7676;
+}
+
+.textarea textarea {
+  height: 160px;
+  width: 80%;
+}
+@media screen and (max-width: 740px) {
+  .textarea textarea {
+    width: 90%;
+  }
+}
+
+.form-button {
+  background: #fb9898;
+  font-size: 1.3rem;
+  color: #FFF;
+  margin: 20px;
+  padding: 7px 10px;
+  border-radius: 7px;
+}
+.form-button:hover {
+  background: #333;
+}
+
+.input input, .textarea textarea, .form-button {
+  font-family: "Roboto", Arial, sans-serif;
+}
+
+.controls {
+  box-sizing: border-box;
+  width: 97%;
+  margin: 0 auto;
+}
+
+.alert-danger {
+  color: #ff3841;
+}
+
+.list-unstyled li {
+  list-style-type: none; /* Убираем маркеры */
+}
+
+.alert-success {
+  color: #6dd4b2;
 }

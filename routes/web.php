@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\Calc\TypesController;
 use App\Http\Controllers\Admin\Calc\ModuleController as CalcModule;
 use App\Http\Controllers\Admin\Calc\CategoriesController;
 use App\Http\Controllers\Admin\Calc\ItemsController;
+use App\Http\Controllers\Front\Modules\FormController;
 
 //Очистка кеша закрытая админкой
 Route::get('/clear', function () {
@@ -58,8 +59,9 @@ Route::get('/clear', function () {
 
 
 //клиентская часть
-Route::group(['namespace' => 'Front'],function () {
-//    Route::get('/{slug?}', [HomeController::class,'index'])->name('home');
+Route::name('front.')->group(function () {
+    Route::view('/icons','byweb/html/layouts/contents/icons');
+    Route::post('/form', [FormController::class, 'formFront'])->name('form');
     Route::get('/{slug?}/{slug2?}', [HomeController::class,'index'])->name('home');
 });
 

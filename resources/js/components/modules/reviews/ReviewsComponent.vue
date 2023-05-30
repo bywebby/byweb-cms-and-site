@@ -2,7 +2,7 @@
     <div class="reviews py-50">
         <div class="container">
 
-            <div class="reviews-desc center pb-30">
+            <div class="reviews-desc center">
                 <div class="reviews-header">
                     <h2>{{ getModules[0].title }}</h2>
                 </div>

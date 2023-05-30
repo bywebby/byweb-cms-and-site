@@ -1,6 +1,8 @@
 <template>
     <section class="row">
+        <a id="cena"></a>
         <div class="calc">
+
             <!--заголовок модуля -->
             <h2>
                 {{getModuleTitle}}

@@ -5,11 +5,75 @@
     h2 {
         color: $white;
     }
-
-
 }
 
 .footer-desc {
     color: $footer-gray;
+}
+
+#footer-first-photo  {
+    padding-right:10px;
+}
+
+#footer-ceo, #footer-qr {
+    height: 150px;
+    box-shadow: 1.3rem 1.3rem 2.4rem rgba(152, 39, 245, 0.29);
+    -webkit-box-shadow: 1.3rem 1.3rem 2.4rem rgba(152, 39, 245, 0.29);
+    -moz-box-shadow: 1.3rem 1.3rem 2.4rem rgba(152, 39, 245, 0.29);
+    transition: box-shadow 1s;
+
+
+    &:hover {
+        box-shadow: 1.3rem 1.3rem 2rem rgba(39, 245, 226, 0.3);
+        -webkit-box-shadow: 1.3rem 1.3rem 2rem rgba(39, 245, 226, 0.3);
+        -moz-box-shadow: 1.3rem 1.3rem 2rem rgba(39, 245, 226, 0.3);
+    }
+}
+
+#footer-ceo {
+    border: 3px solid $white;
+    border-radius: 100px;
+    filter: sepia(50%);
+
+    &:hover{
+        filter: sepia(0%);
+    }
+}
+
+
+#footer-phone {
+    a {
+        color: $white;
+        &:hover {
+            color: $gray;
+        }
+    }
+}
+
+.footer-phone {
+
+position: relative;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: $white;
+    margin: 0 auto;
+
+    h3 {
+        font-size: 1rem;
+        color: $pink;
+        text-transform: uppercase;
+    }
+
+    a {
+        color: $white;
+        &:hover {
+            color: $gray;
+        }
+    }
+
+
+
+
 
 }
+

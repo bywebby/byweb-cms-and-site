@@ -52,6 +52,9 @@
     {{--   подвал сайта  --}}
     @yield('footer')
 
+    {{-- выводим топ-панель --}}
+    @include('byweb.html.layouts.sup-top')
+
 
 </div>
 
