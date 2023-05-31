@@ -22,10 +22,7 @@
 
     @include('admin.html.layouts.navbar')
     @include('admin.html.layouts.sidebar')
-
     @include('admin.html.layouts.breadcump')
-
-
     @include('admin.html.layouts.errors')
 
     @yield('content')

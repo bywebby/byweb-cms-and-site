@@ -45,8 +45,15 @@ class HomeController extends Controller
         $calcItems = new Calc($getCalcCat, $calcItems);
         $calcItems = $calcItems->getCalcItems($cat->id);
 
+
+
         return view('byweb.home', compact('data', 'modules', 'calcItems'));
     }
+
+
+
+
+
 
     private static function errorPage($cat)
     {

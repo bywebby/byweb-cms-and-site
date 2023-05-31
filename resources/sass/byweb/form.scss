@@ -1,11 +1,12 @@
 .input {
     display: inline;
     box-sizing: border-box;
+
     input {
         height: 50px;
-        width: calc(80%/3);
+        width: calc(80% / 3);
 
-        @media screen and (max-width:740px){
+        @media screen and (max-width: 740px) {
             width: 90%;
         }
     }
@@ -23,7 +24,7 @@
 
     &:focus {
         color: red;
-        border:2px solid $pink;
+        border: 2px solid $pink;
     }
 }
 
@@ -32,7 +33,7 @@
         height: 160px;
         width: 80%;
 
-        @media screen and (max-width:740px){
+        @media screen and (max-width: 740px) {
             width: 90%;
         }
     }
@@ -74,4 +75,84 @@
 
 .alert-success {
     color: $green;
+}
+
+.form-modal {
+
+    position: fixed;
+    display: block;
+    background: #fff;
+
+    width: 40%;
+    margin: 0 auto;
+    height: 20%;
+    min-height:200px;
+
+    top: calc(100% / 2 - 100px);
+    left: calc(50% / 2);
+    right: calc(50% / 2);
+
+    border: 3px solid $footer-gray;
+
+    z-index: 3000;
+
+    //текст уведомления
+    &-header {
+        //color: $green-dark;
+        font-size: 1.8rem;
+        font-weight: bold;
+        padding: 20px;
+    }
+
+    //кнопка закрытия
+    &-close {
+        position: absolute;
+        display: block;
+
+        font-weight: bold;
+        font-size: 22px;
+
+        right: calc(-30px / 2);
+        top: calc(-30px / 2);
+
+        cursor: pointer;
+
+        background: $purple-dark;
+        color: $white;
+
+        border: 2px solid $footer-gray;
+        border-radius: 100px;
+
+        width: 30px;
+        height: 30px;
+
+        //mixin не выделять
+        @include no-select;
+
+        &:hover {
+            background: $black;
+        }
+
+    }
+
+    &-errors {
+        display: block;
+        background: $white;
+        color: $dark;
+        li {
+            list-style-type: none; /* Убираем маркеры */
+        }
+
+    }
+
+    &-out {
+        background:  rgba(0, 125, 215, 0.7);;
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        z-index: 2000;
+        display: block;
+        top: 0;
+        left: 0;
+    }
 }

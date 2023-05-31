@@ -1161,3 +1161,63 @@ ul[id=review-list] li:first-of-type {
 .alert-success {
   color: #6dd4b2;
 }
+
+.form-modal {
+  position: fixed;
+  display: block;
+  background: #fff;
+  width: 40%;
+  margin: 0 auto;
+  height: 20%;
+  min-height: 200px;
+  top: calc(50% - 100px);
+  left: 25%;
+  right: 25%;
+  border: 3px solid #888;
+  z-index: 3000;
+}
+.form-modal-header {
+  font-size: 1.8rem;
+  font-weight: bold;
+  padding: 20px;
+}
+.form-modal-close {
+  position: absolute;
+  display: block;
+  font-weight: bold;
+  font-size: 22px;
+  right: -15px;
+  top: -15px;
+  cursor: pointer;
+  background: #423550;
+  color: #FFF;
+  border: 2px solid #888;
+  border-radius: 100px;
+  width: 30px;
+  height: 30px;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */ /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */ /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently*/
+}
+.form-modal-close:hover {
+  background: #2f343a;
+}
+.form-modal-errors {
+  display: block;
+  background: #FFF;
+  color: #444;
+}
+.form-modal-errors li {
+  list-style-type: none; /* Убираем маркеры */
+}
+.form-modal-out {
+  background: rgba(0, 125, 215, 0.7);
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 2000;
+  display: block;
+  top: 0;
+  left: 0;
+}

@@ -1,6 +1,9 @@
 {{--    выводит флэш ошибки из сессии --}}
 
 {{--            вывыод ошибок валидации--}}
+
+
+
     @if ($errors->any())
         <div class="container">
             <div class="row">
@@ -9,13 +12,20 @@
                             <ul class="list-unstyled">
                                 @foreach ($errors->all() as $error)
                                     <li>{{ $error }} </li>
+
                                 @endforeach
                             </ul>
                         </div>
                 </div>
             </div>
         </div>
+
+
+
     @endif
+
+
+
 
 {{--успешное добавление записи--}}
 

@@ -8,7 +8,7 @@
                         <div class="alert alert-danger list-unstyled mt-4 mb-0">
                             <ul class="list-unstyled">
                                 @foreach ($errors->all() as $error)
-                                    <li>{{ $error }} </li>
+                                    <li>{{ $error }}</li>
                                 @endforeach
                             </ul>
                         </div>
@@ -32,13 +32,13 @@
 
                         @if( session('danger') )
                             <p class="alert-danger p-2 text-center text-uppercase">
-                                {!!  session('danger')  !!}
+                                {!!  session('danger')  !!} 1111
                             </p>
                         @endif
 
                         @if( session('error') )
                             <p class="alert-danger p-2 text-center text-uppercase">
-                                {!!  session('error')  !!}
+                                {!!  session('error')  !!} 222
                             </p>
                         @endif
 

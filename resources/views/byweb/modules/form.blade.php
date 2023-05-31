@@ -1,6 +1,11 @@
 <div class="center pb-30">
 
-    @include('admin.html.layouts.errors')
+{{--    vue component, который делает модальное окно отправлена форма--}}
+{{--    {{dump($status)}}--}}
+{{--    {{dump(session('statusForm'))}}--}}
+
+{{--на всякий случай подключаю ошибки валидации если js будет отключен--}}
+    @include('byweb.html.layouts.errors')
 
     <form action="{{route('front.form')}}" method="post">
 
@@ -29,6 +34,27 @@
         <button type="submit" class="form-button">Отправить</button>
 
     </form>
+
+
+    @php
+        $errorsForm = '';
+
+        if ($errors->any()) {
+
+             $errorsForm = [];
+                foreach ($errors->all() as $error) {
+                   $errorsForm[] = $error;
+             }
+
+            $errorsForm = json_encode($errorsForm);
+        }
+
+    @endphp
+
+
+
+
+    <byweb-form-modal form-status-success="{{session('statusForm')}}" form-status-errors="{{$errorsForm}}"></byweb-form-modal>
 
 </div>
 
