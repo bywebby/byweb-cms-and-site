@@ -5426,6 +5426,7 @@ __webpack_require__.r(__webpack_exports__);
       scrollValueDefault: 300,
       //показывает скрол если true
       isActive: false,
+      //ширина по умолчанию экрана меньше которой не показывать back-top например на мобилах не будет показан
       width: 500
     };
   },
@@ -5449,9 +5450,7 @@ __webpack_require__.r(__webpack_exports__);
     window.addEventListener('resize', onResize);
     //пишем ресайз
     // this.$on('hook:beforeDestroy', () => window.removeEventListener('resize', onResize));
-
     // console.log(this.width);
-
     //если ширина экрана больше, то включаем прослушку
     if (this.width > 500) {
       //подключаем слушатель скрола и кидаем callback - колбэк по слушателю будет менять свойства включени или выключен скролл
