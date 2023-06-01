@@ -77,6 +77,7 @@
     color: $green;
 }
 
+//модальное окно
 .form-modal {
 
     position: fixed;
@@ -96,12 +97,22 @@
 
     z-index: 3000;
 
+    @media screen and (max-width: 800px) {
+        width: 90%;
+        left: 5%;
+        right: 5%;
+        min-width: 300px;
+    }
+
     //текст уведомления
     &-header {
         //color: $green-dark;
         font-size: 1.8rem;
         font-weight: bold;
         padding: 20px;
+        @media screen and (max-width: 500px) {
+            font-size: 1.2rem;
+        }
     }
 
     //кнопка закрытия
@@ -134,17 +145,20 @@
         }
 
     }
-
+    //ошибки
     &-errors {
         display: block;
         background: $white;
         color: $dark;
+        ul {
+            margin: 10px 5px;
+        }
         li {
             list-style-type: none; /* Убираем маркеры */
         }
 
     }
-
+    //пространство за модальным окном
     &-out {
         background:  rgba(0, 125, 215, 0.7);;
         height: 100%;

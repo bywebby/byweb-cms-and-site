@@ -20,6 +20,7 @@ Vue.component('byweb-gallery', require('./components/GalleryComponent.vue').defa
 Vue.component('byweb-ceny', require('./components/modules/calc/CenyComponent.vue').default);
 Vue.component('byweb-reviews', require('./components/modules/reviews/ReviewsComponent').default);
 Vue.component('byweb-form-modal', require('./components/modules/forms/ModalComponent').default);
+Vue.component('byweb-back-top', require('./components/modules/BackTopComponent').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

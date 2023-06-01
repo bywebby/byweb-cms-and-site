@@ -55,6 +55,15 @@
     {{-- выводим топ-панель --}}
     @include('byweb.html.layouts.sup-top')
 
+{{--кнопка подъема сайта--}}
+{{--    <div id="back-top" style="display: block;">--}}
+{{--        <a class='back-top-link' rel="nofollow" href="#">--}}
+{{--            <i class="fa fa-angle-up"></i>--}}
+{{--        </a>--}}
+{{--    </div>--}}
+
+    <byweb-back-top />
+
 
 </div>
 

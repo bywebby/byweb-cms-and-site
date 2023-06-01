@@ -964,6 +964,10 @@ label, select, button, input[type=button], input[type=reset], input[type=submit]
 }
 
 .reviews-img {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */ /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */ /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently*/
   border: 2px solid #fe7676;
   border-radius: 500px;
   margin-bottom: 10px;
@@ -1176,10 +1180,23 @@ ul[id=review-list] li:first-of-type {
   border: 3px solid #888;
   z-index: 3000;
 }
+@media screen and (max-width: 800px) {
+  .form-modal {
+    width: 90%;
+    left: 5%;
+    right: 5%;
+    min-width: 300px;
+  }
+}
 .form-modal-header {
   font-size: 1.8rem;
   font-weight: bold;
   padding: 20px;
+}
+@media screen and (max-width: 500px) {
+  .form-modal-header {
+    font-size: 1.2rem;
+  }
 }
 .form-modal-close {
   position: absolute;
@@ -1208,6 +1225,9 @@ ul[id=review-list] li:first-of-type {
   background: #FFF;
   color: #444;
 }
+.form-modal-errors ul {
+  margin: 10px 5px;
+}
 .form-modal-errors li {
   list-style-type: none; /* Убираем маркеры */
 }
@@ -1220,4 +1240,29 @@ ul[id=review-list] li:first-of-type {
   display: block;
   top: 0;
   left: 0;
+}
+
+#back-top {
+  position: fixed;
+  background: #FFF;
+  border-radius: 100px;
+  height: 50px;
+  width: 50px;
+  border: 2px solid #fe7676;
+  bottom: 50px;
+  right: 30px;
+}
+#back-top:hover {
+  background: #fe7676;
+  color: #FFF;
+  border: 2px solid #FFF;
+}
+
+.back-top-link {
+  position: absolute;
+  font-size: 30px;
+  padding: 7px 10px;
+}
+.back-top-link:hover {
+  color: #FFF;
 }

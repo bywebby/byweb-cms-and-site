@@ -14,7 +14,7 @@
 
             <div class="reviews-items flex">
 
-                    <div class="caroufredsel_prev"  @click="backReview"><<</div>
+                    <div class="caroufredsel_prev"  @click="backReview"><i class="fa fa-angle-left"></i></div>
 
                 <ul id="review-list">
                     <li v-for="item in nextItems" >
@@ -36,7 +36,7 @@
                     </li>
                 </ul>
 
-                    <div class="caroufredsel_next" @click="nextReview">>></div>
+                    <div class="caroufredsel_next" @click="nextReview"><i class="fa fa-angle-right"></i></div>
             </div>
 
 

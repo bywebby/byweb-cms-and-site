@@ -1,8 +1,11 @@
 <template>
 
-    <div class="form-modal-out" v-show="formStatus" @click="formModalClose">
-        <div class="form-modal">
-            <div class="form-modal-close" @click="formModalClose">x</div>
+    <div class="form-modal-out" v-show="formStatus" @click="formModalClose()">
+
+        <div class="form-modal" @keyup.esc="formModalClose()" >
+
+            <div class="form-modal-close" @click="formModalClose()"><i class="fa fa-x"></i></div>
+
             <div class="form-modal-header alert-success" v-if="formStatusSuccess">Ваш запрос отправлен!</div>
 
             <div  class='form-modal-errors' v-if="formStatusErrors">
@@ -38,35 +41,35 @@ export default {
         formStatus: false,
         getErrors: false,
     }),
-
+    // config: {
+    //     keyCodes: {
+    //         esc: 27,
+    //     }
+    // },
     methods: {
         //закрытие модального окна по кнопке
-        formModalClose() {
-
-
-
+        formModalClose(e) {
             return this.formStatus = false;
         },
+
     },
     computed: {
         getModalForm() {
             if(this.formStatusSuccess != '' || this.formStatusSuccess) {
-                return this.formStatus = true;
+                this.showModal;
             }
         },
-
+//получает данные и показывает окно
         getJsonError() {
-
             if(this.formStatusErrors != '') {
-                this.formStatus = true;
+                this.showModal;
                 return this.getErrors = JSON.parse(this.formStatusErrors);
             }
-
-
-
         },
 
-
+        showModal() {
+           return this.formStatus = true;
+        },
 
 
 
@@ -77,6 +80,7 @@ export default {
 
         //метод в зависимости от пропса определяет показывать модальное окно или нет
         this.getModalForm;
+        //переопределяет дефолтные данные если есть ошибки
         this.getJsonError;
 
 
