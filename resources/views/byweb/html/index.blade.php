@@ -93,6 +93,20 @@
         }
     }
 
+
+
+    // бургер меню по кликуgetElementById('nav-menu')
+    // let menuElem = document.getElementById('nav-menu');
+    let burgerMenu = document.getElementById('menu-burger-button');
+
+    burgerMenu.onclick = function() {
+        let menuList= document.querySelector('.menu-list');
+        //добавляет класс open-menu
+        menuList.classList.toggle('open-menu');
+    };
+
+
+
 </script>
 
 </body>
