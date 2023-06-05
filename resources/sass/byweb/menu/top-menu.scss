@@ -26,11 +26,17 @@
         flex-basis: calc(100% / 2);
     }
 
-    @media screen and (max-width: 1110px) {
+    @media screen and (max-width: 1155px) {
+
         flex-basis: calc(100% / 3);
+
         &:nth-child(even) {
             flex-basis: calc(100% / 3);
         }
+
+
+        font-size: 0.8rem;
+
     }
 
     @media screen and (max-width: 650px) {
@@ -38,5 +44,10 @@
         &:nth-child(even) {
             flex-basis: calc(100%);
         }
+
+
+        font-size: 1rem;
+
+
     }
 }

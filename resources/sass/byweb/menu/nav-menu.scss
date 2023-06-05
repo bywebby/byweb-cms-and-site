@@ -1,13 +1,24 @@
+//ширина когда показывается бургер
 $mobile-width: 730px;
+//подменю услуг
+    //высота подменю для скроллинга
+$mobile-sub-menu-height: 350px;
+    //ширина колонки подменю
+$mobile-sub-menu-width: 300px;
+
+$planshet-menu-perenos: 856px;
+
+$zindex-burger-menu: 20000;
 
 .nav {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 20px 0px;
-    z-index: 100;
+    //padding: 20px 0px;
+    //z-index: $zindex-burger-menu;
 
-    @media screen and (max-width: 800px) {
+    //выравнивание всего меню с лого
+    @media screen and (max-width: $planshet-menu-perenos) {
         justify-content: center;
 
     }
@@ -18,95 +29,15 @@ $mobile-width: 730px;
 
 }
 
-//фиксированное меню по скролу
-.sticky {
-    position: fixed;
-    display: block;
-    background: $body-bg;
-    top: 0;
-
-    z-index: 1000;
-
-    @media (max-width: 750px) {
-        padding-bottom: 10px;
-    }
-}
-
-#logo {
-    //flex-basis: 300px;
-    position: relative;
-    align-self: center;
-
-    @media screen and (max-width: 760px) {
-        min-height: 50px;
-
-    }
-
-
-    a {
-        text-decoration: none;
-        font-weight: bold;
-        color: #333;
-        font-size: 2rem;
-        padding-left: 65px;
-        z-index: 1000;
-
-        &::before {
-
-            position: absolute;
-            background: $green;
-            width: 2.5rem; //40px xrem 16px 1 rem
-            height: 2.5rem; //40px xrem 16px 1 rem
-            border-bottom-left-radius: 1000px;
-            border-bottom-right-radius: 0px;
-            border-top-left-radius: 1000px;
-            border-top-right-radius: 1000px;
-            -webkit-border-bottom-left-radius: 1000px;
-            -webkit-border-bottom-right-radius: 0px;
-            -webkit-border-top-left-radius: 1000px;
-            -webkit-border-top-right-radius: 1000px;
-            -moz-border-bottom-left-radius: 1000px;
-            -moz-border-bottom-right-radius: 0px;
-            -moz-border-top-left-radius: 1000px;
-            -moz-border-top-right-radius: 1000px;
-            top: -7px;
-            left: 0px;
-            content: '';
-        }
-
-        &::after {
-            background: $pink-light;
-            border: 2px solid $white;
-            padding-top: 2px;
-            position: absolute;
-            width: 1.5625rem; //25px
-            height: 2.625rem; //42px
-            border-top-right-radius: 1000px;
-            -webkit-border-top-right-radius: 1000px;
-            -moz-border-top-right-radius: 1000px;
-            top: -7px;
-            left: 25px;
-            content: '';
-        }
-
-        @media screen and (max-width: 870px) {
-            font-size: 1.5rem;
-        }
-
-    }
-}
-
 .nav-menu {
-    //flex-basis: calc(100% - 300px);
+
     display: flex;
 
     justify-content: flex-end;
     align-self: center;
     padding: 0 20px;
 
-    @media screen and (max-width: 908px) {
-        margin-top: 30px;
-    }
+
     @media screen and (max-width: $mobile-width) {
         //align-self: start;
         display: block;
@@ -124,14 +55,14 @@ $mobile-width: 730px;
     flex-wrap: wrap;
     justify-content: space-between;
 
-
-
     li {
         list-style: none;
         padding: 0 10px;
 
         @media screen and (max-width: $mobile-width) {
             margin-top: 7px;
+            padding: 0 0 10px 0;
+
         }
     }
 
@@ -140,7 +71,7 @@ $mobile-width: 730px;
         color: #333;
         font-weight: bold;
         text-transform: uppercase;
-        font-size: 1rem;
+
 
         &:hover {
             color: $pink;
@@ -148,20 +79,22 @@ $mobile-width: 730px;
 
     }
 
-
-
-    @media screen and (max-width: 1050px) {
+    @media screen and (max-width: 1065px) {
         font-size: 0.9rem;
     }
-    @media screen and (max-width: 995px) {
+    @media screen and (max-width:1026px) {
         font-size: 0.8rem;
+    }
+
+    @media screen and (max-width:$planshet-menu-perenos) {
+        font-size: 0.9rem;
     }
 
     @media screen and (max-width: $mobile-width) {
         display: none;
         font-size: 1rem;
         background: $white;
-        padding: 10px 0;
+        padding: 7px 0;
         min-width: 180px;
         width: 100%;
 
@@ -170,13 +103,11 @@ $mobile-width: 730px;
 
 }
 
-
 .main-menu > li {
     display: flex;
     flex-wrap: wrap;
     flex-flow: row;
 }
-
 
 /* убираем отступы и поля, а также list-style для "ul",
              * и добавляем "position:relative" */
@@ -185,7 +116,6 @@ nav ul {
     margin: 0;
     list-style: none;
     position: relative;
-
 
     /* измените ' +' на любой другой символ, если нужно*/
     li > a:after {
@@ -200,40 +130,54 @@ nav ul {
     }
 }
 
-
 /* отображаем выпадающий список при наведении */
 nav ul li:hover > ul {
-    display: inherit;
+
+    @media screen and (min-width: $mobile-width) {
+        display: inherit;
+    }
 }
 
 /* скрываем выпадающие списки по умолчанию * и задаем абсолютное позиционирование */
 .sub-menu {
-
     //раскрывает sub-menu
+    //display: block;
     display: none;
+
     width: 100%;
     position: absolute;
     top: 100%;
-    z-index: 5000;
+    z-index: $zindex-burger-menu;
 
-    background: hsl(0 0% 100%/0.7);
-    backdrop-filter: blur(5px);
+    //убираю размытие с мобилы
+    @media screen and (min-width: $mobile-width) {
+        background: hsl(0 0% 100%/0.7);
+        backdrop-filter: blur(5px);
+    }
 
-    /* измените ' +' на любой другой символ, если нужно*/
-    //li > a:after {
-    //    content:  ' >';
-    //}
-    //li > a:only-child:after {
-    //    content: '';
-    //}
-
+    @media screen and (max-width: $mobile-width){
+            position: absolute;
+        //кастыль - работает только для первого меню услуги
+            top: 35px;
+     }
 
     &-items {
+
         display: flex;
         justify-content: space-between;
+
         box-sizing: border-box;
         //адаптив
         flex-wrap: wrap;
+        z-index: $zindex-burger-menu;
+
+        @media screen and (max-width: $mobile-width) {
+            overflow-y: scroll;
+            height: $mobile-sub-menu-height;
+            min-width: $mobile-sub-menu-width;
+            width: 100%;
+            background: $gray;
+        }
     }
 
     //колонка под меню на 3 части
@@ -249,6 +193,18 @@ nav ul li:hover > ul {
             margin-top: 7px;
         }
 
+        @media screen and (max-width: $mobile-width) {
+
+            width: 100%;
+
+            li {
+                padding:15px 0 0 0;
+                margin-top: 0;
+            }
+
+        }
+
+//отступ иконик
         i {
             padding-right: 5px;
         }
@@ -261,6 +217,11 @@ nav ul li:hover > ul {
         text-transform: none;
         color: $indigo;
         font-size: 0.9rem;
+
+        @media screen and (max-width: $mobile-width) {
+
+            text-transform: uppercase;
+        }
     }
 
     //заголовок подменю
@@ -270,20 +231,38 @@ nav ul li:hover > ul {
         color: $pink;
         padding: 30px 0 10px 0;
 
+        @media screen and (max-width: $mobile-width) {
+            padding: 15px 0;
+            color: $white;
+            background: $pink;
+            text-align: center;
+        }
+
+
     }
 }
 
-// бурген меню
+// бурген меню |=|
 #menu-burger-button {
 
     display: none;
 
     @media screen and (max-width: $mobile-width){
-        cursor: pointer;
+
+        position: fixed;
         display: block;
+
+        top:0;
+        left:20px;
         width: 20px;
+
         margin: 10px auto;
+        padding-top: 10px;
+
+        cursor: pointer;
         font-size: 2em;
+
+
 
     }
 
@@ -292,7 +271,64 @@ nav ul li:hover > ul {
 //открывает меню в мобильно версии по клику
 .open-menu {
     display: block;
+    position: fixed;
+
+    width: 100%;
+    top:70px;
+    left:0px;
+
+    @include shadow-menu;
+
+    z-index: $zindex-burger-menu;
+
+    &> li {
+
+        margin-bottom: 10px;
+        z-index: $zindex-burger-menu;
+
+        a {
+            padding: 0 20px;
+        }
+    }
 }
+
+
+
+
+.open-sub-menu {
+    display: block;
+    @include shadow-menu;
+    z-index: $zindex-burger-menu;
+}
+
+//задает отступ для фиксированного бургер-меню
+#app {
+    @media screen and (max-width: $mobile-width) {
+        margin-top: 70px;
+    }
+}
+
+
+
+
+//фиксированное меню по скроллингу
+.sticky {
+    position: fixed;
+    display: block;
+    background: $body-bg;
+    top: 0;
+
+    @include shadow-menu;
+
+    z-index: $zindex-burger-menu;
+
+
+    @media (min-width: $mobile-width) and (max-width: $planshet-menu-perenos) {
+        padding-bottom: 20px;
+    }
+
+}
+
 
 
 

@@ -3,7 +3,6 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
 
-
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -12,8 +11,11 @@
     <title>@yield('title')</title>
     <meta name="description" content="@yield('description')"/>
     <link href="{{ URL::current() }}" rel="canonical"/>
+
     <link href="{{ asset("tpl/byweb/css/template.css") }}" rel="stylesheet" type="text/css"/>
+{{--    анимация AOS стили--}}
     <link href="{{  asset("tpl/byweb/css/aos.css") }}" rel="stylesheet" type="text/css"/>
+{{--    иконки --}}
     <link href="{{  asset("tpl/byweb/css/all.css") }}" rel="stylesheet" type="text/css"/>
 
 
@@ -21,20 +23,16 @@
 
 <body>
 
-
+{{--id = app для vue--}}
 <div id="app">
-
-
-        {{-- выводим топ-панель --}}
-        @include('byweb.html.layouts.sup-top')
-        {{-- Выводим меню --}}
-        @include('byweb.html.layouts.menu')
-        {{-- вывыодим слайдер --}}
-        @yield('slider')
-        {{-- вывыодим полосу --}}
-        @yield('polosa')
-
-
+    {{-- выводим топ-панель --}}
+    @include('byweb.html.layouts.sup-top')
+    {{-- Выводим меню --}}
+    @include('byweb.html.layouts.menu')
+    {{-- вывыодим слайдер --}}
+    @yield('slider')
+    {{-- вывыодим полосу --}}
+    @yield('polosa')
     {{-- верхний контент --}}
     @yield('top-contents')
     {{--почему мы--}}
@@ -51,60 +49,51 @@
     @yield('reviews')
     {{--   подвал сайта  --}}
     @yield('footer')
-
     {{-- выводим топ-панель --}}
     @include('byweb.html.layouts.sup-top')
 
-{{--кнопка подъема сайта--}}
-{{--    <div id="back-top" style="display: block;">--}}
-{{--        <a class='back-top-link' rel="nofollow" href="#">--}}
-{{--            <i class="fa fa-angle-up"></i>--}}
-{{--        </a>--}}
-{{--    </div>--}}
-
-    <byweb-back-top />
-
+    {{--кнопка подъема сайта компонент на vue--}}
+    <byweb-back-top/>
 
 </div>
 
+{{--анимация--}}
 <script src="{{ asset('tpl/byweb/js/aos.js') }}" type="text/javascript"></script>
+{{--vue js--}}
 <script src="{{ asset('tpl/byweb/js/app.js') }}" type="text/javascript"></script>
 
-
+{{--инициализация и всякие мелочи--}}
 <script type="text/javascript">
     //инициализация aos
     AOS.init();
+
     //залипание меню
     window.onscroll = function () {
         myFixMenu("#nav");
 
     }
 
+    //залипание верхнего меню
     function myFixMenu(myclass = '') {
-
         let navbar = document.querySelector(myclass);
         let sticky = navbar.offsetTop;
 
         if (window.pageYOffset > sticky) {
-
             navbar.classList.add("sticky")
         } else {
             navbar.classList.remove("sticky");
         }
     }
-
-
+    //конец залипание верхнего меню
 
     // бургер меню по кликуgetElementById('nav-menu')
-    // let menuElem = document.getElementById('nav-menu');
-    let burgerMenu = document.getElementById('menu-burger-button');
-
-    burgerMenu.onclick = function() {
-        let menuList= document.querySelector('.menu-list');
-        //добавляет класс open-menu
-        menuList.classList.toggle('open-menu');
-    };
-
+    // let burgerMenu = document.getElementById('menu-burger-button');
+    // burgerMenu.onclick = function () {
+    //     let menuList = document.querySelector('.menu-list');
+    //     //добавляет класс open-menu
+    //     menuList.classList.toggle('open-menu');
+    // };
+    // конец бургер меню
 
 
 </script>

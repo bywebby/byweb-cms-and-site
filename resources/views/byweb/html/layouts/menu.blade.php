@@ -7,14 +7,22 @@
 
             <nav class="nav-menu" id="nav-menu">
 {{--бургер кнопка завязана на js в корневом шаблоне --}}
-                <i id="menu-burger-button" class="fa fa-bars"></i>
+{{--                id='menuButton'--}}
+                <div id="menu-burger-button">
+                    <i :class="menuBurgerIcon" @click="menuButton()"></i>
+                </div>
+
+{{--                <i id="menu-burger-button" class="fa fa-bars"></i>--}}
 {{-- бургер кнопка добавляет класс open-menu и по клику в мобильной версии открвается menu-list--}}
-                <ul class="menu-list">
+                <ul class="menu-list"  :class="menuClassOpen">
+{{--                    <ul class="menu-list">--}}
                     <li>
-                        <a href="#">Услуги</a>
+                        <a href="#" @click="openSubMenuBurger()">
+                            Услуги
+                        </a>
                         <!-- первый уровень выпадающего списка -->
-                        <ul class="sub-menu">
-                            <li class="sub-menu-items">
+                        <ul class="sub-menu" :class="subMenuClassOpen">
+                            <li class="sub-menu-items" >
                                 <div class="sub-menu-item">
                                     <div class="sub-menu-title">
                                         Создание сайтов

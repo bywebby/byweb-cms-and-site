@@ -6260,6 +6260,7 @@ Vue.component('byweb-ceny', (__webpack_require__(/*! ./components/modules/calc/C
 Vue.component('byweb-reviews', (__webpack_require__(/*! ./components/modules/reviews/ReviewsComponent */ "./resources/js/components/modules/reviews/ReviewsComponent.vue")["default"]));
 Vue.component('byweb-form-modal', (__webpack_require__(/*! ./components/modules/forms/ModalComponent */ "./resources/js/components/modules/forms/ModalComponent.vue")["default"]));
 Vue.component('byweb-back-top', (__webpack_require__(/*! ./components/modules/BackTopComponent */ "./resources/js/components/modules/BackTopComponent.vue")["default"]));
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -6267,7 +6268,81 @@ Vue.component('byweb-back-top', (__webpack_require__(/*! ./components/modules/Ba
  */
 
 var app = new Vue({
-  el: '#app'
+  el: '#app',
+  data: function data() {
+    return {
+      //определяет нажат бургер или нет
+      statusBurgerMenu: false,
+      //дефолтный класс menu-open в начале пуст, потом, когда статус statusBurgerMenu добавляется класс .menu-open
+      menuClassOpen: '',
+      menuBurgerButtonClass: '',
+      //мобильное меню когда начинает отрабатывать
+      width: 0,
+      //подменю
+      //класс подменю
+      subMenuClassOpen: '',
+      // статус меню
+      statusSubMenuBurger: false,
+      menuBurgerIcon: 'fa fa-bars'
+    };
+  },
+  methods: {
+    //работает и появляется если окно меньше 730px
+    menuButton: function menuButton() {
+      if (!this.checkWidth()) {
+        return false;
+      }
+
+      // console.log(this.statusBurgerMenu);
+
+      if (this.statusBurgerMenu) {
+        this.menuClassOpen = '';
+        this.menuBurgerIcon = 'fa fa-bars';
+      } else {
+        //добавляет класс открытия меню
+        this.menuClassOpen = 'open-menu';
+        this.menuBurgerIcon = 'fa fa-arrow-down-wide-short';
+      }
+      return this.statusBurgerMenu = !this.statusBurgerMenu;
+      // console.log(this.statusBurgerMenu);
+    },
+    openSubMenuBurger: function openSubMenuBurger() {
+      if (!this.checkWidth()) {
+        return false;
+      }
+      if (this.statusSubMenuBurger) {
+        this.subMenuClassOpen = '';
+      } else {
+        //добавляет класс открытия меню
+        this.subMenuClassOpen = 'open-sub-menu';
+      }
+      return this.statusSubMenuBurger = !this.statusSubMenuBurger;
+      // console.log(this.statusBurgerMenu);
+    },
+    //блокирует функционал если меньше мобильной ширины
+    checkWidth: function checkWidth() {
+      if (this.width <= 730) {
+        return true;
+      }
+      return false;
+    }
+  },
+  created: function created() {
+    var _this = this;
+    //создаем функцию отслеживания разрешения экрана и запихиваем в константу
+    var onResize = function onResize() {
+      return _this.width = document.documentElement.clientWidth;
+    };
+
+    //иницилизация
+    onResize();
+    //прослушка окна на событие расайза
+    window.addEventListener('resize', onResize);
+  },
+  beforeDestroy: function beforeDestroy() {
+    //удаляет слушатели события дестрой когда отрабатывает hook destroy
+    window.removeEventListener('resize', onResize);
+  }
 });
 
 /***/ }),

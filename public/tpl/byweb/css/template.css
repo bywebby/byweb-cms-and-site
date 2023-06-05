@@ -239,10 +239,8 @@ a {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 20px 0px;
-  z-index: 100;
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 856px) {
   .nav {
     justify-content: center;
   }
@@ -253,27 +251,251 @@ a {
   }
 }
 
+.nav-menu {
+  display: flex;
+  justify-content: flex-end;
+  align-self: center;
+  padding: 0 20px;
+}
+@media screen and (max-width: 730px) {
+  .nav-menu {
+    display: block;
+    margin-top: 0;
+    min-width: 180px;
+    width: 100%;
+  }
+}
+
+.menu-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.menu-list li {
+  list-style: none;
+  padding: 0 10px;
+}
+@media screen and (max-width: 730px) {
+  .menu-list li {
+    margin-top: 7px;
+    padding: 0 0 10px 0;
+  }
+}
+.menu-list a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.menu-list a:hover {
+  color: #fe7676;
+}
+@media screen and (max-width: 1065px) {
+  .menu-list {
+    font-size: 0.9rem;
+  }
+}
+@media screen and (max-width: 1026px) {
+  .menu-list {
+    font-size: 0.8rem;
+  }
+}
+@media screen and (max-width: 856px) {
+  .menu-list {
+    font-size: 0.9rem;
+  }
+}
+@media screen and (max-width: 730px) {
+  .menu-list {
+    display: none;
+    font-size: 1rem;
+    background: #FFF;
+    padding: 7px 0;
+    min-width: 180px;
+    width: 100%;
+  }
+}
+
+.main-menu > li {
+  display: flex;
+  flex-wrap: wrap;
+  flex-flow: row;
+}
+
+/* убираем отступы и поля, а также list-style для "ul",
+             * и добавляем "position:relative" */
+nav ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  position: relative;
+  /* измените ' +' на любой другой символ, если нужно*/
+}
+nav ul li > a:after {
+  margin-left: 6px;
+  content: "\f107";
+  font-family: FontAwesome;
+  font-size: 0.8em;
+}
+nav ul li > a:only-child:after {
+  content: "";
+}
+
+/* отображаем выпадающий список при наведении */
+@media screen and (min-width: 730px) {
+  nav ul li:hover > ul {
+    display: inherit;
+  }
+}
+
+/* скрываем выпадающие списки по умолчанию * и задаем абсолютное позиционирование */
+.sub-menu {
+  display: none;
+  width: 100%;
+  position: absolute;
+  top: 100%;
+  z-index: 20000;
+}
+@media screen and (min-width: 730px) {
+  .sub-menu {
+    background: hsla(0, 0%, 100%, 0.7);
+    -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
+  }
+}
+@media screen and (max-width: 730px) {
+  .sub-menu {
+    position: absolute;
+    top: 35px;
+  }
+}
+.sub-menu-items {
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  z-index: 20000;
+}
+@media screen and (max-width: 730px) {
+  .sub-menu-items {
+    overflow-y: scroll;
+    height: 350px;
+    min-width: 300px;
+    width: 100%;
+    background: #f6f8fa;
+  }
+}
+.sub-menu-item {
+  width: 33.3333333333%;
+  box-sizing: border-box;
+  padding-bottom: 15px;
+}
+.sub-menu-item li {
+  padding-left: 0;
+  margin-top: 7px;
+}
+@media screen and (max-width: 730px) {
+  .sub-menu-item {
+    width: 100%;
+  }
+  .sub-menu-item li {
+    padding: 15px 0 0 0;
+    margin-top: 0;
+  }
+}
+.sub-menu-item i {
+  padding-right: 5px;
+}
+.sub-menu a {
+  font-weight: normal;
+  text-transform: none;
+  color: #076ad0;
+  font-size: 0.9rem;
+}
+@media screen and (max-width: 730px) {
+  .sub-menu a {
+    text-transform: uppercase;
+  }
+}
+.sub-menu-title {
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #fe7676;
+  padding: 30px 0 10px 0;
+}
+@media screen and (max-width: 730px) {
+  .sub-menu-title {
+    padding: 15px 0;
+    color: #FFF;
+    background: #fe7676;
+    text-align: center;
+  }
+}
+
+#menu-burger-button {
+  display: none;
+}
+@media screen and (max-width: 730px) {
+  #menu-burger-button {
+    position: fixed;
+    display: block;
+    top: 0;
+    left: 20px;
+    width: 20px;
+    margin: 10px auto;
+    padding-top: 10px;
+    cursor: pointer;
+    font-size: 2em;
+  }
+}
+
+.open-menu {
+  display: block;
+  position: fixed;
+  width: 100%;
+  top: 70px;
+  left: 0px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  z-index: 20000;
+}
+.open-menu > li {
+  margin-bottom: 10px;
+  z-index: 20000;
+}
+.open-menu > li a {
+  padding: 0 20px;
+}
+
+.open-sub-menu {
+  display: block;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  z-index: 20000;
+}
+
+@media screen and (max-width: 730px) {
+  #app {
+    margin-top: 70px;
+  }
+}
+
 .sticky {
   position: fixed;
   display: block;
   background: #faf6f1;
   top: 0;
-  z-index: 1000;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  z-index: 20000;
 }
-@media (max-width: 750px) {
+@media (min-width: 730px) and (max-width: 856px) {
   .sticky {
-    padding-bottom: 10px;
+    padding-bottom: 20px;
   }
 }
 
 #logo {
   position: relative;
   align-self: center;
-}
-@media screen and (max-width: 760px) {
-  #logo {
-    min-height: 50px;
-  }
+  margin: 20px;
 }
 #logo a {
   text-decoration: none;
@@ -281,7 +503,7 @@ a {
   color: #333;
   font-size: 2rem;
   padding-left: 65px;
-  z-index: 1000;
+  z-index: 20000;
 }
 #logo a::before {
   position: absolute;
@@ -318,165 +540,10 @@ a {
   left: 25px;
   content: "";
 }
-@media screen and (max-width: 870px) {
-  #logo a {
-    font-size: 1.5rem;
-  }
-}
-
-.nav-menu {
-  display: flex;
-  justify-content: flex-end;
-  align-self: center;
-  padding: 0 20px;
-}
-@media screen and (max-width: 908px) {
-  .nav-menu {
-    margin-top: 30px;
-  }
-}
-@media screen and (max-width: 730px) {
-  .nav-menu {
-    display: block;
-    margin-top: 0;
-    min-width: 180px;
-    width: 100%;
-  }
-}
-
-.menu-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-.menu-list li {
-  list-style: none;
-  padding: 0 10px;
-}
-@media screen and (max-width: 730px) {
-  .menu-list li {
-    margin-top: 7px;
-  }
-}
-.menu-list a {
-  text-decoration: none;
-  color: #333;
-  font-weight: bold;
-  text-transform: uppercase;
-  font-size: 1rem;
-}
-.menu-list a:hover {
-  color: #fe7676;
-}
-@media screen and (max-width: 1050px) {
-  .menu-list {
-    font-size: 0.9rem;
-  }
-}
-@media screen and (max-width: 995px) {
-  .menu-list {
-    font-size: 0.8rem;
-  }
-}
-@media screen and (max-width: 730px) {
-  .menu-list {
+@media screen and (max-width: 340px) {
+  #logo {
     display: none;
-    font-size: 1rem;
-    background: #FFF;
-    padding: 10px 0;
-    min-width: 180px;
-    width: 100%;
   }
-}
-
-.main-menu > li {
-  display: flex;
-  flex-wrap: wrap;
-  flex-flow: row;
-}
-
-/* убираем отступы и поля, а также list-style для "ul",
-             * и добавляем "position:relative" */
-nav ul {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  position: relative;
-  /* измените ' +' на любой другой символ, если нужно*/
-}
-nav ul li > a:after {
-  margin-left: 6px;
-  content: "\f107";
-  font-family: FontAwesome;
-  font-size: 0.8em;
-}
-nav ul li > a:only-child:after {
-  content: "";
-}
-
-/* отображаем выпадающий список при наведении */
-nav ul li:hover > ul {
-  display: inherit;
-}
-
-/* скрываем выпадающие списки по умолчанию * и задаем абсолютное позиционирование */
-.sub-menu {
-  display: none;
-  width: 100%;
-  position: absolute;
-  top: 100%;
-  z-index: 5000;
-  background: hsla(0, 0%, 100%, 0.7);
-  -webkit-backdrop-filter: blur(5px);
-          backdrop-filter: blur(5px);
-  /* измените ' +' на любой другой символ, если нужно*/
-}
-.sub-menu-items {
-  display: flex;
-  justify-content: space-between;
-  box-sizing: border-box;
-  flex-wrap: wrap;
-}
-.sub-menu-item {
-  width: 33.3333333333%;
-  box-sizing: border-box;
-  padding-bottom: 15px;
-}
-.sub-menu-item li {
-  padding-left: 0;
-  margin-top: 7px;
-}
-.sub-menu-item i {
-  padding-right: 5px;
-}
-.sub-menu a {
-  font-weight: normal;
-  text-transform: none;
-  color: #076ad0;
-  font-size: 0.9rem;
-}
-.sub-menu-title {
-  text-transform: uppercase;
-  font-weight: bold;
-  color: #fe7676;
-  padding: 30px 0 10px 0;
-}
-
-#menu-burger-button {
-  display: none;
-}
-@media screen and (max-width: 730px) {
-  #menu-burger-button {
-    cursor: pointer;
-    display: block;
-    width: 20px;
-    margin: 10px auto;
-    font-size: 2em;
-  }
-}
-
-.open-menu {
-  display: block;
 }
 
 .top {
@@ -503,9 +570,10 @@ nav ul li:hover > ul {
 .top-menu-item:nth-child(even) {
   flex-basis: 50%;
 }
-@media screen and (max-width: 1110px) {
+@media screen and (max-width: 1155px) {
   .top-menu-item {
     flex-basis: 33.3333333333%;
+    font-size: 0.8rem;
   }
   .top-menu-item:nth-child(even) {
     flex-basis: 33.3333333333%;
@@ -514,6 +582,7 @@ nav ul li:hover > ul {
 @media screen and (max-width: 650px) {
   .top-menu-item {
     flex-basis: 100%;
+    font-size: 1rem;
   }
   .top-menu-item:nth-child(even) {
     flex-basis: 100%;
@@ -521,7 +590,7 @@ nav ul li:hover > ul {
 }
 
 #slider {
-  height: 100vh;
+  height: calc(100vh - 75px - 83px);
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -538,7 +607,7 @@ nav ul li:hover > ul {
 .slider-img {
   position: absolute;
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 75px - 83px);
   background: rgb(115, 195, 232);
   background: linear-gradient(0deg, rgb(115, 195, 232) 0%, rgb(255, 255, 255) 100%);
   background-size: cover;
@@ -553,7 +622,7 @@ nav ul li:hover > ul {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  height: 100vh;
+  height: calc(100vh - 75px - 83px);
   justify-content: center;
   width: 1490px;
   min-height: 330px;
