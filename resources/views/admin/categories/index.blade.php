@@ -58,8 +58,13 @@
                                                         @if(!$category->parrent_id)
                                                             Без категории
                                                             @else
+{{--                                                            {{dd($categories->find($category->parrent_id), $category->parrent_id, $categories)}}--}}
+
 {{--                                                            ищем такую категорию для вывода вложенности ее наименования --}}
-                                                            {{ $categories->find($category->parrent_id)->title }}
+{{--                                                            {{ $categories->find($category->parrent_id)->title }}--}}
+                                                            {{$category->nameCategory->title}}
+
+
                                                             @endif
                                                     </td>
 

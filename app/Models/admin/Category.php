@@ -20,6 +20,7 @@ class Category extends Model {
         'parrent_id',
         'show',
         'menu_type_id',
+        'class'
     ];
 
 //отношение одна категория ко многим постам
@@ -32,6 +33,10 @@ class Category extends Model {
      */
     public function modules() {
         return $this->hasMany(Module::class);
+    }
+//определяет в самой себя наименование категории по parrent_id => id далее title получаем
+    public function nameCategory() {
+        return $this->belongsTo(self::class, 'parrent_id', 'id');
     }
 
     /**

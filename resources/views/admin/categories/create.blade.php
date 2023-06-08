@@ -77,12 +77,19 @@
                                                 <input type="text" name="meta_desc" class="form-control @error('meta_desc') is-valid @enderror" placeholder="Мета описание" value="{{ old('meta_desc') }}">
                                             </div>
 
+
+
                                             <div class="form-group">
                                                 <label for="show">Показать в меню</label>
                                                 <select name="show" class="form-control @error('show') is-valid @enderror" id="show">
                                                     <option value="1" selected >Показывать</option>
                                                     <option value="0">Не показывать</option>
                                                 </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="class">Укажите класс если есть</label>
+                                                <input type="text" name="class" class="form-control @error('class') is-valid @enderror" placeholder="Укажите класс если есть" value="{{ old('class') }}">
                                             </div>
 
                                             <div class="form-group">

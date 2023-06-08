@@ -25,6 +25,7 @@ class CategoryController extends Controller {
         'parrent_id',
         'show',
         'menu_type_id',
+        'class'
     ];
 
     public function index(Request $request) {
@@ -35,7 +36,9 @@ class CategoryController extends Controller {
             'step' => 10, //шаг пагинации
             'num' => $request->get('page')
         ];
-        $categories = Category::query()->paginate($page['step']);
+        $categories = Category::query()->with('nameCategory')->paginate($page['step']);
+
+//        dd($categories);
 
 //        возвращаем вид и перадем категории
         return view('admin.categories.index',compact('categories','page'));

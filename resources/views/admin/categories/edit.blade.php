@@ -83,6 +83,11 @@
                                                 </select>
                                             </div>
 
+                                            <div class="form-group">
+                                                <label for="class">Укажите класс если есть</label>
+                                                <input type="text" name="class" class="form-control @error('class') is-valid @enderror" placeholder="Укажите класс если есть" value="{{ $category->class }}">
+                                            </div>
+
 
                                             <div class="form-group">
                                                 <label for="status">Выберите статус</label>
