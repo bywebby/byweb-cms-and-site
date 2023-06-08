@@ -386,7 +386,6 @@ nav ul li > a:only-child:after {
   }
 }
 .sub-menu-item {
-  width: 33.3333333333%;
   box-sizing: border-box;
   padding-bottom: 15px;
 }

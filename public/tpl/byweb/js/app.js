@@ -6306,7 +6306,8 @@ var app = new Vue({
       return this.statusBurgerMenu = !this.statusBurgerMenu;
       // console.log(this.statusBurgerMenu);
     },
-    openSubMenuBurger: function openSubMenuBurger() {
+    openSubMenuBurger: function openSubMenuBurger(e) {
+      e.preventDefault();
       if (!this.checkWidth()) {
         return false;
       }

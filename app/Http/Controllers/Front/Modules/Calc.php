@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Front\Modules;
 
 use App\Models\admin\calc\CalcItem;
 use App\Models\admin\calc\CalcCategory;
+use function PHPUnit\Framework\isEmpty;
 
 class Calc
 {
@@ -21,20 +22,16 @@ class Calc
 
     public function getCalcItems(int $catId)
     {
-        $getCalcCat = $this->getCalcCat::pluck('title');
+        $myGroupe = [];
 
+        $getCalcCat = $this->getCalcCat::pluck('title');
 
         $calcItems = $this->calcItems::with('calcTitle', 'calcModule', 'calcCategory')->get();
 
-
-        if (!$calcItems->isEmpty()) {
-
+        if ($calcItems->isNotEmpty()) {
 
             foreach ($calcItems as $calcItem){
-
-
                 if ($calcItem->calcModule->category_id == $catId) {
-
                     $myGroupe = [
                         'module-title' => $calcItem->calcModule->title,
                         'module-desc' => $calcItem->calcModule->description,
@@ -59,19 +56,12 @@ class Calc
                     }  //end foreach
                 }//end if
 
-
-
             }
-        } else {
-            $myGroupe = [];
         }
 
 //        dd($myGroupe);
         return $myGroupe;
 
-    }
+    } //end method
 
-
-
-
-}
+} //end Calc class

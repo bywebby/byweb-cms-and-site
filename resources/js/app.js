@@ -73,7 +73,9 @@ const app = new Vue({
                 // console.log(this.statusBurgerMenu);
 
         },
-        openSubMenuBurger() {
+        openSubMenuBurger(e) {
+
+            e.preventDefault();
 
             if (!this.checkWidth()) {
                 return false;

@@ -13,12 +13,8 @@ class CalcClasses extends Model
     protected $fillable = ['title'];
 
 
-
-
-public function calcTitle() {
-
-    return $this->hasMany(CalcTitle::class,'calc_classes_id');
-
-
-}
+    public function calcTitle()
+    {
+        return $this->hasMany(CalcTitle::class, 'calc_classes_id');
+    }
 }

@@ -6,11 +6,26 @@ use App\Http\Requests\Category\StoreCategory;
 use App\Http\Requests\Category\UpdateCategory;
 use App\Models\admin\Category;
 use App\Http\Controllers\Controller;
+use App\Models\admin\menu\MenuType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
+//use Lavary\Menu\Facade as LavMenu;
+
 
 class CategoryController extends Controller {
+
+
+    public $catFileds = [
+        'title',
+        'slug',
+        'meta_title',
+        'meta_desc',
+        'status',
+        'parrent_id',
+        'show',
+        'menu_type_id',
+    ];
 
     public function index(Request $request) {
 
@@ -28,25 +43,35 @@ class CategoryController extends Controller {
 
 //возвращает форму для создания
     public function create()  {
-        return view('admin.categories.create');
+
+        $cats = Category::with('menuTypes')->where('status',1)->get();
+
+//        dd($cats);
+        $menuTypes = MenuType::all();
+
+        return view('admin.categories.create', compact('cats', 'menuTypes'));
     }
 
 //возвращает форму для сохранения
     public function store(StoreCategory $request) {
 
-        $data = $request->only(['title', 'slug', 'meta_title', 'meta_desc']);
+        $data = $request->only($this->catFileds);
         //перевод в транслит
         $data['slug']= Str::slug($data['slug'],'-');
-
+//        dd($data);
         Category::create($data);
-
         return redirect()->route('categories.index')->with('success','Категоря добавлена');
     }
 
     public function edit($id) {
+
         $this->error404($id);
         $category = Category::find($id);
-        return view('admin.categories.edit',compact('category'));
+
+        $cats = Category::all();
+        $menuTypes = MenuType::all();
+
+        return view('admin.categories.edit',compact('category', 'cats', 'menuTypes'));
     }
 
 //возвращает 404 ошибку
@@ -60,7 +85,7 @@ class CategoryController extends Controller {
 
     public function update(UpdateCategory $request, $id) {
         $this->error404($id);
-        $data = $request->only(['title', 'slug', 'meta_title', 'meta_desc']);
+        $data = $request->only($this->catFileds);
 
         //перевод в транслит
         $data['slug'] = Str::slug($data['slug'],'-');
@@ -91,5 +116,6 @@ class CategoryController extends Controller {
         }
 
     }
+
 
 }//end class !

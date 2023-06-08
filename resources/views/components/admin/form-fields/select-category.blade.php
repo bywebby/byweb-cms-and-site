@@ -3,14 +3,11 @@
     <label for="{{$name}}">{{$title}}</label>
     <select name="{{$name}}" class="form-control @error($name) is-valid @enderror" id="{{$name}}">
         @foreach($datacategory as $k => $v)
-
-
-
-        @if (!empty($mydata))
-                 <option value="{{$k}}" {{$k == $mydata->$name ? 'selected' : ''}}>{{$v}}</option>
-            @else
-                <option value="{{$k}}">{{$v}}</option>
-        @endif
+            @if (!empty($mydata))
+                     <option value="{{$k}}" {{$k == $mydata->$name ? 'selected' : ''}}>{{$v}}</option>
+                @else
+                    <option value="{{$k}}">{{$v}}</option>
+            @endif
         @endforeach
     </select>
 

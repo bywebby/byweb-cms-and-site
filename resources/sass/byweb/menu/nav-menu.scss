@@ -14,8 +14,6 @@ $zindex-burger-menu: 20000;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    //padding: 20px 0px;
-    //z-index: $zindex-burger-menu;
 
     //выравнивание всего меню с лого
     @media screen and (max-width: $planshet-menu-perenos) {
@@ -37,17 +35,13 @@ $zindex-burger-menu: 20000;
     align-self: center;
     padding: 0 20px;
 
-
     @media screen and (max-width: $mobile-width) {
         //align-self: start;
         display: block;
         margin-top: 0;
         min-width: 180px;
         width: 100%;
-
     }
-
-
 }
 
 .menu-list {
@@ -72,7 +66,6 @@ $zindex-burger-menu: 20000;
         font-weight: bold;
         text-transform: uppercase;
 
-
         &:hover {
             color: $pink;
         }
@@ -82,6 +75,7 @@ $zindex-burger-menu: 20000;
     @media screen and (max-width: 1065px) {
         font-size: 0.9rem;
     }
+
     @media screen and (max-width:1026px) {
         font-size: 0.8rem;
     }
@@ -97,10 +91,7 @@ $zindex-burger-menu: 20000;
         padding: 7px 0;
         min-width: 180px;
         width: 100%;
-
     }
-
-
 }
 
 .main-menu > li {
@@ -183,7 +174,7 @@ nav ul li:hover > ul {
     //колонка под меню на 3 части
     &-item {
 
-        width: calc(100% / 3);
+        //width: calc(100% / 3);
         box-sizing: border-box;
 
         padding-bottom: 15px;

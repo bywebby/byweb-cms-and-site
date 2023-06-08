@@ -2,9 +2,12 @@
 
 namespace App\Models\admin;
 
+use App\Models\admin\menu\MenuType;
 use App\Models\admin\Post;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\admin\calc\CalcModule;
+
+
 
 class Category extends Model {
     //поля которые заполняются в базе
@@ -12,7 +15,11 @@ class Category extends Model {
         'title',
         'slug',
         'meta_title',
-        'meta_desc'
+        'meta_desc',
+        'status',
+        'parrent_id',
+        'show',
+        'menu_type_id',
     ];
 
 //отношение одна категория ко многим постам
@@ -34,5 +41,11 @@ class Category extends Model {
     public function calcModules() {
         return $this->hasOne(Calcmodule::class, 'category_id');
     }
+
+    public function menuTypes() {
+        return $this->belongsTo(MenuType::class, 'menu_type_id');
+    }
+
+
 
 }

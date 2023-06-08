@@ -175,6 +175,11 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        //My providers
+        //установил библиотеку дерево меню командой:
+        //composer require lavary/laravel-menu
+//        \Lavary\Menu\ServiceProvider::class,
+
     ],
 
     /*
@@ -226,6 +231,9 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+        //Дерево меню, подключакм фасад
+//        'Menu' => \Lavary\Menu\Facade::class,
 
     ],
 

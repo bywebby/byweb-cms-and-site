@@ -32,13 +32,18 @@
                                                 <th style="width: 30px">№</th>
                                                 <th>Наименование категории</th>
                                                 <th>Алиас категории</th>
+                                                <th>Родительская категория</th>
                                                 <th>Управление категориями</th>
                                             </tr>
                                             </thead>
                                             <tbody>
 
+
+{{--                                            {{dd($categories->find(2))}}--}}
+
+
                                             @foreach($categories as $k => $category)
-                                                <tr>
+                                                <tr @if (!$category->status) style="color:red"@endif>
 
                                                     {{--считает количество элементов--}}
                                                     @if($page['num'] == 1 || $page['num'] == null)
@@ -49,6 +54,14 @@
                                                     {{--конец подсчета количество элементов--}}
                                                     <td>{{ $category->title }}</td>
                                                     <td>{{ $category->slug }}</td>
+                                                    <td>
+                                                        @if(!$category->parrent_id)
+                                                            Без категории
+                                                            @else
+{{--                                                            ищем такую категорию для вывода вложенности ее наименования --}}
+                                                            {{ $categories->find($category->parrent_id)->title }}
+                                                            @endif
+                                                    </td>
 
                                                     <td>
 

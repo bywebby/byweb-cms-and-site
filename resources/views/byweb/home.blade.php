@@ -8,12 +8,15 @@
 @section('description', $data[0]->category->meta_desc)
 {{-- head параметры конец--}}
 
+{{-- Выводим меню --}}
+@section('menu')
+    @include('byweb.html.layouts.contents.menu.index', ['items' => $menuitems])
+@endsection
+
 @foreach($data as $k => $item)
-
-{{--        {{ dump($item->type->title) }}--}}
-
+{{--           {{ dump($item->type->title) }}--}}
     @switch($item->type->title)
-        {{--    тип контента слайдер--}}
+            {{--тип контента слайдер--}}
         @case('Слайдер')
             @section('slider')
                 @include('byweb.modules.slide', ['item' => $item])
@@ -69,8 +72,6 @@
     @endswitch
 
 @endforeach
-
-
 
 {{-- модули со многими статьями--}}
 {{-- модуль полоса --}}
@@ -136,6 +137,9 @@
 {{-- конец модуль полоса --}}
 
 {{-- модуль цены --}}
+
+
+
 @if( !empty($calcItems))
 
 {{--    {{dd($calcItems)}}--}}

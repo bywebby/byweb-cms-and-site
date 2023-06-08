@@ -28,6 +28,10 @@ class UpdateCategory extends FormRequest
             'slug' =>  'required|min:3|max:255',
             'meta_title' => 'required|min:3|max:255',
             'meta_desc' => 'required|min:3|max:255',
+            'status' => 'required|min:0|max:1',
+            'parrent_id' => 'required|numeric|min:0',
+            'show' => 'required|boolean',
+            'menu_type_id' => 'required|numeric|min:0',
         ];
     }
 }

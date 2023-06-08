@@ -27,8 +27,9 @@
 <div id="app">
     {{-- выводим топ-панель --}}
     @include('byweb.html.layouts.sup-top')
-    {{-- Выводим меню --}}
-    @include('byweb.html.layouts.menu')
+
+
+    @yield('menu')
     {{-- вывыодим слайдер --}}
     @yield('slider')
     {{-- вывыодим полосу --}}
