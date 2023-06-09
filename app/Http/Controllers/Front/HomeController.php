@@ -21,26 +21,34 @@ use App\Http\Controllers\Front\Modules\Calc;
 class HomeController extends Controller
 {
     private $cats;
+    private $modules;
 
-    public function __construct(Category $cats) {
+    public function __construct(Category $cats, Module $modules) {
         $this->cats = $cats;
+        $this->modules = $modules;
     }
 
     public function index(Request $request)
     {
-//по категории находим контент в зависимости от слага
+        //по категории находим контент в зависимости от слага
         $request->path() == '/' ? $slug = 'sozdanie-saitov' : $slug = $request->path();
-//        dd($request->path());
-//определяем id категории согласно слагу
+
+        //dd($request->path());
+        //определяем id категории согласно слагу
         $cat = $this->cats::where('slug', $slug)->where('status', 1)->first();
 
-//проверяет существует ли категория если нет 404-ошибка
+
+        //проверяет существует ли категория если нет 404-ошибка
         self::errorPage($cat, 'Такой страницы не существует!');
+
         //  берем данные модулей согласно категории
-        $modules = Module::where('category_id', $cat->id)->with('types')->get();
+        $modules = $this->modules::where('category_id', $cat->id)->with('types')->get();
 
         //берем через связь все посты, которые относятся к данной категории
         $data = $cat->posts()->get();
+
+//        $itemsGallery = $data->where('type_id',5);
+//        dd($itemsGallery);
 
         //проверяем на пустоту посты
         self::chekEmtyPost($data, 'Добавьте посты в категории');

@@ -16,10 +16,19 @@
     background: $pink-light;
     text-transform: uppercase;
     font-weight: normal;
+
+
+
     &:hover {
         background: $black;
     }
+
+
 }
+.btn, .btn-slider, .btn-primary {
+    text-decoration: none;
+}
+
 
 .btn-slider {
     background: $black;

@@ -31,7 +31,7 @@
 
 {{--    @yield('menu')--}}
     @include('byweb.html.layouts.contents.menu.index')
-    {
+
     {{-- вывыодим слайдер --}}
     @yield('slider')
     {{-- вывыодим полосу --}}

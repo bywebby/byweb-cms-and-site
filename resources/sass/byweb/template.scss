@@ -19,6 +19,8 @@ body {
     background: $body-bg;
     color: $body-clr;
 
+
+
 }
 
 h1, h2, h3 {
@@ -76,7 +78,8 @@ p {
 }
 
 a {
-    color: $pink-light;
+    color: $indigo;
+    text-decoration: underline;
 }
 
 .item-1 {

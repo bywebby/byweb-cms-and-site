@@ -41,7 +41,6 @@
             @php
                 /** @var $item */
             // Добавляем в массив все item из типа контнета полоса
-                   // $itemsGallery[] = ['title' => $item->title, 'desc' => $item->description, 'img' => $item->thumbnail];
                     $itemsGallery[] = $item->toArray();
             @endphp
         @break
@@ -129,6 +128,8 @@
 {{--VUE компоненты --}}
 {{-- модуль галерея --}}
 @if( isset($itemsGallery) )
+
+{{--    {{dd($itemsGallery)}}--}}
     @section('gallery')
         {{--        json для передачи в компонет vue --}}
         <byweb-gallery items="{{json_encode($itemsGallery)}}"></byweb-gallery>

@@ -56,4 +56,10 @@ class Category extends Model {
        return self::where('show',1)->where('status',1)->get();
    }
 
+
+   public function type() {
+
+        return $this->belongsTo(Type::class, 'id');
+   }
+
 }

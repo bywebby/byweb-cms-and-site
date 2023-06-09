@@ -81,7 +81,8 @@ p {
 }
 
 a {
-  color: #fb9898;
+  color: #076ad0;
+  text-decoration: underline;
 }
 
 .item-1 {
@@ -204,6 +205,10 @@ a {
 }
 .btn:hover {
   background: #2f343a;
+}
+
+.btn, .btn-slider, .btn-primary {
+  text-decoration: none;
 }
 
 .btn-slider {
@@ -896,6 +901,7 @@ nav ul li > a:only-child:after {
 
 .gallery-item-header a {
   color: #FFF;
+  text-decoration: none;
 }
 
 .gallery-item-link {
@@ -1220,6 +1226,7 @@ ul[id=review-list] li:first-of-type {
 }
 .footer-phone a {
   color: #FFF;
+  text-decoration: none;
 }
 .footer-phone a:hover {
   color: #f6f8fa;
@@ -1429,6 +1436,7 @@ ul[id=review-list] li:first-of-type {
   position: absolute;
   font-size: 30px;
   padding: 7px 10px;
+  color: #fe7676;
 }
 .back-top-link:hover {
   color: #FFF;
