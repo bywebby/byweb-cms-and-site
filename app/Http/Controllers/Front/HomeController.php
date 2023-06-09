@@ -1,7 +1,7 @@
 <?php
-
 namespace App\Http\Controllers\Front;
 
+use App\Http\Controllers\Front\Modules\Menu;
 use App\Models\admin\calc\CalcCategory;
 use App\Models\admin\Category;
 use App\Models\admin\Module;
@@ -20,7 +20,7 @@ use App\Http\Controllers\Front\Modules\Calc;
 
 class HomeController extends Controller
 {
-    public $cats;
+    private $cats;
 
     public function __construct(Category $cats) {
         $this->cats = $cats;
@@ -45,36 +45,17 @@ class HomeController extends Controller
         //проверяем на пустоту посты
         self::chekEmtyPost($data, 'Добавьте посты в категории');
 
-        //получаем данных калькулятора
+        //получаем калькялтора к данной категории
         $calcItems = $this->getCalc($cat->id);
 
-        $menuitems = $this->buildTree($this->cats::where('show',1)->where('status',1)->get());
-
-        return view('byweb.home', compact('data', 'modules', 'calcItems', 'menuitems'));
-    }
-
-    public function buildTree($items)
-    {
-        $grouped = $items->groupBy('parrent_id');
-
-        foreach ($items as $item) {
-            if ($grouped->has($item->id)) {
-                $item->children = $grouped[$item->id];
-            }
-        }
-
-        return $items->where('parent_id', 0);
+        return view('byweb.home', compact('data', 'modules', 'calcItems'));
     }
 
 //метод получающий кальлькулятор, согласно действующей категории
-    public function getCalc(int $catId)
+    private function getCalc(int $catId)
     {
-//        категории калькулятора
-        $getCalcCat = new CalcCategory();
-        //item калькулятора модель
-        $calcItem = new CalcItem();
 //        контроллек калькуялтора в каторый
-        $calcItems = new Calc($getCalcCat, $calcItem);
+        $calcItems = new Calc();
         //возвращает в нужном формате данные калькулятора
         return $calcItems->getCalcItems($catId);
     }

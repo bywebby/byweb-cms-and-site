@@ -179,6 +179,8 @@ return [
         //установил библиотеку дерево меню командой:
         //composer require lavary/laravel-menu
 //        \Lavary\Menu\ServiceProvider::class,
+        App\Providers\ComposerServiceProvider::class,
+
 
     ],
 

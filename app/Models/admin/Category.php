@@ -7,10 +7,9 @@ use App\Models\admin\Post;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\admin\calc\CalcModule;
 
-
-
 class Category extends Model {
-    //поля которые заполняются в базе
+
+//поля которые заполняются в базе
     protected $fillable = [
         'title',
         'slug',
@@ -20,7 +19,7 @@ class Category extends Model {
         'parrent_id',
         'show',
         'menu_type_id',
-        'class'
+        'class',
     ];
 
 //отношение одна категория ко многим постам
@@ -33,10 +32,6 @@ class Category extends Model {
      */
     public function modules() {
         return $this->hasMany(Module::class);
-    }
-//определяет в самой себя наименование категории по parrent_id => id далее title получаем
-    public function nameCategory() {
-        return $this->belongsTo(self::class, 'parrent_id', 'id');
     }
 
     /**
@@ -51,6 +46,14 @@ class Category extends Model {
         return $this->belongsTo(MenuType::class, 'menu_type_id');
     }
 
+    //определяет в самой себя наименование категории по parrent_id => id далее title получаем
+    public function nameCategory() {
+        return $this->belongsTo(self::class, 'parrent_id', 'id');
+    }
 
+
+   public function scopegetPublicMenu(){
+       return self::where('show',1)->where('status',1)->get();
+   }
 
 }

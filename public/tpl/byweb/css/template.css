@@ -277,7 +277,6 @@ a {
 }
 @media screen and (max-width: 730px) {
   .menu-list li {
-    margin-top: 7px;
     padding: 0 0 10px 0;
   }
 }
@@ -344,13 +343,17 @@ nav ul li > a:only-child:after {
 /* отображаем выпадающий список при наведении */
 @media screen and (min-width: 730px) {
   nav ul li:hover > ul {
-    display: inherit;
+    visibility: visible;
+    display: flex;
+    flex-direction: row;
   }
 }
 
 /* скрываем выпадающие списки по умолчанию * и задаем абсолютное позиционирование */
 .sub-menu {
-  display: none;
+  display: flex;
+  flex-direction: row;
+  visibility: hidden;
   width: 100%;
   position: absolute;
   top: 100%;
@@ -379,7 +382,6 @@ nav ul li > a:only-child:after {
 @media screen and (max-width: 730px) {
   .sub-menu-items {
     overflow-y: scroll;
-    height: 350px;
     min-width: 300px;
     width: 100%;
     background: #f6f8fa;
@@ -467,6 +469,7 @@ nav ul li > a:only-child:after {
 
 .open-sub-menu {
   display: block;
+  visibility: visible;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
   z-index: 20000;
 }
@@ -1200,50 +1203,9 @@ ul[id=review-list] li:first-of-type {
 }
 
 /*кнопки вперед назад конец */
-#footer {
-  background: #2f343a;
-}
-#footer h2 {
-  color: #FFF;
-}
-
 .footer-desc {
   color: #888;
 }
-
-#footer-first-photo {
-  padding-right: 10px;
-}
-
-#footer-ceo, #footer-qr {
-  height: 150px;
-  box-shadow: 1.3rem 1.3rem 2.4rem rgba(152, 39, 245, 0.29);
-  -webkit-box-shadow: 1.3rem 1.3rem 2.4rem rgba(152, 39, 245, 0.29);
-  -moz-box-shadow: 1.3rem 1.3rem 2.4rem rgba(152, 39, 245, 0.29);
-  transition: box-shadow 1s;
-}
-#footer-ceo:hover, #footer-qr:hover {
-  box-shadow: 1.3rem 1.3rem 2rem rgba(39, 245, 226, 0.3);
-  -webkit-box-shadow: 1.3rem 1.3rem 2rem rgba(39, 245, 226, 0.3);
-  -moz-box-shadow: 1.3rem 1.3rem 2rem rgba(39, 245, 226, 0.3);
-}
-
-#footer-ceo {
-  border: 3px solid #FFF;
-  border-radius: 100px;
-  filter: sepia(50%);
-}
-#footer-ceo:hover {
-  filter: sepia(0%);
-}
-
-#footer-phone a {
-  color: #FFF;
-}
-#footer-phone a:hover {
-  color: #f6f8fa;
-}
-
 .footer-phone {
   position: relative;
   font-size: 1.8rem;
@@ -1260,6 +1222,42 @@ ul[id=review-list] li:first-of-type {
   color: #FFF;
 }
 .footer-phone a:hover {
+  color: #f6f8fa;
+}
+
+#footer {
+  background: #2f343a;
+}
+#footer h2 {
+  color: #FFF;
+}
+#footer-first-photo {
+  padding-right: 10px;
+}
+#footer-ceo, #footer-qr {
+  height: 150px;
+  box-shadow: 1.3rem 1.3rem 2.4rem rgba(152, 39, 245, 0.29);
+  -webkit-box-shadow: 1.3rem 1.3rem 2.4rem rgba(152, 39, 245, 0.29);
+  -moz-box-shadow: 1.3rem 1.3rem 2.4rem rgba(152, 39, 245, 0.29);
+  transition: box-shadow 1s;
+}
+#footer-ceo:hover, #footer-qr:hover {
+  box-shadow: 1.3rem 1.3rem 2rem rgba(39, 245, 226, 0.3);
+  -webkit-box-shadow: 1.3rem 1.3rem 2rem rgba(39, 245, 226, 0.3);
+  -moz-box-shadow: 1.3rem 1.3rem 2rem rgba(39, 245, 226, 0.3);
+}
+#footer-ceo {
+  border: 3px solid #FFF;
+  border-radius: 100px;
+  filter: sepia(50%);
+}
+#footer-ceo:hover {
+  filter: sepia(0%);
+}
+#footer-phone a {
+  color: #FFF;
+}
+#footer-phone a:hover {
   color: #f6f8fa;
 }
 

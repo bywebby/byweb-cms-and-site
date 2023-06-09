@@ -6,19 +6,21 @@ namespace App\Http\Controllers\Front\Modules;
 
 use App\Models\admin\calc\CalcItem;
 use App\Models\admin\calc\CalcCategory;
+use Illuminate\Database\Eloquent\Model;
 use function PHPUnit\Framework\isEmpty;
 
 class Calc
 {
 
-    public $calcItems;
-    public $getCalcCat;
+    private $calcItems;
+    private $getCalcCat;
 
-    public function __construct(CalcCategory $getCalcCat, CalcItem $calcItems) {
-        $this->getCalcCat = $getCalcCat;
-        $this->calcItems = $calcItems;
+    public function __construct() {
+        //        категории калькулятора
+        $this->getCalcCat = new CalcCategory();
+        //item калькулятора модель
+        $this->calcItems = new CalcItem();
     }
-
 
     public function getCalcItems(int $catId)
     {

@@ -54,7 +54,7 @@ $zindex-burger-menu: 20000;
         padding: 0 10px;
 
         @media screen and (max-width: $mobile-width) {
-            margin-top: 7px;
+            //margin-top: 7px;
             padding: 0 0 10px 0;
 
         }
@@ -124,8 +124,11 @@ nav ul {
 /* отображаем выпадающий список при наведении */
 nav ul li:hover > ul {
 
+    //!!! отключает наведение в мобильной версии и наведение работает только для пк и планшетов
     @media screen and (min-width: $mobile-width) {
-        display: inherit;
+        visibility: visible;
+        display:flex;
+        flex-direction: row;
     }
 }
 
@@ -133,7 +136,12 @@ nav ul li:hover > ul {
 .sub-menu {
     //раскрывает sub-menu
     //display: block;
-    display: none;
+    //display: none;
+    display:flex;
+    flex-direction: row;
+
+//открывает подменю
+    visibility: hidden;
 
     width: 100%;
     position: absolute;
@@ -156,15 +164,14 @@ nav ul li:hover > ul {
 
         display: flex;
         justify-content: space-between;
-
         box-sizing: border-box;
-        //адаптив
+
         flex-wrap: wrap;
         z-index: $zindex-burger-menu;
 
         @media screen and (max-width: $mobile-width) {
             overflow-y: scroll;
-            height: $mobile-sub-menu-height;
+            //height: $mobile-sub-menu-height;
             min-width: $mobile-sub-menu-width;
             width: 100%;
             background: $gray;
@@ -262,6 +269,7 @@ nav ul li:hover > ul {
 //открывает меню в мобильно версии по клику
 .open-menu {
     display: block;
+
     position: fixed;
 
     width: 100%;
@@ -288,6 +296,7 @@ nav ul li:hover > ul {
 
 .open-sub-menu {
     display: block;
+    visibility: visible;
     @include shadow-menu;
     z-index: $zindex-burger-menu;
 }

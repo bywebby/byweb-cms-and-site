@@ -29,7 +29,9 @@
     @include('byweb.html.layouts.sup-top')
 
 
-    @yield('menu')
+{{--    @yield('menu')--}}
+    @include('byweb.html.layouts.contents.menu.index')
+    {
     {{-- вывыодим слайдер --}}
     @yield('slider')
     {{-- вывыодим полосу --}}
@@ -50,8 +52,11 @@
     @yield('reviews')
     {{--   подвал сайта  --}}
     @yield('footer')
+
     {{-- выводим топ-панель --}}
-    @include('byweb.html.layouts.sup-top')
+{{--    <div class="footer-contacts">--}}
+        @include('byweb.html.layouts.sup-top')
+{{--    </div>--}}
 
     {{--кнопка подъема сайта компонент на vue--}}
     <byweb-back-top/>

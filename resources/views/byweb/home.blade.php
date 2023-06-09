@@ -9,9 +9,9 @@
 {{-- head параметры конец--}}
 
 {{-- Выводим меню --}}
-@section('menu')
-    @include('byweb.html.layouts.contents.menu.index', ['items' => $menuitems])
-@endsection
+{{--@section('menu')--}}
+{{--    @include('byweb.html.layouts.contents.menu.index', ['items' => $menuitems])--}}
+{{--@endsection--}}
 
 @foreach($data as $k => $item)
 {{--           {{ dump($item->type->title) }}--}}

@@ -1,12 +1,9 @@
 @extends('admin.html.index')
-@section('title','Список категорий')
 
+@section('title','Список категорий')
 
 @section('content')
     <div class="content-wrapper">
-
-
-
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
@@ -38,10 +35,7 @@
                                             </thead>
                                             <tbody>
 
-
-{{--                                            {{dd($categories->find(2))}}--}}
-
-
+{{-- {{dd($categories->find(2))}} --}}
                                             @foreach($categories as $k => $category)
                                                 <tr @if (!$category->status) style="color:red"@endif>
 
@@ -59,12 +53,9 @@
                                                             Без категории
                                                             @else
 {{--                                                            {{dd($categories->find($category->parrent_id), $category->parrent_id, $categories)}}--}}
-
 {{--                                                            ищем такую категорию для вывода вложенности ее наименования --}}
 {{--                                                            {{ $categories->find($category->parrent_id)->title }}--}}
                                                             {{$category->nameCategory->title}}
-
-
                                                             @endif
                                                     </td>
 
