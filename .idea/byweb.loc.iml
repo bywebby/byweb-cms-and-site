@@ -117,6 +117,17 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/asm89/stack-cors" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/laravel/ui" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/lavary/laravel-menu" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/aws/aws-crt-php" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/aws/aws-sdk-php" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/graham-campbell/guzzle-factory" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/flysystem-dropbox" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/dropbox-api" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/league/flysystem-cached-adapter" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/league/flysystem-aws-s3-v3" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/psr/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/ckfinder/ckfinder-laravel-package" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/mtdowling/jmespath.php" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/pimple/pimple" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

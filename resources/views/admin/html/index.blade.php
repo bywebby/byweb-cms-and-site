@@ -50,18 +50,17 @@
     });
 </script>
 
-
+{{--подключаем редактор и загрузчик файлов--}}
         <script src="{{ asset('plugins/ckeditor5/build/ckeditor.js') }}"></script>
-        <script src="{{ asset('plugins/ckfinder/ckfinder.js') }}"></script>
+{{--        <script src="{{ asset('plugins/ckfinder/ckfinder.js') }}"></script>--}}
 
+{{--    Подключение ckfinder по мануалу https://github.com/ckfinder/ckfinder-laravel-package/tree/v3.x.x --}}
+    @include('ckfinder::setup')
         <script>
-
             // import SourceEditing from '@ckeditor/ckeditor5-source-editing/src/sourceediting.js';
-
+            // здесь указывается id контента куда вешать редактор
             if( document.querySelector( '#content' )) {
-
                 ClassicEditor.create( document.querySelector( '#content' ), {
-
                     toolbar: [
                             'heading',
                             '|',
@@ -98,9 +97,6 @@
                         console.error( error );
                     } );
             }
-
-
-
         </script>
 
 

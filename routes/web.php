@@ -14,6 +14,8 @@ use App\Http\Controllers\Admin\Calc\CategoriesController;
 use App\Http\Controllers\Admin\Calc\ItemsController;
 use App\Http\Controllers\Front\Modules\FormController;
 
+use \CKSource\CKFinderBridge\Controller\CKFinderController;
+
 //Очистка кеша закрытая админкой
 Route::get('/clear', function () {
     Artisan::call('cache:clear');
@@ -64,6 +66,12 @@ Route::name('front.')->group(function () {
     Route::post('/form', [FormController::class, 'formFront'])->name('form');
     Route::get('/{slug?}/{slug2?}', [HomeController::class,'index'])->name('home');
 });
+
+
+Route::any('/ckfinder/connector', [CKFinderController::class, 'requestAction'])
+    ->name('ckfinder_connector');
+Route::any('/ckfinder/browser', [CKFinderController::class, 'browserAction'])
+    ->name('ckfinder_browser');
 
 
 
