@@ -67,12 +67,12 @@ Route::name('front.')->group(function () {
     Route::get('/{slug?}/{slug2?}', [HomeController::class,'index'])->name('home');
 });
 
-
-Route::any('/ckfinder/connector', [CKFinderController::class, 'requestAction'])
-    ->name('ckfinder_connector');
-Route::any('/ckfinder/browser', [CKFinderController::class, 'browserAction'])
-    ->name('ckfinder_browser');
-
+Route::group(['middleware' => 'admin'], function () {
+    Route::any('/ckfinder/connector', [CKFinderController::class, 'requestAction'])
+        ->name('ckfinder_connector');
+    Route::any('/ckfinder/browser', [CKFinderController::class, 'browserAction'])
+        ->name('ckfinder_browser');
+});
 
 
 
