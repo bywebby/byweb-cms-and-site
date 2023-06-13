@@ -13,6 +13,11 @@
                             </div>
                             <div class="card-body">
                                 <x-btn route="calc.item.create" title="Создать блок" />
+
+                                @if(isset($_GET['category']) || isset($_GET['module']))
+                                    <x-btn route="calc.item.index" title="Сброс выборки" />
+                                @endif
+
                                 @if (count($data))
                                     <div class="table-responsive">
                                         <table class="table table-bordered table-hover text-nowrap">
@@ -45,11 +50,11 @@
                                                     </td>
 
                                                     <td>
-                                                        {{ $item->calcCategory->title }}
+                                                        <a href="{{route('calc.item.index', ['category' => $item->calc_category_id, 'module' => $item->calcModule->id])}}">{{ $item->calcCategory->title }}</a>
                                                     </td>
 
                                                     <td>
-                                                        {{ $item->calcModule->title }}
+                                                        <a href="{{route('calc.item.index', ['category' => $item->calc_category_id, 'module' => $item->calcModule->id])}}">{{ $item->calcModule->title }}</a>
                                                     </td>
 
 

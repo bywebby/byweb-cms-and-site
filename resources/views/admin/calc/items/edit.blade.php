@@ -35,9 +35,11 @@
                                             <x-input-checked name="status" label="Укажите статус опубликован или нет" :checked="$data" />
                                         </div>
 
-                                        <div class="card-footer">
-                                            <button type="submit" class="btn btn-primary">Сохранить</button>
-                                        </div>
+{{--                                        <div class="card-footer">--}}
+{{--                                            <button type="submit" class="btn btn-primary">Сохранить</button>--}}
+{{--                                        </div>--}}
+                                        {{-- Кнопки поста --}}
+                                        @include('admin.html.layouts.forms.buttons')
 
                                     </form>
                                 </div>

@@ -19,7 +19,8 @@ class ItemsController extends Controller
         'calc_module_id',
         'calc_category_id',
         'checked',
-        'status'
+        'status',
+        'save',
     ];
 
     private $page = '20';
@@ -30,15 +31,36 @@ class ItemsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Request $request, CalcItem $calcItem)
     {
         $page = [
             'step' => $this->page, //шаг пагинации
-            'num' => $request->get('page')
+            'num' => $request->get('page'),
+            //get параметры для сортировки по категориям и по модулям
+            'category' => $request->get('category'),
+            'module' => $request->get('module'),
         ];
+//данные с базы со связями
+        $items = $calcItem::with('calcTitle', 'calcModule', 'calcCategory');
 
-        $data = CalcItem::with('calcTitle', 'calcModule', 'calcCategory')->paginate($page['step']);
-
+//сортировка по модулям и по пагинации
+        switch (true) {
+            case $page['category'] == null and $page['module'] == null:
+                $data = $items;
+                break;
+            case $page['category'] and $page['module'] == null:
+                $data = $items->where('calc_category_id', $page['category']);
+                break;
+            case $page['module'] and $page['category'] == null:
+                $data = $items->whereRelation('calcModule', 'id', $page['module']);
+                break;
+            case $page['module'] != null and $page['category'] != null:
+//                                                                              выборка по связи
+                $data = $items->where('calc_category_id', $page['category'])->whereRelation('calcModule', 'id', $page['module']);
+                break;
+        }
+//пагинация
+            $data = $data->paginate($page['step']);
 
         return view('admin.calc.items.index', compact('data','page'));
     }
@@ -110,13 +132,22 @@ class ItemsController extends Controller
     public function update(StoreItem $request, int $id)
     {
         $data = $request->only($this->fields);
+//кнопка отмена
+       if($data['save'] == 'Отмена') return redirect()->route('calc.item.index');
 
+       //отработка чекбоксов
         isset($data['status']) ? $data['status'] = 1 : $data['status'] = 0;
         isset($data['checked']) ? $data['checked'] = 1 : $data['checked'] = 0;
 //        dd($data);
 
         CalcItem::findOrFail($id)->update($data);
-        return redirect()->route('calc.item.edit',['item'=>$id])->with('success','Блок обновлен');
+//кнопки сохранить и сохранить закрыть
+        switch ( $data['save']) {
+            case 'Сохранить':
+                return redirect()->route('calc.item.edit',['item'=>$id])->with('success','Блок обновлен');
+            case 'Сохранить и закрыть':
+                return redirect()->route('calc.item.index')->with('success','Блок обновлен');
+        }
     }
 
     /**
