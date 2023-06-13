@@ -59,7 +59,6 @@ Route::get('/clear', function () {
         });
 });
 
-
 //клиентская часть
 Route::name('front.')->group(function () {
     Route::view('/icons','byweb/html/layouts/contents/icons');

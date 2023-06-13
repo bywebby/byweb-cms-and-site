@@ -52,6 +52,7 @@ return [
     |
     */
 
+//    'url' => env('APP_URL', 'http://localhost'),
     'url' => env('APP_URL', 'http://localhost'),
 
     'asset_url' => env('ASSET_URL', null),
@@ -180,6 +181,7 @@ return [
         //composer require lavary/laravel-menu
 //        \Lavary\Menu\ServiceProvider::class,
         App\Providers\ComposerServiceProvider::class,
+        App\Providers\SapeServiceProvider::class,
 
 
     ],

@@ -17,6 +17,15 @@
         @foreach ($items->where('parrent_id',$parent) as $item)
 
             <li class="{{$parent == 0 ? '' : (($item->menu_type_id == 1) ? 'sub-menu-items' : '')}}">
+
+              @if($parent == 0)
+
+                  @php
+                        $slug = $item->slug;
+                  @endphp
+
+              @endif
+
 {{--                если тип меню заголовок--}}
             @if($item->menu_type_id == 1)
                 <div class="sub-menu-item">
@@ -25,7 +34,11 @@
                     </div>
 
             @else
-                    <a href="{{$item->slug}}" @if(isset($item->children)) @click="openSubMenuBurger($event)" @endif>
+
+
+
+
+                    <a href="{{isset($slug) ? $slug.'/'.$item->slug : $item->slug}}" @if(isset($item->children)) @click="openSubMenuBurger($event)" @endif>
 {{--                        {{dd($item->children->isNotEmpty())}}--}}
                          @if(isset($podmenu) and $item->class )
 {{--                             fa fa-screwdriver-wrench--}}

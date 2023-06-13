@@ -23,15 +23,21 @@ class HomeController extends Controller
     private $cats;
     private $modules;
 
+    public $slug;
+
     public function __construct(Category $cats, Module $modules) {
         $this->cats = $cats;
         $this->modules = $modules;
     }
 
-    public function index(Request $request)
+    public function index(Request $request, $slug = '', $slug2 = '')
     {
+
         //по категории находим контент в зависимости от слага
-        $request->path() == '/' ? $slug = 'sozdanie-saitov' : $slug = $request->path();
+        $request->path() == '/' ? $slug = config('byweb.home_page') : $slug = str_replace($slug.'/', '', $request->path());
+
+
+//dd($slug);
 
         //dd($request->path());
         //определяем id категории согласно слагу

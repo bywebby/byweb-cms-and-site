@@ -6,7 +6,13 @@
         <div class="footer-header center">
             <h2>{{$item->title}}</h2>
             <div class="footer-desc pb-30">
-                {!!$item->content !!}
+
+                {!!$item->content !!} <br />
+
+                @if(isset($sape))
+                    {!! $sape->return_links() !!}
+                @endif
+
             </div>
         </div>
 
