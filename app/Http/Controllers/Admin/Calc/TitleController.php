@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Calc;
 
 use App\Http\Controllers\Controller;
 
+use App\Http\Requests\Calc\Title\EditeTitle;
 use App\Models\admin\calc\CalcClasses;
 use Illuminate\Http\Request;
 use App\Http\Requests\Calc\Title\StoreTitle;
@@ -89,7 +90,7 @@ class TitleController extends Controller
      * @param  int  $title
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreTitle $request, $title)
+    public function update(EditeTitle $request, $title)
     {
         $data = $request->only($this->fields);
         //$title - это id in DB, title в ресурсном контроллере параметр
