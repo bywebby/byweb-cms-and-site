@@ -18,6 +18,10 @@ use Illuminate\Support\Facades\Blade;
 use App\Models\admin\Category;
 use App\Models\admin\Post;
 
+use Illuminate\Support\Facades\DB;
+
+
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -37,22 +41,35 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
+//        DB::Listen(function ($query) {
+//
+//            dump($query->sql);
+//
+//        });
+
+
         //убирает ошибку sql при миграции если не хватает там какой-то длины поля
         Schema::defaultStringLength(191);
 
-        //регистрация компонента кнопка create
-        Blade::component('btn-create', Create::class);
-        //Регистрация select для формы
-        Blade::component('select-field', Select::class);
-        Blade::component('select-category', SelectCategory::class);
-        Blade::component('input', Input::class);
-        Blade::component('textarea', TextAreaPost::class);
-        Blade::component('btn',BtnRoute::class);
-        Blade::component('input-checked', InputChecked::class);
 
-        //глобальная переменная - подсчет категорий и постов
-        view()->share('countCategory', Category::all()->count());
-        view()->share('countPost', Post::all()->count());
+
+
+            //регистрация компонента кнопка create
+            Blade::component('btn-create', Create::class);
+            //Регистрация select для формы
+            Blade::component('select-field', Select::class);
+            Blade::component('select-category', SelectCategory::class);
+            Blade::component('input', Input::class);
+            Blade::component('textarea', TextAreaPost::class);
+            Blade::component('btn', BtnRoute::class);
+            Blade::component('input-checked', InputChecked::class);
+
+            //глобальная переменная - подсчет категорий и постов
+            view()->share('countCategory', Category::all()->count());
+            view()->share('countPost', Post::all()->count());
+
+
 
     }
 }

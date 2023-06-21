@@ -13,13 +13,21 @@
 {{--    @include('byweb.html.layouts.contents.menu.index', ['items' => $menuitems])--}}
 {{--@endsection--}}
 
+
+
+
 @foreach($data as $k => $item)
 {{--           {{ dump($item->type->title) }}--}}
+
+
+
+
     @switch($item->type->title)
             {{--тип контента слайдер--}}
         @case('Слайдер')
             @section('slider')
                 @include('byweb.modules.slide', ['item' => $item])
+
             @endsection
         @break
     {{--    тип контента верхняя панель top-menu--}}

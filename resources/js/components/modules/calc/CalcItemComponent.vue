@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="arrow">
         <h4>{{ titleKey }}</h4>
         <div class="calc-descprice" v-for="(i, id) in item">
             <label :for="idName(j.type, id, kitem)" v-for="(j, kitem) in i" v-if="j.price != 0">
@@ -136,6 +136,8 @@ export default {
 </script>
 
 <style scoped>
+
+
 
 </style>
 

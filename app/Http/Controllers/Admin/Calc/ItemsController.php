@@ -10,6 +10,10 @@ use App\Models\admin\calc\CalcModule;
 use App\Models\admin\calc\CalcTitle;
 use App\Http\Requests\Calc\StoreItem;
 
+use Illuminate\Support\Facades\Cache;
+
+use App\Http\Controllers\Helpers;
+
 
 class ItemsController extends Controller
 {
@@ -24,7 +28,7 @@ class ItemsController extends Controller
     ];
 
     private $page = '20';
-
+    private $cacheKeys = ['calc-items', 'my-groupe'];
 
     /**
      * Display a listing of the resource.
@@ -91,11 +95,18 @@ class ItemsController extends Controller
 
         CalcItem::create($data);
 
+
+        //удаляет кеш
+        Helpers::forgetCache($this->cacheKeys);
+
         return redirect()->route('calc.item.index')->with('success', 'Блок сохранен');
 
 
 
     }
+
+
+
 
     /**
      * Display the specified resource.
@@ -141,6 +152,13 @@ class ItemsController extends Controller
 //        dd($data);
 
         CalcItem::findOrFail($id)->update($data);
+
+
+        //удаляет кеш
+        Helpers::forgetCache($this->cacheKeys);
+
+//        dd(Cache::get('calc-items'));
+
 //кнопки сохранить и сохранить закрыть
         switch ( $data['save']) {
             case 'Сохранить':
@@ -159,6 +177,10 @@ class ItemsController extends Controller
     public function destroy($id)
     {
         CalcItem::findOrFail($id)->delete($id);
+
+        //удаляет кеш
+        Helpers::forgetCache($this->cacheKeys);
+
         return redirect()->route('calc.item.index')->with('success','Блок удален');
     }
 }

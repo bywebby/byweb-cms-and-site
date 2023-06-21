@@ -13,6 +13,8 @@ use App\Models\admin\calc\CalcItem;
 
 use Illuminate\Support\Facades\DB;
 
+use Illuminate\Support\Facades\Cache;
+
 
 use App\Models\admin\Post;
 use function PHPUnit\Framework\isEmpty;
@@ -33,16 +35,12 @@ class HomeController extends Controller
     public function index(Request $request, $slug = '', $slug2 = '')
     {
 
+//
         //по категории находим контент в зависимости от слага
         $request->path() == '/' ? $slug = config('byweb.home_page') : $slug = str_replace($slug.'/', '', $request->path());
 
-
-//dd($slug);
-
-        //dd($request->path());
         //определяем id категории согласно слагу
         $cat = $this->cats::where('slug', $slug)->where('status', 1)->first();
-
 
         //проверяет существует ли категория если нет 404-ошибка
         self::errorPage($cat, 'Такой страницы не существует!');
@@ -54,13 +52,17 @@ class HomeController extends Controller
         $data = $cat->posts()->get();
 
 //        $itemsGallery = $data->where('type_id',5);
-//        dd($itemsGallery);
+//        dd('5555');
 
         //проверяем на пустоту посты
         self::chekEmtyPost($data, 'Добавьте посты в категории');
 
-        //получаем калькялтора к данной категории
+//        dump(Cache::get('my-groupe'));
+
+
+        //получаем калькулялтор к данной категории
         $calcItems = $this->getCalc($cat->id);
+
 
         return view('byweb.home', compact('data', 'modules', 'calcItems'));
     }
@@ -68,8 +70,11 @@ class HomeController extends Controller
 //метод получающий кальлькулятор, согласно действующей категории
     private function getCalc(int $catId)
     {
+
+
 //        контроллек калькуялтора в каторый
         $calcItems = new Calc();
+
         //возвращает в нужном формате данные калькулятора
         return $calcItems->getCalcItems($catId);
     }

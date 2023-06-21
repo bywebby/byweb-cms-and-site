@@ -5853,7 +5853,9 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", [_c("h4", [_vm._v(_vm._s(_vm.titleKey))]), _vm._v(" "), _vm._l(_vm.item, function (i, id) {
+  return _c("div", {
+    staticClass: "arrow"
+  }, [_c("h4", [_vm._v(_vm._s(_vm.titleKey))]), _vm._v(" "), _vm._l(_vm.item, function (i, id) {
     return _c("div", {
       staticClass: "calc-descprice"
     }, _vm._l(i, function (j, kitem) {

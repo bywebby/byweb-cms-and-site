@@ -2,16 +2,21 @@
 
 namespace App\Http\Controllers\Admin\Calc;
 
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\Calc\StoreCategory;
 use App\Models\admin\calc\CalcCategory;
 use App\Models\admin\calc\CalcClasses;
+use Illuminate\Support\Facades\Cache;
+use App\Http\Controllers\Admin\Calc\Helpers;
 
 
 class CategoriesController extends Controller
 {
     public $fields = ['title', 'calc_classes_id'];
+
+    private $cacheKeys = ['calc-cat', 'my-groupe'];
 
     /**
      * @param Request $request
@@ -44,8 +49,15 @@ class CategoriesController extends Controller
     {
         $data = $request->only($this->fields);
         CalcCategory::create($data);
+
+        //удаляет кеш
+        Helpers::forgetCache($this->cacheKeys);
+
+
         return redirect()->route('calc.category.index')->with('success', 'категория сохранена');
     }
+
+
 
     /**
      * Show the form for editing the specified resource.
@@ -70,6 +82,10 @@ class CategoriesController extends Controller
     {
         $data = $request->only($this->fields);
         CalcCategory::findOrFail($id)->update($data);
+
+        //удаляет кеш
+        Helpers::forgetCache($this->cacheKeys);
+
         return redirect()->route('calc.category.edit', ['category' => $id])->with('success', 'Категория обновлена');
     }
 
@@ -82,6 +98,10 @@ class CategoriesController extends Controller
     public function destroy(int $id)
     {
         CalcCategory::findOrFail($id)->destroy($id);
+
+        //удаляет кеш
+        Helpers::forgetCache($this->cacheKeys);
+
         return redirect()->route('calc.category.index')->with('success', 'Категория удалена');
     }
 }

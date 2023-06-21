@@ -15,7 +15,7 @@
     display: flex;
     box-sizing: border-box;
     flex-wrap: wrap;
-    height: 200px;
+    height: 250px;
     overflow-y: auto !important;
     margin: 0 auto;
     padding: 22px 30px;
@@ -99,3 +99,77 @@
     color: $white;
     font-size: 1.8rem;
 }
+
+/*animation arrow - strelka*/
+
+.arrow {
+    position: relative;
+}
+
+.arrow:hover::before {
+
+    content: "";
+    position: absolute;
+
+    top:15px;
+    right: 22px;
+
+    opacity: .7;
+    height:63px;
+    width: 30px;
+    background-image: url('/tpl/byweb/img/strelka.png');
+
+    animation: my-moution-arrow .7s infinite linear;
+    -webkit-animation: my-moution-arrow .7s infinite linear;
+
+}
+
+@-webkit-keyframes my-moution-arrow {
+    0% {
+        top: 40%;
+    }
+    20% {
+        top: 41%;
+    }
+    30% {
+        top: 42%;
+    }
+    40% {
+        top: 43%;
+    }
+    60% {
+        top: 42%;
+    }
+    80% {
+        top: 41%;
+    }
+    100% {
+        top: 40%;
+    }
+}
+@keyframes my-moution-arrow {
+    0% {
+        top: 40%;
+    }
+    20% {
+        top: 41%;
+    }
+    30% {
+        top: 42%;
+    }
+    40% {
+        top: 43%;
+    }
+    60% {
+        top: 42%;
+    }
+    80% {
+        top: 41%;
+    }
+    100% {
+        top: 40%;
+    }
+}
+
+/*end animation arrow - strelka*/
+

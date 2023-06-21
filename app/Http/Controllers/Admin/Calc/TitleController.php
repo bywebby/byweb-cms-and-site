@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Calc;
 
+
 use App\Http\Controllers\Controller;
 
 use App\Http\Requests\Calc\Title\EditeTitle;
@@ -11,6 +12,8 @@ use App\Http\Requests\Calc\Title\StoreTitle;
 use App\Models\admin\calc\CalcTitle;
 use App\Models\admin\calc\CalcCategory;
 use App\Models\admin\calc\CalcType;
+
+
 
 class TitleController extends Controller
 {
@@ -56,6 +59,9 @@ class TitleController extends Controller
     {
         $data = $request->only($this->fields);
         CalcTitle::create($data);
+
+
+
         return redirect()->route('calc.title.index')->with('success','Подвид услуги добавлен');
     }
 
@@ -97,7 +103,6 @@ class TitleController extends Controller
         $cat = CalcTitle::findOrFail($title);
 
 
-
         $cat::where(['id' => $title])->update($data);
         return redirect()->route('calc.title.edit', ['title' => $title])->with('success','Подвид услуги обновлен');
     }
@@ -113,6 +118,7 @@ class TitleController extends Controller
         CalcTitle::findOrFail($id);
 
         CalcTitle::destroy($id);
+
 
         return redirect()->route('calc.title.index')->with('success', 'Подвид услуги удален');
 
