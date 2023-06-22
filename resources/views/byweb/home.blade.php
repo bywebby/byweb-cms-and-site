@@ -13,14 +13,8 @@
 {{--    @include('byweb.html.layouts.contents.menu.index', ['items' => $menuitems])--}}
 {{--@endsection--}}
 
-
-
-
 @foreach($data as $k => $item)
 {{--           {{ dump($item->type->title) }}--}}
-
-
-
 
     @switch($item->type->title)
             {{--тип контента слайдер--}}
