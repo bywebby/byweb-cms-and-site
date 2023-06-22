@@ -35,7 +35,9 @@
 
             @else
 
-                    <a href="{{ (isset($slug) and $parent != 0) ? '/'.$slug.'/'.$item->slug : $item->slug}}" @if(isset($item->children)) @click="openSubMenuBurger($event)" @endif>
+{{--                {{dump($item->slug)}}--}}
+
+                    <a href="{{ ($parent  !== 0) ? '/'.$slug.'/'.$item->slug : '/'.$item->slug}}" @if(isset($item->children)) @click="openSubMenuBurger($event)" @endif>
 {{--                        {{dd($item->children->isNotEmpty())}}--}}
                          @if(isset($podmenu) and $item->class )
 {{--                             fa fa-screwdriver-wrench--}}

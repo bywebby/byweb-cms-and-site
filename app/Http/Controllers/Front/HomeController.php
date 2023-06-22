@@ -60,6 +60,8 @@ class HomeController extends Controller
 //        dump(Cache::get('my-groupe'));
 
 
+//        dd($cat->id);
+
         //получаем калькулялтор к данной категории
         $calcItems = $this->getCalc($cat->id);
 
@@ -71,7 +73,7 @@ class HomeController extends Controller
     private function getCalc(int $catId)
     {
 
-
+//dd($catId);
 //        контроллек калькуялтора в каторый
         $calcItems = new Calc();
 

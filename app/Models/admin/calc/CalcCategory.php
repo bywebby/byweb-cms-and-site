@@ -10,4 +10,17 @@ class CalcCategory extends Model
     use HasFactory;
 
     protected $fillable = ['title', 'calc_classes_id'];
+
+
+
+//    public function calcItems() {
+//
+//
+//        return $this->hasMany(CalcItem::class);
+//
+//    }
+
+
+
+
 }

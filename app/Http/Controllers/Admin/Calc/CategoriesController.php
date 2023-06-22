@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Calc\StoreCategory;
 use App\Models\admin\calc\CalcCategory;
 use App\Models\admin\calc\CalcClasses;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Cache;
 use App\Http\Controllers\Admin\Calc\Helpers;
 
@@ -16,7 +17,7 @@ class CategoriesController extends Controller
 {
     public $fields = ['title', 'calc_classes_id'];
 
-    private $cacheKeys = ['calc-cat', 'my-groupe'];
+
 
     /**
      * @param Request $request
@@ -51,8 +52,7 @@ class CategoriesController extends Controller
         CalcCategory::create($data);
 
         //удаляет кеш
-        Helpers::forgetCache($this->cacheKeys);
-
+        Artisan::call('cache:clear');
 
         return redirect()->route('calc.category.index')->with('success', 'категория сохранена');
     }
@@ -81,10 +81,17 @@ class CategoriesController extends Controller
     public function update(StoreCategory $request, int $id)
     {
         $data = $request->only($this->fields);
-        CalcCategory::findOrFail($id)->update($data);
+
+        $calcCategory = CalcCategory::findOrFail($id);
+        $calcCategory->update($data);
+
+//        dd($calcCategory);
+
+        //удаляет кеш ['calc-cat', 'my-groupe']
+//        Helpers::forgetCache($this->cacheKeys);
 
         //удаляет кеш
-        Helpers::forgetCache($this->cacheKeys);
+        Artisan::call('cache:clear');
 
         return redirect()->route('calc.category.edit', ['category' => $id])->with('success', 'Категория обновлена');
     }
@@ -100,7 +107,7 @@ class CategoriesController extends Controller
         CalcCategory::findOrFail($id)->destroy($id);
 
         //удаляет кеш
-        Helpers::forgetCache($this->cacheKeys);
+        Artisan::call('cache:clear');
 
         return redirect()->route('calc.category.index')->with('success', 'Категория удалена');
     }

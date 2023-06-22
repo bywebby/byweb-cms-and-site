@@ -28,7 +28,7 @@ class Calc
     public function getCalcItems(int $catId)
     {
         $myGroupe = [];
-
+//dd($catId);
 //кеширование данных
 
         if (Cache::has('calc-cat')) {
@@ -45,10 +45,7 @@ class Calc
             Cache::put('calc-items',$calcItems, now()->addMinutes($this->timeCache));
         }
 
-
-
-
-if( !Cache::has('my-groupe') ) {
+if( !Cache::has('my-groupe'.$catId) ) {
 
     if ($calcItems->isNotEmpty()) {
 
@@ -81,7 +78,7 @@ if( !Cache::has('my-groupe') ) {
         }
     }
 
-    Cache::put('my-groupe', $myGroupe, $this->timeCache);
+    Cache::put('my-groupe'.$catId, $myGroupe, $this->timeCache);
 
 //    dd(Cache::get('my-groupe'));
 }
@@ -91,7 +88,7 @@ if( !Cache::has('my-groupe') ) {
 
 //        return $myGroupe;
 //dd(Cache::get('my-groupe'));
-        return Cache::get('my-groupe');
+        return Cache::get('my-groupe'.$catId);
 
 
     } //end method

@@ -10,6 +10,7 @@ use App\Models\admin\calc\CalcModule;
 use App\Models\admin\calc\CalcTitle;
 use App\Http\Requests\Calc\StoreItem;
 
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Cache;
 
 use App\Http\Controllers\Helpers;
@@ -28,7 +29,7 @@ class ItemsController extends Controller
     ];
 
     private $page = '20';
-    private $cacheKeys = ['calc-items', 'my-groupe'];
+
 
     /**
      * Display a listing of the resource.
@@ -97,7 +98,8 @@ class ItemsController extends Controller
 
 
         //удаляет кеш
-        Helpers::forgetCache($this->cacheKeys);
+        Artisan::call('cache:clear');
+//        Helpers::forgetCache($this->cacheKeys);
 
         return redirect()->route('calc.item.index')->with('success', 'Блок сохранен');
 
@@ -151,11 +153,14 @@ class ItemsController extends Controller
         isset($data['checked']) ? $data['checked'] = 1 : $data['checked'] = 0;
 //        dd($data);
 
-        CalcItem::findOrFail($id)->update($data);
+        $calcItem= CalcItem::with('calcModule')->findOrFail($id);
 
+        $calcItem->update($data);
+
+        $catId = $calcItem->calcModule->category_id;
 
         //удаляет кеш
-        Helpers::forgetCache($this->cacheKeys);
+        Helpers::forgetCache(['calc-items', 'my-groupe'.$catId]);
 
 //        dd(Cache::get('calc-items'));
 
@@ -176,10 +181,21 @@ class ItemsController extends Controller
      */
     public function destroy($id)
     {
-        CalcItem::findOrFail($id)->delete($id);
+
+
+        $calcItem= CalcItem::with('calcModule')->findOrFail($id);
+
+        $catId = $calcItem->calcModule->category_id;
 
         //удаляет кеш
-        Helpers::forgetCache($this->cacheKeys);
+        Helpers::forgetCache(['calc-items', 'my-groupe'.$catId]);
+
+
+
+//        CalcItem::findOrFail($id)->delete($id);
+        $calcItem->delete($id);
+
+
 
         return redirect()->route('calc.item.index')->with('success','Блок удален');
     }
