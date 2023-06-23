@@ -129,6 +129,10 @@ a {
   color: #FFF;
 }
 
+.py-20 {
+  padding: 20px 0;
+}
+
 .py-30 {
   padding: 30px 0;
 }
@@ -703,6 +707,9 @@ nav ul li > a:only-child:after {
   color: #FFF;
 }
 .white p {
+  color: #FFF;
+}
+.white h3 {
   color: #FFF;
 }
 
@@ -1473,6 +1480,87 @@ ul[id=review-list] li:first-of-type {
   display: block;
   top: 0;
   left: 0;
+}
+
+.etapy {
+  background: #f6f8fa;
+}
+.etapy-item {
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+}
+.etapy-item h2 {
+  color: #2f343a;
+  text-transform: none;
+  font-weight: normal;
+}
+.etapy-item h3 {
+  color: #fe7676;
+  font-size: 1.5rem;
+  font-weight: normal;
+}
+
+.col-1 {
+  width: 15%;
+  min-width: 150px;
+  z-index: 100;
+}
+.col-1-icon {
+  display: flex;
+  box-sizing: border-box;
+  color: #FFF;
+  padding: 60px;
+  border-radius: 1000px;
+  height: 130px;
+  width: 130px;
+  margin: 0 auto;
+  text-align: center;
+  justify-content: center;
+  background: #6dd4b2;
+}
+.col-1-icon:hover {
+  background: #2f343a;
+}
+.col-1-icon i {
+  box-sizing: border-box;
+  align-self: center;
+  font-size: 54px;
+}
+
+.icon-even {
+  background: #fe7676;
+}
+
+.col-2 {
+  width: 50%;
+  z-index: 100;
+}
+@media screen and (max-width: 1050px) {
+  .col-2 {
+    width: 80%;
+  }
+}
+
+.col-3 {
+  z-index: 50;
+  width: 35%;
+}
+.col-3 img {
+  max-width: 90%;
+  z-index: 10;
+}
+@media screen and (max-width: 1050px) {
+  .col-3 {
+    position: absolute;
+    width: 100%;
+  }
+  .col-3 img {
+    max-height: 150px;
+    float: right;
+    opacity: 0.3;
+  }
 }
 
 #back-top {

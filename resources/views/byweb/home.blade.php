@@ -90,6 +90,12 @@
 
        @switch($module->types->title)
 
+            @case('Этапы')
+                @section('etapy')
+                    @include('byweb.modules.etapy', ['item' => $module, 'data' => $data])
+                @endsection
+            @break
+
             @case('Почему мы')
                 @section('why-us')
 

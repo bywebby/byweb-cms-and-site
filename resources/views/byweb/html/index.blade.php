@@ -47,6 +47,10 @@
     {{--   блок под ценами --}}
     @yield('under-price')
     {{--   блок над отзывами  --}}
+
+    {{--  этапы'  --}}
+    @yield('etapy')
+
     @yield('before-reviews')
     {{--   блок с отзывами  --}}
     @yield('reviews')
