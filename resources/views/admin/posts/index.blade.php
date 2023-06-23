@@ -60,8 +60,8 @@
 
                                                     <td><a href="{{ route('posts.edit', ['post' => $post->id])}}">{{ $post->title }} </a></td>
                                                     <td>{{ $post->slug }}</td>
-                                                    <td>{{ $post->category->title }}</td>
-                                                    <td>{{ $post->type->title }}</td>
+                                                    <td><a href="{{route('posts.index',['category' => $post->category_id, 'type' => $post->type_id])}}">{{ $post->category->title }}</a></td>
+                                                    <td><a href="{{route('posts.index',['category' => $post->category_id, 'type' => $post->type_id])}}">{{ $post->type->title }}</a></td>
                                                     <td>
 
                                                         <form action="{{ route('posts.destroy', ['post' => $post->id]) }}" method="post" class="float-left">

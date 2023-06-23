@@ -39,12 +39,37 @@ class PostController extends Controller
         //пагинация категории
         //параметры пагинации для нумерации записей постранично с заданным шагом
         $page = [
-            'step' => 10,
-            'num' => $request->get('page')
+            'step' => 20,
+            'num' => $request->get('page'),
+
+            //get параметры для сортировки по категориям и по модулям
+            'category' => $request->get('category'),
+            'type' => $request->get('type'),
+
         ];
 
         //связи реализованы в модели с категориям и типом
-        $posts = Post::with('category', 'type')->paginate($page['step']);
+        $posts = Post::with('category', 'type');
+
+
+//сортировка по модулям и по пагинации
+        switch (true) {
+            case $page['category'] == null and $page['type'] == null:
+                $data = $posts;
+                break;
+            case $page['category'] and $page['type'] == null:
+                $data = $posts->where('category_id', $page['category']);
+                break;
+            case $page['type'] and $page['category'] == null:
+                $data = $posts->where('type_id', $page['type']);
+                break;
+            case $page['type'] != null and $page['category'] != null:
+//
+                $data = $posts->where('category_id', $page['category'])->where('type_id', $page['type']);
+                break;
+        }
+
+                $posts = $data->paginate($page['step']);
 //        возвращаем вид и передаем связанные категории и типы - это уже определено в моделях
         return view('admin.posts.index', compact('posts', 'page'));
     }
