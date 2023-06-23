@@ -5745,7 +5745,7 @@ var render = function render() {
       staticClass: "gallery-item-img"
     }, [_c("img", {
       attrs: {
-        src: "uploads/" + item.thumbnail,
+        src: "/uploads/" + item.thumbnail,
         alt: item.title
       }
     }), _vm._v(" "), _c("div", {

@@ -3,7 +3,7 @@
         <div class="gallery">
             <div class="gallery-item" v-for="(item, k) in getJson" v-if="k < rowItems">
                     <div class="gallery-item-img" >
-                            <img :src="'uploads/' + item.thumbnail" :alt="item.title">
+                            <img :src="'/uploads/' + item.thumbnail" :alt="item.title">
                         <div class="gallery-item-txt">
                                 <div class="gallery-item-header">
                                     <a :href="item.description" rel="nofollow" target="_blank">{{ item.title }}</a>

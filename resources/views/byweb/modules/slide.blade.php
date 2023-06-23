@@ -7,8 +7,8 @@
 
 
         <div class='slider-item'>
-            <div class='slider-item-txt'>
-                 <h1>{{$item->title}}</h1>
+            <div class='slider-item-txt{{$item->description ? " $item->description": ''}}'>
+                 <h1{{$item->description ? " class=$item->description": ''}}>{{$item->title}}</h1>
                     {!! $item->content !!}
             </div>
         </div>

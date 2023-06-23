@@ -699,6 +699,13 @@ nav ul li > a:only-child:after {
   z-index: 100;
 }
 
+.white {
+  color: #FFF;
+}
+.white p {
+  color: #FFF;
+}
+
 .polosa {
   position: relative;
   display: flex;
