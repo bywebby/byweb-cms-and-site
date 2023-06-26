@@ -57,7 +57,10 @@ $icon-width: 130px;
     min-width: 150px;
     z-index: 100;
 
-
+@media screen and (max-width: 560px){
+    width: 100%;
+    margin-bottom: 20px;
+}
 
     &-icon {
         display: flex;
@@ -126,6 +129,9 @@ $icon-width: 130px;
     img {
         max-width: 90%;
         z-index: 10;
+
+
+        border: 2px solid $green;
     }
 
     @media screen and (max-width: 1050px) {

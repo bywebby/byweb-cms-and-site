@@ -15,8 +15,8 @@ class Calc
 
     private $calcItems;
     private $getCalcCat;
-
-    private $timeCache = 60*24*3;
+//минуты 7 дней
+    private $timeCache = 60*24*7;
 
     public function __construct() {
         //        категории калькулятора
@@ -35,7 +35,7 @@ class Calc
             $getCalcCat = Cache::get('calc-cat');
         } else {
             $getCalcCat = $this->getCalcCat::pluck('title');
-            Cache::put('calc-cat', $getCalcCat, now()->addMinutes($this->timeCache));
+                Cache::put('calc-cat', $getCalcCat, now()->addMinutes($this->timeCache));
         }
 
         if(Cache::has('calc-items')) {

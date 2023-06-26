@@ -37,6 +37,13 @@
                                                 <input type="text" name="slug" class="form-control @error('slug') is-valid @enderror" placeholder="Алиас категории" value="{{ $category->slug }}">
                                             </div>
 
+                                            <div class="form-check pb-2">
+                                                <input type="checkbox" name="landing" class="form-check-input " placeholder="Укажите landing или нет (добавляет к алиасу ссылки #)" @if($category->landing) checked @endif>
+                                                <label class="form-check-label" for="checked">Укажите landing или нет (добавляет к алиасу ссылки #)</label>
+                                            </div>
+
+
+
                                             <div class="form-group">
                                                 <label for="parrent_id">Выберите категорию</label>
                                                 <select name="parrent_id" class="form-control @error('parrent_id') is-valid @enderror" id="parrent_id">

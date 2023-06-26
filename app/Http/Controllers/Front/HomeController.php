@@ -27,6 +27,8 @@ class HomeController extends Controller
 
     public $slug;
 
+
+
     public function __construct(Category $cats, Module $modules) {
         $this->cats = $cats;
         $this->modules = $modules;
@@ -68,6 +70,10 @@ class HomeController extends Controller
 
         return view('byweb.home', compact('data', 'modules', 'calcItems'));
     }
+
+
+
+
 
 //метод получающий кальлькулятор, согласно действующей категории
     private function getCalc(int $catId)

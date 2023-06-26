@@ -25,7 +25,8 @@ class CategoryController extends Controller {
         'parrent_id',
         'show',
         'menu_type_id',
-        'class'
+        'class',
+        'landing'
     ];
 
     public function index(Request $request) {
@@ -59,12 +60,39 @@ class CategoryController extends Controller {
     public function store(StoreCategory $request) {
 
         $data = $request->only($this->catFileds);
-        //перевод в транслит
-        $data['slug']= Str::slug($data['slug'],'-');
+
+        //транлсит слага + проверка на landing
+        $data = $this->addSharpForSlug($data);
+
+
 //        dd($data);
         Category::create($data);
         return redirect()->route('categories.index')->with('success','Категоря добавлена');
     }
+
+
+    //конвертирует чекбокс в булеан и добавляет # к slug
+    private function addSharpForSlug($data) {
+        //перевод в транслит
+        $data['slug']= Str::slug($data['slug'],'-');
+
+//        dd($data['landing']);
+
+
+        //если landing добавляем якорь к алиасу ссылки
+        if(isset($data['landing']))  {
+
+            $data['landing'] = true;
+            $data['slug'] = '#'.$data['slug'];
+        } else {
+            $data['landing'] = false;
+
+        }
+
+        return $data;
+    }
+
+
 
     public function edit($id) {
 
@@ -90,8 +118,10 @@ class CategoryController extends Controller {
         $this->error404($id);
         $data = $request->only($this->catFileds);
 
-        //перевод в транслит
-        $data['slug'] = Str::slug($data['slug'],'-');
+
+
+            //транлсит слага + проверка на landing
+             $data = $this->addSharpForSlug($data);
 
           if($request->input('save') == 'Отмена')   {
               return redirect()->route('categories.index');

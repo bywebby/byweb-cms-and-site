@@ -20,6 +20,7 @@ class Category extends Model {
         'show',
         'menu_type_id',
         'class',
+        'landing'
     ];
 
 //отношение одна категория ко многим постам

@@ -33,7 +33,8 @@ class StoreCategory extends FormRequest
             'parrent_id' => 'required|numeric|min:0',
             'show' => 'required|boolean',
             'menu_type_id' => 'required|numeric|min:0',
-            'class' => 'nullable|string'
+            'class' => 'nullable|string',
+            'landing' => 'nullable|string',
         ];
     }
 }

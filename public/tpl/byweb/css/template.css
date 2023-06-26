@@ -1507,6 +1507,12 @@ ul[id=review-list] li:first-of-type {
   min-width: 150px;
   z-index: 100;
 }
+@media screen and (max-width: 560px) {
+  .col-1 {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
 .col-1-icon {
   display: flex;
   box-sizing: border-box;
@@ -1550,6 +1556,7 @@ ul[id=review-list] li:first-of-type {
 .col-3 img {
   max-width: 90%;
   z-index: 10;
+  border: 2px solid #6dd4b2;
 }
 @media screen and (max-width: 1050px) {
   .col-3 {

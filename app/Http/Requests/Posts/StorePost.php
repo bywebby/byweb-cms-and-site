@@ -34,6 +34,7 @@ class StorePost extends FormRequest
             'category_id' =>  'required|integer',
             'thumbnail' =>  'nullable|image|unique:posts',
 
+
         ];
     }
 }
