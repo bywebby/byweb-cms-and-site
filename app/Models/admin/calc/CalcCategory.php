@@ -18,12 +18,11 @@ class CalcCategory extends Model
 
     }
 
-//    public function calcItems() {
-//
-//
-//        return $this->hasMany(CalcItem::class);
-//
-//    }
+    public function calcItems() {
+
+        return $this->hasMany(CalcItem::class, 'calc_category_id');
+
+    }
 
 
 

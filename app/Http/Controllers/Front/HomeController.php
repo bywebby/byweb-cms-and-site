@@ -24,10 +24,7 @@ class HomeController extends Controller
 {
     private $cats;
     private $modules;
-
     public $slug;
-
-
 
     public function __construct(Category $cats, Module $modules) {
         $this->cats = $cats;
@@ -36,8 +33,6 @@ class HomeController extends Controller
 
     public function index(Request $request, $slug = '', $slug2 = '')
     {
-
-//
         //по категории находим контент в зависимости от слага
         $request->path() == '/' ? $slug = config('byweb.home_page') : $slug = str_replace($slug.'/', '', $request->path());
 
