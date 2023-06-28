@@ -1,5 +1,5 @@
 <template>
-    <div><a id="portfolio"></a>
+    <div><a id="folio"></a>
         <div class="gallery">
             <div class="gallery-item" v-for="(item, k) in getJson" v-if="k < rowItems">
                     <div class="gallery-item-img" >

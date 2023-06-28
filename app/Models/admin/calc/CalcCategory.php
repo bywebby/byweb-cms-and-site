@@ -12,6 +12,11 @@ class CalcCategory extends Model
     protected $fillable = ['title', 'calc_classes_id'];
 
 
+    public function calcModules() {
+
+        return $this->belongsToMany(CalcModule::class, 'calc_category_calc_module')->withTimeStamps();
+
+    }
 
 //    public function calcItems() {
 //

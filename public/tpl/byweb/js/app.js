@@ -5738,7 +5738,7 @@ var render = function render() {
     _c = _vm._self._c;
   return _c("div", [_c("a", {
     attrs: {
-      id: "portfolio"
+      id: "folio"
     }
   }), _vm._v(" "), _c("div", {
     staticClass: "gallery"

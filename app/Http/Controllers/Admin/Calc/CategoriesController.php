@@ -12,10 +12,12 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Cache;
 use App\Http\Controllers\Admin\Calc\Helpers;
 
+use App\Models\admin\calc\CalcModule;
+
 
 class CategoriesController extends Controller
 {
-    public $fields = ['title', 'calc_classes_id'];
+    public $fields = ['title', 'calc_classes_id', 'calc_modules'];
 
 
 
@@ -39,7 +41,10 @@ class CategoriesController extends Controller
     public function create()
     {
         $calcClasses = CalcClasses::pluck('title', 'id');
-        return view('admin.calc.categories.create', compact('calcClasses'));
+
+        $modules = CalcModule::pluck('title', 'id');
+
+        return view('admin.calc.categories.create', compact('calcClasses', 'modules'));
     }
 
     /**
@@ -49,7 +54,15 @@ class CategoriesController extends Controller
     public function store(StoreCategory $request)
     {
         $data = $request->only($this->fields);
-        CalcCategory::create($data);
+//        unset($data['calc_modules']);
+        $CalcCategory = CalcCategory::create($data);
+        //синхронизируем с промежуточной таблицей
+
+//        dd($CalcCategory->calcModules()->get());
+
+        $CalcCategory->calcModules()->sync($request->calc_modules);
+
+
 
         //удаляет кеш
         Artisan::call('cache:clear');
@@ -68,9 +81,18 @@ class CategoriesController extends Controller
     public function edit($id)
     {
         $data = CalcCategory::findOrFail($id);
+
+//        dd($data);
+//        $modules = CalcModule::pluck('title','id');
+        $modulesSelected = $data->calcModules()->get()->pluck('title', 'id');
+        $modules = CalcModule::pluck('title', 'id');
+
+
+//        dd($modules);
+
         //категории калькулятора
         $calcClasses = CalcClasses::pluck('title', 'id');
-        return view('admin.calc.categories.edit', compact('data', 'calcClasses'));
+        return view('admin.calc.categories.edit', compact('data',  'calcClasses', 'modules', 'modulesSelected'));
     }
 
     /**
@@ -82,8 +104,15 @@ class CategoriesController extends Controller
     {
         $data = $request->only($this->fields);
 
+//        dd($data);
+
         $calcCategory = CalcCategory::findOrFail($id);
+
         $calcCategory->update($data);
+
+        $calcCategory->calcModules()->sync($request->calc_modules);
+
+
 
 //        dd($calcCategory);
 
@@ -104,9 +133,12 @@ class CategoriesController extends Controller
      */
     public function destroy(int $id)
     {
-        CalcCategory::findOrFail($id)->destroy($id);
-
-        //удаляет кеш
+        $calcCategory = CalcCategory::findOrFail($id);
+        //синхронизирует многие ко многим с промежуточной таблицей
+        $calcCategory->calcModules()->sync([]);
+        //удаляет все со связьб по синхронизации выше
+        $calcCategory->delete();
+        //удаляет весь кеш глобально
         Artisan::call('cache:clear');
 
         return redirect()->route('calc.category.index')->with('success', 'Категория удалена');

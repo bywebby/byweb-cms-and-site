@@ -9,6 +9,9 @@
 
 (function ($) {
   'use strict'
+//multiple select
+    $('.select2').select2()
+
 
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1)

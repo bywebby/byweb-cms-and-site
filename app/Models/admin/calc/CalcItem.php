@@ -2,11 +2,12 @@
 
 namespace App\Models\admin\calc;
 
+use App\Models\admin\calc\CalcCategory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\admin\calc\CalcTitle;
 use App\Models\admin\calc\CalcModule;
-use App\Models\admin\calc\CalcCategory;
+
 
 class CalcItem extends Model
 {
@@ -33,6 +34,8 @@ class CalcItem extends Model
     public function calcCategory() {
         return $this->belongsTo(CalcCategory::class, 'calc_category_id');
     }
+
+
 
 
 }

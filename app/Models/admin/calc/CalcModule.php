@@ -21,6 +21,13 @@ public function category() {
 }
 
 
+public function calcCategories() {
+
+    return $this->belongsToMany(CalcCategory::class, 'calc_category_calc_module');
+
+}
+
+
 
 
 }

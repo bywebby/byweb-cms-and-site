@@ -20,11 +20,38 @@
                                             <x-input label='Заголовок категории' name="title" :myData="$data"/>
                                             <x-select-category title="Выберите класс" name="calc_classes_id"
                                                                :datacategory="$calcClasses" :mydata="$data" />
+
+                                            <div class="form-group">
+                                                <label for="calc_modules">Веберите несколько модулей</label>
+                                                <select name="calc_modules[]" multiple="multiple"
+                                                        id="calc_modules"
+                                                        class="select2"
+                                                        data-placeholder="Веберите несколько модулей"
+                                                        style="width: 100%;">
+                                                    @foreach($modules as $key => $module)
+
+
+
+                                                            <option value="{{$key}}" @foreach($modulesSelected as $k => $i)@if($key == $k) selected @endif @endforeach>{{$module}}</option>
+
+
+
+
+                                                    @endforeach
+
+                                                </select>
+
+                                            </div>
+
+
+
                                         </div>
+
 
                                         <div class="card-footer">
                                             <button type="submit" class="btn btn-primary">Сохранить</button>
                                         </div>
+
                                     </form>
                                 </div>
                             </div>

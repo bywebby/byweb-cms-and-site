@@ -30,8 +30,11 @@ mix.scripts([
 mix.styles([
 
     'resources/tpl/admin/plugins/fontawesome-free/css/all.css',
+    'resources/tpl/admin/plugins/select2/css/select2.css',
+    'resources/tpl/admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.css',
     'resources/tpl/admin/css/adminlte.css',
     'resources/tpl/admin/css/custom.css',
+
 
 ], 'public/tpl/admin/dist/css/template.css');
 
@@ -39,8 +42,9 @@ mix.styles([
 mix.scripts([
     'resources/tpl/admin/plugins/jquery/jquery.js',
     'resources/tpl/admin/plugins/bootstrap/js/bootstrap.bundle.js',
+    'resources/tpl/admin/plugins/select2/js/select2.full.js',
     'resources/tpl/admin/js/adminlte.js',
-    'resources/tpl/admin/js/demo.js'
+    'resources/tpl/admin/js/demo.js',
 
 ], 'public/tpl/admin/dist/js/tpl-scripts.js');
 

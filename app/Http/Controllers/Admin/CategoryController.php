@@ -70,18 +70,13 @@ class CategoryController extends Controller {
         return redirect()->route('categories.index')->with('success','Категоря добавлена');
     }
 
-
     //конвертирует чекбокс в булеан и добавляет # к slug
     private function addSharpForSlug($data) {
         //перевод в транслит
         $data['slug']= Str::slug($data['slug'],'-');
-
 //        dd($data['landing']);
-
-
         //если landing добавляем якорь к алиасу ссылки
         if(isset($data['landing']))  {
-
             $data['landing'] = true;
             $data['slug'] = '#'.$data['slug'];
         } else {
@@ -91,8 +86,6 @@ class CategoryController extends Controller {
 
         return $data;
     }
-
-
 
     public function edit($id) {
 
@@ -117,8 +110,6 @@ class CategoryController extends Controller {
     public function update(UpdateCategory $request, $id) {
         $this->error404($id);
         $data = $request->only($this->catFileds);
-
-
 
             //транлсит слага + проверка на landing
              $data = $this->addSharpForSlug($data);
