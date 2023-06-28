@@ -192,7 +192,7 @@ class ItemsController extends Controller
 
 
 //        CalcItem::findOrFail($id)->delete($id);
-        $calcItem->delete($id);
+        $calcItem->destroy($id);
 
 
 

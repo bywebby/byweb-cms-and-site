@@ -200,7 +200,7 @@ class PostController extends Controller
         Storage::delete($post->thumbnail);
 
 
-        $post->delete($id);
+        $post->destroy($id);
         return redirect()->route('posts.index')->with('success', 'Статья удалена');
 
     }

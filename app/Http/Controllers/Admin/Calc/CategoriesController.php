@@ -137,7 +137,7 @@ class CategoriesController extends Controller
         //синхронизирует многие ко многим с промежуточной таблицей
         $calcCategory->calcModules()->sync([]);
         //удаляет все со связьб по синхронизации выше
-        $calcCategory->delete();
+        $calcCategory->destroy($id);
         //удаляет весь кеш глобально
         Artisan::call('cache:clear');
 
