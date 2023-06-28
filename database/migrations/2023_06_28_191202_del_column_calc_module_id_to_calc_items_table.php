@@ -14,6 +14,7 @@ class DelColumnCalcModuleIdToCalcItemsTable extends Migration
     public function up()
     {
         Schema::table('calc_items', function (Blueprint $table) {
+            $table->dropForeign('calc_items_calc_module_id_foreign');
             $table->dropColumn("calc_module_id");
         });
     }
