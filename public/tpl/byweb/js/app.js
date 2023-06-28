@@ -5597,6 +5597,11 @@ __webpack_require__.r(__webpack_exports__);
       return this.items['module-title'];
     },
     getModuleDesc: function getModuleDesc() {
+      console.log(this.items["module-desc"]);
+      if (!this.items["module-desc"] && this.items["module-desc"] != null) {
+        return false;
+      }
+      ;
       return this.items["module-desc"];
     }
   }
@@ -6079,7 +6084,7 @@ var render = function render() {
   }, [_vm._v("\n        " + _vm._s(_vm.getModuleDesc) + "\n    ")]) : _vm._e(), _vm._v(" "), _c("div", {
     staticClass: "calc-row"
   }, _vm._l(_vm.items, function (item, titleKey) {
-    return _typeof(item) === "object" ? _c("div", {
+    return _typeof(item) === "object" && item != null ? _c("div", {
       staticClass: "calc-item"
     }, [_c("calcItem", {
       attrs: {

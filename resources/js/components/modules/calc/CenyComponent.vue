@@ -14,7 +14,7 @@
         </div>
 
         <div class="calc-row">
-            <div class="calc-item" v-for="(item, titleKey) in items" v-if="typeof item === 'object'" >
+            <div class="calc-item" v-for="(item, titleKey) in items" v-if="(typeof item === 'object') && (item !=null)" >
                 <calcItem :item="item" :titleKey="titleKey" />
             </div>
         </div>
@@ -43,7 +43,17 @@ export default {
             return this.items['module-title']
         },
         getModuleDesc: function () {
+
+            console.log(this.items["module-desc"]);
+
+            if(!this.items["module-desc"] && this.items["module-desc"] != null)  {
+                return false;
+            };
+
             return this.items["module-desc"]
+
+
+
         }
     }
 
