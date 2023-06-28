@@ -1,34 +1,33 @@
 <?php
 
-
 namespace App\Http\Controllers\Front\Modules;
 
-
+use App\Http\Controllers\Controller;
 use App\Models\admin\calc\CalcItem;
-use App\Models\admin\calc\CalcCategory;
+//use App\Models\admin\calc\CalcCategory;
 use App\Models\admin\calc\CalcModule;
-use Illuminate\Database\Eloquent\Model;
+//use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
 use function PHPUnit\Framework\isEmpty;
 
-class Calc
+class Calc extends Controller
 {
-
     private $calcItems;
-    private $getCalcCat;
-
+//    private $getCalcCat;
     private $modules;
-//минуты 7 дней
+//время жизни кеша модуля калькулятор минуты 7 дней
     private $timeCache = 60 * 24 * 7;
 
     public function __construct()
     {
         // категории калькулятора
-        $this->getCalcCat = new CalcCategory();
-        //item калькулятора модель
+//        $this->getCalcCat = new CalcCategory();
+        //items калькулятора модель
         $this->calcItems = new CalcItem();
-
+        //модули калькулятора модель
         $this->modules = new CalcModule();
+
+
     }
 
 //получаем модули по категории из слага
@@ -51,13 +50,16 @@ class Calc
 //        dd($catId);
 
 //получаем все items с заголовками, модулями, категориями
-        if (Cache::has('calc-items'.$catId)) {
-            $calcItems = Cache::get('calc-items'.$catId);
+
+        $keyCalcItems = 'calc-items' . $catId;
+
+        if (Cache::has($keyCalcItems)) {
+            $calcItems = Cache::get($keyCalcItems);
         } else {
             $idCalcCats = $module[0]->calcCategories->pluck('id');
             //все items относящиеся к конкретному модулю           //все id категории конкретного модуля
             $calcItems = $this->calcItems->wherein('calc_category_id', $idCalcCats)->with('calcCategory', 'calcTitle')->get();
-            Cache::put('calc-items'.$catId, $calcItems, now()->addMinutes($this->timeCache));
+            Cache::put($keyCalcItems, $calcItems, now()->addMinutes($this->timeCache));
         }
 
         $myGroupe = [
@@ -66,27 +68,31 @@ class Calc
         ];
 
 //        dd(Cache::get('calc-items'));
-
+//если пусто, то не выводим модуль
         if ($calcItems->isEmpty()) return null;
 //        dd($calcItems);
-
+//формирует массив для VUE фронта
         foreach ($calcItems as $i => $calcItem) {
 
-                $myGroupe[$calcItem->calcCategory->title][$calcItem->calcCategory->id][$i] = [
-                    'title' => $calcItem->calcTitle->title,
-                    'price' => $calcItem->price,
-                    'class' => $calcItem->calcTitle->calcClasse()->first()->title,
-                    'type' => $calcItem->calcTitle->calcType()->first()->title,
-                    'status' => $calcItem->status,
-                    'checked' => $calcItem->checked,
-                ];
+            $myGroupe[$calcItem->calcCategory->title][$calcItem->calcCategory->id][$i] = [
+                'title' => $calcItem->calcTitle->title,
+                'price' => $calcItem->price,
+                'class' => $calcItem->calcTitle->calcClasse()->first()->title,
+                'type' => $calcItem->calcTitle->calcType()->first()->title,
+                'status' => $calcItem->status,
+                'checked' => $calcItem->checked,
+            ];
 
         } //end foreach
 
 //            dd($myGroupe);
-        Cache::put('my-groupe' . $catId, $myGroupe, $this->timeCache);
-        return Cache::get('my-groupe' . $catId);
 
+        //кеширую весь массив для vue
+        $keyMyGroupe = 'my-groupe' . $catId;
+        Cache::put($keyMyGroupe , $myGroupe, $this->timeCache);
+
+        //возвращаем из кеша данные
+        return Cache::get($keyMyGroupe );
 
     } //end method
 

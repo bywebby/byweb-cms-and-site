@@ -21,7 +21,7 @@ class ItemsController extends Controller
     public $fields = [
         'calc_title_id',
         'price',
-        'calc_module_id',
+//        'calc_module_id',
         'calc_category_id',
         'checked',
         'status',
@@ -157,10 +157,8 @@ class ItemsController extends Controller
 
         $calcItem->update($data);
 
-        $catId = $calcItem->calcModule->category_id;
-
         //удаляет кеш
-        Helpers::forgetCache(['calc-items', 'my-groupe'.$catId]);
+        Artisan::call('cache:clear');
 
 //        dd(Cache::get('calc-items'));
 
@@ -183,12 +181,12 @@ class ItemsController extends Controller
     {
 
 
-        $calcItem= CalcItem::with('calcModule')->findOrFail($id);
+        $calcItem= CalcItem::findOrFail($id);
 
-        $catId = $calcItem->calcModule->category_id;
+
 
         //удаляет кеш
-        Helpers::forgetCache(['calc-items', 'my-groupe'.$catId]);
+        Artisan::call('cache:clear');
 
 
 

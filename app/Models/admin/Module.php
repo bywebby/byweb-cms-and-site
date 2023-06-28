@@ -20,5 +20,10 @@ class Module extends Model {
         return $this->belongsTo(Type::class, 'type_id');
     }
 
+    public function getPublicModules($catId) {
+        return self::where('category_id', $catId)->with('types')->get();
+    }
+
+
 
 }

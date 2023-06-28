@@ -26,7 +26,7 @@ class StoreItem extends FormRequest
         return [
             'calc_title_id' => 'required|integer|min:1',
             'price' => 'required|numeric|between:0,99999999.99',
-            'calc_module_id' => 'required|integer|min:1',
+//            'calc_module_id' => 'required|integer|min:1',
             'calc_category_id' => 'required|integer|min:1',
         ];
     }
