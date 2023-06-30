@@ -14,6 +14,8 @@ use App\Http\Controllers\Admin\Calc\CategoriesController;
 use App\Http\Controllers\Admin\Calc\ItemsController;
 use App\Http\Controllers\Front\Modules\FormController;
 
+use App\Http\Controllers\Front\Modules\ShotController;
+
 use \CKSource\CKFinderBridge\Controller\CKFinderController;
 
 //Очистка кеша закрытая админкой
@@ -63,6 +65,9 @@ Route::get('/clear', function () {
 Route::name('front.')->group(function () {
     Route::view('/icons','byweb/html/layouts/contents/icons');
     Route::post('/form', [FormController::class, 'formFront'])->name('form');
+
+    Route::get('/shot/{slug}', [ShotController::class, 'index'])->name('shot');
+
     Route::get('/{slug?}/{slug2?}', [HomeController::class,'index'])->name('home');
 });
 

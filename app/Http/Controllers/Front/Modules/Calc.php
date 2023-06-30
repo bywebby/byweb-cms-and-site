@@ -47,8 +47,8 @@ class Calc extends Controller
         //данные модуля
         $module = $this->getModule($catId);
 
-//        dd($catId);
-
+//        dd($module->isEmpty());
+        if( $module->isEmpty() ) return null;
 //получаем все items с заголовками, модулями, категориями
 
         $keyCalcItems = 'calc-items' . $catId;

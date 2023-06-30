@@ -108,7 +108,9 @@ class PostController extends Controller
         //загрузка изображения
 //        $data['thumbnail'] = $this->uploadImage($request, Str::slug($nameFolder, '-'));
         //Проверяем пришло ли изображение
-        $data['thumbnail'] = $this->uploadImage($request, Str::slug($nameFolder, '-'), $data['thumbnail']);
+        if(isset($data['thumbnail'])) {
+            $data['thumbnail'] = $this->uploadImage($request, Str::slug($nameFolder, '-'), $data['thumbnail']);
+        }
 
         Post::create($data);
 

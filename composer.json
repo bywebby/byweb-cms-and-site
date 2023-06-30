@@ -16,7 +16,9 @@
         "laravel/framework": "^8.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^3.4",
-        "lavary/laravel-menu": "^1.8"
+        "lavary/laravel-menu": "^1.8",
+        "spatie/browsershot": "^3.57",
+        "symfony/process": "^5.4"
     },
     "require-dev": {
         "facade/ignition": "^2.3.6",

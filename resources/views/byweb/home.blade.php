@@ -35,6 +35,9 @@
         {{--    тип контента главная статья--}}
         @case('Главная статья')
             @section('top-contents')
+
+{{--                {{dd($item)}}--}}
+
                 @include('byweb.html.layouts.contents.content-1', ['item' => $item])
             @endsection
         @break
