@@ -7,7 +7,7 @@
     background-color: #f2f2f2;
     padding: 50px;
 
-    min-height: calc(100vh - $height-menu);
+    min-height: 100vh;
 
     @media screen and (max-height: 300px) {
         min-height: 0px;
@@ -20,6 +20,7 @@
     h2 {
         align-self: center;
         color: $red;
+        //flex-grow: 1;
     }
 
 }

@@ -5,7 +5,7 @@
 
         <div class="footer-header center">
             <h2>{{$item->title}}</h2>
-            <div class="footer-desc pb-30">
+            <div class="footer-desc">
 
                 {!!$item->content !!} <br />
 

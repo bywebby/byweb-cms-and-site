@@ -25,11 +25,12 @@ class Form extends FormRequest
     {
         //валидация постов
         return [
-            'company' => 'required|min:5|max:255',
+            'order' => 'nullable',
+            'company' => 'required|min:3|max:255',
 //            регулярное выражение для телефона
-            'phone' => 'required|min:10|max:20|regex:/^([0-9\s\-\+\(\)]*)$/',
-            'fio' => 'required|min:5|max:255',
-            'main-text' => 'required|min:5|max:255',
+            'phone' => 'required|min:9|max:30|regex:/^([0-9\s\-\+\(\)]*)$/',
+            'fio' => 'required|min:3|max:255',
+            'main-text' => 'required|min:3|max:255',
         ];
     }
 }

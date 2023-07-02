@@ -1,23 +1,28 @@
 <template>
+
     <section class="row">
         <a id="cena"></a>
+
         <div class="calc">
 
             <!--заголовок модуля -->
             <h2>
                 {{getModuleTitle}}
             </h2>
-        </div>
-        <!--описание модуля -->
-        <div v-if="getModuleDesc" class="calc-desc">
-            {{getModuleDesc}}
+
+            <!--описание модуля -->
+            <div v-if="getModuleDesc" class="calc-desc">
+                {{getModuleDesc}}
+            </div>
+
+            <div class="calc-row">
+                <div class="calc-item" v-for="(item, titleKey) in items" v-if="(typeof item === 'object') && (item !=null)" >
+                    <calcItem :item="item" :titleKey="titleKey" />
+                </div>
+            </div>
+
         </div>
 
-        <div class="calc-row">
-            <div class="calc-item" v-for="(item, titleKey) in items" v-if="(typeof item === 'object') && (item !=null)" >
-                <calcItem :item="item" :titleKey="titleKey" />
-            </div>
-        </div>
     </section>
 
 

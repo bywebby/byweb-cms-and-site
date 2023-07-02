@@ -1,105 +1,131 @@
 .calc  {
+
+    padding-top: 30px;
+
+
+
     h2 {
         text-align: center;
         color: $dark;
     }
-}
 
-.calc-desc {
-    text-align: center;
-    color: $dark;
-    padding-bottom: 10px;
-}
-//описание label inputs
-.calc-descprice {
-    display: flex;
-    box-sizing: border-box;
-    flex-wrap: wrap;
-    height: 250px;
-    overflow-y: auto !important;
-    margin: 0 auto;
-    padding: 22px 30px;
-    font-size: 1rem;
-    color: $indigo;
-    text-align: left;
-    background: $gray;
-    scrollbar-color: #f95a5a #2e3339;
 
-    label {
-        flex-direction: column;
-        padding-left: 20px;
-        width: 100%;
-    }
 
-    .hr {
-        display: block;
-        font-size:0.8rem;
-        font-weight: bold;
-        margin:10px 0;
-        padding: 10px 0;
-        color: $pink;
-        border-top: 1px solid $hr;
+    &-desc {
         text-align: center;
+        color: $dark;
+        padding-bottom: 10px;
     }
-}
+    //описание label inputs
+    &-descprice {
+        display: flex;
+        box-sizing: border-box;
+        flex-wrap: wrap;
+        height: 250px;
+        overflow-y: auto !important;
+        margin: 0 auto;
+        padding: 22px 30px;
+        font-size: 1rem;
+        color: $indigo;
+        text-align: left;
+        background: $gray;
+        scrollbar-color: #f95a5a #2e3339;
 
-.calc-row {
-    display: flex;
-    justify-content: space-between;
-    //justify-content: flex-start;
-    flex-wrap: wrap;
-    box-sizing: border-box;
-}
+        label {
+            flex-direction: column;
+            padding-left: 20px;
+            width: 100%;
+        }
 
-.calc-item {
-    box-sizing: border-box;
-    width: calc(100%/4 - 10px);;
-    padding-top: 5px;
-    margin-right: 10px;
-    margin-top: 10px;
-
-    &:last-child {
-        margin-right: 0px;
-    }
-
-    @media screen and (max-width:1497px) {
-        width: calc(96%/3);
-    }
-
-    @media screen and (max-width:1000px) {
-        width: calc(98%/2);
-        margin-right: 0px;
-    }
-
-    @media screen and (max-width:700px) {
-        width: 100%;
-    }
-
-    h4 {
-        color:$white;
-        text-transform: uppercase;
-        font-weight: normal;
-        margin: 0;
-        padding: 30px 18px 25px;
-        text-align: center;
-        background-color: $pink;
-        background: linear-gradient(0deg, rgba(245,117,117,1) 0%, rgba(255,193,193,1) 100%);
-
-        &:hover {
-            background: $black;
-
+        .hr {
+            display: block;
+            font-size:0.8rem;
+            font-weight: bold;
+            margin:10px 0;
+            padding: 10px 0;
+            color: $pink;
+            border-top: 1px solid $hr;
+            text-align: center;
         }
     }
 
+    &-row {
+        display: flex;
+        //justify-content: space-between;
+        justify-content: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        box-sizing: border-box;
+    }
+
+    &-item {
+        //box-sizing: border-box;
+        flex-basis: calc(100%/4);
+        padding: 0 5px 0 10px;
+        //padding-top: 5px;
+        //margin-right: 10px;
+        margin-bottom: 10px;
+
+        min-width: calc(100%/4);
+
+        &:last-child {
+            margin-right: 0px;
+        }
+
+        @media screen and (max-width:1497px) {
+            width: calc(100%/3);
+            min-width: calc(100%/3);
+        }
+
+        @media screen and (max-width:1000px) {
+            width: calc(100%/2);
+            min-width: calc(100%/2);
+            margin-right: 0px;
+        }
+
+        @media screen and (max-width:700px) {
+            width: 100%;
+            min-width: calc(100%);
+        }
+
+        h4 {
+            color:$white;
+            text-transform: uppercase;
+            font-weight: normal;
+            margin: 0;
+            padding: 30px 18px 25px;
+            text-align: center;
+            background-color: $pink;
+            background: linear-gradient(0deg, rgba(245,117,117,1) 0%, rgba(255,193,193,1) 100%);
+
+            &:hover {
+                background: $black;
+
+            }
+        }
+
+    }
+
+    &-price {
+        background: $green;
+        text-align: center;
+        padding:15px;
+        color: $white;
+        font-size: 1.8rem;
+
+        cursor: pointer;
+
+        a {
+
+            color: $white;
+            text-decoration: none;
+        }
+
+
+    }
 }
 
-.calc-price {
-    background: $green;
-    text-align: center;
-    padding:15px;
-    color: $white;
-    font-size: 1.8rem;
-}
+
 
 /*animation arrow - strelka*/
 

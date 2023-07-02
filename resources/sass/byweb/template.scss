@@ -13,9 +13,18 @@ html {
 
 }
 
+//#app {
+//    display: flex;
+//    flex-flow: column;
+//    //flex-wrap: wrap;
+//    min-height: 100vh;
+//}
+
 body {
     font-family: 'Roboto', Arial, sans-serif;
+    //flex-direction: column;
     min-width: 320px;
+    min-height: 100vh;
     background: $body-bg;
     color: $body-clr;
 
