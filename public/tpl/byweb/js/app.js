@@ -5544,7 +5544,7 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       //записывает ордер item
-      this.setOrder;
+      this.setOrderData;
 
       // console.log(order.title);
 
@@ -5552,7 +5552,7 @@ __webpack_require__.r(__webpack_exports__);
       return this.calcRes;
     },
     //сборщик данных
-    setOrder: function setOrder() {
+    setOrderData: function setOrderData() {
       this.order = {
         title: this.titleKey,
         checks: this.calcCheckedData,
@@ -5663,11 +5663,42 @@ __webpack_require__.r(__webpack_exports__);
       csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
       //данные заказа
       order: '',
-      company: '',
+      formData: {
+        company: {
+          data: '',
+          countEl: 3,
+          name: 'Компания'
+        }
+      },
       phone: '',
-      fio: '',
-      mainText: ''
+      mail: '',
+      mainText: '',
+      validateForm: {}
     };
+  },
+  methods: {
+    checkInputClass: function checkInputClass(data, countEl) {
+      // console.log(data.length);
+
+      if (data.length >= countEl) {
+        return 'check';
+      }
+      return false;
+    },
+    ceckValiddate: function ceckValiddate(keyName, name, countEl) {
+      if (name.length <= countEl && name.length != 0 && name.length > 0) {
+        // console.log(this.validateForm);
+
+        return this.validateForm[keyName] = countEl - name.length;
+      }
+      return false;
+    },
+    checkTextAreaClass: function checkTextAreaClass(data, countEl) {
+      if (data.length >= countEl) {
+        return 'check';
+      }
+      return false;
+    }
   },
   created: function created() {
     var _this = this;
@@ -6205,7 +6236,7 @@ var render = function render() {
     }
   }), _vm._v(" "), _vm.order ? _c("div", {
     staticClass: "form-order pb-3"
-  }, [_vm._v("\n            Ваш заказ: " + _vm._s(_vm.order) + ". Оформите форму ниже.\n        ")]) : _vm._e(), _vm._v(" "), _c("form", {
+  }, [_vm._v("\n        Ваш заказ: " + _vm._s(_vm.order) + ". Оформите форму ниже.\n    ")]) : _vm._e(), _vm._v(" "), _c("form", {
     attrs: {
       action: _vm.formAction,
       method: "post"
@@ -6229,13 +6260,14 @@ var render = function render() {
   }), _vm._v(" "), _c("div", {
     staticClass: "controls"
   }, [_c("div", {
-    staticClass: "input"
+    staticClass: "input",
+    "class": _vm.checkInputClass(_vm.formData.company.data, _vm.formData.company.countEl)
   }, [_c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.company,
-      expression: "company"
+      value: _vm.formData.company.data,
+      expression: "formData.company.data"
     }],
     attrs: {
       type: "text",
@@ -6243,16 +6275,17 @@ var render = function render() {
       placeholder: "Компания"
     },
     domProps: {
-      value: _vm.company
+      value: _vm.formData.company.data
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.company = $event.target.value;
+        _vm.$set(_vm.formData.company, "data", $event.target.value);
       }
     }
   })]), _vm._v(" "), _c("div", {
-    staticClass: "input"
+    staticClass: "input",
+    "class": _vm.checkInputClass(_vm.phone, 9)
   }, [_c("input", {
     directives: [{
       name: "model",
@@ -6275,30 +6308,32 @@ var render = function render() {
       }
     }
   })]), _vm._v(" "), _c("div", {
-    staticClass: "input"
+    staticClass: "input",
+    "class": _vm.checkInputClass(_vm.mail, 3)
   }, [_c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.fio,
-      expression: "fio"
+      value: _vm.mail,
+      expression: "mail"
     }],
     attrs: {
       type: "text",
-      name: "fio",
-      placeholder: "ФИО"
+      name: "mail",
+      placeholder: "E-mail"
     },
     domProps: {
-      value: _vm.fio
+      value: _vm.mail
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.fio = $event.target.value;
+        _vm.mail = $event.target.value;
       }
     }
   })])]), _vm._v(" "), _c("div", {
-    staticClass: "textarea"
+    staticClass: "textarea",
+    "class": _vm.checkTextAreaClass(_vm.mainText, 3)
   }, [_c("textarea", {
     directives: [{
       name: "model",
@@ -6321,7 +6356,13 @@ var render = function render() {
         _vm.mainText = $event.target.value;
       }
     }
-  })]), _vm._v(" "), _vm.company && _vm.fio && _vm.phone && _vm.mainText ? _c("button", {
+  })]), _vm._v(" "), _vm.ceckValiddate("Телефон", _vm.phone, 9) || _vm.ceckValiddate("E-mail", _vm.mail, 3) || _vm.ceckValiddate(_vm.formData.company.name, _vm.formData.company.data, _vm.formData.company.countEl) || _vm.ceckValiddate("Текст сообщения", _vm.mainText, 3) ? _c("div", _vm._l(_vm.validateForm, function (item, index) {
+    return _c("p", {
+      staticStyle: {
+        color: "red"
+      }
+    }, [item !== 0 ? _c("span", [_vm._v("\n                    Не хватает символов " + _vm._s(item) + " в поле: " + _vm._s(index) + "\n                ")]) : _vm._e()]);
+  }), 0) : _vm._e(), _vm._v(" "), _vm.formData.company.data && _vm.mail && _vm.phone && _vm.mainText ? _c("button", {
     staticClass: "form-button",
     attrs: {
       type: "submit"

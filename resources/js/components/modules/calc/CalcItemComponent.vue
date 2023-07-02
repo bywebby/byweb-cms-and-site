@@ -81,14 +81,14 @@ export default {
             }
         },
 
-        //записывает данные в item по клику в ордер
+
+//записывает данные в item по клику в ордер
         sendOrder: function() {
             //мунал https://www.youtube.com/watch?v=-7KCkC2YHOQ
             //передача данных в шину событий
             eventBus.$emit('form-order', this.order);
             return this.order;
         },
-
 
 
 
@@ -118,7 +118,7 @@ export default {
             }
 
             //записывает ордер item
-                this.setOrder;
+                this.setOrderData;
 
             // console.log(order.title);
 
@@ -128,7 +128,7 @@ export default {
         },
 
 //сборщик данных
-        setOrder: function () {
+        setOrderData: function () {
 
             this.order = {
                 title: this.titleKey,
@@ -141,6 +141,8 @@ export default {
 
 
         },
+
+
 
         myDefCheckedCheckbox: function () {
 //если дефолтное состояние, то берем значения из базы данных админки, что прилетели в json

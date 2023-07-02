@@ -16,6 +16,17 @@
 
 }
 
+.input.check input:focus, .textarea.check textarea:focus {
+
+    border-color: $green;
+    color: $green-dark;
+
+}
+
+
+
+
+
 
 .input {
     display: inline;

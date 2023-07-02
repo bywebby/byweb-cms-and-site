@@ -3,35 +3,53 @@
         <a id="zakaz"></a>
 
         <div class='form-order pb-3' v-if="order">
-            Ваш заказ: {{order}}. Оформите форму ниже.
+            Ваш заказ: {{ order }}. Оформите форму ниже.
         </div>
 
         <form :action="formAction" method="post">
             <input type="hidden" name="_token" :value="csrf">
-<!--            данные с калькулятора по форме по событию с шины событий form-order-->
+            <!--            данные с калькулятора по форме по событию с шины событий form-order-->
             <input type="hidden" name="order" :value="order">
 
             <div class="controls">
 
-                <div class="input">
-                    <input type="text" name="company" placeholder="Компания" v-model="company">
+                <div class="input" :class="checkInputClass(formData.company.data, formData.company.countEl)">
+                    <input type="text" name="company" placeholder="Компания" v-model="formData.company.data">
                 </div>
 
-                <div class="input">
+                <div class="input" :class="checkInputClass(phone, 9)">
                     <input type="text" name="phone" placeholder="Телефон" v-model="phone">
                 </div>
 
-                <div class="input">
-                    <input type="text" name="fio" placeholder="ФИО" v-model="fio">
+                <div class="input" :class="checkInputClass(mail, 3)">
+                    <input type="text" name="mail" placeholder="E-mail" v-model="mail">
                 </div>
 
             </div>
 
-            <div class="textarea">
+            <div class="textarea" :class="checkTextAreaClass(mainText, 3)">
                 <textarea name="main-text" id="" cols="30" placeholder="Сообщение" v-model="mainText"></textarea>
             </div>
 
-            <button v-if="company && fio && phone && mainText" type="submit" class="form-button">Отправить</button>
+
+            <div v-if="ceckValiddate('Телефон', phone, 9) || ceckValiddate('E-mail', mail, 3) || ceckValiddate(formData.company.name, formData.company.data, formData.company.countEl)
+            || ceckValiddate('Текст сообщения', mainText, 3)" >
+
+                <p style='color:red' v-for="(item, index) in validateForm">
+                    <span v-if="item !== 0">
+                        Не хватает символов {{item}} в поле: {{index}}
+                    </span>
+
+                </p>
+
+            </div>
+
+
+
+
+
+
+            <button v-if="formData.company.data && mail && phone && mainText" type="submit" class="form-button">Отправить</button>
         </form>
     </div>
 
@@ -40,7 +58,7 @@
 <script>
 
 //импортируем шину событий
-import { eventBus } from "../../../app";
+import {eventBus} from "../../../app";
 
 
 export default {
@@ -53,12 +71,64 @@ export default {
         csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
         //данные заказа
         order: '',
-        company: '',
+
+        formData: {
+            company: {
+                data: '',
+                countEl: 3,
+                name: 'Компания'
+            },
+
+        },
+
+
         phone: '',
-        fio: '',
-        mainText: ''
+        mail: '',
+        mainText: '',
+
+        validateForm: {}
 
     }),
+
+
+    methods: {
+
+        checkInputClass: function (data, countEl) {
+
+            // console.log(data.length);
+
+
+            if (data.length >= countEl) {
+                return 'check';
+            }
+            return false;
+        },
+
+        ceckValiddate: function (keyName, name, countEl) {
+
+            if (name.length <= countEl && name.length != 0 && name.length > 0) {
+
+                // console.log(this.validateForm);
+
+
+                return this.validateForm[keyName] = countEl - name.length;
+
+            }
+
+            return false;
+
+        },
+
+        checkTextAreaClass: function (data, countEl) {
+            if (data.length >= countEl) {
+                return 'check';
+            }
+            return false;
+        }
+
+
+    },
+
 
     created() {
         //слушаель шины события
