@@ -5663,6 +5663,7 @@ __webpack_require__.r(__webpack_exports__);
       csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
       //данные заказа
       order: '',
+      //данные формы и валидация
       formData: {
         company: {
           data: '',
@@ -5670,13 +5671,17 @@ __webpack_require__.r(__webpack_exports__);
           name: 'Компания'
         }
       },
+      //ниже поля нужно перенести в formData
+
       phone: '',
       mail: '',
       mainText: '',
+      //сюда динамически записывается данные которые валидируются
       validateForm: {}
     };
   },
   methods: {
+    //класс для подсветки валидных данных
     checkInputClass: function checkInputClass(data, countEl) {
       // console.log(data.length);
 
@@ -5685,6 +5690,7 @@ __webpack_require__.r(__webpack_exports__);
       }
       return false;
     },
+    //валидация данных
     ceckValiddate: function ceckValiddate(keyName, name, countEl) {
       if (name.length <= countEl && name.length != 0 && name.length > 0) {
         // console.log(this.validateForm);
@@ -5693,6 +5699,7 @@ __webpack_require__.r(__webpack_exports__);
       }
       return false;
     },
+    //подсветка textarea при валидации
     checkTextAreaClass: function checkTextAreaClass(data, countEl) {
       if (data.length >= countEl) {
         return 'check';

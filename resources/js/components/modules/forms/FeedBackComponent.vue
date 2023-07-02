@@ -72,6 +72,7 @@ export default {
         //данные заказа
         order: '',
 
+        //данные формы и валидация
         formData: {
             company: {
                 data: '',
@@ -81,11 +82,13 @@ export default {
 
         },
 
+        //ниже поля нужно перенести в formData
 
         phone: '',
         mail: '',
         mainText: '',
 
+        //сюда динамически записывается данные которые валидируются
         validateForm: {}
 
     }),
@@ -93,6 +96,7 @@ export default {
 
     methods: {
 
+        //класс для подсветки валидных данных
         checkInputClass: function (data, countEl) {
 
             // console.log(data.length);
@@ -104,6 +108,7 @@ export default {
             return false;
         },
 
+        //валидация данных
         ceckValiddate: function (keyName, name, countEl) {
 
             if (name.length <= countEl && name.length != 0 && name.length > 0) {
@@ -119,6 +124,7 @@ export default {
 
         },
 
+        //подсветка textarea при валидации
         checkTextAreaClass: function (data, countEl) {
             if (data.length >= countEl) {
                 return 'check';

@@ -3,7 +3,7 @@
 <p>
     Компания: {{$messages['company']}}<br />
     Тел: {{$messages['phone']}}<br />
-    ФИО: {{$messages['fio']}}
+    ФИО: {{$messages['mail']}}
 </p>
 
 <h2>Текст сообщения:</h2>
