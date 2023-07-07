@@ -13,6 +13,12 @@
 {{--    @include('byweb.html.layouts.contents.menu.index', ['items' => $menuitems])--}}
 {{--@endsection--}}
 
+{{--хлебные крошки--}}
+@section('breadcrumbs')
+    @include('byweb.modules.breadcrumbs', ['data' => $breadcrumbs])
+@endsection
+{{--конец хлебные крошки--}}
+
 @foreach($data as $k => $item)
 {{--           {{ dump($item->type->title) }}--}}
 

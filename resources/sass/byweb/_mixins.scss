@@ -13,3 +13,24 @@
 @mixin shadow-menu {
 box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
+
+@mixin list {
+
+    li {
+        margin-left: 20px;
+        padding-bottom: 5px;
+        //line-height: 40px;
+    }
+
+    li::before {
+        position: absolute;
+        content: "\f107";
+        font-family: FontAwesome;
+        color:red;
+        left: -7px;
+        font-weight: bold;
+
+
+    }
+
+}

@@ -177,7 +177,7 @@ class PostController extends Controller
         //обновляем запись
         $post->update($data);
         if ($request->input('save') == 'Сохранить и закрыть') {
-            return redirect()->route('posts.index')->with('success', ('Пост обновлен'));
+            return redirect()->route('posts.index')->with('success', 'Пост обновлен');
         }
 
         $categories = Category::pluck('title', 'id')->all();

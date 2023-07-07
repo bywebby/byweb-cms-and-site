@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 use function PHPUnit\Framework\isEmpty;
 use App\Http\Controllers\Front\Modules\Calc;
 
+use App\Http\Controllers\Front\Modules\Breadcrumbs;
+
 class HomeController extends Controller
 {
     private $cats;
@@ -17,6 +19,8 @@ class HomeController extends Controller
     private $calc;
     private $error_404 = '404 ошибка!';
 
+
+
     public function __construct(Category $cats, Module $modules, Calc $calc) {
         //категории поста
         $this->cats = $cats;
@@ -24,14 +28,32 @@ class HomeController extends Controller
         $this->modules = $modules;
         //модуль калькулятора
         $this->calc = $calc;
+
+
+
     }
 
     public function index(Request $request, $slug = '', $slug2 = '')
     {
+
+
+
+
+//        dd($slug, $slug2);
         //по категории находим контент в зависимости от слага
         $request->path() == '/' ? $slug = config('byweb.home_page') : $slug = str_replace($slug.'/', '', $request->path());
+
+
         //определяем id категории согласно слагу
         $cat = $this->cats::where('slug', $slug)->where('status', 1)->first();
+
+       if(!$cat) abort(404, 'Такой страницы не существует');
+
+
+        $breadcrumbs = (new Breadcrumbs($slug, $slug2, $cat, $request->path()))->data;
+
+//        dd($breadcrumbs);
+
         //проверяет существует ли категория если нет 404-ошибка
         $this->errorPage($cat, 'Такой страницы не существует!');
         //  берем данные модулей согласно категории
@@ -40,11 +62,15 @@ class HomeController extends Controller
 
         //берем через связь все посты, которые относятся к данной категории
         $data = $cat->posts()->get();
+
+//        dd($cat);
+
         //проверяем на пустоту посты
         $this->chekEmtyPost($data, 'Добавьте посты в категорию');
         //получаем калькулялтор к данной категории
         $calcItems = $this->calc->getCalcItems($cat->id);
-        return view('byweb.home', compact('data', 'modules', 'calcItems'));
+
+        return view('byweb.home', compact('data', 'modules', 'calcItems', 'breadcrumbs'));
     }
 
     private function errorPage($data, string $msg = '')

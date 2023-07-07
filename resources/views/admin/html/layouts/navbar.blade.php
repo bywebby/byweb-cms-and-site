@@ -9,7 +9,7 @@
             <a href="{{ route('admin.index') }}" class="nav-link">Главная</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">Contact</a>
+            <a href="{{ route('admin.clear') }}" class="nav-link">Очистить кеш</a>
         </li>
     </ul>
 

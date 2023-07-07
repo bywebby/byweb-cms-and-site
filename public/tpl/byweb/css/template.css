@@ -10,6 +10,15 @@ a {
   text-decoration: none;
 }
 
+li {
+  list-style-type: none; /* Убираем маркеры */
+}
+
+ul {
+  margin-left: 0; /* Отступ слева в браузере IE и Opera */
+  padding-left: 0; /* Отступ слева в браузере Firefox, Safari, Chrome */
+}
+
 html {
   overflow-x: hidden;
   font-size: 18px;
@@ -1645,4 +1654,36 @@ a[href="https://telegram.me/sozdaniesajta"] img {
 .error h2 {
   align-self: center;
   color: #ff3841;
+}
+
+#content-bottom {
+  background: #f6f8fa;
+}
+#content-bottom li {
+  margin-left: 20px;
+  padding-bottom: 5px;
+}
+#content-bottom li::before {
+  position: absolute;
+  content: "\f107";
+  font-family: FontAwesome;
+  color: red;
+  left: -7px;
+  font-weight: bold;
+}
+
+.body_bg {
+  background: #faf6f1 !important;
+}
+
+.breadcrumbs {
+  background: linear-gradient(0deg, rgb(232, 227, 227) 0%, rgb(250, 246, 241) 52%);
+  padding: 5px 0 5px;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 5px;
+  border-bottom: 1px solid #999;
+}
+.breadcrumbs a {
+  text-decoration: none;
 }

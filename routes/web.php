@@ -24,8 +24,8 @@ Route::get('/clear', function () {
     Artisan::call('config:cache');
     Artisan::call('view:clear');
     Artisan::call('route:clear');
-    return "Кэш очищен!";
-})->middleware('admin');
+    return redirect()->back()->with('success', 'Кеш очищен');
+})->middleware('admin')->name('admin.clear');;
 
 //адимн панель
     //авторизация

@@ -7,7 +7,7 @@
 
 
 
-{{--            data-aos="fade-left" data-aos-delay="300"--}}
+{{--                                                                                                                    слаг нужен для генерации картинки в контактах--}}
             <div data-aos="fade-left" data-aos-delay="300" class="content-top-item-txt @if($item->slug) py-30 px-10 @endif" @if($item->slug) id='{{$item->slug}}' @endif itemprop="description" >
 
                 @if($item->thumbnail)
