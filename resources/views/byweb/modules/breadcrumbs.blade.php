@@ -1,7 +1,7 @@
 @if($data != [])
     <div class="container center">
         <div class="breadcrumbs">
-            Вы здесь:
+            <span class="px-10">Вы здесь:</span>
 
             @foreach($data as $k => $i)
 

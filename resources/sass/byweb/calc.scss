@@ -50,12 +50,18 @@
     }
 
     &-row {
+        padding: 24px 0 15px 0;
         display: flex;
         //justify-content: space-between;
         justify-content: center;
         flex-direction: row;
         flex-wrap: wrap;
         box-sizing: border-box;
+
+        background: url('/tpl/byweb/img/mainbottomBg.jpg');
+        background-attachment: fixed;
+
+
     }
 
     &-item {

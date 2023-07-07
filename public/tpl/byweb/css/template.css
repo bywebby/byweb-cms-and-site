@@ -192,6 +192,10 @@ a {
     flex-basis: 100%;
   }
 }
+.right_figure figure {
+  float: right;
+}
+
 .btn, .btn-slider {
   display: inline-block;
   position: relative;
@@ -773,6 +777,18 @@ nav ul li > a:only-child:after {
   }
 }
 
+.content-top li {
+  margin-left: 30px;
+  padding-bottom: 5px;
+}
+.content-top li::before {
+  position: absolute;
+  content: "\f107";
+  font-family: FontAwesome;
+  color: red;
+  left: 10px;
+  font-weight: bold;
+}
 .content-top strong {
   color: #fe7676;
 }
@@ -826,6 +842,10 @@ nav ul li > a:only-child:after {
 }
 .top-menu-item img {
   vertical-align: middle;
+}
+
+.right_figure figure {
+  float: right;
 }
 
 .why-us {
@@ -995,11 +1015,14 @@ nav ul li > a:only-child:after {
   text-align: center;
 }
 .calc-row {
+  padding: 24px 0 15px 0;
   display: flex;
   justify-content: center;
   flex-direction: row;
   flex-wrap: wrap;
   box-sizing: border-box;
+  background: url("/tpl/byweb/img/mainbottomBg.jpg");
+  background-attachment: fixed;
 }
 .calc-item {
   flex-basis: 25%;
@@ -1660,7 +1683,7 @@ a[href="https://telegram.me/sozdaniesajta"] img {
   background: #f6f8fa;
 }
 #content-bottom li {
-  margin-left: 20px;
+  margin-left: 30px;
   padding-bottom: 5px;
 }
 #content-bottom li::before {
@@ -1668,7 +1691,7 @@ a[href="https://telegram.me/sozdaniesajta"] img {
   content: "\f107";
   font-family: FontAwesome;
   color: red;
-  left: -7px;
+  left: 10px;
   font-weight: bold;
 }
 

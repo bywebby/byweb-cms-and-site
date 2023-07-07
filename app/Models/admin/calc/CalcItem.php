@@ -27,9 +27,9 @@ class CalcItem extends Model
         return $this->belongsTo(CalcTitle::class, 'calc_title_id');
     }
 
-//    public function calcModule() {
-//        return $this->belongsTo(CalcModule::class, 'calc_module_id');
-//    }
+    public function calcModule() {
+        return $this->belongsTo(CalcModule::class, 'calc_module_id');
+    }
 
     public function calcCategory() {
         return $this->belongsTo(CalcCategory::class, 'calc_category_id');
