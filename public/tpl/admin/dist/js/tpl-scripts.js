@@ -27721,7 +27721,7 @@ S2.define('jquery.select2',[
 
 (function ($) {
   'use strict'
-
+//multiple select
     $('.select2').select2()
 
 
