@@ -33,11 +33,14 @@
 
             cursor: pointer;
 
+
+
         }
 
         &-title {
             flex-basis: calc(100% - 50px);
             align-self: center;
+            @include no-select;
         }
 
 
@@ -47,8 +50,17 @@
 
 
             img {
+                display: block;
                 max-width: 100%;
-                margin: 20px 0px;
+                margin: 20px auto;
+            }
+
+            h4 {
+                color: $pink;
+                text-align: center;
+                border-top: 1px solid $white;
+                padding-top: 17px !important;
+                text-transform: uppercase;
             }
 
         }

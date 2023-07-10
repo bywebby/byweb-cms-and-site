@@ -92,7 +92,7 @@ p {
 
 a {
   color: #076ad0;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .item-1 {
@@ -1736,14 +1736,26 @@ a[href="https://telegram.me/sozdaniesajta"] img {
 .top-tabs-item-title {
   flex-basis: calc(100% - 50px);
   align-self: center;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */ /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */ /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently*/
 }
 .top-tabs-item-txt {
   padding: 20px 20px;
   display: none;
 }
 .top-tabs-item-txt img {
+  display: block;
   max-width: 100%;
-  margin: 20px 0px;
+  margin: 20px auto;
+}
+.top-tabs-item-txt h4 {
+  color: #fe7676;
+  text-align: center;
+  border-top: 1px solid #FFF;
+  padding-top: 17px !important;
+  text-transform: uppercase;
 }
 .top-tabs-icon {
   position: relative;
