@@ -31,9 +31,13 @@
             </label>
         </div>
 
-        <div class="calc-price">
-            {{ calcResult }} <small>BYN</small>
+
+        <div class="calc-price" @click="sendOrder()">
+            <a href="#zakaz" title="Оформить заказ">
+            {{ calcResult }} <small>BYN</small> <i class="fa fa-cart-plus"></i>
+            </a>
         </div>
+
 
 
     </div>
@@ -41,6 +45,9 @@
 </template>
 
 <script>
+
+//импортируем шину событий
+import {eventBus} from "../../../app";
 
 export default {
     name: "CalcItemComponent",
@@ -52,8 +59,8 @@ export default {
         calcRes: 0,
         //определяет дефолтные значения стоят или динамические
         defStatus: true,
-
-
+        //заказ
+        order: {},
     }),
     methods: {
         debug: function (myVar) {
@@ -67,15 +74,27 @@ export default {
         idName(myVar, id, kitem) {
             return myVar == 'radio' ? 'radio_' + id + '_' + kitem : 'checkbox_' + id + '_' + kitem;
         },
+        //удаляет дефолтные дынные item
         delMyDef(event) {
-
             if (event) {
                return this.defStatus = false;
-
             }
+        },
 
-        }
+
+//записывает данные в item по клику в ордер
+        sendOrder: function() {
+            //мунал https://www.youtube.com/watch?v=-7KCkC2YHOQ
+            //передача данных в шину событий
+            eventBus.$emit('form-order', this.order);
+            return this.order;
+        },
+
+
+
     },
+
+
 
 
     computed: {
@@ -83,22 +102,48 @@ export default {
         calcResult: function () {
             //провереям есть данные в массиве
             if (this.calcCheckedData.length != 0) {
+                //стартовое значение
                 let sum = 0;
                 // суммирует элементы массива
                 this.calcCheckedData.map((i) => sum += i);
+                //записывает сумму
                 this.calcRes = sum;
             } else {
                 this.calcRes = 0;
             }
             //если выделены радио, то он их суммирует
             if (this.calcRadioData != null) {
-
                 // this.debug(this.calcRadioData);
                 this.calcRes += this.calcRadioData;
             }
+
+            //записывает ордер item
+                this.setOrderData;
+
+            // console.log(order.title);
+
+
             // this.debug(this.calcRadioData);
             return this.calcRes;
         },
+
+//сборщик данных
+        setOrderData: function () {
+
+            this.order = {
+                title: this.titleKey,
+                checks: this.calcCheckedData,
+                radios: this.calcRadioData,
+                sum: this.calcRes,
+            };
+
+            return this.order;
+
+
+        },
+
+
+
         myDefCheckedCheckbox: function () {
 //если дефолтное состояние, то берем значения из базы данных админки, что прилетели в json
             if (this.defStatus) {
@@ -112,8 +157,8 @@ export default {
                 }
                 return this.calcCheckedData;
             } else if (!this.defStatus) {
-                //если имеются клики по чекбоксам, то сбразываем дефолтное состояния калькулятора через пустой массив
-                return this.calcCheckedData = [];
+                //если имеются клики
+                return this.calcCheckedData;
             }
 
         },

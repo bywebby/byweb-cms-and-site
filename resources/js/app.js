@@ -19,15 +19,20 @@ window.Vue = require('vue').default;
 Vue.component('byweb-gallery', require('./components/GalleryComponent.vue').default);
 Vue.component('byweb-ceny', require('./components/modules/calc/CenyComponent.vue').default);
 Vue.component('byweb-reviews', require('./components/modules/reviews/ReviewsComponent').default);
-Vue.component('byweb-form-modal', require('./components/modules/forms/ModalComponent').default);
 Vue.component('byweb-back-top', require('./components/modules/BackTopComponent').default);
+Vue.component('byweb-feed-back', require('./components/modules/forms/FeedBackComponent').default);
+Vue.component('byweb-form-modal', require('./components/modules/forms/ModalComponent').default);
 
-
+Vue.component('byweb-top-tabs', require('./components/modules/tabs/top').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+
+//шина событий eventBus получить данные калькуялтора и отправить в форму по клику
+export const eventBus = new Vue();
+
 
 const app = new Vue({
     el: '#app',

@@ -1,0 +1,26 @@
+#photo {
+    float: left;
+
+    img {
+        border-radius: 1000px;
+        margin: 20px;
+    }
+
+    &-right {
+        float: right;
+
+
+        img {
+            margin: 20px;
+            height: 150px;
+        }
+    }
+}
+
+a[href='https://telegram.me/sozdaniesajta'] {
+
+    img {
+        vertical-align: middle;
+    }
+
+}

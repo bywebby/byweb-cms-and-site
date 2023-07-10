@@ -1,12 +1,17 @@
 #slider {
+    min-height: 400px;
     height: calc(100vh - 75px - 83px);
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     position: relative;
+
+
+
 }
 
 .slider {
+    min-height: 400px;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -16,6 +21,7 @@
 .slider-img {
     position: absolute;
     width: 100%;
+    min-height: 400px;
     height: calc(100vh - 75px - 83px);
     background: $blue;
     background: linear-gradient(0deg, rgba(115,195,232,1) 0%, rgba(255,255,255,1) 100%);
@@ -52,6 +58,10 @@
 
     @media screen and (max-width: 1350px) {
         width: 30%;
+    }
+
+    @media screen and (max-height: 540px) {
+       transform: scale(.8);
     }
 
 

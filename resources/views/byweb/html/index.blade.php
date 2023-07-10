@@ -8,6 +8,10 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+    <!-- CSRF Token for VUE form-->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+
     <title>@yield('title')</title>
     <meta name="description" content="@yield('description')"/>
     <link href="{{ URL::current() }}" rel="canonical"/>
@@ -36,8 +40,15 @@
     @yield('slider')
     {{-- вывыодим полосу --}}
     @yield('polosa')
+
+{{--хлебыне крошки для 2 уровневых ссылок--}}
+    @yield('breadcrumbs')
+
     {{-- верхний контент --}}
     @yield('top-contents')
+    {{-- табы --}}
+    @yield('top-tabs')
+
     {{--почему мы--}}
     @yield('why-us')
     {{--галерея--}}

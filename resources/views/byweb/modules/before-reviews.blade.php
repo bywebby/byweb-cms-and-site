@@ -1,4 +1,4 @@
-<div class="how-we-work py-50">
+<div class="top-tabbs py-50">
     <div class="container">
         <div class="how-we-work-desc center pb-30">
             <div class="how-we-work-header">

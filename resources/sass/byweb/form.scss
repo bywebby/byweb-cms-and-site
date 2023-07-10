@@ -1,3 +1,33 @@
+
+.form {
+
+    &-order {
+
+        color: $green;
+        font-size: 1.5rem;
+        font-weight: bold;
+
+
+
+
+    }
+
+
+
+}
+
+.input.check input:focus, .textarea.check textarea:focus {
+
+    border-color: $green;
+    color: $green-dark;
+
+}
+
+
+
+
+
+
 .input {
     display: inline;
     box-sizing: border-box;
@@ -170,3 +200,5 @@
         left: 0;
     }
 }
+
+

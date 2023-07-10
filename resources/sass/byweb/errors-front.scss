@@ -1,0 +1,29 @@
+
+.error {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    color: red;
+    background-color: #f2f2f2;
+    padding: 50px;
+
+    min-height: 100vh;
+
+    @media screen and (max-height: 300px) {
+        min-height: 0px;
+        height: 100px;
+
+    }
+
+
+
+    h2 {
+        align-self: center;
+        color: $red;
+        //flex-grow: 1;
+    }
+
+}
+
+
+

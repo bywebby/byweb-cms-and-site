@@ -18,7 +18,6 @@
     @endif
 
 {{--успешное добавление записи--}}
-
     @if (session()->has('success') || session()->has('danger') || session()->has('error'))
          <div class="container">
             <div class="row">

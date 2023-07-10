@@ -1,0 +1,15 @@
+//подсветка фона блока под ценами
+#content-bottom {
+    background: $gray;
+
+    @include list;
+
+
+
+}
+
+
+.body_bg {
+
+    background: $body-bg !important;
+}

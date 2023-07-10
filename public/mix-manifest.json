@@ -57,6 +57,7 @@
     "/tpl/admin/dist/img/user8-128x128.jpg": "/tpl/admin/dist/img/user8-128x128.jpg",
     "/tpl/byweb/img/cms.png": "/tpl/byweb/img/cms.png",
     "/tpl/byweb/img/dirbyweb.jpg": "/tpl/byweb/img/dirbyweb.jpg",
+    "/tpl/byweb/img/mainbottomBg.jpg": "/tpl/byweb/img/mainbottomBg.jpg",
     "/tpl/byweb/img/qr-code.jpg": "/tpl/byweb/img/qr-code.jpg",
     "/tpl/byweb/img/reviews.jpg": "/tpl/byweb/img/reviews.jpg",
     "/tpl/byweb/img/samolet.gif": "/tpl/byweb/img/samolet.gif",
@@ -72,6 +73,5 @@
     "/tpl/byweb/webfonts/fa-solid-900.woff2": "/tpl/byweb/webfonts/fa-solid-900.woff2",
     "/tpl/byweb/webfonts/fa-v4compatibility.ttf": "/tpl/byweb/webfonts/fa-v4compatibility.ttf",
     "/tpl/byweb/webfonts/fa-v4compatibility.woff2": "/tpl/byweb/webfonts/fa-v4compatibility.woff2",
-    "/tpl/byweb/css/all.css": "/tpl/byweb/css/all.css",
-    "/tpl/byweb/img/mainbottomBg.jpg": "/tpl/byweb/img/mainbottomBg.jpg"
+    "/tpl/byweb/css/all.css": "/tpl/byweb/css/all.css"
 }

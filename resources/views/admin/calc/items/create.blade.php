@@ -22,10 +22,8 @@
 
                                             <x-input label='Цена' name="price" />
 
-{{--                                            <x-textarea label='Описание' name="description" />--}}
-
-                                            <x-select-category title="Выберите модуль" name="calc_module_id"
-                                                               :datacategory="$calcModules"/>
+{{--                                            <x-select-category title="Выберите модуль" name="calc_module_id"--}}
+{{--                                                               :datacategory="$calcModules"/>--}}
 
                                             <x-select-category title="Выберите категорию" name="calc_category_id"
                                                                :datacategory="$calcCategories"/>

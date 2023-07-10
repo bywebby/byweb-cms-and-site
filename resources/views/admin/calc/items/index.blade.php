@@ -27,7 +27,7 @@
                                                 <th>Наименование блока</th>
                                                 <th>Цена</th>
                                                 <th>Наименование категория блока</th>
-                                                <th>Наименование модуль блока</th>
+{{--                                                <th>Наименование модуль блока</th>--}}
                                                 <th>Управление</th>
                                             </tr>
                                             </thead>
@@ -50,12 +50,12 @@
                                                     </td>
 
                                                     <td>
-                                                        <a href="{{route('calc.item.index', ['category' => $item->calc_category_id, 'module' => $item->calcModule->id])}}">{{ $item->calcCategory->title }}</a>
+                                                        <a href="{{route('calc.item.index', ['category' => $item->calc_category_id])}}">{{ $item->calcCategory->title }}</a>
                                                     </td>
 
-                                                    <td>
-                                                        <a href="{{route('calc.item.index', ['category' => $item->calc_category_id, 'module' => $item->calcModule->id])}}">{{ $item->calcModule->title }}</a>
-                                                    </td>
+{{--                                                    <td>--}}
+{{--                                                        <a href="{{route('calc.item.index', ['category' => $item->calc_category_id, 'module' => $item->calcModule->id])}}">{{ $item->calcModule->title }}</a>--}}
+{{--                                                    </td>--}}
 
 
 

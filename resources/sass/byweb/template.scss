@@ -13,9 +13,18 @@ html {
 
 }
 
+//#app {
+//    display: flex;
+//    flex-flow: column;
+//    //flex-wrap: wrap;
+//    min-height: 100vh;
+//}
+
 body {
     font-family: 'Roboto', Arial, sans-serif;
+    //flex-direction: column;
     min-width: 320px;
+    min-height: 100vh;
     background: $body-bg;
     color: $body-clr;
 
@@ -58,6 +67,9 @@ p {
     max-width: 1490px;
     margin: 0 auto;
     padding: 0 25px;
+
+
+
 }
 
 .row {
@@ -116,7 +128,7 @@ a {
     padding: 50px;
 }
 
-.block {
+.block, .display {
     position: relative;
     display: block;
     z-index:1;
@@ -140,9 +152,15 @@ a {
 .pt-50 {
     padding-top: 50px;
 }
-
+.pb-20 {
+    padding-bottom: 20px;
+}
 .pb-30 {
     padding-bottom: 30px;
+}
+
+.pb-40 {
+    padding-bottom: 40px;
 }
 
 .py-50 {padding: 50px 0;}
@@ -152,14 +170,6 @@ a {
     padding-right: 10px;
 }
 
-.error {
-    display: flex;
-    justify-content: center;
-    align-self: center;
-    color: red;
-    background-color: #f2f2f2;
-    padding: 50px;
-}
 
 .center {
     text-align: center;
@@ -192,3 +202,10 @@ a {
         flex-basis: 100%;
     }
 }
+
+.right_figure figure {
+    float:right
+}
+
+
+

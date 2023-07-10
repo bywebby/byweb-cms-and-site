@@ -106,7 +106,11 @@ class PostController extends Controller
         $nameFolder = Category::find($data['category_id'])->title;
 
         //загрузка изображения
-        $data['thumbnail'] = $this->uploadImage($request, Str::slug($nameFolder, '-'));
+//        $data['thumbnail'] = $this->uploadImage($request, Str::slug($nameFolder, '-'));
+        //Проверяем пришло ли изображение
+        if(isset($data['thumbnail'])) {
+            $data['thumbnail'] = $this->uploadImage($request, Str::slug($nameFolder, '-'), $data['thumbnail']);
+        }
 
         Post::create($data);
 
@@ -173,7 +177,7 @@ class PostController extends Controller
         //обновляем запись
         $post->update($data);
         if ($request->input('save') == 'Сохранить и закрыть') {
-            return redirect()->route('posts.index')->with('success', ('Пост обновлен'));
+            return redirect()->route('posts.index')->with('success', 'Пост обновлен');
         }
 
         $categories = Category::pluck('title', 'id')->all();
@@ -200,7 +204,7 @@ class PostController extends Controller
         Storage::delete($post->thumbnail);
 
 
-        $post->delete($id);
+        $post->destroy($id);
         return redirect()->route('posts.index')->with('success', 'Статья удалена');
 
     }
@@ -218,7 +222,6 @@ class PostController extends Controller
     {
 
         if ($request->hasFile('thumbnail')) {
-
             //создаем оригинальное имя файла
             $nameFile = $request->file('thumbnail')->getClientOriginalName();
 
@@ -228,11 +231,8 @@ class PostController extends Controller
                 //$image - это путь к файлу в базе
                 if ($imageDel) {
                     //удаляем старый файл
-
                     Storage::disk('uploads')->delete($imageDel);
                 }
-
-
                 //записывает файл
                 return $request->file('thumbnail')->storeAs("images/{$nameFolder}", $nameFile, ['disk' => 'uploads']);
 

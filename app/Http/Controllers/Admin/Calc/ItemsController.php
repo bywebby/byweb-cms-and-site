@@ -21,7 +21,7 @@ class ItemsController extends Controller
     public $fields = [
         'calc_title_id',
         'price',
-        'calc_module_id',
+//        'calc_module_id',
         'calc_category_id',
         'checked',
         'status',
@@ -50,18 +50,19 @@ class ItemsController extends Controller
 
 //сортировка по модулям и по пагинации
         switch (true) {
-            case $page['category'] == null and $page['module'] == null:
+            case $page['category'] == null /*and $page['module'] == null*/:
                 $data = $items;
                 break;
-            case $page['category'] and $page['module'] == null:
+            case $page['category'] /*and $page['module'] == null*/:
                 $data = $items->where('calc_category_id', $page['category']);
                 break;
-            case $page['module'] and $page['category'] == null:
-                $data = $items->whereRelation('calcModule', 'id', $page['module']);
-                break;
-            case $page['module'] != null and $page['category'] != null:
+//            case $page['module'] and $page['category'] == null:
+//                $data = $items->whereRelation('calcModule', 'id', $page['module']);
+//                break;
+            case /*$page['module'] != null and*/ $page['category'] != null:
 //                                                                              выборка по связи
-                $data = $items->where('calc_category_id', $page['category'])->whereRelation('calcModule', 'id', $page['module']);
+                $data = $items->where('calc_category_id', $page['category'])
+                    /*->whereRelation('calcModule', 'id', $page['module'])*/;
                 break;
         }
 //пагинация
@@ -157,10 +158,8 @@ class ItemsController extends Controller
 
         $calcItem->update($data);
 
-        $catId = $calcItem->calcModule->category_id;
-
         //удаляет кеш
-        Helpers::forgetCache(['calc-items', 'my-groupe'.$catId]);
+        Artisan::call('cache:clear');
 
 //        dd(Cache::get('calc-items'));
 
@@ -183,17 +182,17 @@ class ItemsController extends Controller
     {
 
 
-        $calcItem= CalcItem::with('calcModule')->findOrFail($id);
+        $calcItem= CalcItem::findOrFail($id);
 
-        $catId = $calcItem->calcModule->category_id;
+
 
         //удаляет кеш
-        Helpers::forgetCache(['calc-items', 'my-groupe'.$catId]);
+        Artisan::call('cache:clear');
 
 
 
 //        CalcItem::findOrFail($id)->delete($id);
-        $calcItem->delete($id);
+        $calcItem->destroy($id);
 
 
 

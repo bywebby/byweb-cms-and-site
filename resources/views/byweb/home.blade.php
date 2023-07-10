@@ -13,6 +13,12 @@
 {{--    @include('byweb.html.layouts.contents.menu.index', ['items' => $menuitems])--}}
 {{--@endsection--}}
 
+{{--хлебные крошки--}}
+@section('breadcrumbs')
+    @include('byweb.modules.breadcrumbs', ['data' => $breadcrumbs])
+@endsection
+{{--конец хлебные крошки--}}
+
 @foreach($data as $k => $item)
 {{--           {{ dump($item->type->title) }}--}}
 
@@ -35,6 +41,9 @@
         {{--    тип контента главная статья--}}
         @case('Главная статья')
             @section('top-contents')
+
+{{--                {{dd($item)}}--}}
+
                 @include('byweb.html.layouts.contents.content-1', ['item' => $item])
             @endsection
         @break
@@ -53,16 +62,16 @@
                 @endsection
         @break
 
-        {{--блок над отзывами--}}
-        @case('Блок над отзывами')
-            @section('before-reviews')
-                @php
-                    /** @var $item */
-                    // Добавляем в массив все item из типа контнета полоса
-                    $itemsBeforeRevies[] = $item;
-                @endphp
-            @endsection
-        @break
+        {{--блок над отзывами как с нами работать--}}
+{{--        @case('Блок над отзывами')--}}
+{{--            @section('before-reviews')--}}
+{{--                @php--}}
+{{--                    /** @var $item */--}}
+{{--                    // Добавляем в массив все item из типа контнета полоса--}}
+{{--                    $itemsBeforeRevies[] = $item;--}}
+{{--                @endphp--}}
+{{--            @endsection--}}
+{{--        @break--}}
 
             @case("Заголовок подвала")
                 @section('footer')
@@ -89,6 +98,30 @@
 {{--               {{ dump($module->types->title) }}--}}
 
        @switch($module->types->title)
+
+
+            @case('Табы')
+{{--                @section('top-tabs')--}}
+{{--                    @include('byweb.modules.tabs.top-tabs', ['item' => $module, 'data' => $data])--}}
+{{--                @endsection--}}
+                @php
+                    /** @var $module
+                    *  @var $data
+                    */
+                               $moduleTabs = $module->toArray();
+
+                  foreach ($data as $item) {
+                                    /*Выборка всех отзывов из модуля по типу*/
+                                   if($module->type_id == $item->type_id) {
+                                        $itemsTabs[]  = $item->toArray();
+                                    }
+                                }
+
+                @endphp
+
+
+            @break
+
 
             @case('Этапы')
                 @section('etapy')
@@ -134,6 +167,22 @@
 {{-- конец модулей со многими статьями --}}
 
 {{--VUE компоненты --}}
+
+{{-- модуль top-tabs --}}
+@if( isset($itemsTabs) and isset($moduleTabs))
+
+    {{--    {{dd($itemsGallery)}}--}}
+    @section('top-tabs')
+
+
+        {{--        json для передачи в компонет vue --}}
+        <byweb-top-tabs items="{{json_encode($itemsTabs)}}" module="{{json_encode($moduleTabs)}}"></byweb-top-tabs>
+    @endsection
+@endif
+{{-- конец модуль top-tabs --}}
+
+
+
 {{-- модуль галерея --}}
 @if( isset($itemsGallery) )
 
